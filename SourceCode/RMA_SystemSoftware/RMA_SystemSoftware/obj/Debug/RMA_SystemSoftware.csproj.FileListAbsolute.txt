@@ -1,0 +1,17 @@
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\RMA_SystemSoftware.exe.config
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\RMA_SystemSoftware.exe
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\RMA_SystemSoftware.pdb
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.csprojResolveAssemblyReference.cache
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Form1.resources
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Properties.Resources.resources
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.csproj.GenerateResource.Cache
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.exe
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.pdb
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Receiving.resources
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Technician.resources
+c:\users\tanmeet\documents\visual studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Tech_Open.resources
+C:\Users\tanmeet\Documents\Visual Studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Supervisor.resources
+C:\Users\tanmeet\Documents\Visual Studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.HelpDesk.resources
+C:\Users\tanmeet\Documents\Visual Studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Notes.resources
+C:\Users\tanmeet\Documents\Visual Studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Search_RMA.resources
+C:\Users\tanmeet\Documents\Visual Studio 2015\Projects\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Split_RMA.resources
