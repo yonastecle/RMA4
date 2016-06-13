@@ -74,6 +74,11 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -82,16 +87,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -608,6 +608,57 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Update Info";
             // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(234, 474);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 24);
+            this.button13.TabIndex = 57;
+            this.button13.Text = "Update";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.DarkRed;
+            this.label19.Location = new System.Drawing.Point(145, 65);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(90, 16);
+            this.label19.TabIndex = 46;
+            this.label19.Text = "Request Status";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(10, 65);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(107, 15);
+            this.label20.TabIndex = 45;
+            this.label20.Text = "Current Status:";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(148, 32);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(313, 23);
+            this.textBox8.TabIndex = 44;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(70, 40);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(47, 15);
+            this.label21.TabIndex = 43;
+            this.label21.Text = "RMA#:";
+            // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(148, 366);
@@ -680,47 +731,6 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Description:";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.DarkRed;
-            this.label19.Location = new System.Drawing.Point(145, 65);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(90, 16);
-            this.label19.TabIndex = 46;
-            this.label19.Text = "Request Status";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(10, 65);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(107, 15);
-            this.label20.TabIndex = 45;
-            this.label20.Text = "Current Status:";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(148, 32);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(313, 23);
-            this.textBox8.TabIndex = 44;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(70, 40);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(47, 15);
-            this.label21.TabIndex = 43;
-            this.label21.Text = "RMA#:";
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -769,16 +779,6 @@
             this.button12.Text = "Modify";
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(234, 474);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 24);
-            this.button13.TabIndex = 57;
-            this.button13.Text = "Update";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
             // HelpDesk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -800,6 +800,7 @@
             this.Controls.Add(this.linkLabel2);
             this.Name = "HelpDesk";
             this.Text = "HelpDesk";
+            this.Load += new System.EventHandler(this.HelpDesk_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -21,12 +21,16 @@ namespace RMA_SystemSoftware
         {
 
         }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+              private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             Form1 login = new Form1();
             login.Show();
+        }
+
+        private void HelpDesk_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

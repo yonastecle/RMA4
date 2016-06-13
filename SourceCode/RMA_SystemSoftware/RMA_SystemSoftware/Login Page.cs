@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace RMA_SystemSoftware
 {
@@ -24,31 +25,52 @@ namespace RMA_SystemSoftware
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text =="R" || textBox1.Text == "r")
-                {
-                this.Hide();
-                Receiving Recv = new Receiving();
-                Recv.Show();
+            SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+            SqlDataAdapter sda = new SqlDataAdapter("select userType from Employee where UserID='"+textBox1.Text+"' and password='"+textBox2.Text+"'",con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count == 1)
+            {
+               
 
-            }
-            else if(textBox1.Text=="T" || textBox1.Text=="t")
-            {
-                this.Hide();
-                Technician Tech = new Technician();
-                Tech.Show();
-            }
-            else if(textBox1.Text == "H" || textBox1.Text == "h")
-            {
-                this.Hide();
-                HelpDesk hdesk = new HelpDesk();
-                hdesk.Show();
+                if (dt.Rows[0][0].ToString() == "Supervisor")
+                {
+                    this.Hide();
+                    Supervisor sup = new Supervisor();
+                    sup.Show();
+                }
+                else if (dt.Rows[0][0].ToString() == "technician")
+                {
+                    this.Hide();
+                    Technician tech = new Technician();
+                    tech.Show();
+                }
+                else if (dt.Rows[0][0].ToString() == "help desk ")
+                {
+                    this.Hide();
+                    HelpDesk hdesk = new HelpDesk();
+                    hdesk.Show();
+                }
+                else if (dt.Rows[0][0].ToString() == "receiving ")
+                {
+                    this.Hide();
+                    Receiving recv = new Receiving();
+                    recv.Show();
+                }
+               
             }
             else
             {
-                this.Hide();
-                Supervisor sup = new Supervisor();
-                sup.Show();
+                MessageBox.Show("Invalid User ID and Password !! Please check your credentials ");
+               
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
     }
-}
+  }
+
