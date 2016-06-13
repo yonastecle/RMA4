@@ -45,5 +45,10 @@ namespace RMA_SystemSoftware
             Form1 login = new Form1();
             login.Show();
         }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
+        }
     }
 }

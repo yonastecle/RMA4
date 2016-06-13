@@ -32,5 +32,10 @@ namespace RMA_SystemSoftware
         {
 
         }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
+        }
     }
 }
