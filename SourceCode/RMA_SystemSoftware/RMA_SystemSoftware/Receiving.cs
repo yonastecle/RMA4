@@ -15,6 +15,9 @@ namespace RMA_SystemSoftware
         public Receiving()
         {
             InitializeComponent();
+            comboBox1.Items.Add("Receiving");
+            comboBox1.Items.Add("Wait");
+            comboBox1.Items.Add("Close");
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -77,6 +80,11 @@ namespace RMA_SystemSoftware
             this.Hide();
             Form1 login = new Form1();
             login.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
