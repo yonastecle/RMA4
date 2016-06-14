@@ -817,6 +817,7 @@
             this.button13.TabIndex = 69;
             this.button13.Text = "Add New";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button12
             // 
@@ -832,23 +833,24 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(58, 63);
+            this.label19.Location = new System.Drawing.Point(26, 63);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(84, 15);
+            this.label19.Size = new System.Drawing.Size(116, 15);
             this.label19.TabIndex = 65;
-            this.label19.Text = "Tech Name:";
+            this.label19.Text = "Employee Name:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(82, 28);
+            this.label18.Location = new System.Drawing.Point(50, 31);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 15);
+            this.label18.Size = new System.Drawing.Size(92, 15);
             this.label18.TabIndex = 64;
-            this.label18.Text = "Tech ID:";
+            this.label18.Text = "Employee ID:";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // Supervisor
             // 

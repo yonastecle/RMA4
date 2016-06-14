@@ -32,3 +32,4 @@ C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_S
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.csproj.GenerateResource.Cache
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\RMA_SystemSoftware.exe
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\RMA_SystemSoftware.pdb
+C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Add_emp.resources

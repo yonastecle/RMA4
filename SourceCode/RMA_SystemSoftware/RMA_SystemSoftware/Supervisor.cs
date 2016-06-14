@@ -41,5 +41,17 @@ namespace RMA_SystemSoftware
         {
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
         }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Add_emp add_emp = new Add_emp();
+            add_emp.Show();
+        }
     }
 }

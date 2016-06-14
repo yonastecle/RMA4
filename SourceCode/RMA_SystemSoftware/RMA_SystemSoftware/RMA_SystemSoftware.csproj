@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add_emp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_emp.Designer.cs">
+      <DependentUpon>Add_emp.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelpDesk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="Tech_Open.Designer.cs">
       <DependentUpon>Tech_Open.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Add_emp.resx">
+      <DependentUpon>Add_emp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HelpDesk.resx">
       <DependentUpon>HelpDesk.cs</DependentUpon>
     </EmbeddedResource>
