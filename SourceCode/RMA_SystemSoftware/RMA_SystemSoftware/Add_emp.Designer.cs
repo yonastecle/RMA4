@@ -184,6 +184,11 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Supervisor",
+            "Technician",
+            "Help Desk",
+            "Receiving"});
             this.comboBox1.Location = new System.Drawing.Point(380, 251);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(169, 21);
@@ -192,10 +197,16 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "NA",
+            "Laptop ",
+            "Desktop",
+            "Laptop and Desktop"});
             this.comboBox2.Location = new System.Drawing.Point(380, 296);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(169, 21);
             this.comboBox2.TabIndex = 14;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // textBox2
             // 

@@ -15,6 +15,17 @@ namespace RMA_SystemSoftware
         public Add_emp()
         {
             InitializeComponent();
+            /*ComboBox type = new ComboBox();
+            ComboBox tag = new ComboBox();
+            type.Items.Add("Supervisor");
+            type.Items.Add("Help Desk");
+            type.Items.Add("Receiving");
+            type.Items.Add("Technician");
+
+            tag.Items.Add("NA");
+            tag.Items.Add("Laptop");
+            tag.Items.Add("Desktop");
+            tag.Items.Add("Laptop & Desktop");*/
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -32,6 +43,11 @@ namespace RMA_SystemSoftware
             this.Close();
             Supervisor sup = new Supervisor();
             sup.Show();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
