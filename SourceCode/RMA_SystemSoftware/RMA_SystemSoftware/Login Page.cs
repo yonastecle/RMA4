@@ -62,7 +62,8 @@ namespace RMA_SystemSoftware
             else
             {
                 MessageBox.Show("Invalid User ID and Password !! Please check your credentials ");
-               
+                textBox1.Clear();
+                textBox2.Clear();
             }
         }
 
@@ -75,6 +76,11 @@ namespace RMA_SystemSoftware
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
   }

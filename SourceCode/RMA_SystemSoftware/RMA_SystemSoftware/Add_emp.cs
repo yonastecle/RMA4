@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace RMA_SystemSoftware
 {
@@ -15,19 +16,12 @@ namespace RMA_SystemSoftware
         public Add_emp()
         {
             InitializeComponent();
-            /*ComboBox type = new ComboBox();
-            ComboBox tag = new ComboBox();
-            type.Items.Add("Supervisor");
-            type.Items.Add("Help Desk");
-            type.Items.Add("Receiving");
-            type.Items.Add("Technician");
-
-            tag.Items.Add("NA");
-            tag.Items.Add("Laptop");
-            tag.Items.Add("Desktop");
-            tag.Items.Add("Laptop & Desktop");*/
+           
         }
-
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+        SqlCommand command = new SqlCommand();
+        SqlDataReader dataRead;
+        
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -48,6 +42,16 @@ namespace RMA_SystemSoftware
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            command.Connection = con;
+            command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('"+textBox7.Text+"','"+textBox1.Text+"','"+ comboBox1.Text+"','"+ comboBox2.Text +"','"+textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox6.Text+"')";
+            command.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show(" New Employee added to Records!!");
         }
     }
 }
