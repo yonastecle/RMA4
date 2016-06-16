@@ -16,6 +16,8 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlDataAdapter da;
         DataSet ds;
+        SqlCommandBuilder cmdbdl;
+
 
         public EmpInfo()
         {
@@ -35,6 +37,20 @@ namespace RMA_SystemSoftware
                 dataGridView1.DataSource = ds.Tables[0];
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbdl = new SqlCommandBuilder(da);
+                da.Update(ds, "Details of all Employees");
+                MessageBox.Show("Information Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
