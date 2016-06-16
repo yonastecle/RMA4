@@ -105,5 +105,15 @@ namespace RMA_SystemSoftware
         {
             e.Handled = char.IsNumber(e.KeyChar) || e.KeyChar == 8 ? false : true;
         }
+        //character validation for firstname and last name
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
+        }
     }
 }
