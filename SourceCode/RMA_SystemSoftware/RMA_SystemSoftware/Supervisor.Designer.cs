@@ -93,10 +93,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.Editbutton = new System.Windows.Forms.Button();
+            this.Deletebutton = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.ViewAllbutton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -763,10 +763,10 @@
             // 
             this.panel3.Controls.Add(this.textBox5);
             this.panel3.Controls.Add(this.textBox4);
-            this.panel3.Controls.Add(this.button15);
-            this.panel3.Controls.Add(this.button14);
+            this.panel3.Controls.Add(this.Editbutton);
+            this.panel3.Controls.Add(this.Deletebutton);
             this.panel3.Controls.Add(this.button13);
-            this.panel3.Controls.Add(this.button12);
+            this.panel3.Controls.Add(this.ViewAllbutton);
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.label18);
             this.panel3.Location = new System.Drawing.Point(17, 19);
@@ -788,25 +788,25 @@
             this.textBox4.Size = new System.Drawing.Size(174, 20);
             this.textBox4.TabIndex = 73;
             // 
-            // button15
+            // Editbutton
             // 
-            this.button15.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(370, 7);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(91, 23);
-            this.button15.TabIndex = 71;
-            this.button15.Text = "Edit Info";
-            this.button15.UseVisualStyleBackColor = true;
+            this.Editbutton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Editbutton.Location = new System.Drawing.Point(370, 7);
+            this.Editbutton.Name = "Editbutton";
+            this.Editbutton.Size = new System.Drawing.Size(91, 23);
+            this.Editbutton.TabIndex = 71;
+            this.Editbutton.Text = "Edit Info";
+            this.Editbutton.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // Deletebutton
             // 
-            this.button14.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(370, 42);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(91, 23);
-            this.button14.TabIndex = 70;
-            this.button14.Text = "Delete Record";
-            this.button14.UseVisualStyleBackColor = true;
+            this.Deletebutton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Deletebutton.Location = new System.Drawing.Point(370, 42);
+            this.Deletebutton.Name = "Deletebutton";
+            this.Deletebutton.Size = new System.Drawing.Size(91, 23);
+            this.Deletebutton.TabIndex = 70;
+            this.Deletebutton.Text = "Delete Record";
+            this.Deletebutton.UseVisualStyleBackColor = true;
             // 
             // button13
             // 
@@ -819,15 +819,16 @@
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // button12
+            // ViewAllbutton
             // 
-            this.button12.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(221, 84);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
-            this.button12.TabIndex = 68;
-            this.button12.Text = "View Info";
-            this.button12.UseVisualStyleBackColor = true;
+            this.ViewAllbutton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewAllbutton.Location = new System.Drawing.Point(221, 84);
+            this.ViewAllbutton.Name = "ViewAllbutton";
+            this.ViewAllbutton.Size = new System.Drawing.Size(75, 23);
+            this.ViewAllbutton.TabIndex = 68;
+            this.ViewAllbutton.Text = "View All ";
+            this.ViewAllbutton.UseVisualStyleBackColor = true;
+            this.ViewAllbutton.Click += new System.EventHandler(this.ViewAllbutton_Click);
             // 
             // label19
             // 
@@ -952,10 +953,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button Editbutton;
+        private System.Windows.Forms.Button Deletebutton;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button ViewAllbutton;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button button17;

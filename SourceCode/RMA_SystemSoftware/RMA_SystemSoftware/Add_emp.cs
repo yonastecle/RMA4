@@ -20,8 +20,7 @@ namespace RMA_SystemSoftware
         }
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand command = new SqlCommand();
-        SqlDataReader dataRead;
-        
+              
         private void label1_Click(object sender, EventArgs e)
         {
 

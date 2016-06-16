@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace RMA_SystemSoftware
 {
     public partial class Supervisor : Form
     {
+      
         public Supervisor()
         {
             InitializeComponent();
@@ -52,6 +54,14 @@ namespace RMA_SystemSoftware
             this.Close();
             Add_emp add_emp = new Add_emp();
             add_emp.Show();
+        }
+
+        private void ViewAllbutton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            EmpInfo info = new EmpInfo();
+            info.Show();
+            
         }
     }
 }

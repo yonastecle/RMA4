@@ -54,6 +54,12 @@
     <Compile Include="Add_emp.Designer.cs">
       <DependentUpon>Add_emp.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmpInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpInfo.Designer.cs">
+      <DependentUpon>EmpInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelpDesk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="Add_emp.resx">
       <DependentUpon>Add_emp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpInfo.resx">
+      <DependentUpon>EmpInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpDesk.resx">
       <DependentUpon>HelpDesk.cs</DependentUpon>
