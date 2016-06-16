@@ -47,11 +47,24 @@ namespace RMA_SystemSoftware
         private void button1_Click(object sender, EventArgs e)
         {
             con.Open();
-            command.Connection = con;
             command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('"+textBox7.Text+"','"+textBox1.Text+"','"+ comboBox1.Text+"','"+ comboBox2.Text +"','"+textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox6.Text+"')";
             command.ExecuteNonQuery();
             con.Close();
             MessageBox.Show(" New Employee added to Records!!");
+            textBox7.Clear();
+            textBox1.Clear();
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
+          }
+
+        private void Add_emp_Load(object sender, EventArgs e)
+        {
+            command.Connection = con;
         }
     }
 }
