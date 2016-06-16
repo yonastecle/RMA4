@@ -262,6 +262,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(169, 20);
             this.textBox7.TabIndex = 22;
+            this.textBox7.Validating += new System.ComponentModel.CancelEventHandler(this.textBox7_Validating);
             // 
             // Add_emp
             // 

@@ -805,7 +805,7 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(91, 23);
             this.button14.TabIndex = 70;
-            this.button14.Text = "Delete Tech";
+            this.button14.Text = "Delete Record";
             this.button14.UseVisualStyleBackColor = true;
             // 
             // button13
