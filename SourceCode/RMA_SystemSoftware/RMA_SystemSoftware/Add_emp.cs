@@ -46,10 +46,11 @@ namespace RMA_SystemSoftware
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox7.Text != "" & textBox1.Text != "" & textBox2.Text != "" & comboBox1.Text != "")
+
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 con.Open();
-                command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('" + textBox7.Text + "','" + textBox1.Text + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox6.Text + "')";
+                command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('" + textBox7.Text + "','" + textBox1.Text + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox_Fax.Text + "')";
                 command.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show(" New Employee added to Records!!");
@@ -61,19 +62,48 @@ namespace RMA_SystemSoftware
                 textBox3.Clear();
                 textBox4.Clear();
                 textBox5.Clear();
-                textBox6.Clear();
+                textBox_Fax.Clear();
             }
-            else
-            {
-                MessageBox.Show("Please fill in all the mandatory fields.");
-
-            }
+           
           }
 
         private void Add_emp_Load(object sender, EventArgs e)
         {
             command.Connection = con;
         }
-
-      }
+        //UserID
+        private void textBox7_Validating(object sender, CancelEventArgs e)
+        {
+            if(string.IsNullOrEmpty(textBox7.Text))
+            { e.Cancel = true; errorProvider1.SetError(textBox7, "*Mandatory Field"); }
+            else { e.Cancel = false;  errorProvider1.SetError(textBox7, ""); }
+        }
+        //Password
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            { e.Cancel = true; errorProvider1.SetError(textBox1, "*Mandatory Field"); }
+            else { e.Cancel = false; errorProvider1.SetError(textBox1, ""); }
+        }
+        //User Type
+        private void comboBox1_Validating(object sender, CancelEventArgs e)
+        {
+            int flag = comboBox1.SelectedIndex;
+            if (flag == -1)
+            { e.Cancel = true; errorProvider1.SetError(comboBox1, "*Mandatory Field"); }
+            else { e.Cancel = false;errorProvider1.SetError(comboBox1,"");}
+        }
+        //First Name
+        private void textBox2_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox2.Text))
+            { e.Cancel = true; errorProvider1.SetError(textBox2, "*Mandatory Field"); }
+            else { e.Cancel = false; errorProvider1.SetError(textBox2, ""); }
+        }
+        //Number validation for Extension
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsNumber(e.KeyChar) || e.KeyChar == 8 ? false : true;
+        }
+    }
 }

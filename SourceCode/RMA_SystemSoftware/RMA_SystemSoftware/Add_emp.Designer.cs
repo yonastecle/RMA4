@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,10 +47,13 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox_Fax = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.err_msg = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,9 +84,9 @@
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(304, 168);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 16);
+            this.label3.Size = new System.Drawing.Size(66, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "User ID:";
+            this.label3.Text = "User ID: *";
             // 
             // label4
             // 
@@ -90,9 +94,9 @@
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(288, 212);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 16);
+            this.label4.Size = new System.Drawing.Size(82, 16);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Password:";
+            this.label4.Text = "Password: *";
             // 
             // label5
             // 
@@ -100,9 +104,9 @@
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(287, 256);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 16);
+            this.label5.Size = new System.Drawing.Size(83, 16);
             this.label5.TabIndex = 4;
-            this.label5.Text = "User Type:";
+            this.label5.Text = "User Type: *";
             // 
             // label6
             // 
@@ -110,9 +114,9 @@
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(281, 344);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 16);
+            this.label6.Size = new System.Drawing.Size(89, 16);
             this.label6.TabIndex = 5;
-            this.label6.Text = "First Name:";
+            this.label6.Text = "First Name: *";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
@@ -161,6 +165,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(169, 20);
             this.textBox1.TabIndex = 11;
+            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
             // label12
             // 
@@ -184,6 +189,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(169, 21);
             this.comboBox1.TabIndex = 13;
+            this.comboBox1.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox1_Validating);
             // 
             // comboBox2
             // 
@@ -205,6 +211,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(169, 20);
             this.textBox2.TabIndex = 15;
+            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox2_Validating);
             // 
             // textBox3
             // 
@@ -226,13 +233,14 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(169, 20);
             this.textBox5.TabIndex = 18;
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
             // 
-            // textBox6
+            // textBox_Fax
             // 
-            this.textBox6.Location = new System.Drawing.Point(380, 517);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(169, 20);
-            this.textBox6.TabIndex = 19;
+            this.textBox_Fax.Location = new System.Drawing.Point(380, 517);
+            this.textBox_Fax.Name = "textBox_Fax";
+            this.textBox_Fax.Size = new System.Drawing.Size(169, 20);
+            this.textBox_Fax.TabIndex = 19;
             // 
             // button1
             // 
@@ -264,16 +272,31 @@
             this.textBox7.TabIndex = 22;
             this.textBox7.Validating += new System.ComponentModel.CancelEventHandler(this.textBox7_Validating);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // err_msg
+            // 
+            this.err_msg.AutoSize = true;
+            this.err_msg.ForeColor = System.Drawing.Color.Red;
+            this.err_msg.Location = new System.Drawing.Point(62, 579);
+            this.err_msg.Name = "err_msg";
+            this.err_msg.Size = new System.Drawing.Size(120, 13);
+            this.err_msg.TabIndex = 23;
+            this.err_msg.Text = "*MANDATORY FIELDS";
+            // 
             // Add_emp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(868, 645);
+            this.Controls.Add(this.err_msg);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox_Fax);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -295,6 +318,7 @@
             this.Name = "Add_emp";
             this.Text = "Add_emp";
             this.Load += new System.EventHandler(this.Add_emp_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,9 +344,11 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox_Fax;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label err_msg;
     }
 }
