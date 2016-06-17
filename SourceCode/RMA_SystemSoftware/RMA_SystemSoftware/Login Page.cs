@@ -25,45 +25,52 @@ namespace RMA_SystemSoftware
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
-            SqlDataAdapter sda = new SqlDataAdapter("select userType from Employee where UserID='"+textBox1.Text+"' and password='"+textBox2.Text+"'",con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows.Count == 1)
+            try
             {
-               
+                SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+                SqlDataAdapter sda = new SqlDataAdapter("select userType from Employee where UserID='" + textBox1.Text + "' and password='" + textBox2.Text + "'", con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count == 1)
+                {
 
-                if ((dt.Rows[0][0].ToString() == "Supervisor")|| (dt.Rows[0][0].ToString() == "supervisor"))
-                {
-                    this.Hide();
-                    Supervisor sup = new Supervisor();
-                    sup.Show();
+
+                    if ((dt.Rows[0][0].ToString() == "Supervisor") || (dt.Rows[0][0].ToString() == "supervisor"))
+                    {
+                        this.Hide();
+                        Supervisor sup = new Supervisor();
+                        sup.Show();
+                    }
+                    else if (dt.Rows[0][0].ToString() == "Technician" || dt.Rows[0][0].ToString() == "technician")
+                    {
+                        this.Hide();
+                        Technician tech = new Technician();
+                        tech.Show();
+                    }
+                    else if ((dt.Rows[0][0].ToString() == "Help desk ") || (dt.Rows[0][0].ToString() == "help desk "))
+                    {
+                        this.Hide();
+                        HelpDesk hdesk = new HelpDesk();
+                        hdesk.Show();
+                    }
+                    else if ((dt.Rows[0][0].ToString() == "Receiving ") || (dt.Rows[0][0].ToString() == "receiving "))
+                    {
+                        this.Hide();
+                        Receiving recv = new Receiving();
+                        recv.Show();
+                    }
+
                 }
-                else if (dt.Rows[0][0].ToString() == "Technician"|| dt.Rows[0][0].ToString() == "technician")
+                else
                 {
-                    this.Hide();
-                    Technician tech = new Technician();
-                    tech.Show();
+                    MessageBox.Show("Invalid User ID and Password !! Please check your credentials ");
+                    textBox1.Clear();
+                    textBox2.Clear();
                 }
-                else if ((dt.Rows[0][0].ToString() == "Help desk ") || (dt.Rows[0][0].ToString() == "help desk "))
-                {
-                    this.Hide();
-                    HelpDesk hdesk = new HelpDesk();
-                    hdesk.Show();
-                }
-                else if ((dt.Rows[0][0].ToString() == "Receiving ")|| (dt.Rows[0][0].ToString() == "receiving "))
-                {
-                    this.Hide();
-                    Receiving recv = new Receiving();
-                    recv.Show();
-                }
-               
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid User ID and Password !! Please check your credentials ");
-                textBox1.Clear();
-                textBox2.Clear();
+                MessageBox.Show(ex.Message);
             }
         }
 

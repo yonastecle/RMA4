@@ -28,49 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.textBox_Fax = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_ext = new System.Windows.Forms.TextBox();
+            this.textBox_email = new System.Windows.Forms.TextBox();
+            this.textBox_lname = new System.Windows.Forms.TextBox();
+            this.textBox_fname = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_usertag = new System.Windows.Forms.ComboBox();
+            this.comboBox_usertype = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_password = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label_userId = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button2
+            // saveButton
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(411, 585);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.saveButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.Location = new System.Drawing.Point(434, 604);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(104, 23);
+            this.saveButton.TabIndex = 33;
+            this.saveButton.Text = "Save Changes";
+            this.saveButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // deleteButton
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(303, 585);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.deleteButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.Location = new System.Drawing.Point(298, 604);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(99, 23);
+            this.deleteButton.TabIndex = 32;
+            this.deleteButton.Text = "Delete Record";
+            this.deleteButton.UseVisualStyleBackColor = true;
             // 
             // textBox_Fax
             // 
@@ -79,33 +80,33 @@
             this.textBox_Fax.Size = new System.Drawing.Size(169, 20);
             this.textBox_Fax.TabIndex = 31;
             // 
-            // textBox5
+            // textBox_ext
             // 
-            this.textBox5.Location = new System.Drawing.Point(331, 501);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(169, 20);
-            this.textBox5.TabIndex = 30;
+            this.textBox_ext.Location = new System.Drawing.Point(331, 501);
+            this.textBox_ext.Name = "textBox_ext";
+            this.textBox_ext.Size = new System.Drawing.Size(169, 20);
+            this.textBox_ext.TabIndex = 30;
             // 
-            // textBox4
+            // textBox_email
             // 
-            this.textBox4.Location = new System.Drawing.Point(331, 459);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(169, 20);
-            this.textBox4.TabIndex = 29;
+            this.textBox_email.Location = new System.Drawing.Point(331, 459);
+            this.textBox_email.Name = "textBox_email";
+            this.textBox_email.Size = new System.Drawing.Size(169, 20);
+            this.textBox_email.TabIndex = 29;
             // 
-            // textBox3
+            // textBox_lname
             // 
-            this.textBox3.Location = new System.Drawing.Point(331, 417);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(169, 20);
-            this.textBox3.TabIndex = 28;
+            this.textBox_lname.Location = new System.Drawing.Point(331, 417);
+            this.textBox_lname.Name = "textBox_lname";
+            this.textBox_lname.Size = new System.Drawing.Size(169, 20);
+            this.textBox_lname.TabIndex = 28;
             // 
-            // textBox2
+            // textBox_fname
             // 
-            this.textBox2.Location = new System.Drawing.Point(331, 375);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(169, 20);
-            this.textBox2.TabIndex = 27;
+            this.textBox_fname.Location = new System.Drawing.Point(331, 375);
+            this.textBox_fname.Name = "textBox_fname";
+            this.textBox_fname.Size = new System.Drawing.Size(169, 20);
+            this.textBox_fname.TabIndex = 27;
             // 
             // label10
             // 
@@ -157,31 +158,31 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "First Name: *";
             // 
-            // comboBox2
+            // comboBox_usertag
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBox_usertag.FormattingEnabled = true;
+            this.comboBox_usertag.Items.AddRange(new object[] {
             "NA",
             "Laptop ",
             "Desktop",
             "Laptop and Desktop"});
-            this.comboBox2.Location = new System.Drawing.Point(331, 332);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(169, 21);
-            this.comboBox2.TabIndex = 42;
+            this.comboBox_usertag.Location = new System.Drawing.Point(331, 332);
+            this.comboBox_usertag.Name = "comboBox_usertag";
+            this.comboBox_usertag.Size = new System.Drawing.Size(169, 21);
+            this.comboBox_usertag.TabIndex = 42;
             // 
-            // comboBox1
+            // comboBox_usertype
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_usertype.FormattingEnabled = true;
+            this.comboBox_usertype.Items.AddRange(new object[] {
             "Supervisor",
             "Technician",
             "Help Desk",
             "Receiving"});
-            this.comboBox1.Location = new System.Drawing.Point(331, 289);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 21);
-            this.comboBox1.TabIndex = 41;
+            this.comboBox_usertype.Location = new System.Drawing.Point(331, 289);
+            this.comboBox_usertype.Name = "comboBox_usertype";
+            this.comboBox_usertype.Size = new System.Drawing.Size(169, 21);
+            this.comboBox_usertype.TabIndex = 41;
             // 
             // label12
             // 
@@ -193,12 +194,12 @@
             this.label12.TabIndex = 40;
             this.label12.Text = "User Tag:";
             // 
-            // textBox1
+            // textBox_password
             // 
-            this.textBox1.Location = new System.Drawing.Point(331, 247);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 20);
-            this.textBox1.TabIndex = 39;
+            this.textBox_password.Location = new System.Drawing.Point(331, 247);
+            this.textBox_password.Name = "textBox_password";
+            this.textBox_password.Size = new System.Drawing.Size(169, 20);
+            this.textBox_password.TabIndex = 39;
             // 
             // label5
             // 
@@ -260,29 +261,41 @@
             this.label_userId.TabIndex = 43;
             this.label_userId.Text = "label11";
             // 
+            // backButton
+            // 
+            this.backButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.Location = new System.Drawing.Point(747, 31);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(104, 23);
+            this.backButton.TabIndex = 44;
+            this.backButton.Text = "Go Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // Emp_Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(875, 680);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.label_userId);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_usertag);
+            this.Controls.Add(this.comboBox_usertype);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_password);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.textBox_Fax);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_ext);
+            this.Controls.Add(this.textBox_email);
+            this.Controls.Add(this.textBox_lname);
+            this.Controls.Add(this.textBox_fname);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -290,6 +303,7 @@
             this.Controls.Add(this.label6);
             this.Name = "Emp_Search";
             this.Text = "Emp_Search";
+            this.Load += new System.EventHandler(this.Emp_Search_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,27 +311,28 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.TextBox textBox_Fax;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_ext;
+        private System.Windows.Forms.TextBox textBox_email;
+        private System.Windows.Forms.TextBox textBox_lname;
+        private System.Windows.Forms.TextBox textBox_fname;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_usertag;
+        private System.Windows.Forms.ComboBox comboBox_usertype;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_password;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_userId;
+        private System.Windows.Forms.Button backButton;
     }
 }

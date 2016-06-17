@@ -17,7 +17,7 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         SqlCommandBuilder cmdbdl;
-        String del_record;
+        //String del_record;
 
 
         public EmpInfo()

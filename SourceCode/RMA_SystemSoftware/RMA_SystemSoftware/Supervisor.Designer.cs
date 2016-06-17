@@ -91,10 +91,9 @@
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.Editbutton = new System.Windows.Forms.Button();
-            this.Deletebutton = new System.Windows.Forms.Button();
+            this.textBox_EmpName = new System.Windows.Forms.TextBox();
+            this.textBox_EmpID = new System.Windows.Forms.TextBox();
+            this.SearchButton = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.ViewAllbutton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
@@ -761,10 +760,9 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.textBox5);
-            this.panel3.Controls.Add(this.textBox4);
-            this.panel3.Controls.Add(this.Editbutton);
-            this.panel3.Controls.Add(this.Deletebutton);
+            this.panel3.Controls.Add(this.textBox_EmpName);
+            this.panel3.Controls.Add(this.textBox_EmpID);
+            this.panel3.Controls.Add(this.SearchButton);
             this.panel3.Controls.Add(this.button13);
             this.panel3.Controls.Add(this.ViewAllbutton);
             this.panel3.Controls.Add(this.label19);
@@ -774,44 +772,35 @@
             this.panel3.Size = new System.Drawing.Size(477, 119);
             this.panel3.TabIndex = 75;
             // 
-            // textBox5
+            // textBox_EmpName
             // 
-            this.textBox5.Location = new System.Drawing.Point(158, 58);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(174, 20);
-            this.textBox5.TabIndex = 74;
+            this.textBox_EmpName.Location = new System.Drawing.Point(158, 58);
+            this.textBox_EmpName.Name = "textBox_EmpName";
+            this.textBox_EmpName.Size = new System.Drawing.Size(174, 20);
+            this.textBox_EmpName.TabIndex = 74;
             // 
-            // textBox4
+            // textBox_EmpID
             // 
-            this.textBox4.Location = new System.Drawing.Point(158, 26);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(174, 20);
-            this.textBox4.TabIndex = 73;
+            this.textBox_EmpID.Location = new System.Drawing.Point(158, 26);
+            this.textBox_EmpID.Name = "textBox_EmpID";
+            this.textBox_EmpID.Size = new System.Drawing.Size(174, 20);
+            this.textBox_EmpID.TabIndex = 73;
             // 
-            // Editbutton
+            // SearchButton
             // 
-            this.Editbutton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Editbutton.Location = new System.Drawing.Point(370, 7);
-            this.Editbutton.Name = "Editbutton";
-            this.Editbutton.Size = new System.Drawing.Size(91, 23);
-            this.Editbutton.TabIndex = 71;
-            this.Editbutton.Text = "Edit Info";
-            this.Editbutton.UseVisualStyleBackColor = true;
-            // 
-            // Deletebutton
-            // 
-            this.Deletebutton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Deletebutton.Location = new System.Drawing.Point(370, 42);
-            this.Deletebutton.Name = "Deletebutton";
-            this.Deletebutton.Size = new System.Drawing.Size(91, 23);
-            this.Deletebutton.TabIndex = 70;
-            this.Deletebutton.Text = "Delete Record";
-            this.Deletebutton.UseVisualStyleBackColor = true;
+            this.SearchButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchButton.Location = new System.Drawing.Point(177, 89);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(91, 23);
+            this.SearchButton.TabIndex = 70;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(370, 74);
+            this.button13.Location = new System.Drawing.Point(370, 58);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(91, 23);
             this.button13.TabIndex = 69;
@@ -822,9 +811,9 @@
             // ViewAllbutton
             // 
             this.ViewAllbutton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewAllbutton.Location = new System.Drawing.Point(221, 84);
+            this.ViewAllbutton.Location = new System.Drawing.Point(370, 23);
             this.ViewAllbutton.Name = "ViewAllbutton";
-            this.ViewAllbutton.Size = new System.Drawing.Size(75, 23);
+            this.ViewAllbutton.Size = new System.Drawing.Size(91, 24);
             this.ViewAllbutton.TabIndex = 68;
             this.ViewAllbutton.Text = "View All ";
             this.ViewAllbutton.UseVisualStyleBackColor = true;
@@ -951,10 +940,9 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button Editbutton;
-        private System.Windows.Forms.Button Deletebutton;
+        private System.Windows.Forms.TextBox textBox_EmpName;
+        private System.Windows.Forms.TextBox textBox_EmpID;
+        private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button ViewAllbutton;
         private System.Windows.Forms.Label label19;
