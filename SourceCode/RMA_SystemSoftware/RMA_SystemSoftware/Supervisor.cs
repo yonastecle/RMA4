@@ -48,14 +48,14 @@ namespace RMA_SystemSoftware
         {
 
         }
-
+        //Add new emp Button
         private void button13_Click(object sender, EventArgs e)
         {
             this.Close();
             Add_emp add_emp = new Add_emp();
             add_emp.Show();
         }
-
+        //View All employee details button
         private void ViewAllbutton_Click(object sender, EventArgs e)
         {
             this.Close();

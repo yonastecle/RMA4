@@ -17,6 +17,7 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         SqlCommandBuilder cmdbdl;
+        String del_record;
 
 
         public EmpInfo()
@@ -26,15 +27,15 @@ namespace RMA_SystemSoftware
 
         private void EmpInfo_Load(object sender, EventArgs e)
         {
-
+            if(con.State== ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
 
             try
             {
-                con.Open();
-                da = new SqlDataAdapter("Select UserID,userTag AS Tag,firstName AS 'First Name' ,lastName AS 'Last Name' ,email AS 'Email Address' ,Ext,Fax from Employee", con);
-                ds = new DataSet();
-                da.Fill(ds, "Details of all Employees");
-                dataGridView1.DataSource = ds.Tables[0];
+                fill_grid();
             }
             catch (Exception ex)
             {
@@ -42,6 +43,15 @@ namespace RMA_SystemSoftware
             }
         }
 
+        public void fill_grid()
+        {
+            da = new SqlDataAdapter("Select UserID,userTag AS Tag,firstName AS 'First Name' ,lastName AS 'Last Name' ,email AS 'Email Address' ,Ext,Fax from Employee", con);
+            ds = new DataSet();
+            da.Fill(ds, "Details of all Employees");
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+            
+         
         private void updateButton_Click(object sender, EventArgs e)
         {
             try
@@ -55,5 +65,66 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void showButton_Click(object sender, EventArgs e)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+
+            try
+            {
+                fill_grid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Supervisor sup = new Supervisor();
+            sup.Show();
+        }
+
+        //Delete record from datagrid : Not working !!
+
+        /*private void deleteEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+           try{
+                da = new SqlDataAdapter("Delete from Employee where UserID=" + del_record + "", con);
+
+                fill_grid();
+                
+                           }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    del_record = dataGridView1.Rows[e.RowIndex].Cells["UserID"].Value.ToString();
+                    this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }*/
+
     }
 }

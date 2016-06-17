@@ -28,38 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.updateButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 33);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(618, 430);
+            this.dataGridView1.Size = new System.Drawing.Size(825, 432);
             this.dataGridView1.TabIndex = 0;
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(716, 136);
+            this.updateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.Location = new System.Drawing.Point(303, 484);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.Size = new System.Drawing.Size(105, 45);
             this.updateButton.TabIndex = 1;
-            this.updateButton.Text = "Update";
+            this.updateButton.Text = "Update Records";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
-            // DeleteButton
+            // contextMenuStrip1
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(716, 232);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteButton.TabIndex = 2;
-            this.DeleteButton.Text = "Delete ";
-            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteEmployeeToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 26);
+            // 
+            // deleteEmployeeToolStripMenuItem
+            // 
+            this.deleteEmployeeToolStripMenuItem.Name = "deleteEmployeeToolStripMenuItem";
+            this.deleteEmployeeToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.deleteEmployeeToolStripMenuItem.Text = "Delete Employee";
+            // 
+            // showButton
+            // 
+            this.showButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showButton.Location = new System.Drawing.Point(457, 486);
+            this.showButton.Name = "showButton";
+            this.showButton.Size = new System.Drawing.Size(105, 41);
+            this.showButton.TabIndex = 2;
+            this.showButton.Text = "Show Records";
+            this.showButton.UseVisualStyleBackColor = true;
+            this.showButton.Click += new System.EventHandler(this.showButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.Location = new System.Drawing.Point(762, 12);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 13;
+            this.backButton.Text = "Go Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // EmpInfo
             // 
@@ -67,7 +99,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(849, 541);
-            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.showButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.dataGridView1);
             this.ForeColor = System.Drawing.Color.Black;
@@ -75,6 +108,7 @@
             this.Text = "EmpInfo";
             this.Load += new System.EventHandler(this.EmpInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -83,6 +117,9 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem deleteEmployeeToolStripMenuItem;
+        private System.Windows.Forms.Button showButton;
+        private System.Windows.Forms.Button backButton;
     }
 }
