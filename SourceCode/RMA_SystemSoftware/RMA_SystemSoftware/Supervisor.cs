@@ -28,7 +28,7 @@ namespace RMA_SystemSoftware
         {
 
         }
-
+        //Split RMA button
         private void button17_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -36,14 +36,14 @@ namespace RMA_SystemSoftware
             split.Show();
 
         }
-
+        //Logout
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             Form1 login = new Form1();
             login.Show();
         }
-
+        //Help
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
@@ -87,9 +87,9 @@ namespace RMA_SystemSoftware
                         search.empID = textBox_EmpID.Text;
                         search.empName = textBox_EmpName.Text;
                         search.save_param_values();
-                        //search.ShowDialog();
                         this.Close();
                         search.Show();
+
                     }
                     else
                     {

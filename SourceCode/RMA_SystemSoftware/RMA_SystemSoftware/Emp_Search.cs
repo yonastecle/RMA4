@@ -15,7 +15,7 @@ namespace RMA_SystemSoftware
     {
         public string empID { get; set; }
         public string empName { get; set; }
-        String id, name;
+        string id, name;
 
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
@@ -49,18 +49,15 @@ namespace RMA_SystemSoftware
                 if (dr.Read())
                 {
                     label_userId.Text = id;
-                    //Find the error
-                    /*
-                    textBox_password.Text = dr.GetString("password");
-                    comboBox_usertype.Text = dr.GetString("userType");
-                    comboBox_usertag.Text = dr.GetString("userTag");
-                    textBox_fname.Text = dr.GetString("firstName");
-                    textBox_lname.Text = dr.GetString("lastName");
-                    textBox_email.Text = dr.GetString("email");
-                    textBox_ext.Text = dr.GetString("Ext");
-                    textBox_Fax.Text = dr.GetString("Fax");*/
-                              
-              
+                    textBox_password.Text = dr.GetString(dr.GetOrdinal("password"));
+                    comboBox_usertype.Text = dr.GetString(dr.GetOrdinal("userType"));
+                    comboBox_usertag.Text = dr.GetString(dr.GetOrdinal("userTag"));
+                    textBox_fname.Text = dr.GetString(dr.GetOrdinal("firstName"));
+                    textBox_lname.Text = dr.GetString(dr.GetOrdinal("lastName"));
+                    textBox_email.Text = dr.GetString(dr.GetOrdinal("email"));
+                    textBox_Fax.Text = dr.GetString(dr.GetOrdinal("Fax"));
+                    textBox_ext.Text = Convert.ToString(dr["Ext"]);
+
                 }
             }
             catch(Exception ex)
