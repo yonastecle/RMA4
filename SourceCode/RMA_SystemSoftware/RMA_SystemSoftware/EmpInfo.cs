@@ -17,7 +17,7 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         SqlCommandBuilder cmdbdl;
-        //String del_record;
+        string del_record;
 
 
         public EmpInfo()
@@ -91,13 +91,42 @@ namespace RMA_SystemSoftware
             sup.Show();
         }
 
-        //Delete record from datagrid : Not working !!
+        private void deleteRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //  da = new SqlDataAdapter("Delete from Employee where UserID='" + del_record + "'", con);
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "delete from Employee where UserID='" + del_record + "'";
+                cmd.ExecuteNonQuery();
+                fill_grid();
 
-        /*private void deleteEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                del_record = dataGridView1.Rows[e.RowIndex].Cells["UserID"].Value.ToString();
+                this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
+                contextMenuStrip1.Show(Cursor.Position);
+            }
+
+        }
+
+        //Delete record from datagrid : Not working !!
+        /*
+        private void deleteEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
            try{
-                da = new SqlDataAdapter("Delete from Employee where UserID=" + del_record + "", con);
+                da = new SqlDataAdapter("Delete from Employee where UserID='" + del_record + "'", con);
 
                 fill_grid();
                 
@@ -124,7 +153,7 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
 
-        }*/
-
+        }
+        */
     }
 }
