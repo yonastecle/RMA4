@@ -79,7 +79,7 @@
             this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Hello";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // label2
             // 
@@ -92,7 +92,7 @@
             this.label2.Size = new System.Drawing.Size(117, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "EmployeeName";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+           
             // 
             // label3
             // 
@@ -104,7 +104,7 @@
             this.label3.Size = new System.Drawing.Size(86, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Enter RMA#:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+           
             // 
             // label4
             // 
@@ -116,7 +116,7 @@
             this.label4.Size = new System.Drawing.Size(98, 15);
             this.label4.TabIndex = 5;
             this.label4.Text = "Request Type:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+           
             // 
             // label5
             // 
@@ -194,7 +194,6 @@
             this.label7.Size = new System.Drawing.Size(90, 16);
             this.label7.TabIndex = 16;
             this.label7.Text = "Request Status";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // button1
             // 
@@ -266,7 +265,7 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Track/Update RMA";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // listBox1
             // 
@@ -276,7 +275,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(224, 199);
             this.listBox1.TabIndex = 25;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            
             // 
             // listBox2
             // 
@@ -286,7 +285,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(216, 199);
             this.listBox2.TabIndex = 26;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+          
             // 
             // button5
             // 
@@ -309,7 +308,7 @@
             this.label8.Size = new System.Drawing.Size(92, 18);
             this.label8.TabIndex = 28;
             this.label8.Text = "Open RMAs";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            
             // 
             // label9
             // 
