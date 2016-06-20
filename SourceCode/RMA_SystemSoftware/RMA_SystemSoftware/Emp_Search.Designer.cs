@@ -62,6 +62,7 @@
             this.saveButton.TabIndex = 33;
             this.saveButton.Text = "Save Changes";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // deleteButton
             // 
@@ -72,6 +73,7 @@
             this.deleteButton.TabIndex = 32;
             this.deleteButton.Text = "Delete Record";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // textBox_Fax
             // 

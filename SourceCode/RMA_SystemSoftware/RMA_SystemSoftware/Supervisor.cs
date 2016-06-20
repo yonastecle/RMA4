@@ -84,9 +84,25 @@ namespace RMA_SystemSoftware
                     if (read.Read())
                     {
                         Emp_Search search = new Emp_Search();
-                        search.empID = textBox_EmpID.Text;
-                        search.empName = textBox_EmpName.Text;
-                        search.save_param_values();
+                        if (textBox_EmpID.Text == "")
+                        {
+                            search.empID = null;
+                            search.empName = textBox_EmpName.Text;
+                            search.save_param_values();
+                        }
+                        else if (textBox_EmpName.Text == "")
+                        {
+                            search.empName = null;
+                            search.empID = textBox_EmpID.Text;
+                            search.save_param_values();
+                        }
+                        else
+                        {
+
+                            search.empID = textBox_EmpID.Text;
+                            search.empName = textBox_EmpName.Text;
+                            search.save_param_values();
+                        }
                         this.Close();
                         search.Show();
 

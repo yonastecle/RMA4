@@ -120,40 +120,6 @@ namespace RMA_SystemSoftware
 
         }
 
-        //Delete record from datagrid : Not working !!
-        /*
-        private void deleteEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-           try{
-                da = new SqlDataAdapter("Delete from Employee where UserID='" + del_record + "'", con);
-
-                fill_grid();
-                
-                           }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    del_record = dataGridView1.Rows[e.RowIndex].Cells["UserID"].Value.ToString();
-                    this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
-                    contextMenuStrip1.Show(Cursor.Position);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-        */
+        
     }
 }
