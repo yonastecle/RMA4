@@ -50,9 +50,10 @@
             this.textBox_Fax = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.err_msg = new System.Windows.Forms.Label();
+            this.label_UserID = new System.Windows.Forms.Label();
+            this.buttonNewEmp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +66,6 @@
             this.label1.Size = new System.Drawing.Size(289, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter the details for new Employee:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -117,7 +117,6 @@
             this.label6.Size = new System.Drawing.Size(89, 16);
             this.label6.TabIndex = 5;
             this.label6.Text = "First Name: *";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -203,7 +202,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(169, 21);
             this.comboBox2.TabIndex = 14;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // textBox2
             // 
@@ -247,32 +245,24 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(352, 579);
+            this.button1.Location = new System.Drawing.Point(380, 569);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 20;
-            this.button1.Text = "Add";
+            this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(464, 579);
+            this.button2.Location = new System.Drawing.Point(781, 39);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 21;
-            this.button2.Text = "Cancel";
+            this.button2.Text = "Exit";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(380, 168);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(169, 20);
-            this.textBox7.TabIndex = 22;
-            this.textBox7.Validating += new System.ComponentModel.CancelEventHandler(this.textBox7_Validating);
             // 
             // errorProvider1
             // 
@@ -288,14 +278,36 @@
             this.err_msg.TabIndex = 23;
             this.err_msg.Text = "*MANDATORY FIELDS";
             // 
+            // label_UserID
+            // 
+            this.label_UserID.AutoSize = true;
+            this.label_UserID.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_UserID.Location = new System.Drawing.Point(377, 168);
+            this.label_UserID.Name = "label_UserID";
+            this.label_UserID.Size = new System.Drawing.Size(55, 15);
+            this.label_UserID.TabIndex = 24;
+            this.label_UserID.Text = "label11";
+            // 
+            // buttonNewEmp
+            // 
+            this.buttonNewEmp.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNewEmp.Location = new System.Drawing.Point(474, 569);
+            this.buttonNewEmp.Name = "buttonNewEmp";
+            this.buttonNewEmp.Size = new System.Drawing.Size(75, 23);
+            this.buttonNewEmp.TabIndex = 25;
+            this.buttonNewEmp.Text = "Add New";
+            this.buttonNewEmp.UseVisualStyleBackColor = true;
+            this.buttonNewEmp.Click += new System.EventHandler(this.buttonNewEmp_Click);
+            // 
             // Add_emp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(868, 645);
+            this.Controls.Add(this.buttonNewEmp);
+            this.Controls.Add(this.label_UserID);
             this.Controls.Add(this.err_msg);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_Fax);
@@ -349,8 +361,9 @@
         private System.Windows.Forms.TextBox textBox_Fax;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label err_msg;
+        private System.Windows.Forms.Label label_UserID;
+        private System.Windows.Forms.Button buttonNewEmp;
     }
 }

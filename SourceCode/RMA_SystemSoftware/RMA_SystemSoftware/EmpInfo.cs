@@ -45,7 +45,7 @@ namespace RMA_SystemSoftware
 
         public void fill_grid()
         {
-            da = new SqlDataAdapter("Select UserID,userTag AS Tag,firstName AS 'First Name' ,lastName AS 'Last Name' ,email AS 'Email Address' ,Ext,Fax from Employee", con);
+            da = new SqlDataAdapter("Select UserID, userType AS 'User Type', userTag AS Tag,firstName AS 'First Name' ,lastName AS 'Last Name' ,email AS 'Email Address' ,Ext,Fax from Employee", con);
             ds = new DataSet();
             da.Fill(ds, "Details of all Employees");
             dataGridView1.DataSource = ds.Tables[0];

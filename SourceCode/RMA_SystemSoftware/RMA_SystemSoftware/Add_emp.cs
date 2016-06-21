@@ -13,22 +13,45 @@ namespace RMA_SystemSoftware
 {
     public partial class Add_emp : Form
     {
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+        SqlCommand command = new SqlCommand();
         public Add_emp()
         {
             InitializeComponent();
            
         }
-        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
-        SqlCommand command = new SqlCommand();
-              
-        private void label1_Click(object sender, EventArgs e)
+        
+        private void Add_emp_Load(object sender, EventArgs e)
         {
+            command.Connection = con;
+            generateAutoID();
+        }  
 
+        public void generateAutoID()
+        {
+            try
+            {
+                string empId = generateEmployeeID();
+                label_UserID.Text = empId;                                       
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        public String generateEmployeeID()
         {
-
+            if (con.State == ConnectionState.Open) con.Close();
+            con.Open();
+            command.Connection = con;
+            command.CommandText = "Select NEXT VALUE for emp ";
+            int uniqueNumber= -1;
+         
+            uniqueNumber = Convert.ToInt32( command.ExecuteScalar());
+            
+            con.Close();
+            return "RMA" + uniqueNumber;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -38,45 +61,43 @@ namespace RMA_SystemSoftware
             sup.Show();
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            try
             {
-                con.Open();
-                command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('" + textBox7.Text + "','" + textBox1.Text + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox_Fax.Text + "')";
-                command.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show(" New Employee added to Records!!");
-                textBox7.Clear();
-                textBox1.Clear();
-                comboBox1.SelectedIndex = -1;
-                comboBox2.SelectedIndex = -1;
-                textBox2.Clear();
-                textBox3.Clear();
-                textBox4.Clear();
-                textBox5.Clear();
-                textBox_Fax.Clear();
+                if (ValidateChildren(ValidationConstraints.Enabled))
+                {
+                    con.Open();
+                    command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('"+label_UserID.Text+"','" + textBox1.Text + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox_Fax.Text + "')";
+                    command.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show(" New Employee added to Records!!");
+
+                    label_UserID.Text="";
+                    textBox1.Clear();
+                    comboBox1.SelectedIndex = -1;
+                    comboBox2.SelectedIndex = -1;
+                    textBox2.Clear();
+                    textBox3.Clear();
+                    textBox4.Clear();
+                    textBox5.Clear();
+                    textBox_Fax.Clear();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
            
           }
+        private void buttonNewEmp_Click(object sender, EventArgs e)
+        {
+            generateAutoID();
+        }
 
-        private void Add_emp_Load(object sender, EventArgs e)
-        {
-            command.Connection = con;
-        }
-        //UserID
-        private void textBox7_Validating(object sender, CancelEventArgs e)
-        {
-            if(string.IsNullOrEmpty(textBox7.Text))
-            { e.Cancel = true; errorProvider1.SetError(textBox7, "*Mandatory Field"); }
-            else { e.Cancel = false;  errorProvider1.SetError(textBox7, ""); }
-        }
+
+
         //Password
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
@@ -114,5 +135,7 @@ namespace RMA_SystemSoftware
         {
             e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
         }
+
+        
     }
 }
