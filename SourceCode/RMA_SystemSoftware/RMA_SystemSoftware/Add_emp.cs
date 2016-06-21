@@ -45,7 +45,7 @@ namespace RMA_SystemSoftware
             if (con.State == ConnectionState.Open) con.Close();
             con.Open();
             command.Connection = con;
-            command.CommandText = "Select NEXT VALUE for emp ";
+            command.CommandText = "Select NEXT VALUE for dbo.ID ";
             int uniqueNumber= -1;
          
             uniqueNumber = Convert.ToInt32( command.ExecuteScalar());
