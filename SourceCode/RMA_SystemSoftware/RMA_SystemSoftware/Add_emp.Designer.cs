@@ -197,7 +197,7 @@
             "NA",
             "Laptop ",
             "Desktop",
-            "Laptop and Desktop"});
+            "Laptop&Desktop"});
             this.comboBox2.Location = new System.Drawing.Point(380, 296);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(169, 21);

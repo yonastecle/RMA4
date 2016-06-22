@@ -35,23 +35,24 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_rmaNo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.repair = new System.Windows.Forms.RadioButton();
+            this.refund = new System.Windows.Forms.RadioButton();
+            this.label_currentStatus = new System.Windows.Forms.Label();
+            this.button_Show = new System.Windows.Forms.Button();
+            this.button_viewHistory = new System.Windows.Forms.Button();
+            this.button_Update = new System.Windows.Forms.Button();
+            this.comboBox_Status = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.listBox_Open = new System.Windows.Forms.ListBox();
+            this.listBox_Received = new System.Windows.Forms.ListBox();
+            this.button_refresh = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -79,7 +80,6 @@
             this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Hello";
-           
             // 
             // label2
             // 
@@ -92,7 +92,6 @@
             this.label2.Size = new System.Drawing.Size(117, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "EmployeeName";
-           
             // 
             // label3
             // 
@@ -104,25 +103,23 @@
             this.label3.Size = new System.Drawing.Size(86, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Enter RMA#:";
-           
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(37, 66);
+            this.label4.Location = new System.Drawing.Point(37, 96);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 15);
             this.label4.TabIndex = 5;
             this.label4.Text = "Request Type:";
-           
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(28, 102);
+            this.label5.Location = new System.Drawing.Point(26, 60);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 15);
@@ -142,14 +139,14 @@
             this.linkLabel3.Text = "Help?";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
-            // textBox1
+            // textBox_rmaNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(151, 20);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(313, 23);
-            this.textBox1.TabIndex = 11;
+            this.textBox_rmaNo.Location = new System.Drawing.Point(151, 20);
+            this.textBox_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox_rmaNo.Multiline = true;
+            this.textBox_rmaNo.Name = "textBox_rmaNo";
+            this.textBox_rmaNo.Size = new System.Drawing.Size(192, 23);
+            this.textBox_rmaNo.TabIndex = 11;
             // 
             // label6
             // 
@@ -162,77 +159,76 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Update Status:";
             // 
-            // radioButton1
+            // repair
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(151, 63);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(100, 20);
-            this.radioButton1.TabIndex = 14;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Repair/Replace";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.repair.AutoSize = true;
+            this.repair.Location = new System.Drawing.Point(151, 93);
+            this.repair.Name = "repair";
+            this.repair.Size = new System.Drawing.Size(100, 20);
+            this.repair.TabIndex = 14;
+            this.repair.TabStop = true;
+            this.repair.Text = "Repair/Replace";
+            this.repair.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // refund
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(298, 62);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 20);
-            this.radioButton2.TabIndex = 15;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Refund";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.refund.AutoSize = true;
+            this.refund.Location = new System.Drawing.Point(257, 96);
+            this.refund.Name = "refund";
+            this.refund.Size = new System.Drawing.Size(60, 20);
+            this.refund.TabIndex = 15;
+            this.refund.TabStop = true;
+            this.refund.Text = "Refund";
+            this.refund.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // label_currentStatus
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DarkRed;
-            this.label7.Location = new System.Drawing.Point(158, 102);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 16);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Request Status";
+            this.label_currentStatus.AutoSize = true;
+            this.label_currentStatus.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_currentStatus.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_currentStatus.Location = new System.Drawing.Point(156, 60);
+            this.label_currentStatus.Name = "label_currentStatus";
+            this.label_currentStatus.Size = new System.Drawing.Size(90, 16);
+            this.label_currentStatus.TabIndex = 16;
+            this.label_currentStatus.Text = "Request Status";
             // 
-            // button1
+            // button_Show
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(161, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Show Details";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_Show.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Show.Location = new System.Drawing.Point(74, 136);
+            this.button_Show.Name = "button_Show";
+            this.button_Show.Size = new System.Drawing.Size(113, 23);
+            this.button_Show.TabIndex = 17;
+            this.button_Show.Text = "Show Details";
+            this.button_Show.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // button_viewHistory
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(319, 148);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "View History";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_viewHistory.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_viewHistory.Location = new System.Drawing.Point(244, 136);
+            this.button_viewHistory.Name = "button_viewHistory";
+            this.button_viewHistory.Size = new System.Drawing.Size(99, 23);
+            this.button_viewHistory.TabIndex = 18;
+            this.button_viewHistory.Text = "View History";
+            this.button_viewHistory.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button_Update
             // 
-            this.button3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(389, 194);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_Update.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Update.Location = new System.Drawing.Point(389, 194);
+            this.button_Update.Name = "button_Update";
+            this.button_Update.Size = new System.Drawing.Size(75, 23);
+            this.button_Update.TabIndex = 19;
+            this.button_Update.Text = "Update";
+            this.button_Update.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboBox_Status
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(161, 194);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(207, 24);
-            this.comboBox1.TabIndex = 21;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox_Status.FormattingEnabled = true;
+            this.comboBox_Status.Location = new System.Drawing.Point(161, 194);
+            this.comboBox_Status.Name = "comboBox_Status";
+            this.comboBox_Status.Size = new System.Drawing.Size(207, 24);
+            this.comboBox_Status.TabIndex = 21;
             // 
             // button4
             // 
@@ -245,15 +241,16 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.comboBox_Status);
+            this.groupBox1.Controls.Add(this.button_Update);
+            this.groupBox1.Controls.Add(this.button_viewHistory);
+            this.groupBox1.Controls.Add(this.button_Show);
+            this.groupBox1.Controls.Add(this.label_currentStatus);
+            this.groupBox1.Controls.Add(this.refund);
+            this.groupBox1.Controls.Add(this.repair);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBox_rmaNo);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -265,37 +262,37 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Track/Update RMA";
-            
             // 
-            // listBox1
+            // listBox_Open
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(593, 110);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(224, 199);
-            this.listBox1.TabIndex = 25;
-            
+            this.listBox_Open.FormattingEnabled = true;
+            this.listBox_Open.ItemHeight = 15;
+            this.listBox_Open.Location = new System.Drawing.Point(593, 110);
+            this.listBox_Open.Name = "listBox_Open";
+            this.listBox_Open.Size = new System.Drawing.Size(224, 199);
+            this.listBox_Open.TabIndex = 25;
+            this.listBox_Open.SelectedIndexChanged += new System.EventHandler(this.listBox_Open_SelectedIndexChanged);
             // 
-            // listBox2
+            // listBox_Received
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(857, 110);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(216, 199);
-            this.listBox2.TabIndex = 26;
-          
+            this.listBox_Received.FormattingEnabled = true;
+            this.listBox_Received.ItemHeight = 15;
+            this.listBox_Received.Location = new System.Drawing.Point(857, 110);
+            this.listBox_Received.Name = "listBox_Received";
+            this.listBox_Received.Size = new System.Drawing.Size(216, 199);
+            this.listBox_Received.TabIndex = 26;
+            this.listBox_Received.SelectedIndexChanged += new System.EventHandler(this.listBox_Received_SelectedIndexChanged);
             // 
-            // button5
+            // button_refresh
             // 
-            this.button5.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(794, 315);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(85, 26);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "Refresh";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button_refresh.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_refresh.Location = new System.Drawing.Point(794, 315);
+            this.button_refresh.Name = "button_refresh";
+            this.button_refresh.Size = new System.Drawing.Size(85, 26);
+            this.button_refresh.TabIndex = 27;
+            this.button_refresh.Text = "Refresh";
+            this.button_refresh.UseVisualStyleBackColor = true;
+            this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
             // 
             // label8
             // 
@@ -308,7 +305,6 @@
             this.label8.Size = new System.Drawing.Size(92, 18);
             this.label8.TabIndex = 28;
             this.label8.Text = "Open RMAs";
-            
             // 
             // label9
             // 
@@ -330,6 +326,17 @@
             this.dataGridView1.Size = new System.Drawing.Size(1039, 260);
             this.dataGridView1.TabIndex = 30;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Maroon;
+            this.button1.Location = new System.Drawing.Point(385, 73);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 40);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Verified!!";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Receiving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -339,9 +346,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.button_refresh);
+            this.Controls.Add(this.listBox_Received);
+            this.Controls.Add(this.listBox_Open);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.linkLabel3);
@@ -352,6 +359,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Receiving";
             this.Text = "Receiving";
+            this.Load += new System.EventHandler(this.Receiving_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -368,22 +376,23 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_rmaNo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.RadioButton repair;
+        private System.Windows.Forms.RadioButton refund;
+        private System.Windows.Forms.Label label_currentStatus;
+        private System.Windows.Forms.Button button_Show;
+        private System.Windows.Forms.Button button_viewHistory;
+        private System.Windows.Forms.Button button_Update;
+        private System.Windows.Forms.ComboBox comboBox_Status;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ListBox listBox_Open;
+        private System.Windows.Forms.ListBox listBox_Received;
+        private System.Windows.Forms.Button button_refresh;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
     }
 }

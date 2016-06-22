@@ -25,6 +25,7 @@ namespace RMA_SystemSoftware
         {
             command.Connection = con;
             generateAutoID();
+            buttonNewEmp.Enabled = false;
         }  
 
         public void generateAutoID()
@@ -72,6 +73,8 @@ namespace RMA_SystemSoftware
                     command.ExecuteNonQuery();
                     con.Close();
                     MessageBox.Show(" New Employee added to Records!!");
+
+                    buttonNewEmp.Enabled = true;
 
                     label_UserID.Text="";
                     textBox1.Clear();
@@ -136,6 +139,6 @@ namespace RMA_SystemSoftware
             e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
         }
 
-        
+
     }
 }
