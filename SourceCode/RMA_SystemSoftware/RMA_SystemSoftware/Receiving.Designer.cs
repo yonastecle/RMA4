@@ -56,7 +56,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox_Wait = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -207,6 +206,7 @@
             this.button_Show.TabIndex = 17;
             this.button_Show.Text = "Show Details";
             this.button_Show.UseVisualStyleBackColor = true;
+            this.button_Show.Click += new System.EventHandler(this.button_Show_Click);
             // 
             // button_viewHistory
             // 
@@ -386,22 +386,12 @@
             this.listBox_Wait.TabIndex = 31;
             this.listBox_Wait.SelectedIndexChanged += new System.EventHandler(this.listBox_Wait_SelectedIndexChanged);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(379, 34);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(207, 23);
-            this.textBox1.TabIndex = 33;
-            // 
             // Receiving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1118, 639);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBox_Wait);
             this.Controls.Add(this.dataGridView1);
@@ -460,6 +450,5 @@
         private System.Windows.Forms.RadioButton RadioB_replace;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox_Wait;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

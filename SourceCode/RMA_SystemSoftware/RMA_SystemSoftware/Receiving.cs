@@ -113,8 +113,7 @@ namespace RMA_SystemSoftware
                     req_type = reader.GetString(reader.GetOrdinal("type")) ; 
                     
                  }
-                // Test
-                textBox1.Text = req_type;
+            
                
                 
                 // Enabling the radio button-Not working
@@ -267,7 +266,7 @@ namespace RMA_SystemSoftware
         {
             da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
             ds = new DataSet();
-            da.Fill(ds, "RMA details");
+            da.Fill(ds, "RMA");
             dataGridView1.DataSource = ds.Tables[0];
         }
 
@@ -300,6 +299,22 @@ namespace RMA_SystemSoftware
             comboBox_Status.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
 
             // add code for Radio Button too
+        }
+
+        private void button_Show_Click(object sender, EventArgs e)
+        {
+            if (textBox_rmaNo.Text != "")
+            {
+                con.Open();
+                da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
+                ds = new DataSet();
+                da.Fill(ds, "Single Record");
+                dataGridView1.DataSource = ds.Tables["Single Record"];
+
+                con.Close();
+            }
+            else
+                MessageBox.Show("Please Enter RMA No. ");
         }
     }
 }
