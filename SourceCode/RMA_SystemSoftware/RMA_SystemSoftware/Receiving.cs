@@ -17,6 +17,8 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
+        SqlDataAdapter da;
+        DataSet ds;
         string req_type;
 
         public Receiving()
@@ -39,7 +41,9 @@ namespace RMA_SystemSoftware
         {
             listBox_Open.Items.Clear();
             listBox_Received.Items.Clear();
+            listBox_Wait.Items.Clear();
             Receiving_Load(this, null);
+            fill_grid();
 
         }
 
@@ -65,6 +69,16 @@ namespace RMA_SystemSoftware
                     listBox_Received.Items.Add(rma_no);
                 }
                 con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where Status= 'Wait'", con);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string rma_no = reader.GetString(reader.GetOrdinal("rma_no"));
+                    listBox_Wait.Items.Add(rma_no);
+                }
+                con.Close();
+
             }
             catch(Exception ex)
             {
@@ -91,22 +105,25 @@ namespace RMA_SystemSoftware
                 con.Open();
                 cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Open.Text + "'", con);
                 reader = cmd.ExecuteReader();
-                while (reader.Read())
+                while(reader.Read())
                 {
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    req_type = reader.GetString(reader.GetOrdinal("type"));
-
-                    // Enabling the radio button-Not working
-                    if (req_type == "Repair")
-                        RadioB_repair.Enabled=true;
-                    else if (req_type == "Refund")
-                        RadioB_refund.Enabled=true;
-                    else
-                        RadioB_replace.Enabled=true;
-                    
+                    req_type = reader.GetString(reader.GetOrdinal("type")) ; 
                  }
+                // Enabling the radio button-Not working
+                RadioB_refund.Checked = false;
+                RadioB_repair.Checked = false;
+                RadioB_replace.Checked = false;
+                
+                if (req_type == "Replace")
+                    RadioB_replace.Checked = true;
+                else if (req_type == "Refund")
+                    RadioB_refund.Checked = true;
+                else if(req_type == "Repair")
+                    RadioB_repair.Checked = true;
+
                 con.Close();
             }
             catch (Exception ex)
@@ -128,9 +145,50 @@ namespace RMA_SystemSoftware
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    
-                    // Enabling the radio button-Not working- Not working 
-                   
+
+                    // Enabling the radio button-Not working
+                    RadioB_refund.Checked = false;
+                    RadioB_repair.Checked = false;
+                    RadioB_replace.Checked = false;
+
+                    if (req_type == "Replace")
+                        RadioB_replace.Checked = true;
+                    else if (req_type == "Refund")
+                        RadioB_refund.Checked = true;
+                    else if (req_type == "Repair")
+                        RadioB_repair.Checked = true;
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void listBox_Wait_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Wait.Text + "'", con);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
+                    label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
+                    comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
+
+                    // Enabling the radio button-Not working
+                    RadioB_refund.Checked = false;
+                    RadioB_repair.Checked = false;
+                    RadioB_replace.Checked = false;
+
+                    if (req_type == "Replace")
+                        RadioB_replace.Checked = true;
+                    else if (req_type == "Refund")
+                        RadioB_refund.Checked = true;
+                    else if (req_type == "Repair")
+                        RadioB_repair.Checked = true;
                 }
                 con.Close();
             }
@@ -194,6 +252,38 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+               
+    
+        public void fill_grid()
+        {
+            da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
+            ds = new DataSet();
+            da.Fill(ds, "RMA details");
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private void ViewAllButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    con.Open();
+                    fill_grid();
+                    con.Close();
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
