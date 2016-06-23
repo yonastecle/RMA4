@@ -17,7 +17,7 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
-        string Rtype;
+        string req_type;
 
         public Receiving()
         {
@@ -25,7 +25,9 @@ namespace RMA_SystemSoftware
             comboBox_Status.Items.Add("Received");
             comboBox_Status.Items.Add("Wait");
             comboBox_Status.Items.Add("Close");
-         
+            comboBox_Status.Items.Add("Waiting to be assigned");
+            comboBox_Status.Items.Add("Open");//to be removed, Receiving Staff can't change the status to Open
+
         }
         
         private void Receiving_Load(object sender, EventArgs e)
@@ -93,23 +95,18 @@ namespace RMA_SystemSoftware
                 {
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    Rtype = reader.GetString(reader.GetOrdinal("type"));
+                    comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
+                    req_type = reader.GetString(reader.GetOrdinal("type"));
 
-                  
-                    if (Rtype == "Repair")//||Rtype=="Replace"|| Rtype=="Repair/Replace")
-                    {
-                        repair.Enabled = true;
-                    }
-                    else //if (Rtype== "Refund")
-                    {
-                        refund.Enabled = true;
-                    }
-                    /*else
-                    {
-                        repair.Enabled = false;
-                        refund.Enabled = false;
-                    }*/
-                }
+                    // Enabling the radio button-Not working
+                    if (req_type == "Repair")
+                        RadioB_repair.Enabled=true;
+                    else if (req_type == "Refund")
+                        RadioB_refund.Enabled=true;
+                    else
+                        RadioB_replace.Enabled=true;
+                    
+                 }
                 con.Close();
             }
             catch (Exception ex)
@@ -130,21 +127,10 @@ namespace RMA_SystemSoftware
                 {
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    Rtype = reader.GetString(reader.GetOrdinal("type"));
-                    if(Rtype=="Repair" )//||Rtype=="Replace"|| Rtype=="Repair/Replace")
-                    {
-                        repair.Enabled = true;
-                    }
-                    else //if (Rtype== "Refund")
-                           {
-                        refund.Enabled = true;
-                           }
-                    /*else
-                    {
-                        repair.Enabled = false;
-                        refund.Enabled = false;
-                    }*/
-
+                    comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
+                    
+                    // Enabling the radio button-Not working- Not working 
+                   
                 }
                 con.Close();
             }
@@ -154,6 +140,60 @@ namespace RMA_SystemSoftware
             }
         }
 
-        
+        private void button_Update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
+                {
+                    cmd = new SqlCommand("update RMA set Status ='" + comboBox_Status.Text + "',type ='" + req_type + "'where rma_no='" + textBox_rmaNo.Text + "'", con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Changes Saved..Press Refresh! ");
+                }
+                else
+                    MessageBox.Show("Please choose type of request!");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void RadioB_repair_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = " Repair";
+        }
+
+        private void RadioB_replace_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = " Replace";
+        }
+
+        private void RadioB_refund_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = " Refund";
+        }
+
+        private void button_verified_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("update RMA set Status = 'Waiting to be assigned' where rma_no='" + textBox_rmaNo.Text + "'", con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Request Added to Queue for Technician Assignment!! Press Refresh. ");
+                con.Close();
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

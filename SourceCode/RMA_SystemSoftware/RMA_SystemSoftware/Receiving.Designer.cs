@@ -37,8 +37,8 @@
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.textBox_rmaNo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.repair = new System.Windows.Forms.RadioButton();
-            this.refund = new System.Windows.Forms.RadioButton();
+            this.RadioB_repair = new System.Windows.Forms.RadioButton();
+            this.RadioB_refund = new System.Windows.Forms.RadioButton();
             this.label_currentStatus = new System.Windows.Forms.Label();
             this.button_Show = new System.Windows.Forms.Button();
             this.button_viewHistory = new System.Windows.Forms.Button();
@@ -46,13 +46,14 @@
             this.comboBox_Status = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RadioB_replace = new System.Windows.Forms.RadioButton();
+            this.button_verified = new System.Windows.Forms.Button();
             this.listBox_Open = new System.Windows.Forms.ListBox();
             this.listBox_Received = new System.Windows.Forms.ListBox();
             this.button_refresh = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -152,34 +153,36 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(28, 202);
+            this.label6.Location = new System.Drawing.Point(30, 184);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 15);
             this.label6.TabIndex = 13;
             this.label6.Text = "Update Status:";
             // 
-            // repair
+            // RadioB_repair
             // 
-            this.repair.AutoSize = true;
-            this.repair.Location = new System.Drawing.Point(151, 93);
-            this.repair.Name = "repair";
-            this.repair.Size = new System.Drawing.Size(100, 20);
-            this.repair.TabIndex = 14;
-            this.repair.TabStop = true;
-            this.repair.Text = "Repair/Replace";
-            this.repair.UseVisualStyleBackColor = true;
+            this.RadioB_repair.AutoSize = true;
+            this.RadioB_repair.Location = new System.Drawing.Point(151, 93);
+            this.RadioB_repair.Name = "RadioB_repair";
+            this.RadioB_repair.Size = new System.Drawing.Size(58, 20);
+            this.RadioB_repair.TabIndex = 14;
+            this.RadioB_repair.TabStop = true;
+            this.RadioB_repair.Text = "Repair";
+            this.RadioB_repair.UseVisualStyleBackColor = true;
+            this.RadioB_repair.CheckedChanged += new System.EventHandler(this.RadioB_repair_CheckedChanged);
             // 
-            // refund
+            // RadioB_refund
             // 
-            this.refund.AutoSize = true;
-            this.refund.Location = new System.Drawing.Point(257, 96);
-            this.refund.Name = "refund";
-            this.refund.Size = new System.Drawing.Size(60, 20);
-            this.refund.TabIndex = 15;
-            this.refund.TabStop = true;
-            this.refund.Text = "Refund";
-            this.refund.UseVisualStyleBackColor = true;
+            this.RadioB_refund.AutoSize = true;
+            this.RadioB_refund.Location = new System.Drawing.Point(286, 93);
+            this.RadioB_refund.Name = "RadioB_refund";
+            this.RadioB_refund.Size = new System.Drawing.Size(60, 20);
+            this.RadioB_refund.TabIndex = 15;
+            this.RadioB_refund.TabStop = true;
+            this.RadioB_refund.Text = "Refund";
+            this.RadioB_refund.UseVisualStyleBackColor = true;
+            this.RadioB_refund.CheckedChanged += new System.EventHandler(this.RadioB_refund_CheckedChanged);
             // 
             // label_currentStatus
             // 
@@ -195,7 +198,7 @@
             // button_Show
             // 
             this.button_Show.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Show.Location = new System.Drawing.Point(74, 136);
+            this.button_Show.Location = new System.Drawing.Point(389, 88);
             this.button_Show.Name = "button_Show";
             this.button_Show.Size = new System.Drawing.Size(113, 23);
             this.button_Show.TabIndex = 17;
@@ -205,7 +208,7 @@
             // button_viewHistory
             // 
             this.button_viewHistory.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_viewHistory.Location = new System.Drawing.Point(244, 136);
+            this.button_viewHistory.Location = new System.Drawing.Point(389, 127);
             this.button_viewHistory.Name = "button_viewHistory";
             this.button_viewHistory.Size = new System.Drawing.Size(99, 23);
             this.button_viewHistory.TabIndex = 18;
@@ -215,17 +218,18 @@
             // button_Update
             // 
             this.button_Update.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Update.Location = new System.Drawing.Point(389, 194);
+            this.button_Update.Location = new System.Drawing.Point(389, 185);
             this.button_Update.Name = "button_Update";
             this.button_Update.Size = new System.Drawing.Size(75, 23);
             this.button_Update.TabIndex = 19;
             this.button_Update.Text = "Update";
             this.button_Update.UseVisualStyleBackColor = true;
+            this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
             // 
             // comboBox_Status
             // 
             this.comboBox_Status.FormattingEnabled = true;
-            this.comboBox_Status.Location = new System.Drawing.Point(161, 194);
+            this.comboBox_Status.Location = new System.Drawing.Point(151, 184);
             this.comboBox_Status.Name = "comboBox_Status";
             this.comboBox_Status.Size = new System.Drawing.Size(207, 24);
             this.comboBox_Status.TabIndex = 21;
@@ -241,14 +245,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.RadioB_replace);
+            this.groupBox1.Controls.Add(this.button_verified);
             this.groupBox1.Controls.Add(this.comboBox_Status);
             this.groupBox1.Controls.Add(this.button_Update);
             this.groupBox1.Controls.Add(this.button_viewHistory);
             this.groupBox1.Controls.Add(this.button_Show);
             this.groupBox1.Controls.Add(this.label_currentStatus);
-            this.groupBox1.Controls.Add(this.refund);
-            this.groupBox1.Controls.Add(this.repair);
+            this.groupBox1.Controls.Add(this.RadioB_refund);
+            this.groupBox1.Controls.Add(this.RadioB_repair);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBox_rmaNo);
             this.groupBox1.Controls.Add(this.label5);
@@ -262,6 +267,30 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Track/Update RMA";
+            // 
+            // RadioB_replace
+            // 
+            this.RadioB_replace.AutoSize = true;
+            this.RadioB_replace.Location = new System.Drawing.Point(215, 93);
+            this.RadioB_replace.Name = "RadioB_replace";
+            this.RadioB_replace.Size = new System.Drawing.Size(65, 20);
+            this.RadioB_replace.TabIndex = 23;
+            this.RadioB_replace.TabStop = true;
+            this.RadioB_replace.Text = "Replace";
+            this.RadioB_replace.UseVisualStyleBackColor = true;
+            this.RadioB_replace.CheckedChanged += new System.EventHandler(this.RadioB_replace_CheckedChanged);
+            // 
+            // button_verified
+            // 
+            this.button_verified.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_verified.ForeColor = System.Drawing.Color.Red;
+            this.button_verified.Location = new System.Drawing.Point(182, 127);
+            this.button_verified.Name = "button_verified";
+            this.button_verified.Size = new System.Drawing.Size(113, 39);
+            this.button_verified.TabIndex = 22;
+            this.button_verified.Text = "Verified!!";
+            this.button_verified.UseVisualStyleBackColor = true;
+            this.button_verified.Click += new System.EventHandler(this.button_verified_Click);
             // 
             // listBox_Open
             // 
@@ -326,17 +355,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1039, 260);
             this.dataGridView1.TabIndex = 30;
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(385, 73);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 40);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Verified!!";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Receiving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -378,8 +396,8 @@
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.TextBox textBox_rmaNo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton repair;
-        private System.Windows.Forms.RadioButton refund;
+        private System.Windows.Forms.RadioButton RadioB_repair;
+        private System.Windows.Forms.RadioButton RadioB_refund;
         private System.Windows.Forms.Label label_currentStatus;
         private System.Windows.Forms.Button button_Show;
         private System.Windows.Forms.Button button_viewHistory;
@@ -393,6 +411,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_verified;
+        private System.Windows.Forms.RadioButton RadioB_replace;
     }
 }
