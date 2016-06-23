@@ -111,17 +111,22 @@ namespace RMA_SystemSoftware
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
                     req_type = reader.GetString(reader.GetOrdinal("type")) ; 
+                    
                  }
+                // Test
+                textBox1.Text = req_type;
+               
+                
                 // Enabling the radio button-Not working
                 RadioB_refund.Checked = false;
                 RadioB_repair.Checked = false;
                 RadioB_replace.Checked = false;
-                
-                if (req_type == "Replace")
+
+                if (req_type.Equals("Replace"))
                     RadioB_replace.Checked = true;
-                else if (req_type == "Refund")
+                else if (req_type.Equals("Refund"))
                     RadioB_refund.Checked = true;
-                else if(req_type == "Repair")
+                else if (req_type.Equals("Repair"))
                     RadioB_repair.Checked = true;
 
                 con.Close();
@@ -151,11 +156,12 @@ namespace RMA_SystemSoftware
                     RadioB_repair.Checked = false;
                     RadioB_replace.Checked = false;
 
-                    if (req_type == "Replace")
+
+                    if (req_type.Equals("Replace"))
                         RadioB_replace.Checked = true;
-                    else if (req_type == "Refund")
+                    else if (req_type.Equals("Refund"))
                         RadioB_refund.Checked = true;
-                    else if (req_type == "Repair")
+                    else if (req_type.Equals("Repair"))
                         RadioB_repair.Checked = true;
                 }
                 con.Close();
@@ -178,16 +184,17 @@ namespace RMA_SystemSoftware
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
 
+                    
                     // Enabling the radio button-Not working
                     RadioB_refund.Checked = false;
                     RadioB_repair.Checked = false;
                     RadioB_replace.Checked = false;
 
-                    if (req_type == "Replace")
+                    if (req_type.Equals("Replace"))
                         RadioB_replace.Checked = true;
-                    else if (req_type == "Refund")
+                    else if (req_type.Equals("Refund"))
                         RadioB_refund.Checked = true;
-                    else if (req_type == "Repair")
+                    else if (req_type.Equals("Repair"))
                         RadioB_repair.Checked = true;
                 }
                 con.Close();
@@ -284,6 +291,15 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox_rmaNo.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            label_currentStatus.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+            comboBox_Status.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+
+            // add code for Radio Button too
         }
     }
 }
