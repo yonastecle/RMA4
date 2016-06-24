@@ -28,7 +28,7 @@ namespace RMA_SystemSoftware
             comboBox_status.Items.Add("Assigned");//Disable it for Technician
            
         }
-        private void Technician_Load(object sender, EventArgs e)
+        public void Technician_Load(object sender, EventArgs e)
         {
             fill_listbox();
         }
@@ -99,6 +99,9 @@ namespace RMA_SystemSoftware
         {
             try
             {
+                this.Hide();
+                delegateMessageBox del = new delegateMessageBox();
+                del.Show();
                /* if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 //data should be updated later, after the request for delegation is sent via message box

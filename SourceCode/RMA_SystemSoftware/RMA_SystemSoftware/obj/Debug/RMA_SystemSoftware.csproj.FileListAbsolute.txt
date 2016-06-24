@@ -35,3 +35,4 @@ C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\RMA_S
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Add_emp.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.EmpInfo.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Emp_Search.resources
+C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.delegateMessageBox.resources

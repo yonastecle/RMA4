@@ -54,6 +54,12 @@
     <Compile Include="Add_emp.Designer.cs">
       <DependentUpon>Add_emp.cs</DependentUpon>
     </Compile>
+    <Compile Include="delegateMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="delegateMessageBox.Designer.cs">
+      <DependentUpon>delegateMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmpInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </Compile>
     <EmbeddedResource Include="Add_emp.resx">
       <DependentUpon>Add_emp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="delegateMessageBox.resx">
+      <DependentUpon>delegateMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmpInfo.resx">
       <DependentUpon>EmpInfo.cs</DependentUpon>
