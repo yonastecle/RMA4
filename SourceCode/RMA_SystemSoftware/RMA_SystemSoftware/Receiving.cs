@@ -27,7 +27,8 @@ namespace RMA_SystemSoftware
             comboBox_Status.Items.Add("Received");
             comboBox_Status.Items.Add("Wait");
             comboBox_Status.Items.Add("Close");
-            comboBox_Status.Items.Add("Waiting to be assigned");
+            comboBox_Status.Items.Add("Refund");
+            comboBox_Status.Items.Add("Waiting to be assigned");//Disable for Receiving staff
             comboBox_Status.Items.Add("Open");//to be removed, Receiving Staff can't change the status to Open
 
         }
@@ -52,6 +53,7 @@ namespace RMA_SystemSoftware
         {
             try
             {
+                if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 cmd = new SqlCommand("Select rma_no from RMA where Status= 'Open'", con);
                 reader = cmd.ExecuteReader();

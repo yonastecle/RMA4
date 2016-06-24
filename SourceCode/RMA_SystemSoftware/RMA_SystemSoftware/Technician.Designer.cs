@@ -34,30 +34,31 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.comboBox_status = new System.Windows.Forms.ComboBox();
+            this.updateButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.showButton = new System.Windows.Forms.Button();
+            this.label_currentStatus = new System.Windows.Forms.Label();
+            this.radioButton_refund = new System.Windows.Forms.RadioButton();
+            this.radioButton_repair = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_rmaNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.delegateButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.radioButton_replace = new System.Windows.Forms.RadioButton();
+            this.dataGrid_ShowDetails = new System.Windows.Forms.DataGridView();
             this.button7 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.listBox_newRequest = new System.Windows.Forms.ListBox();
+            this.dataGrid_Tech_WOQueue = new System.Windows.Forms.DataGridView();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_ShowDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Tech_WOQueue)).BeginInit();
             this.SuspendLayout();
             // 
             // button4
@@ -93,7 +94,6 @@
             this.label2.Size = new System.Drawing.Size(117, 18);
             this.label2.TabIndex = 25;
             this.label2.Text = "EmployeeName";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -119,23 +119,23 @@
             this.linkLabel2.Text = "Logout!";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
-            // comboBox1
+            // comboBox_status
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(156, 238);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(207, 21);
-            this.comboBox1.TabIndex = 39;
+            this.comboBox_status.FormattingEnabled = true;
+            this.comboBox_status.Location = new System.Drawing.Point(156, 238);
+            this.comboBox_status.Name = "comboBox_status";
+            this.comboBox_status.Size = new System.Drawing.Size(207, 21);
+            this.comboBox_status.TabIndex = 39;
             // 
-            // button3
+            // updateButton
             // 
-            this.button3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(384, 232);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 31);
-            this.button3.TabIndex = 38;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = true;
+            this.updateButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.Location = new System.Drawing.Point(384, 232);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 31);
+            this.updateButton.TabIndex = 38;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -147,49 +147,48 @@
             this.button2.Text = "View History";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // showButton
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(70, 180);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 31);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Show Details";
-            this.button1.UseVisualStyleBackColor = true;
+            this.showButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showButton.Location = new System.Drawing.Point(70, 180);
+            this.showButton.Name = "showButton";
+            this.showButton.Size = new System.Drawing.Size(113, 31);
+            this.showButton.TabIndex = 36;
+            this.showButton.Text = "Show Details";
+            this.showButton.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // label_currentStatus
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DarkRed;
-            this.label7.Location = new System.Drawing.Point(157, 110);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 16);
-            this.label7.TabIndex = 35;
-            this.label7.Text = "Request Status";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.label_currentStatus.AutoSize = true;
+            this.label_currentStatus.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_currentStatus.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_currentStatus.Location = new System.Drawing.Point(157, 110);
+            this.label_currentStatus.Name = "label_currentStatus";
+            this.label_currentStatus.Size = new System.Drawing.Size(90, 16);
+            this.label_currentStatus.TabIndex = 35;
+            this.label_currentStatus.Text = "Request Status";
             // 
-            // radioButton2
+            // radioButton_refund
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(293, 70);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 17);
-            this.radioButton2.TabIndex = 34;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Refund";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton_refund.AutoSize = true;
+            this.radioButton_refund.Location = new System.Drawing.Point(320, 72);
+            this.radioButton_refund.Name = "radioButton_refund";
+            this.radioButton_refund.Size = new System.Drawing.Size(60, 17);
+            this.radioButton_refund.TabIndex = 34;
+            this.radioButton_refund.TabStop = true;
+            this.radioButton_refund.Text = "Refund";
+            this.radioButton_refund.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButton_repair
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(146, 71);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(101, 17);
-            this.radioButton1.TabIndex = 33;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Repair/Replace";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton_repair.AutoSize = true;
+            this.radioButton_repair.Location = new System.Drawing.Point(146, 71);
+            this.radioButton_repair.Name = "radioButton_repair";
+            this.radioButton_repair.Size = new System.Drawing.Size(56, 17);
+            this.radioButton_repair.TabIndex = 33;
+            this.radioButton_repair.TabStop = true;
+            this.radioButton_repair.Text = "Repair";
+            this.radioButton_repair.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -202,14 +201,14 @@
             this.label6.TabIndex = 32;
             this.label6.Text = "Update Status:";
             // 
-            // textBox1
+            // textBox_rmaNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(146, 28);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(313, 23);
-            this.textBox1.TabIndex = 31;
+            this.textBox_rmaNo.Location = new System.Drawing.Point(146, 28);
+            this.textBox_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox_rmaNo.Multiline = true;
+            this.textBox_rmaNo.Name = "textBox_rmaNo";
+            this.textBox_rmaNo.Size = new System.Drawing.Size(234, 23);
+            this.textBox_rmaNo.TabIndex = 31;
             // 
             // label5
             // 
@@ -255,46 +254,59 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button6
+            // delegateButton
             // 
-            this.button6.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(330, 180);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(101, 31);
-            this.button6.TabIndex = 41;
-            this.button6.Text = "Delegate";
-            this.button6.UseVisualStyleBackColor = true;
+            this.delegateButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delegateButton.Location = new System.Drawing.Point(330, 180);
+            this.delegateButton.Name = "delegateButton";
+            this.delegateButton.Size = new System.Drawing.Size(101, 31);
+            this.delegateButton.TabIndex = 41;
+            this.delegateButton.Text = "Delegate";
+            this.delegateButton.UseVisualStyleBackColor = true;
+            this.delegateButton.Click += new System.EventHandler(this.delegateButton_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.radioButton_replace);
+            this.groupBox1.Controls.Add(this.delegateButton);
             this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.comboBox_status);
+            this.groupBox1.Controls.Add(this.updateButton);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.showButton);
+            this.groupBox1.Controls.Add(this.label_currentStatus);
+            this.groupBox1.Controls.Add(this.radioButton_refund);
+            this.groupBox1.Controls.Add(this.radioButton_repair);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBox_rmaNo);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(69, 68);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(542, 291);
+            this.groupBox1.Size = new System.Drawing.Size(485, 291);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Track/Update RMA";
             // 
-            // dataGridView1
+            // radioButton_replace
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 365);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(615, 294);
-            this.dataGridView1.TabIndex = 43;
+            this.radioButton_replace.AutoSize = true;
+            this.radioButton_replace.Location = new System.Drawing.Point(232, 71);
+            this.radioButton_replace.Name = "radioButton_replace";
+            this.radioButton_replace.Size = new System.Drawing.Size(65, 17);
+            this.radioButton_replace.TabIndex = 42;
+            this.radioButton_replace.TabStop = true;
+            this.radioButton_replace.Text = "Replace";
+            this.radioButton_replace.UseVisualStyleBackColor = true;
+            // 
+            // dataGrid_ShowDetails
+            // 
+            this.dataGrid_ShowDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_ShowDetails.Location = new System.Drawing.Point(33, 365);
+            this.dataGrid_ShowDetails.Name = "dataGrid_ShowDetails";
+            this.dataGrid_ShowDetails.Size = new System.Drawing.Size(615, 294);
+            this.dataGrid_ShowDetails.TabIndex = 43;
             // 
             // button7
             // 
@@ -318,22 +330,22 @@
             this.label8.TabIndex = 47;
             this.label8.Text = "New Requests";
             // 
-            // listBox1
+            // listBox_newRequest
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(657, 89);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(225, 251);
-            this.listBox1.TabIndex = 44;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox_newRequest.FormattingEnabled = true;
+            this.listBox_newRequest.Location = new System.Drawing.Point(657, 89);
+            this.listBox_newRequest.Name = "listBox_newRequest";
+            this.listBox_newRequest.Size = new System.Drawing.Size(225, 251);
+            this.listBox_newRequest.TabIndex = 44;
+            this.listBox_newRequest.SelectedIndexChanged += new System.EventHandler(this.listBox_newRequest_SelectedIndexChanged);
             // 
-            // dataGridView2
+            // dataGrid_Tech_WOQueue
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(657, 365);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(461, 294);
-            this.dataGridView2.TabIndex = 48;
+            this.dataGrid_Tech_WOQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_Tech_WOQueue.Location = new System.Drawing.Point(657, 365);
+            this.dataGrid_Tech_WOQueue.Name = "dataGrid_Tech_WOQueue";
+            this.dataGrid_Tech_WOQueue.Size = new System.Drawing.Size(461, 294);
+            this.dataGrid_Tech_WOQueue.TabIndex = 48;
             // 
             // notifyIcon1
             // 
@@ -346,11 +358,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1130, 663);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGrid_Tech_WOQueue);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.listBox_newRequest);
+            this.Controls.Add(this.dataGrid_ShowDetails);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.linkLabel3);
@@ -359,10 +371,11 @@
             this.Controls.Add(this.linkLabel2);
             this.Name = "Technician";
             this.Text = "Technician";
+            this.Load += new System.EventHandler(this.Technician_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_ShowDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Tech_WOQueue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,26 +388,27 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboBox_status;
+        private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button showButton;
+        private System.Windows.Forms.Label label_currentStatus;
+        private System.Windows.Forms.RadioButton radioButton_refund;
+        private System.Windows.Forms.RadioButton radioButton_repair;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_rmaNo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button delegateButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGrid_ShowDetails;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ListBox listBox_newRequest;
+        private System.Windows.Forms.DataGridView dataGrid_Tech_WOQueue;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.RadioButton radioButton_replace;
     }
 }
