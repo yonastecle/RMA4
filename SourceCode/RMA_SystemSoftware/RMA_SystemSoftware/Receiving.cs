@@ -39,6 +39,7 @@ namespace RMA_SystemSoftware
         
         private void button_refresh_Click(object sender, EventArgs e)
         {
+            if (con.State == ConnectionState.Open) con.Close();
             listBox_Open.Items.Clear();
             listBox_Received.Items.Clear();
             listBox_Wait.Items.Clear();
@@ -102,6 +103,7 @@ namespace RMA_SystemSoftware
         {
             try
             {
+                if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Open.Text + "'", con);
                 reader = cmd.ExecuteReader();
@@ -141,6 +143,7 @@ namespace RMA_SystemSoftware
             
             try
             {
+                if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Received.Text + "'", con);
                 reader = cmd.ExecuteReader();
@@ -174,6 +177,7 @@ namespace RMA_SystemSoftware
         {
             try
             {
+                if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Wait.Text + "'", con);
                 reader = cmd.ExecuteReader();
