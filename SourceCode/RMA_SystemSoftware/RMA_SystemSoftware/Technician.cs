@@ -16,8 +16,6 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
-        SqlDataAdapter da;
-        DataSet ds;
 
         public Technician()
         {
@@ -97,11 +95,20 @@ namespace RMA_SystemSoftware
 
         private void delegateButton_Click(object sender, EventArgs e)
         {
-            try
+
+            delegateMessageBox mesg_box = new delegateMessageBox();
+            if (textBox_rmaNo.Text != "")
             {
+                mesg_box.RMA = textBox_rmaNo.Text;
+                mesg_box.setdata();
                 this.Hide();
-                delegateMessageBox del = new delegateMessageBox();
-                del.Show();
+                mesg_box.Show();
+            }
+            else
+                MessageBox.Show(" Please enter RMA #");
+
+        
+              
                /* if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 //data should be updated later, after the request for delegation is sent via message box
@@ -109,11 +116,7 @@ namespace RMA_SystemSoftware
                 cmd.ExecuteNonQuery();
                 //Ask for approval from Supervisor and update status tab
                 MessageBox.Show()            */   
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+          
         }
     }
 }
