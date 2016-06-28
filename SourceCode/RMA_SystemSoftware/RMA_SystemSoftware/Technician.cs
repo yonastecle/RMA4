@@ -95,28 +95,41 @@ namespace RMA_SystemSoftware
 
         private void delegateButton_Click(object sender, EventArgs e)
         {
-
+          
             delegateMessageBox mesg_box = new delegateMessageBox();
             if (textBox_rmaNo.Text != "")
             {
-                mesg_box.RMA = textBox_rmaNo.Text;
-                mesg_box.setdata();
-                this.Hide();
-                mesg_box.Show();
+                string result = null;
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select count (1) total from Notes where RMA_no = @ID", con);
+                cmd.Parameters.AddWithValue("@ID", textBox_rmaNo.Text);
+                SqlDataReader reader = cmd.ExecuteReader();
+                
+                while (reader.Read())
+                result = String.Format("{0}", reader["total"]);
+                mesg_box.result = result;
+
+                //Issue: Doesnot work for "Result=0"
+                if (result.Equals(0))
+                    MessageBox.Show("RMA record not found");
+                else
+                {
+                    mesg_box.RMA = textBox_rmaNo.Text;
+                    mesg_box.setdata();
+                    this.Hide();
+                    mesg_box.Show();
+                }
+               
             }
             else
-                MessageBox.Show(" Please enter RMA #");
-
-        
-              
-               /* if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                //data should be updated later, after the request for delegation is sent via message box
-                cmd = new SqlCommand("update RMA set Status='Hold' where rma_no='" + textBox_rmaNo.Text + "'", con);
-                cmd.ExecuteNonQuery();
-                //Ask for approval from Supervisor and update status tab
-                MessageBox.Show()            */   
-          
+            {
+                MessageBox.Show(" Please enter a valid RMA #");
+            }
+               
+           
+            
+            
         }
     }
 }
