@@ -87,8 +87,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button16 = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.authorizeButton = new System.Windows.Forms.Button();
+            this.combobox_AuthorizeUser = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox_EmpName = new System.Windows.Forms.TextBox();
@@ -721,31 +721,33 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button16);
-            this.panel4.Controls.Add(this.comboBox4);
+            this.panel4.Controls.Add(this.authorizeButton);
+            this.panel4.Controls.Add(this.combobox_AuthorizeUser);
             this.panel4.Controls.Add(this.label20);
             this.panel4.Location = new System.Drawing.Point(23, 146);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(467, 51);
             this.panel4.TabIndex = 76;
             // 
-            // button16
+            // authorizeButton
             // 
-            this.button16.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(386, 3);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(75, 23);
-            this.button16.TabIndex = 72;
-            this.button16.Text = "OK";
-            this.button16.UseVisualStyleBackColor = true;
+            this.authorizeButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.authorizeButton.Location = new System.Drawing.Point(364, 9);
+            this.authorizeButton.Name = "authorizeButton";
+            this.authorizeButton.Size = new System.Drawing.Size(91, 23);
+            this.authorizeButton.TabIndex = 72;
+            this.authorizeButton.Text = "Authorize!";
+            this.authorizeButton.UseVisualStyleBackColor = true;
+            this.authorizeButton.Click += new System.EventHandler(this.authorizeButton_Click);
             // 
-            // comboBox4
+            // combobox_AuthorizeUser
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(158, 7);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(161, 21);
-            this.comboBox4.TabIndex = 67;
+            this.combobox_AuthorizeUser.FormattingEnabled = true;
+            this.combobox_AuthorizeUser.Location = new System.Drawing.Point(158, 7);
+            this.combobox_AuthorizeUser.Name = "combobox_AuthorizeUser";
+            this.combobox_AuthorizeUser.Size = new System.Drawing.Size(161, 21);
+            this.combobox_AuthorizeUser.TabIndex = 67;
+            this.combobox_AuthorizeUser.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -859,6 +861,7 @@
             this.Controls.Add(this.linkLabel2);
             this.Name = "Supervisor";
             this.Text = "Supervisor";
+            this.Load += new System.EventHandler(this.Supervisor_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -936,8 +939,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button authorizeButton;
+        private System.Windows.Forms.ComboBox combobox_AuthorizeUser;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox_EmpName;

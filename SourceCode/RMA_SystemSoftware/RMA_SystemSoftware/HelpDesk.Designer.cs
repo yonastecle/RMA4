@@ -33,12 +33,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox_UpdateDetails = new System.Windows.Forms.GroupBox();
+            this.updateRecordButton = new System.Windows.Forms.Button();
+            this.openRecordButton = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.techChangeButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -46,14 +46,14 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.statusUpdateButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_rmaNo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -92,7 +92,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.groupBox_UpdateDetails.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -156,56 +156,56 @@
             this.linkLabel2.Text = "Logout!";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
-            // groupBox1
+            // groupBox_UpdateDetails
             // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Controls.Add(this.radioButton6);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(561, 52);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(550, 383);
-            this.groupBox1.TabIndex = 38;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Update Details(*Only Authorized users)";
+            this.groupBox_UpdateDetails.Controls.Add(this.updateRecordButton);
+            this.groupBox_UpdateDetails.Controls.Add(this.openRecordButton);
+            this.groupBox_UpdateDetails.Controls.Add(this.textBox2);
+            this.groupBox_UpdateDetails.Controls.Add(this.label11);
+            this.groupBox_UpdateDetails.Controls.Add(this.techChangeButton);
+            this.groupBox_UpdateDetails.Controls.Add(this.label10);
+            this.groupBox_UpdateDetails.Controls.Add(this.label9);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioButton4);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioButton3);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioButton5);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioButton6);
+            this.groupBox_UpdateDetails.Controls.Add(this.comboBox1);
+            this.groupBox_UpdateDetails.Controls.Add(this.statusUpdateButton);
+            this.groupBox_UpdateDetails.Controls.Add(this.label5);
+            this.groupBox_UpdateDetails.Controls.Add(this.label6);
+            this.groupBox_UpdateDetails.Controls.Add(this.label7);
+            this.groupBox_UpdateDetails.Controls.Add(this.label8);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioButton2);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioButton1);
+            this.groupBox_UpdateDetails.Controls.Add(this.textBox_rmaNo);
+            this.groupBox_UpdateDetails.Controls.Add(this.label4);
+            this.groupBox_UpdateDetails.Controls.Add(this.label3);
+            this.groupBox_UpdateDetails.Location = new System.Drawing.Point(561, 52);
+            this.groupBox_UpdateDetails.Name = "groupBox_UpdateDetails";
+            this.groupBox_UpdateDetails.Size = new System.Drawing.Size(550, 383);
+            this.groupBox_UpdateDetails.TabIndex = 38;
+            this.groupBox_UpdateDetails.TabStop = false;
+            this.groupBox_UpdateDetails.Text = "Update Details(*Only Authorized users)";
             // 
-            // button5
+            // updateRecordButton
             // 
-            this.button5.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(361, 349);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 56;
-            this.button5.Text = "Update";
-            this.button5.UseVisualStyleBackColor = true;
+            this.updateRecordButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateRecordButton.Location = new System.Drawing.Point(361, 349);
+            this.updateRecordButton.Name = "updateRecordButton";
+            this.updateRecordButton.Size = new System.Drawing.Size(75, 23);
+            this.updateRecordButton.TabIndex = 56;
+            this.updateRecordButton.Text = "Update";
+            this.updateRecordButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // openRecordButton
             // 
-            this.button3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(229, 349);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 55;
-            this.button3.Text = "Open";
-            this.button3.UseVisualStyleBackColor = true;
+            this.openRecordButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openRecordButton.Location = new System.Drawing.Point(229, 349);
+            this.openRecordButton.Name = "openRecordButton";
+            this.openRecordButton.Size = new System.Drawing.Size(75, 23);
+            this.openRecordButton.TabIndex = 55;
+            this.openRecordButton.Text = "Open";
+            this.openRecordButton.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
@@ -225,15 +225,15 @@
             this.label11.TabIndex = 53;
             this.label11.Text = "Status Updates:";
             // 
-            // button1
+            // techChangeButton
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(326, 178);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
-            this.button1.TabIndex = 52;
-            this.button1.Text = "Change?";
-            this.button1.UseVisualStyleBackColor = true;
+            this.techChangeButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.techChangeButton.Location = new System.Drawing.Point(326, 178);
+            this.techChangeButton.Name = "techChangeButton";
+            this.techChangeButton.Size = new System.Drawing.Size(75, 24);
+            this.techChangeButton.TabIndex = 52;
+            this.techChangeButton.Text = "Change?";
+            this.techChangeButton.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -308,15 +308,15 @@
             this.comboBox1.Size = new System.Drawing.Size(183, 21);
             this.comboBox1.TabIndex = 45;
             // 
-            // button2
+            // statusUpdateButton
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(397, 218);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 23);
-            this.button2.TabIndex = 44;
-            this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = true;
+            this.statusUpdateButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusUpdateButton.Location = new System.Drawing.Point(397, 218);
+            this.statusUpdateButton.Name = "statusUpdateButton";
+            this.statusUpdateButton.Size = new System.Drawing.Size(85, 23);
+            this.statusUpdateButton.TabIndex = 44;
+            this.statusUpdateButton.Text = "Update";
+            this.statusUpdateButton.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -381,14 +381,14 @@
             this.radioButton1.Text = "Repair/Replace";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBox_rmaNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(181, 28);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(313, 23);
-            this.textBox1.TabIndex = 37;
+            this.textBox_rmaNo.Location = new System.Drawing.Point(181, 28);
+            this.textBox_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox_rmaNo.Multiline = true;
+            this.textBox_rmaNo.Name = "textBox_rmaNo";
+            this.textBox_rmaNo.Size = new System.Drawing.Size(313, 23);
+            this.textBox_rmaNo.TabIndex = 37;
             // 
             // label4
             // 
@@ -425,7 +425,6 @@
             this.groupBox2.TabIndex = 66;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View Details";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // panel1
             // 
@@ -779,6 +778,7 @@
             this.button12.TabIndex = 72;
             this.button12.Text = "Modify";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // HelpDesk
             // 
@@ -793,7 +793,7 @@
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox_UpdateDetails);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.label2);
@@ -802,8 +802,8 @@
             this.Name = "HelpDesk";
             this.Text = "HelpDesk";
             this.Load += new System.EventHandler(this.HelpDesk_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox_UpdateDetails.ResumeLayout(false);
+            this.groupBox_UpdateDetails.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -822,12 +822,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupBox_UpdateDetails;
+        private System.Windows.Forms.Button updateRecordButton;
+        private System.Windows.Forms.Button openRecordButton;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button techChangeButton;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioButton4;
@@ -835,14 +835,14 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button statusUpdateButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_rmaNo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;

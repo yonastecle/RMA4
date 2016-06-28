@@ -128,5 +128,37 @@ namespace RMA_SystemSoftware
 
             }
         }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Supervisor_Load(object sender, EventArgs e)
+        {
+           try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select firstName from Employee where userType = 'Help Desk'", con);
+                read=cmd.ExecuteReader();
+                while(read.Read())
+                {
+                    combobox_AuthorizeUser.Items.Add(read["firstName"]);
+                }
+                read.Close();
+                read.Dispose();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void authorizeButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

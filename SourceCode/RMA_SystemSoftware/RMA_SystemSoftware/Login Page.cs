@@ -48,7 +48,7 @@ namespace RMA_SystemSoftware
                         Technician tech = new Technician();
                         tech.Show();
                     }
-                    else if ((dt.Rows[0][0].ToString() == "Help desk ") || (dt.Rows[0][0].ToString() == "help desk "))
+                    else if ((dt.Rows[0][0].ToString() == "Help Desk ") || (dt.Rows[0][0].ToString() == "help desk "))
                     {
                         this.Hide();
                         HelpDesk hdesk = new HelpDesk();
