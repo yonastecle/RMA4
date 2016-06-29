@@ -69,6 +69,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -78,10 +79,10 @@
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.VielAllButton = new System.Windows.Forms.Button();
+            this.generateReportButton = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.ShowDeatilsButton = new System.Windows.Forms.Button();
+            this.VielAllButton = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -98,7 +99,6 @@
             this.ViewAllbutton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -547,11 +547,21 @@
             this.panel1.Controls.Add(this.radioButton8);
             this.panel1.Controls.Add(this.radioButton7);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.button11);
+            this.panel1.Controls.Add(this.generateReportButton);
             this.panel1.Location = new System.Drawing.Point(15, 97);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(512, 174);
             this.panel1.TabIndex = 69;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(166, 35);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(41, 16);
+            this.label21.TabIndex = 78;
+            this.label21.Text = "From";
             // 
             // label15
             // 
@@ -635,26 +645,16 @@
             this.label14.TabIndex = 69;
             this.label14.Text = "Select One";
             // 
-            // button11
+            // generateReportButton
             // 
-            this.button11.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(415, 65);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(85, 40);
-            this.button11.TabIndex = 68;
-            this.button11.Text = "Generate Report";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // VielAllButton
-            // 
-            this.VielAllButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VielAllButton.Location = new System.Drawing.Point(415, 26);
-            this.VielAllButton.Name = "VielAllButton";
-            this.VielAllButton.Size = new System.Drawing.Size(85, 42);
-            this.VielAllButton.TabIndex = 67;
-            this.VielAllButton.Text = "View all WOs";
-            this.VielAllButton.UseVisualStyleBackColor = true;
-            this.VielAllButton.Click += new System.EventHandler(this.VielAllButton_Click);
+            this.generateReportButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generateReportButton.Location = new System.Drawing.Point(415, 65);
+            this.generateReportButton.Name = "generateReportButton";
+            this.generateReportButton.Size = new System.Drawing.Size(85, 40);
+            this.generateReportButton.TabIndex = 68;
+            this.generateReportButton.Text = "Generate Report";
+            this.generateReportButton.UseVisualStyleBackColor = true;
+            this.generateReportButton.Click += new System.EventHandler(this.generateReportButton_Click);
             // 
             // button9
             // 
@@ -676,6 +676,17 @@
             this.ShowDeatilsButton.Text = "Show Deatils";
             this.ShowDeatilsButton.UseVisualStyleBackColor = true;
             this.ShowDeatilsButton.Click += new System.EventHandler(this.ShowDeatilsButton_Click);
+            // 
+            // VielAllButton
+            // 
+            this.VielAllButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VielAllButton.Location = new System.Drawing.Point(415, 26);
+            this.VielAllButton.Name = "VielAllButton";
+            this.VielAllButton.Size = new System.Drawing.Size(85, 42);
+            this.VielAllButton.TabIndex = 67;
+            this.VielAllButton.Text = "View all WOs";
+            this.VielAllButton.UseVisualStyleBackColor = true;
+            this.VielAllButton.Click += new System.EventHandler(this.VielAllButton_Click);
             // 
             // label17
             // 
@@ -848,16 +859,6 @@
             this.label18.Text = "Employee ID:";
             this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(166, 35);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(41, 16);
-            this.label21.TabIndex = 78;
-            this.label21.Text = "From";
-            // 
             // Supervisor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -944,7 +945,7 @@
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button generateReportButton;
         private System.Windows.Forms.Button VielAllButton;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button ShowDeatilsButton;

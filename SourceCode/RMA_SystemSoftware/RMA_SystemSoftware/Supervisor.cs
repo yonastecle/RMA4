@@ -240,6 +240,13 @@ namespace RMA_SystemSoftware
                 MessageBox.Show("Please enter RMA# !");
 
        }
+
+        private void generateReportButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            RMA_Report report = new RMA_Report();
+            report.Show();
+        }
     }
 }
 

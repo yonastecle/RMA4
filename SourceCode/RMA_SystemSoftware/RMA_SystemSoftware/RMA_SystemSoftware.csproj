@@ -33,10 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Messaging" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +56,11 @@
     </Compile>
     <Compile Include="Add_emp.Designer.cs">
       <DependentUpon>Add_emp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="delegateMessageBox.cs">
       <SubType>Form</SubType>
@@ -95,6 +103,12 @@
     </Compile>
     <Compile Include="Receiving.Designer.cs">
       <DependentUpon>Receiving.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RMA Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RMA Report.Designer.cs">
+      <DependentUpon>RMA Report.cs</DependentUpon>
     </Compile>
     <Compile Include="Search_RMA.cs">
       <SubType>Form</SubType>
@@ -167,6 +181,10 @@
     <EmbeddedResource Include="Receiving.resx">
       <DependentUpon>Receiving.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="RMA Report.resx">
+      <DependentUpon>RMA Report.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Search_RMA.resx">
       <DependentUpon>Search_RMA.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +203,17 @@
     <EmbeddedResource Include="WO_Details.resx">
       <DependentUpon>WO_Details.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
