@@ -65,7 +65,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.button7 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_View_RmaNo = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -79,9 +79,9 @@
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.VielAllButton = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.ShowDeatilsButton = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -98,6 +98,7 @@
             this.ViewAllbutton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -499,14 +500,14 @@
             this.button7.Text = "View WOs in Queue";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // textBox_View_RmaNo
             // 
-            this.textBox3.Location = new System.Drawing.Point(127, 18);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(296, 23);
-            this.textBox3.TabIndex = 64;
+            this.textBox_View_RmaNo.Location = new System.Drawing.Point(127, 18);
+            this.textBox_View_RmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox_View_RmaNo.Multiline = true;
+            this.textBox_View_RmaNo.Name = "textBox_View_RmaNo";
+            this.textBox_View_RmaNo.Size = new System.Drawing.Size(255, 23);
+            this.textBox_View_RmaNo.TabIndex = 64;
             // 
             // label16
             // 
@@ -523,9 +524,10 @@
             // 
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.ShowDeatilsButton);
+            this.groupBox2.Controls.Add(this.textBox_View_RmaNo);
             this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.VielAllButton);
             this.groupBox2.Location = new System.Drawing.Point(583, 373);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(533, 281);
@@ -535,6 +537,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label21);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.dateTimePicker1);
@@ -545,17 +548,16 @@
             this.panel1.Controls.Add(this.radioButton7);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button10);
             this.panel1.Location = new System.Drawing.Point(15, 97);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(494, 174);
+            this.panel1.Size = new System.Drawing.Size(512, 174);
             this.panel1.TabIndex = 69;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(243, 55);
+            this.label15.Location = new System.Drawing.Point(176, 61);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(20, 16);
             this.label15.TabIndex = 77;
@@ -563,16 +565,16 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(272, 50);
+            this.dateTimePicker2.Location = new System.Drawing.Point(225, 62);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(61, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(165, 20);
             this.dateTimePicker2.TabIndex = 76;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(169, 49);
+            this.dateTimePicker1.Location = new System.Drawing.Point(225, 31);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(59, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(165, 20);
             this.dateTimePicker1.TabIndex = 75;
             // 
             // comboBox3
@@ -580,15 +582,15 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(169, 88);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(164, 21);
+            this.comboBox3.Size = new System.Drawing.Size(221, 21);
             this.comboBox3.TabIndex = 74;
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(169, 130);
+            this.comboBox2.Location = new System.Drawing.Point(169, 123);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(164, 21);
+            this.comboBox2.Size = new System.Drawing.Size(221, 21);
             this.comboBox2.TabIndex = 73;
             // 
             // radioButton9
@@ -615,7 +617,7 @@
             // 
             this.radioButton7.AutoSize = true;
             this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(63, 53);
+            this.radioButton7.Location = new System.Drawing.Point(63, 48);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(48, 17);
             this.radioButton7.TabIndex = 70;
@@ -636,42 +638,44 @@
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(387, 111);
+            this.button11.Location = new System.Drawing.Point(415, 65);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(85, 40);
             this.button11.TabIndex = 68;
             this.button11.Text = "Generate Report";
             this.button11.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // VielAllButton
             // 
-            this.button10.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(387, 40);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(85, 42);
-            this.button10.TabIndex = 67;
-            this.button10.Text = "View all WOs";
-            this.button10.UseVisualStyleBackColor = true;
+            this.VielAllButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VielAllButton.Location = new System.Drawing.Point(415, 26);
+            this.VielAllButton.Name = "VielAllButton";
+            this.VielAllButton.Size = new System.Drawing.Size(85, 42);
+            this.VielAllButton.TabIndex = 67;
+            this.VielAllButton.Text = "View all WOs";
+            this.VielAllButton.UseVisualStyleBackColor = true;
+            this.VielAllButton.Click += new System.EventHandler(this.VielAllButton_Click);
             // 
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(289, 50);
+            this.button9.Location = new System.Drawing.Point(279, 57);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(84, 25);
             this.button9.TabIndex = 66;
             this.button9.Text = "View History";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // ShowDeatilsButton
             // 
-            this.button8.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(153, 50);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(91, 25);
-            this.button8.TabIndex = 65;
-            this.button8.Text = "Show Deatils";
-            this.button8.UseVisualStyleBackColor = true;
+            this.ShowDeatilsButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowDeatilsButton.Location = new System.Drawing.Point(162, 57);
+            this.ShowDeatilsButton.Name = "ShowDeatilsButton";
+            this.ShowDeatilsButton.Size = new System.Drawing.Size(91, 25);
+            this.ShowDeatilsButton.TabIndex = 65;
+            this.ShowDeatilsButton.Text = "Show Deatils";
+            this.ShowDeatilsButton.UseVisualStyleBackColor = true;
+            this.ShowDeatilsButton.Click += new System.EventHandler(this.ShowDeatilsButton_Click);
             // 
             // label17
             // 
@@ -844,6 +848,16 @@
             this.label18.Text = "Employee ID:";
             this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(166, 35);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(41, 16);
+            this.label21.TabIndex = 78;
+            this.label21.Text = "From";
+            // 
             // Supervisor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -917,7 +931,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_View_RmaNo;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
@@ -931,9 +945,9 @@
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button VielAllButton;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button ShowDeatilsButton;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Panel panel2;
@@ -951,5 +965,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label21;
     }
 }

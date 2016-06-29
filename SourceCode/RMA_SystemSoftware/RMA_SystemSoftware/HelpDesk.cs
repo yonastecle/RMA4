@@ -39,9 +39,6 @@ namespace RMA_SystemSoftware
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            AuthorizedUser();
-        }
+        
     }
 }

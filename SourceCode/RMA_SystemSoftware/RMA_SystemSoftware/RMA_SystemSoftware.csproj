@@ -128,6 +128,12 @@
     <Compile Include="Tech_Open.Designer.cs">
       <DependentUpon>Tech_Open.cs</DependentUpon>
     </Compile>
+    <Compile Include="WO_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WO_Details.Designer.cs">
+      <DependentUpon>WO_Details.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add_emp.resx">
       <DependentUpon>Add_emp.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tech_Open.resx">
       <DependentUpon>Tech_Open.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WO_Details.resx">
+      <DependentUpon>WO_Details.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

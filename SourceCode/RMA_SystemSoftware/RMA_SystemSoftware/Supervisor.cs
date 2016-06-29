@@ -16,8 +16,12 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader read;
+        SqlDataAdapter da;
+        DataSet ds;
+        WO_Details details = new WO_Details();
+
         string s;
-        
+
 
         public Supervisor()
         {
@@ -66,7 +70,7 @@ namespace RMA_SystemSoftware
             this.Close();
             EmpInfo info = new EmpInfo();
             info.Show();
-            
+
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -136,13 +140,13 @@ namespace RMA_SystemSoftware
 
         private void Supervisor_Load(object sender, EventArgs e)
         {
-           try
+            try
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 cmd = new SqlCommand("Select firstName from Employee where userType = 'Help Desk'", con);
-                read=cmd.ExecuteReader();
-                while(read.Read())
+                read = cmd.ExecuteReader();
+                while (read.Read())
                 {
                     combobox_AuthorizeUser.Items.Add(read["firstName"]);
                 }
@@ -150,7 +154,7 @@ namespace RMA_SystemSoftware
                 read.Dispose();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -159,6 +163,75 @@ namespace RMA_SystemSoftware
         private void authorizeButton_Click(object sender, EventArgs e)
         {
 
+
         }
+
+        public void fill_grid()
+        {
+
+            da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
+            ds = new DataSet();
+            da.Fill(ds, "All WO Details");
+            details.dataGridView_WODetails.DataSource = ds.Tables[0];
+            this.Close();
+            details.Show();
+        }
+        private void VielAllButton_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                fill_grid();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ShowDeatilsButton_Click(object sender, EventArgs e)
+        {
+            string result = null;
+            if (textBox_View_RmaNo.Text != "")
+            {
+                try
+                {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    con.Open();
+                    cmd = new SqlCommand("Select count(rma_no) found from RMA where rma_no = '" + textBox_View_RmaNo.Text + "'", con);
+                    read = cmd.ExecuteReader();
+                    while (read.Read())
+                        result = String.Format("{0}", read["found"]);
+                    con.Close();
+                    if (result.Equals("1"))
+                    {
+                        if (con.State == ConnectionState.Open) con.Close();
+                        con.Open();
+                        da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA where rma_no='" + textBox_View_RmaNo.Text + "'", con);
+                        ds = new DataSet();
+                        da.Fill(ds, "Single RMA Details");
+                        details.dataGridView_WODetails.DataSource = ds.Tables["Single RMA Details"];
+                        this.Close();
+                        details.Show();
+                        con.Close();
+                    }
+                    else if(result.Equals("0"))
+                        MessageBox.Show("RMA not found. Please enter a valid RMA#");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+            else
+                MessageBox.Show("Please enter RMA# !");
+
+       }
     }
 }
+

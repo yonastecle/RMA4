@@ -44,6 +44,8 @@ namespace RMA_SystemSoftware
                 con.Open();
                 cmd = new SqlCommand("update Notes set statusUpdates='" + textBox_delg_reason.Text + "' where RMA_no = '" + RMA + "'", con);
                 cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("update RMA set Status= 'Hold' where RMA_no = '" + RMA + "'", con);
+                cmd.ExecuteNonQuery(); 
                 con.Close();
                 MessageBox.Show(" Request put on hold. Email notification sent to Supervisor for approval!");
                 //Pending :Add functionality to send email notification to the Supervisor          

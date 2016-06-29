@@ -109,9 +109,8 @@ namespace RMA_SystemSoftware
                 while (reader.Read())
                 result = String.Format("{0}", reader["total"]);
                 mesg_box.result = result;
-
-                //Issue: Doesnot work for "Result=0"
-                if (result.Equals(0))
+                
+                if (result.Equals("0"))
                     MessageBox.Show("RMA record not found");
                 else
                 {

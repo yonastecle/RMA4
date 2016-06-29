@@ -45,7 +45,7 @@ namespace RMA_SystemSoftware
             listBox_Received.Items.Clear();
             listBox_Wait.Items.Clear();
             Receiving_Load(this, null);
-            fill_grid();
+            fill_grid(); 
 
         }
 
