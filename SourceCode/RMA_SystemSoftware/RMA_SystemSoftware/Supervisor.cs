@@ -151,7 +151,15 @@ namespace RMA_SystemSoftware
                     combobox_AuthorizeUser.Items.Add(read["firstName"]);
                 }
                 read.Close();
+                cmd = new SqlCommand("Select Company from Client ", con);
+                read = cmd.ExecuteReader();
+                while(read.Read())
+                {
+                    comboBox_clientName.Items.Add(read["Company"]);
+                }
+                read.Close();
                 read.Dispose();
+                con.Close();
 
             }
             catch (Exception ex)
