@@ -133,15 +133,62 @@ namespace RMA_SystemSoftware
             }
         }
 
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void refreshButton_Click(object sender, EventArgs e)
         {
-
+            if (con.State == ConnectionState.Open) con.Close();
+            listBox_newRequests.Items.Clear();
+            listBox_refundRequest.Items.Clear();
+            listBox_requestOnHold.Items.Clear();
+            Supervisor_Load(this, null);
+           
         }
 
+    
+
+        public void fill_listbox()
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where Status= 'Open'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    string rma_no = read.GetString(read.GetOrdinal("rma_no"));
+                    listBox_newRequests.Items.Add(rma_no);
+                }
+                con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where Status= 'Hold'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    string rma_no = read.GetString(read.GetOrdinal("rma_no"));
+                    listBox_requestOnHold .Items.Add(rma_no);
+                }
+                con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where Status= 'Refund'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    string rma_no = read.GetString(read.GetOrdinal("rma_no"));
+                    listBox_refundRequest.Items.Add(rma_no);
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void Supervisor_Load(object sender, EventArgs e)
         {
             try
             {
+                fill_listbox();
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 cmd = new SqlCommand("Select firstName from Employee where userType = 'Help Desk'", con);
@@ -160,7 +207,15 @@ namespace RMA_SystemSoftware
                 read.Close();
                 read.Dispose();
                 con.Close();
-
+                comboBox_status.Items.Add("Open");
+                comboBox_status.Items.Add("Received");
+                comboBox_status.Items.Add("Wait");
+                comboBox_status.Items.Add("Waiting to be assigned");
+                comboBox_status.Items.Add("Assigned");
+                comboBox_status.Items.Add("Hold");
+                comboBox_status.Items.Add("Refund");
+                comboBox_status.Items.Add("Complete");
+                comboBox_status.Items.Add("Close");
             }
             catch (Exception ex)
             {
@@ -247,6 +302,8 @@ namespace RMA_SystemSoftware
             RMA_Report report = new RMA_Report();
             report.Show();
         }
+
+        
     }
 }
 

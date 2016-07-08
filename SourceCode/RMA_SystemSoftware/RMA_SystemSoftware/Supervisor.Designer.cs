@@ -60,9 +60,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.listBox_requestOnHold = new System.Windows.Forms.ListBox();
+            this.listBox_newRequests = new System.Windows.Forms.ListBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.button7 = new System.Windows.Forms.Button();
             this.textBox_View_RmaNo = new System.Windows.Forms.TextBox();
@@ -74,7 +74,7 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox_clientName = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_status = new System.Windows.Forms.ComboBox();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
@@ -84,7 +84,7 @@
             this.ShowDeatilsButton = new System.Windows.Forms.Button();
             this.VielAllButton = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBox_refundRequest = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -459,31 +459,32 @@
             this.label13.TabIndex = 60;
             this.label13.Text = "New Requests";
             // 
-            // button6
+            // refreshButton
             // 
-            this.button6.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(132, 269);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(117, 37);
-            this.button6.TabIndex = 59;
-            this.button6.Text = "Refresh";
-            this.button6.UseVisualStyleBackColor = true;
+            this.refreshButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Location = new System.Drawing.Point(132, 269);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(117, 37);
+            this.refreshButton.TabIndex = 59;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
-            // listBox2
+            // listBox_requestOnHold
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(194, 35);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(169, 212);
-            this.listBox2.TabIndex = 58;
+            this.listBox_requestOnHold.FormattingEnabled = true;
+            this.listBox_requestOnHold.Location = new System.Drawing.Point(194, 35);
+            this.listBox_requestOnHold.Name = "listBox_requestOnHold";
+            this.listBox_requestOnHold.Size = new System.Drawing.Size(169, 212);
+            this.listBox_requestOnHold.TabIndex = 58;
             // 
-            // listBox1
+            // listBox_newRequests
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(2, 35);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(186, 212);
-            this.listBox1.TabIndex = 57;
+            this.listBox_newRequests.FormattingEnabled = true;
+            this.listBox_newRequests.Location = new System.Drawing.Point(2, 35);
+            this.listBox_newRequests.Name = "listBox_newRequests";
+            this.listBox_newRequests.Size = new System.Drawing.Size(186, 212);
+            this.listBox_newRequests.TabIndex = 57;
             // 
             // notifyIcon1
             // 
@@ -542,7 +543,7 @@
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.comboBox_clientName);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.comboBox_status);
             this.panel1.Controls.Add(this.radioButton9);
             this.panel1.Controls.Add(this.radioButton8);
             this.panel1.Controls.Add(this.radioButton7);
@@ -595,13 +596,13 @@
             this.comboBox_clientName.Size = new System.Drawing.Size(221, 21);
             this.comboBox_clientName.TabIndex = 74;
             // 
-            // comboBox2
+            // comboBox_status
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(169, 123);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(221, 21);
-            this.comboBox2.TabIndex = 73;
+            this.comboBox_status.FormattingEnabled = true;
+            this.comboBox_status.Location = new System.Drawing.Point(169, 123);
+            this.comboBox_status.Name = "comboBox_status";
+            this.comboBox_status.Size = new System.Drawing.Size(221, 21);
+            this.comboBox_status.TabIndex = 73;
             // 
             // radioButton9
             // 
@@ -700,24 +701,24 @@
             this.label17.TabIndex = 67;
             this.label17.Text = "Refund Requests";
             // 
-            // listBox3
+            // listBox_refundRequest
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(369, 35);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(178, 212);
-            this.listBox3.TabIndex = 66;
+            this.listBox_refundRequest.FormattingEnabled = true;
+            this.listBox_refundRequest.Location = new System.Drawing.Point(369, 35);
+            this.listBox_refundRequest.Name = "listBox_refundRequest";
+            this.listBox_refundRequest.Size = new System.Drawing.Size(178, 212);
+            this.listBox_refundRequest.TabIndex = 66;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.listBox3);
+            this.panel2.Controls.Add(this.listBox_refundRequest);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.listBox2);
-            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this.refreshButton);
+            this.panel2.Controls.Add(this.listBox_requestOnHold);
+            this.panel2.Controls.Add(this.listBox_newRequests);
             this.panel2.Location = new System.Drawing.Point(583, 44);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(564, 323);
@@ -762,7 +763,6 @@
             this.combobox_AuthorizeUser.Name = "combobox_AuthorizeUser";
             this.combobox_AuthorizeUser.Size = new System.Drawing.Size(161, 21);
             this.combobox_AuthorizeUser.TabIndex = 67;
-            this.combobox_AuthorizeUser.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -927,9 +927,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.ListBox listBox_requestOnHold;
+        private System.Windows.Forms.ListBox listBox_newRequests;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox textBox_View_RmaNo;
@@ -940,7 +940,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox comboBox_clientName;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_status;
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.RadioButton radioButton7;
@@ -950,7 +950,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button ShowDeatilsButton;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBox_refundRequest;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel4;
