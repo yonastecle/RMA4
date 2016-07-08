@@ -49,7 +49,7 @@
             this.label1.Size = new System.Drawing.Size(621, 54);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to the RMA System";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+        
             // 
             // label2
             // 
