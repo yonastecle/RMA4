@@ -33,32 +33,30 @@ namespace RMA_SystemSoftware
 
         }
         //Split RMA button
-        private void button17_Click(object sender, EventArgs e)
+        private void SplitRMAButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             Split_RMA split = new Split_RMA();
             split.Show();
 
         }
+        
         //Logout
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             Form1 login = new Form1();
             login.Show();
+
         }
         //Help
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void HelpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
         }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         //Add new emp Button
-        private void button13_Click(object sender, EventArgs e)
+        private void AddNewEmpButton_Click(object sender, EventArgs e)
         {
             this.Close();
             Add_emp add_emp = new Add_emp();
@@ -70,7 +68,6 @@ namespace RMA_SystemSoftware
             this.Close();
             EmpInfo info = new EmpInfo();
             info.Show();
-
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -310,7 +307,7 @@ namespace RMA_SystemSoftware
           
         }
 
-       
+        
     }
 }
 

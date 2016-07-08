@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.RMASerachButton = new System.Windows.Forms.Button();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.HelpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button17 = new System.Windows.Forms.Button();
+            this.SplitRMAButton = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -95,7 +95,7 @@
             this.textBox_EmpName = new System.Windows.Forms.TextBox();
             this.textBox_EmpID = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.AddNewEmpButton = new System.Windows.Forms.Button();
             this.ViewAllbutton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -118,18 +118,18 @@
             this.RMASerachButton.UseVisualStyleBackColor = true;
             this.RMASerachButton.Click += new System.EventHandler(this.RMASerachButton_Click);
             // 
-            // linkLabel3
+            // HelpLinkLabel
             // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel3.Location = new System.Drawing.Point(973, 15);
-            this.linkLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(45, 17);
-            this.linkLabel3.TabIndex = 31;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "Help?";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.HelpLinkLabel.AutoSize = true;
+            this.HelpLinkLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpLinkLabel.Location = new System.Drawing.Point(973, 15);
+            this.HelpLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.HelpLinkLabel.Name = "HelpLinkLabel";
+            this.HelpLinkLabel.Size = new System.Drawing.Size(45, 17);
+            this.HelpLinkLabel.TabIndex = 31;
+            this.HelpLinkLabel.TabStop = true;
+            this.HelpLinkLabel.Text = "Help?";
+            this.HelpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HelpLinkLabel_LinkClicked);
             // 
             // label2
             // 
@@ -154,22 +154,22 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Hello";
             // 
-            // linkLabel2
+            // LogoutLinkLabel
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.Location = new System.Drawing.Point(1026, 14);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(57, 17);
-            this.linkLabel2.TabIndex = 28;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Logout!";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.LogoutLinkLabel.AutoSize = true;
+            this.LogoutLinkLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoutLinkLabel.Location = new System.Drawing.Point(1026, 14);
+            this.LogoutLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LogoutLinkLabel.Name = "LogoutLinkLabel";
+            this.LogoutLinkLabel.Size = new System.Drawing.Size(57, 17);
+            this.LogoutLinkLabel.TabIndex = 28;
+            this.LogoutLinkLabel.TabStop = true;
+            this.LogoutLinkLabel.Text = "Logout!";
+            this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button17);
+            this.groupBox1.Controls.Add(this.SplitRMAButton);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.textBox2);
@@ -199,16 +199,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Update Details";
             // 
-            // button17
+            // SplitRMAButton
             // 
-            this.button17.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(457, 28);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(75, 24);
-            this.button17.TabIndex = 57;
-            this.button17.Text = "Split RMA";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.SplitRMAButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SplitRMAButton.Location = new System.Drawing.Point(457, 28);
+            this.SplitRMAButton.Name = "SplitRMAButton";
+            this.SplitRMAButton.Size = new System.Drawing.Size(75, 24);
+            this.SplitRMAButton.TabIndex = 57;
+            this.SplitRMAButton.Text = "Split RMA";
+            this.SplitRMAButton.UseVisualStyleBackColor = true;
+            this.SplitRMAButton.Click += new System.EventHandler(this.SplitRMAButton_Click);
             // 
             // button5
             // 
@@ -780,7 +780,7 @@
             this.panel3.Controls.Add(this.textBox_EmpName);
             this.panel3.Controls.Add(this.textBox_EmpID);
             this.panel3.Controls.Add(this.SearchButton);
-            this.panel3.Controls.Add(this.button13);
+            this.panel3.Controls.Add(this.AddNewEmpButton);
             this.panel3.Controls.Add(this.ViewAllbutton);
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.label18);
@@ -814,16 +814,16 @@
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
-            // button13
+            // AddNewEmpButton
             // 
-            this.button13.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(370, 58);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(91, 23);
-            this.button13.TabIndex = 69;
-            this.button13.Text = "Add New";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.AddNewEmpButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNewEmpButton.Location = new System.Drawing.Point(370, 58);
+            this.AddNewEmpButton.Name = "AddNewEmpButton";
+            this.AddNewEmpButton.Size = new System.Drawing.Size(91, 23);
+            this.AddNewEmpButton.TabIndex = 69;
+            this.AddNewEmpButton.Text = "Add New";
+            this.AddNewEmpButton.UseVisualStyleBackColor = true;
+            this.AddNewEmpButton.Click += new System.EventHandler(this.AddNewEmpButton_Click);
             // 
             // ViewAllbutton
             // 
@@ -857,7 +857,6 @@
             this.label18.Size = new System.Drawing.Size(92, 15);
             this.label18.TabIndex = 64;
             this.label18.Text = "Employee ID:";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // Supervisor
             // 
@@ -870,10 +869,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.RMASerachButton);
-            this.Controls.Add(this.linkLabel3);
+            this.Controls.Add(this.HelpLinkLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.LogoutLinkLabel);
             this.Name = "Supervisor";
             this.Text = "Supervisor";
             this.Load += new System.EventHandler(this.Supervisor_Load);
@@ -898,10 +897,10 @@
         #endregion
 
         private System.Windows.Forms.Button RMASerachButton;
-        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel HelpLinkLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel LogoutLinkLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -961,11 +960,11 @@
         private System.Windows.Forms.TextBox textBox_EmpName;
         private System.Windows.Forms.TextBox textBox_EmpID;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button AddNewEmpButton;
         private System.Windows.Forms.Button ViewAllbutton;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button SplitRMAButton;
         private System.Windows.Forms.Label label21;
     }
 }
