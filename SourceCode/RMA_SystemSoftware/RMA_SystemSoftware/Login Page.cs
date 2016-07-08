@@ -83,10 +83,7 @@ namespace RMA_SystemSoftware
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
   }
 
