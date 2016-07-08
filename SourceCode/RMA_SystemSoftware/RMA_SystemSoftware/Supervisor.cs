@@ -15,7 +15,7 @@ namespace RMA_SystemSoftware
     {
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
-        SqlDataReader read;
+        SqlDataReader read,read2;
         SqlDataAdapter da;
         DataSet ds;
         WO_Details details = new WO_Details();
@@ -26,12 +26,27 @@ namespace RMA_SystemSoftware
         public Supervisor()
         {
             InitializeComponent();
+            comboBox_status.Items.Add("Open");
+            comboBox_status.Items.Add("Received");
+            comboBox_status.Items.Add("Wait");
+            comboBox_status.Items.Add("Waiting to be assigned");
+            comboBox_status.Items.Add("Assigned");
+            comboBox_status.Items.Add("Hold");
+            comboBox_status.Items.Add("Refund");
+            comboBox_status.Items.Add("Complete");
+            comboBox_status.Items.Add("Close");
+            comboBox_updateStatus.Items.Add("Open");//Can be omitted!
+            comboBox_updateStatus.Items.Add("Received");
+            comboBox_updateStatus.Items.Add("Wait");
+            comboBox_updateStatus.Items.Add("Waiting to be assigned");
+            comboBox_updateStatus.Items.Add("Assigned");
+            comboBox_updateStatus.Items.Add("Hold");
+            comboBox_updateStatus.Items.Add("Refund");
+            comboBox_updateStatus.Items.Add("Complete");
+            comboBox_updateStatus.Items.Add("Close");
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+      
         //Split RMA button
         private void SplitRMAButton_Click(object sender, EventArgs e)
         {
@@ -202,17 +217,9 @@ namespace RMA_SystemSoftware
                     comboBox_clientName.Items.Add(read["Company"]);
                 }
                 read.Close();
-                read.Dispose();
+               // read.Dispose();
                 con.Close();
-                comboBox_status.Items.Add("Open");
-                comboBox_status.Items.Add("Received");
-                comboBox_status.Items.Add("Wait");
-                comboBox_status.Items.Add("Waiting to be assigned");
-                comboBox_status.Items.Add("Assigned");
-                comboBox_status.Items.Add("Hold");
-                comboBox_status.Items.Add("Refund");
-                comboBox_status.Items.Add("Complete");
-                comboBox_status.Items.Add("Close");
+                
             }
             catch (Exception ex)
             {
@@ -236,9 +243,8 @@ namespace RMA_SystemSoftware
             this.Close();
             details.Show();
         }
-        private void VielAllButton_Click(object sender, EventArgs e)
+        private void ViewAllWOButton_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -250,8 +256,9 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(ex.Message);
             }
-        }
 
+        }
+        
         private void ShowDeatilsButton_Click(object sender, EventArgs e)
         {
             string result = null;
@@ -307,7 +314,111 @@ namespace RMA_SystemSoftware
           
         }
 
-        
+        private void listBox_newRequests_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("select * from RMA where rma_no ='" + listBox_newRequests.Text + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
+                    label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    //Enable radio Button for request type
+                    //string cat;
+                    //cat = read.GetString(read.GetOrdinal("category"));
+                    //if (cat.Equals("1"))
+                    //    radioButton_CAT1.Checked = true;
+                    //else if (cat.Equals("2"))
+                    //    radioButton_CAT2.Checked = true;
+                    //else if (cat.Equals("3"))
+                    //    radioButton_CAT3.Checked = true;
+                    //else
+                    //    radioButton_CAT4.Checked = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void listBox_requestOnHold_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("select * from RMA where rma_no ='" + listBox_requestOnHold.Text + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
+                    label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    //Enable radio Button for request type
+                    //string cat;
+                    //cat = read.GetString(read.GetOrdinal("category"));
+                    //if (cat.Equals("1"))
+                    //    radioButton_CAT1.Checked = true;
+                    //else if (cat.Equals("2"))
+                    //    radioButton_CAT2.Checked = true;
+                    //else if (cat.Equals("3"))
+                    //    radioButton_CAT3.Checked = true;
+                    //else
+                    //    radioButton_CAT4.Checked = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ID;
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("select * from RMA where rma_no ='" + listBox_refundRequest.Text + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
+                    label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    ID = read.GetString(read.GetOrdinal("userID"));
+
+                    //Enable radio Button for request type
+
+                    /*string cat;
+                    cat = read.GetString(read.GetOrdinal("category"));
+                    if (cat.Equals("1"))
+                        radioButton_CAT1.Checked = true;
+                    else if (cat.Equals("2"))
+                        radioButton_CAT2.Checked = true;
+                    else if (cat.Equals("3"))
+                        radioButton_CAT3.Checked = true;
+                    else
+                        radioButton_CAT4.Checked = true;*/
+
+
+
+                    cmd = new SqlCommand("select firstName name from Employee where UserID='" + ID + "'", con);
+                read2 = cmd.ExecuteReader();
+                while (read.Read()) label_TechName.Text = read2.GetString(read2.GetOrdinal("firstName"));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
 
