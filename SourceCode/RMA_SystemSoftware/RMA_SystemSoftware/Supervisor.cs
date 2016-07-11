@@ -19,9 +19,10 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         WO_Details details = new WO_Details();
-
-        string s, ID, req_type,cat;
+        Split_RMA split = new Split_RMA();
         Tech_Open open = new Tech_Open();
+        string s, ID, req_type,cat;
+       
 
 
         public Supervisor()
@@ -51,9 +52,13 @@ namespace RMA_SystemSoftware
         //Split RMA button
         private void SplitRMAButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Split_RMA split = new Split_RMA();
-            split.Show();
+            if (textBox_rmaNo.Text != "")
+            {
+                this.Hide();
+                split.Show();
+            }
+            else
+                MessageBox.Show("Enter RMA No.");
 
         }
         
@@ -415,7 +420,6 @@ namespace RMA_SystemSoftware
             con.Open();
             cmd = new SqlCommand("update RMA set userID='" + id + "' where rma_no='" + textBox_rmaNo.Text + "'", con);
             cmd.ExecuteNonQuery();
-            comboBox_TechName.SelectedIndex=-1;
             con.Close();
          }
 
@@ -574,6 +578,7 @@ namespace RMA_SystemSoftware
             read = cmd.ExecuteReader();
             while (read.Read())
                 label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+            comboBox_TechName.SelectedIndex = -1;
             con.Close();
         }
         

@@ -12,6 +12,7 @@ namespace RMA_SystemSoftware
 {
     public partial class Split_RMA : Form
     {
+       
         public Split_RMA()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace RMA_SystemSoftware
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             this.Hide();
             Supervisor Sup = new Supervisor();
             Sup.Show();
