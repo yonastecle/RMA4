@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_delg_reason = new System.Windows.Forms.TextBox();
-            this.DelegateButton = new System.Windows.Forms.Button();
+            this.SubmitButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label_RMA_No = new System.Windows.Forms.Label();
@@ -54,16 +54,16 @@
             this.textBox_delg_reason.Size = new System.Drawing.Size(282, 109);
             this.textBox_delg_reason.TabIndex = 1;
             // 
-            // DelegateButton
+            // SubmitButton
             // 
-            this.DelegateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DelegateButton.Location = new System.Drawing.Point(199, 190);
-            this.DelegateButton.Name = "DelegateButton";
-            this.DelegateButton.Size = new System.Drawing.Size(75, 23);
-            this.DelegateButton.TabIndex = 2;
-            this.DelegateButton.Text = "Submit";
-            this.DelegateButton.UseVisualStyleBackColor = true;
-            this.DelegateButton.Click += new System.EventHandler(this.DelegateButton_Click);
+            this.SubmitButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitButton.Location = new System.Drawing.Point(199, 190);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(75, 23);
+            this.SubmitButton.TabIndex = 2;
+            this.SubmitButton.Text = "Submit";
+            this.SubmitButton.UseVisualStyleBackColor = true;
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // CancelButton
             // 
@@ -105,7 +105,7 @@
             this.Controls.Add(this.label_RMA_No);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.DelegateButton);
+            this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.textBox_delg_reason);
             this.Controls.Add(this.label1);
             this.Name = "delegateMessageBox";
@@ -119,7 +119,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_delg_reason;
-        private System.Windows.Forms.Button DelegateButton;
+        private System.Windows.Forms.Button SubmitButton;
         private new System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label_RMA_No;

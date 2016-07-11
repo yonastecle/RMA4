@@ -34,18 +34,18 @@ namespace RMA_SystemSoftware
             tech.Show();
         }
 
-        private void DelegateButton_Click(object sender, EventArgs e)
+        private void SubmitButton_Click(object sender, EventArgs e)
         {
-            
-            
+
             try
-            { 
+            {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("update Notes set statusUpdates='" + textBox_delg_reason.Text + "' where RMA_no = '" + RMA + "'", con);
-                cmd.ExecuteNonQuery();
                 cmd = new SqlCommand("update RMA set Status= 'Hold' where RMA_no = '" + RMA + "'", con);
-                cmd.ExecuteNonQuery(); 
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("update Notes set statusUpdates='" + textBox_delg_reason.Text + "' FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no ='" + RMA + "'", con);
+                cmd.ExecuteNonQuery();
+
                 con.Close();
                 MessageBox.Show(" Request put on hold. Email notification sent to Supervisor for approval!");
                 //Pending :Add functionality to send email notification to the Supervisor          
@@ -57,9 +57,8 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
-        
-    }
+
+     }
 }
 

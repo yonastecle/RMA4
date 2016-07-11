@@ -16,45 +16,18 @@ namespace RMA_SystemSoftware
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+           
+        private void GoBackButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             Technician Tech = new Technician();
+           // Supervisor sup = new Supervisor();
             Tech.Show();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
+          
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void HelpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
         }

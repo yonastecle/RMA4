@@ -15,12 +15,13 @@ namespace RMA_SystemSoftware
     {
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
-        SqlDataReader read,read2;
+        SqlDataReader read;
         SqlDataAdapter da;
         DataSet ds;
         WO_Details details = new WO_Details();
 
-        string s;
+        string s, ID, req_type,cat;
+        Tech_Open open = new Tech_Open();
 
 
         public Supervisor()
@@ -151,7 +152,7 @@ namespace RMA_SystemSoftware
             listBox_newRequests.Items.Clear();
             listBox_refundRequest.Items.Clear();
             listBox_requestOnHold.Items.Clear();
-            Supervisor_Load(this, null);
+            fill_listbox();
            
         }
 
@@ -327,6 +328,7 @@ namespace RMA_SystemSoftware
                     textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
                     label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    ID = read.GetString(read.GetOrdinal("userID"));
                     //Enable radio Button for request type
                     //string cat;
                     //cat = read.GetString(read.GetOrdinal("category"));
@@ -339,11 +341,58 @@ namespace RMA_SystemSoftware
                     //else
                     //    radioButton_CAT4.Checked = true;
                 }
+                con.Close();
+                con.Open();
+                cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+                con.Close();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void openButton_Click(object sender, EventArgs e)
+        {
+            open.Show();
+        }
+
+        private void radioB_repair_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "Repair";
+        }
+
+        private void radioB_replace_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "Replace";
+        }
+
+        private void radioB_refund_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "Refund";
+        }
+
+        private void radioButton_CAT1_CheckedChanged(object sender, EventArgs e)
+        {
+            cat = "1";
+        }
+
+        private void radioButton_CAT2_CheckedChanged(object sender, EventArgs e)
+        {
+            cat = "2";
+        }
+
+        private void radioButton_CAT3_CheckedChanged(object sender, EventArgs e)
+        {
+            cat = "3";
+        }
+
+        private void radioButton_CAT4_CheckedChanged(object sender, EventArgs e)
+        {
+            cat = "4";
         }
 
         private void listBox_requestOnHold_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,6 +408,7 @@ namespace RMA_SystemSoftware
                     textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
                     label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    ID = read.GetString(read.GetOrdinal("userID"));
                     //Enable radio Button for request type
                     //string cat;
                     //cat = read.GetString(read.GetOrdinal("category"));
@@ -370,7 +420,65 @@ namespace RMA_SystemSoftware
                     //    radioButton_CAT3.Checked = true;
                     //else
                     //    radioButton_CAT4.Checked = true;
+
                 }
+                con.Close(); 
+                con.Open();
+                cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                    label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            string found = null;
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+              
+                if (textBox_rmaNo.Text != "")
+                {
+                    if ((radioB_replace.Checked == true || radioB_repair.Checked == true || radioB_refund.Checked == true) && (radioButton_CAT1.Checked == true || radioButton_CAT2.Checked == true || radioButton_CAT3.Checked == true || radioButton_CAT4.Checked == true))
+                    {
+                        con.Open();
+                        cmd = new SqlCommand("UPDATE RMA SET Status ='" + comboBox_updateStatus.Text + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + textBox_rmaNo.Text + "'", con);
+                        cmd.ExecuteNonQuery();
+                        //Adding RMA to Notes Table, if RMA not found in the Notes Table.(Additionally need to work on adding RMA# to the Notes table as and when a new RMA request comes into the DB)
+                        cmd = new SqlCommand("Select count(RMA_no)found from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
+                        read = cmd.ExecuteReader();
+                        while (read.Read())
+                        found = String.Format("{0}", read["found"]);
+                        con.Close();
+                        con.Open();
+                        if (found.Equals("0"))
+                        {
+                          // adding dummy value to Description. LINK IT TO THE CSM DB to fetch the description.
+                           cmd = new SqlCommand("INSERT INTO Notes (RMA_no, description,statusUpdates) Values ('"+textBox_rmaNo.Text+"','Dummy','"+textBox_StatusUpdates.Text+"')", con);
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates = '" + textBox_StatusUpdates.Text + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + textBox_rmaNo.Text + "'", con);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        con.Close();
+                        MessageBox.Show("Changes Saved..Press Refresh! ");
+                    }
+
+                    else
+                        MessageBox.Show("Please choose Type of request/Category!");
+                }
+                else
+                    MessageBox.Show("Please enter the RMA#!");
             }
             catch (Exception ex)
             {
@@ -380,7 +488,7 @@ namespace RMA_SystemSoftware
 
         private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string ID;
+          
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -393,7 +501,7 @@ namespace RMA_SystemSoftware
                     label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     ID = read.GetString(read.GetOrdinal("userID"));
-
+                                
                     //Enable radio Button for request type
 
                     /*string cat;
@@ -406,13 +514,15 @@ namespace RMA_SystemSoftware
                         radioButton_CAT3.Checked = true;
                     else
                         radioButton_CAT4.Checked = true;*/
-
-
-
-                    cmd = new SqlCommand("select firstName name from Employee where UserID='" + ID + "'", con);
-                read2 = cmd.ExecuteReader();
-                while (read.Read()) label_TechName.Text = read2.GetString(read2.GetOrdinal("firstName"));
                 }
+                con.Close();
+                con.Open();
+                cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+                con.Close();  
+                
             }
             catch (Exception ex)
             {

@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioB_replace = new System.Windows.Forms.RadioButton();
             this.SplitRMAButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.openButton = new System.Windows.Forms.Button();
@@ -52,8 +53,8 @@
             this.label_currentStatus = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioB_refund = new System.Windows.Forms.RadioButton();
+            this.radioB_repair = new System.Windows.Forms.RadioButton();
             this.textBox_rmaNo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -98,6 +99,8 @@
             this.ViewAllbutton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -105,6 +108,8 @@
             this.groupBox3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // RMASerachButton
@@ -168,6 +173,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.panel6);
+            this.groupBox1.Controls.Add(this.panel5);
             this.groupBox1.Controls.Add(this.SplitRMAButton);
             this.groupBox1.Controls.Add(this.updateButton);
             this.groupBox1.Controls.Add(this.openButton);
@@ -176,17 +183,11 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label_TechName);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.radioButton_CAT4);
-            this.groupBox1.Controls.Add(this.radioButton_CAT3);
-            this.groupBox1.Controls.Add(this.radioButton_CAT2);
-            this.groupBox1.Controls.Add(this.radioButton_CAT1);
             this.groupBox1.Controls.Add(this.comboBox_updateStatus);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label_currentStatus);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.textBox_rmaNo);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -196,6 +197,17 @@
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Update Details";
+            // 
+            // radioB_replace
+            // 
+            this.radioB_replace.AutoSize = true;
+            this.radioB_replace.Location = new System.Drawing.Point(87, 4);
+            this.radioB_replace.Name = "radioB_replace";
+            this.radioB_replace.Size = new System.Drawing.Size(65, 17);
+            this.radioB_replace.TabIndex = 58;
+            this.radioB_replace.Text = "Replace";
+            this.radioB_replace.UseVisualStyleBackColor = true;
+            this.radioB_replace.CheckedChanged += new System.EventHandler(this.radioB_replace_CheckedChanged);
             // 
             // SplitRMAButton
             // 
@@ -217,6 +229,7 @@
             this.updateButton.TabIndex = 56;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // openButton
             // 
@@ -227,6 +240,7 @@
             this.openButton.TabIndex = 55;
             this.openButton.Text = "Open";
             this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
             // textBox_StatusUpdates
             // 
@@ -280,46 +294,48 @@
             // radioButton_CAT4
             // 
             this.radioButton_CAT4.AutoSize = true;
-            this.radioButton_CAT4.Location = new System.Drawing.Point(326, 152);
+            this.radioButton_CAT4.Location = new System.Drawing.Point(147, 43);
             this.radioButton_CAT4.Name = "radioButton_CAT4";
             this.radioButton_CAT4.Size = new System.Drawing.Size(113, 17);
             this.radioButton_CAT4.TabIndex = 49;
-            this.radioButton_CAT4.TabStop = true;
             this.radioButton_CAT4.Text = "CAT4 (10+ pieces)";
             this.radioButton_CAT4.UseVisualStyleBackColor = true;
+            this.radioButton_CAT4.CheckedChanged += new System.EventHandler(this.radioButton_CAT4_CheckedChanged);
             // 
             // radioButton_CAT3
             // 
             this.radioButton_CAT3.AutoSize = true;
-            this.radioButton_CAT3.Location = new System.Drawing.Point(179, 152);
+            this.radioButton_CAT3.Location = new System.Drawing.Point(0, 43);
             this.radioButton_CAT3.Name = "radioButton_CAT3";
             this.radioButton_CAT3.Size = new System.Drawing.Size(116, 17);
             this.radioButton_CAT3.TabIndex = 48;
-            this.radioButton_CAT3.TabStop = true;
             this.radioButton_CAT3.Text = "CAT3 (5-10 pieces)";
             this.radioButton_CAT3.UseVisualStyleBackColor = true;
+            this.radioButton_CAT3.CheckedChanged += new System.EventHandler(this.radioButton_CAT3_CheckedChanged);
             // 
             // radioButton_CAT2
             // 
             this.radioButton_CAT2.AutoSize = true;
-            this.radioButton_CAT2.Location = new System.Drawing.Point(326, 117);
+            this.radioButton_CAT2.Location = new System.Drawing.Point(147, 8);
             this.radioButton_CAT2.Name = "radioButton_CAT2";
             this.radioButton_CAT2.Size = new System.Drawing.Size(110, 17);
             this.radioButton_CAT2.TabIndex = 47;
-            this.radioButton_CAT2.TabStop = true;
             this.radioButton_CAT2.Text = "CAT2 (3-4 pieces)";
             this.radioButton_CAT2.UseVisualStyleBackColor = true;
+            this.radioButton_CAT2.CheckedChanged += new System.EventHandler(this.radioButton_CAT2_CheckedChanged);
             // 
             // radioButton_CAT1
             // 
             this.radioButton_CAT1.AutoSize = true;
-            this.radioButton_CAT1.Location = new System.Drawing.Point(179, 117);
+            this.radioButton_CAT1.Checked = true;
+            this.radioButton_CAT1.Location = new System.Drawing.Point(0, 8);
             this.radioButton_CAT1.Name = "radioButton_CAT1";
             this.radioButton_CAT1.Size = new System.Drawing.Size(110, 17);
             this.radioButton_CAT1.TabIndex = 46;
             this.radioButton_CAT1.TabStop = true;
             this.radioButton_CAT1.Text = "CAT1 (1-2 pieces)";
             this.radioButton_CAT1.UseVisualStyleBackColor = true;
+            this.radioButton_CAT1.CheckedChanged += new System.EventHandler(this.radioButton_CAT1_CheckedChanged);
             // 
             // comboBox_updateStatus
             // 
@@ -370,27 +386,27 @@
             this.label8.TabIndex = 40;
             this.label8.Text = "Category:";
             // 
-            // radioButton2
+            // radioB_refund
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(326, 86);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 17);
-            this.radioButton2.TabIndex = 39;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Refund";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioB_refund.AutoSize = true;
+            this.radioB_refund.Location = new System.Drawing.Point(182, 4);
+            this.radioB_refund.Name = "radioB_refund";
+            this.radioB_refund.Size = new System.Drawing.Size(60, 17);
+            this.radioB_refund.TabIndex = 39;
+            this.radioB_refund.Text = "Refund";
+            this.radioB_refund.UseVisualStyleBackColor = true;
+            this.radioB_refund.CheckedChanged += new System.EventHandler(this.radioB_refund_CheckedChanged);
             // 
-            // radioButton1
+            // radioB_repair
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(179, 87);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(101, 17);
-            this.radioButton1.TabIndex = 38;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Repair/Replace";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioB_repair.AutoSize = true;
+            this.radioB_repair.Location = new System.Drawing.Point(0, 4);
+            this.radioB_repair.Name = "radioB_repair";
+            this.radioB_repair.Size = new System.Drawing.Size(56, 17);
+            this.radioB_repair.TabIndex = 38;
+            this.radioB_repair.Text = "Repair";
+            this.radioB_repair.UseVisualStyleBackColor = true;
+            this.radioB_repair.CheckedChanged += new System.EventHandler(this.radioB_repair_CheckedChanged);
             // 
             // textBox_rmaNo
             // 
@@ -849,6 +865,27 @@
             this.label18.TabIndex = 64;
             this.label18.Text = "Employee ID:";
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.radioButton_CAT4);
+            this.panel5.Controls.Add(this.radioButton_CAT3);
+            this.panel5.Controls.Add(this.radioButton_CAT2);
+            this.panel5.Controls.Add(this.radioButton_CAT1);
+            this.panel5.Location = new System.Drawing.Point(179, 109);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(274, 69);
+            this.panel5.TabIndex = 59;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.radioB_replace);
+            this.panel6.Controls.Add(this.radioB_refund);
+            this.panel6.Controls.Add(this.radioB_repair);
+            this.panel6.Location = new System.Drawing.Point(179, 83);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(249, 26);
+            this.panel6.TabIndex = 60;
+            // 
             // Supervisor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -880,6 +917,10 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -893,8 +934,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel LogoutLinkLabel;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioB_refund;
+        private System.Windows.Forms.RadioButton radioB_repair;
         private System.Windows.Forms.TextBox textBox_rmaNo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -956,5 +997,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button SplitRMAButton;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.RadioButton radioB_replace;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
     }
 }
