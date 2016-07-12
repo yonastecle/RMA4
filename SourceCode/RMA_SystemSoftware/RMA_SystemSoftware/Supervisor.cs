@@ -52,6 +52,7 @@ namespace RMA_SystemSoftware
         //Split RMA button
         private void SplitRMAButton_Click(object sender, EventArgs e)
         {
+            split.rma_no = textBox_rmaNo.Text;
             if (textBox_rmaNo.Text != "")
             {
                 this.Hide();
