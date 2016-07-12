@@ -20,6 +20,12 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         string req_type;
+        public string u_id;
+        public string passid
+        {
+            get { return u_id; }
+            set { u_id = value; }
+        }
 
         public Receiving()
         {
@@ -35,7 +41,22 @@ namespace RMA_SystemSoftware
         
         private void Receiving_Load(object sender, EventArgs e)
         {
-            fill_listbox();
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("select FirstName from Employee where UserID='"+u_id+"'", con);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                    label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
+                con.Close();
+                fill_listbox();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         
         private void button_refresh_Click(object sender, EventArgs e)

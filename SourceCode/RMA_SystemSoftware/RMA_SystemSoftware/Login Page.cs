@@ -37,24 +37,28 @@ namespace RMA_SystemSoftware
                     {
                         this.Hide();
                         Supervisor sup = new Supervisor();
+                        sup.u_id = textBox1.Text;
                         sup.Show();
                     }
                     else if (dt.Rows[0][0].ToString() == "Technician" || dt.Rows[0][0].ToString() == "technician")
                     {
                         this.Hide();
                         Technician tech = new Technician();
+                        tech.u_id = textBox1.Text;
                         tech.Show();
                     }
                     else if ((dt.Rows[0][0].ToString() == "Help Desk ") || (dt.Rows[0][0].ToString() == "help desk "))
                     {
                         this.Hide();
                         HelpDesk hdesk = new HelpDesk();
+                        hdesk.u_id = textBox1.Text;
                         hdesk.Show();
                     }
                     else if ((dt.Rows[0][0].ToString() == "Receiving ") || (dt.Rows[0][0].ToString() == "receiving "))
                     {
                         this.Hide();
                         Receiving recv = new Receiving();
+                        recv.u_id = textBox1.Text;
                         recv.Show();
                     }
 

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.button4 = new System.Windows.Forms.Button();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_helloEmp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.comboBox_status = new System.Windows.Forms.ComboBox();
@@ -83,17 +83,17 @@
             this.linkLabel3.Text = "Help?";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
-            // label2
+            // label_helloEmp
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(89, 25);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 18);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "EmployeeName";
+            this.label_helloEmp.AutoSize = true;
+            this.label_helloEmp.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_helloEmp.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_helloEmp.Location = new System.Drawing.Point(89, 25);
+            this.label_helloEmp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_helloEmp.Name = "label_helloEmp";
+            this.label_helloEmp.Size = new System.Drawing.Size(117, 18);
+            this.label_helloEmp.TabIndex = 25;
+            this.label_helloEmp.Text = "EmployeeName";
             // 
             // label1
             // 
@@ -366,7 +366,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.linkLabel3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label_helloEmp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel2);
             this.Name = "Technician";
@@ -385,7 +385,7 @@
 
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_helloEmp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.ComboBox comboBox_status;

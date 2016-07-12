@@ -16,6 +16,12 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
+        public string u_id;
+        public string passid
+        {
+            get { return u_id; }
+            set { u_id = value; }
+        }
 
         public Technician()
         {
@@ -28,7 +34,22 @@ namespace RMA_SystemSoftware
         }
         public void Technician_Load(object sender, EventArgs e)
         {
-            fill_listbox();
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("select FirstName from Employee where UserID='" + u_id + "'", con);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
+                con.Close();
+                fill_listbox();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)

@@ -22,7 +22,12 @@ namespace RMA_SystemSoftware
         Split_RMA split = new Split_RMA();
         Tech_Open open = new Tech_Open();
         string s, ID, req_type,cat;
-       
+        public string u_id;
+        public string passid
+        {
+            get { return u_id; }
+            set { u_id = value; }
+        }
 
 
         public Supervisor()
@@ -207,8 +212,16 @@ namespace RMA_SystemSoftware
         {
             try
             {
-                fill_listbox();
                 if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("select FirstName from Employee where UserID='" + u_id + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                label_helloEmp.Text = read.GetString(read.GetOrdinal("firstName"));
+                con.Close();
+
+                fill_listbox();
+              
                 con.Open();
                 cmd = new SqlCommand("Select firstName from Employee where userType = 'Help Desk'", con);
                 read = cmd.ExecuteReader();

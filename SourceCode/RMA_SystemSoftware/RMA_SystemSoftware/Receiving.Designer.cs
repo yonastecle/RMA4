@@ -30,7 +30,7 @@
         {
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_helloEmp = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -84,17 +84,17 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Hello";
             // 
-            // label2
+            // label_helloEmp
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(94, 33);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 18);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "EmployeeName";
+            this.label_helloEmp.AutoSize = true;
+            this.label_helloEmp.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_helloEmp.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_helloEmp.Location = new System.Drawing.Point(94, 33);
+            this.label_helloEmp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_helloEmp.Name = "label_helloEmp";
+            this.label_helloEmp.Size = new System.Drawing.Size(117, 18);
+            this.label_helloEmp.TabIndex = 3;
+            this.label_helloEmp.Text = "EmployeeName";
             // 
             // label3
             // 
@@ -405,7 +405,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.ViewAllButton);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label_helloEmp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel2);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -424,7 +424,7 @@
         #endregion
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_helloEmp;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

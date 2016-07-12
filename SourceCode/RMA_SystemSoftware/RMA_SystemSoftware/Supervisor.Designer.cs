@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.RMASerachButton = new System.Windows.Forms.Button();
             this.HelpLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_helloEmp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -137,17 +137,17 @@
             this.HelpLinkLabel.Text = "Help?";
             this.HelpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HelpLinkLabel_LinkClicked);
             // 
-            // label2
+            // label_helloEmp
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(102, 14);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 18);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "EmployeeName";
+            this.label_helloEmp.AutoSize = true;
+            this.label_helloEmp.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_helloEmp.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_helloEmp.Location = new System.Drawing.Point(102, 14);
+            this.label_helloEmp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_helloEmp.Name = "label_helloEmp";
+            this.label_helloEmp.Size = new System.Drawing.Size(117, 18);
+            this.label_helloEmp.TabIndex = 30;
+            this.label_helloEmp.Text = "EmployeeName";
             // 
             // label1
             // 
@@ -922,7 +922,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.RMASerachButton);
             this.Controls.Add(this.HelpLinkLabel);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label_helloEmp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LogoutLinkLabel);
             this.Name = "Supervisor";
@@ -954,7 +954,7 @@
 
         private System.Windows.Forms.Button RMASerachButton;
         private System.Windows.Forms.LinkLabel HelpLinkLabel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_helloEmp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel LogoutLinkLabel;
         private System.Windows.Forms.GroupBox groupBox1;
