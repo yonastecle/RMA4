@@ -84,7 +84,7 @@
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
             this.generateReportButton = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.ViewHistoryButton = new System.Windows.Forms.Button();
             this.ShowDeatilsButton = new System.Windows.Forms.Button();
             this.ViewAllWOButton = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -560,6 +560,7 @@
             this.textBox_View_RmaNo.Name = "textBox_View_RmaNo";
             this.textBox_View_RmaNo.Size = new System.Drawing.Size(255, 23);
             this.textBox_View_RmaNo.TabIndex = 64;
+            this.textBox_View_RmaNo.Click += new System.EventHandler(this.textBox_View_RmaNo_Click);
             // 
             // label16
             // 
@@ -575,7 +576,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel1);
-            this.groupBox2.Controls.Add(this.button9);
+            this.groupBox2.Controls.Add(this.ViewHistoryButton);
             this.groupBox2.Controls.Add(this.ShowDeatilsButton);
             this.groupBox2.Controls.Add(this.textBox_View_RmaNo);
             this.groupBox2.Controls.Add(this.label16);
@@ -708,15 +709,15 @@
             this.generateReportButton.UseVisualStyleBackColor = true;
             this.generateReportButton.Click += new System.EventHandler(this.generateReportButton_Click);
             // 
-            // button9
+            // ViewHistoryButton
             // 
-            this.button9.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(279, 57);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(84, 25);
-            this.button9.TabIndex = 66;
-            this.button9.Text = "View History";
-            this.button9.UseVisualStyleBackColor = true;
+            this.ViewHistoryButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewHistoryButton.Location = new System.Drawing.Point(279, 57);
+            this.ViewHistoryButton.Name = "ViewHistoryButton";
+            this.ViewHistoryButton.Size = new System.Drawing.Size(84, 25);
+            this.ViewHistoryButton.TabIndex = 66;
+            this.ViewHistoryButton.Text = "View History";
+            this.ViewHistoryButton.UseVisualStyleBackColor = true;
             // 
             // ShowDeatilsButton
             // 
@@ -1000,7 +1001,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button generateReportButton;
         private System.Windows.Forms.Button ViewAllWOButton;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button ViewHistoryButton;
         private System.Windows.Forms.Button ShowDeatilsButton;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ListBox listBox_refundRequest;

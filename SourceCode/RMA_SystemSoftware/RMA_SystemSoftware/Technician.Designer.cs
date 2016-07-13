@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button4 = new System.Windows.Forms.Button();
+            this.SearchButton = new System.Windows.Forms.Button();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.label_helloEmp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.comboBox_status = new System.Windows.Forms.ComboBox();
             this.updateButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ViewHistoryButton = new System.Windows.Forms.Button();
             this.showButton = new System.Windows.Forms.Button();
             this.label_currentStatus = new System.Windows.Forms.Label();
             this.radioButton_refund = new System.Windows.Forms.RadioButton();
@@ -61,14 +61,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Tech_WOQueue)).BeginInit();
             this.SuspendLayout();
             // 
-            // button4
+            // SearchButton
             // 
-            this.button4.Location = new System.Drawing.Point(831, 23);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 23);
-            this.button4.TabIndex = 27;
-            this.button4.Text = "Search RMA";
-            this.button4.UseVisualStyleBackColor = true;
+            this.SearchButton.Location = new System.Drawing.Point(831, 23);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(108, 23);
+            this.SearchButton.TabIndex = 27;
+            this.SearchButton.Text = "Search RMA";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // linkLabel3
             // 
@@ -138,15 +139,15 @@
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
-            // button2
+            // ViewHistoryButton
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(207, 180);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 31);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "View History";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ViewHistoryButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewHistoryButton.Location = new System.Drawing.Point(207, 180);
+            this.ViewHistoryButton.Name = "ViewHistoryButton";
+            this.ViewHistoryButton.Size = new System.Drawing.Size(99, 31);
+            this.ViewHistoryButton.TabIndex = 37;
+            this.ViewHistoryButton.Text = "View History";
+            this.ViewHistoryButton.UseVisualStyleBackColor = true;
             // 
             // showButton
             // 
@@ -213,6 +214,7 @@
             this.textBox_rmaNo.Name = "textBox_rmaNo";
             this.textBox_rmaNo.Size = new System.Drawing.Size(234, 23);
             this.textBox_rmaNo.TabIndex = 31;
+            
             // 
             // label5
             // 
@@ -276,7 +278,7 @@
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.comboBox_status);
             this.groupBox1.Controls.Add(this.updateButton);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.ViewHistoryButton);
             this.groupBox1.Controls.Add(this.showButton);
             this.groupBox1.Controls.Add(this.label_currentStatus);
             this.groupBox1.Controls.Add(this.radioButton_refund);
@@ -370,7 +372,7 @@
             this.Controls.Add(this.listBox_newRequest);
             this.Controls.Add(this.dataGrid_ShowDetails);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.label_helloEmp);
             this.Controls.Add(this.label1);
@@ -389,14 +391,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.Label label_helloEmp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.ComboBox comboBox_status;
         private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ViewHistoryButton;
         private System.Windows.Forms.Button showButton;
         private System.Windows.Forms.Label label_currentStatus;
         private System.Windows.Forms.RadioButton radioButton_refund;
