@@ -16,6 +16,7 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
+        string req_type;
         public string u_id;
         public string passid
         {
@@ -146,10 +147,67 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(" Please enter a valid RMA #");
             }
-               
-           
             
+                
             
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+             
+                if (textBox_rmaNo.Text != "")
+                {
+                    if(radioButton_repair.Checked== true|| radioButton_replace.Checked== true||radioButton_refund.Checked== true)
+                    {
+                        con.Open();
+                        cmd = new SqlCommand("update RMA set Status='" + comboBox_status.Text + "',type='" + req_type + "'where rma_no='"+textBox_rmaNo.Text+ "'", con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        MessageBox.Show("Changes Updated... Press Refresh !");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please Choose the Type of Request");
+                    }
+                }
+                else
+                    MessageBox.Show("Please enter RMA#!");
+                   
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void radioButton_repair_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "Repair";
+        }
+
+        private void radioButton_replace_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "replace";
+        }
+
+        private void radioButton_refund_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "Refund";
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            listBox_newRequest.Items.Clear();
+            fill_listbox();
+        }
+
+        private void showButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

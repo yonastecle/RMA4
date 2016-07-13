@@ -51,7 +51,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton_replace = new System.Windows.Forms.RadioButton();
             this.dataGrid_ShowDetails = new System.Windows.Forms.DataGridView();
-            this.button7 = new System.Windows.Forms.Button();
+            this.RefreshButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.listBox_newRequest = new System.Windows.Forms.ListBox();
             this.dataGrid_Tech_WOQueue = new System.Windows.Forms.DataGridView();
@@ -136,6 +136,7 @@
             this.updateButton.TabIndex = 38;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // button2
             // 
@@ -156,6 +157,7 @@
             this.showButton.TabIndex = 36;
             this.showButton.Text = "Show Details";
             this.showButton.UseVisualStyleBackColor = true;
+            this.showButton.Click += new System.EventHandler(this.showButton_Click);
             // 
             // label_currentStatus
             // 
@@ -178,6 +180,7 @@
             this.radioButton_refund.TabStop = true;
             this.radioButton_refund.Text = "Refund";
             this.radioButton_refund.UseVisualStyleBackColor = true;
+            this.radioButton_refund.CheckedChanged += new System.EventHandler(this.radioButton_refund_CheckedChanged);
             // 
             // radioButton_repair
             // 
@@ -189,6 +192,7 @@
             this.radioButton_repair.TabStop = true;
             this.radioButton_repair.Text = "Repair";
             this.radioButton_repair.UseVisualStyleBackColor = true;
+            this.radioButton_repair.CheckedChanged += new System.EventHandler(this.radioButton_repair_CheckedChanged);
             // 
             // label6
             // 
@@ -299,6 +303,7 @@
             this.radioButton_replace.TabStop = true;
             this.radioButton_replace.Text = "Replace";
             this.radioButton_replace.UseVisualStyleBackColor = true;
+            this.radioButton_replace.CheckedChanged += new System.EventHandler(this.radioButton_replace_CheckedChanged);
             // 
             // dataGrid_ShowDetails
             // 
@@ -308,15 +313,16 @@
             this.dataGrid_ShowDetails.Size = new System.Drawing.Size(615, 294);
             this.dataGrid_ShowDetails.TabIndex = 43;
             // 
-            // button7
+            // RefreshButton
             // 
-            this.button7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(910, 314);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(85, 26);
-            this.button7.TabIndex = 46;
-            this.button7.Text = "Refresh";
-            this.button7.UseVisualStyleBackColor = true;
+            this.RefreshButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RefreshButton.Location = new System.Drawing.Point(910, 314);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(85, 26);
+            this.RefreshButton.TabIndex = 46;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // label8
             // 
@@ -360,7 +366,7 @@
             this.ClientSize = new System.Drawing.Size(1130, 663);
             this.Controls.Add(this.dataGrid_Tech_WOQueue);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.listBox_newRequest);
             this.Controls.Add(this.dataGrid_ShowDetails);
             this.Controls.Add(this.groupBox1);
@@ -404,7 +410,7 @@
         private System.Windows.Forms.Button delegateButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGrid_ShowDetails;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button RefreshButton;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox listBox_newRequest;
         private System.Windows.Forms.DataGridView dataGrid_Tech_WOQueue;
