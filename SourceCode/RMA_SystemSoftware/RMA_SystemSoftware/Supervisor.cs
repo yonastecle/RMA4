@@ -477,38 +477,33 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void textBox_View_RmaNo_Click(object sender, EventArgs e)
-        {
-            string stat = null;
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("select Status stat from RMA where rma_no='" + textBox_View_RmaNo.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                    stat = read.GetString(read.GetOrdinal("Status"));
-                con.Close();
-
-                if (stat.Equals("Close"))
-                    ViewHistoryButton.Enabled = true;
-                else
-                    ViewHistoryButton.Enabled = false;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
+        //Enable/Disable the View History Button: How???
         //private void textBox_View_RmaNo_KeyPress(object sender, KeyPressEventArgs e)
         //{
+        //    string stat = null;
+        //    try
+        //    {
+        //        if (con.State == ConnectionState.Open) con.Close();
+        //        con.Open();
+        //        cmd = new SqlCommand("select Status stat from RMA where rma_no='" + textBox_View_RmaNo.Text + "'", con);
+        //        read = cmd.ExecuteReader();
+        //        while (read.Read())
+        //            stat = read.GetString(read.GetOrdinal("Status"));
+        //        con.Close();
 
-//}
+        //        if (stat.Equals("Close"))
+        //            ViewHistoryButton.Enabled = true;
+        //        else
+        //            ViewHistoryButton.Enabled = false;
 
-private void updateButton_Click(object sender, EventArgs e)
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
+
+        private void updateButton_Click(object sender, EventArgs e)
         {
             string found = null;
             try

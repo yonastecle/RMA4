@@ -560,7 +560,8 @@
             this.textBox_View_RmaNo.Name = "textBox_View_RmaNo";
             this.textBox_View_RmaNo.Size = new System.Drawing.Size(255, 23);
             this.textBox_View_RmaNo.TabIndex = 64;
-            this.textBox_View_RmaNo.Click += new System.EventHandler(this.textBox_View_RmaNo_Click);
+           
+          
             // 
             // label16
             // 
