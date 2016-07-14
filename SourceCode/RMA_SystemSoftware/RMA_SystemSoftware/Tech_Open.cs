@@ -12,6 +12,12 @@ namespace RMA_SystemSoftware
 {
     public partial class Tech_Open : Form
     {
+        public string rma_no;
+        public string PassNo
+        {
+            get { return rma_no; }
+            set { rma_no = value; }
+        }
         public Tech_Open()
         {
             InitializeComponent();
@@ -30,6 +36,11 @@ namespace RMA_SystemSoftware
         private void HelpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
+        }
+
+        private void Tech_Open_Load(object sender, EventArgs e)
+        {
+            label_rmaNo.Text = rma_no;
         }
     }
 }

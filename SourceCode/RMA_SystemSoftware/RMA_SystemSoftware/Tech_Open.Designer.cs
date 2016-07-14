@@ -73,7 +73,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.label22 = new System.Windows.Forms.Label();
+            this.label_rmaNo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -537,16 +537,16 @@
             this.radioButton4.Text = "CAT4 (10+ pieces)";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // label22
+            // label_rmaNo
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.DarkRed;
-            this.label22.Location = new System.Drawing.Point(167, 45);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(38, 16);
-            this.label22.TabIndex = 26;
-            this.label22.Text = "RMA#";
+            this.label_rmaNo.AutoSize = true;
+            this.label_rmaNo.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_rmaNo.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_rmaNo.Location = new System.Drawing.Point(167, 45);
+            this.label_rmaNo.Name = "label_rmaNo";
+            this.label_rmaNo.Size = new System.Drawing.Size(38, 16);
+            this.label_rmaNo.TabIndex = 26;
+            this.label_rmaNo.Text = "RMA#";
             // 
             // Tech_Open
             // 
@@ -554,7 +554,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1139, 663);
-            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label_rmaNo);
             this.Controls.Add(this.radioButton4);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
@@ -572,6 +572,7 @@
             this.Controls.Add(this.HelpLinkLabel);
             this.Name = "Tech_Open";
             this.Text = "Tech_Open";
+            this.Load += new System.EventHandler(this.Tech_Open_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -628,6 +629,6 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label_rmaNo;
     }
 }

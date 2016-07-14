@@ -434,6 +434,7 @@ namespace RMA_SystemSoftware
             con.Open();
             cmd = new SqlCommand("update RMA set userID='" + id + "' where rma_no='" + textBox_rmaNo.Text + "'", con);
             cmd.ExecuteNonQuery();
+            MessageBox.Show("Technician Re-Assigned!");
             con.Close();
          }
 
@@ -477,6 +478,9 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
+
+      
+
         //Enable/Disable the View History Button: How???
         //private void textBox_View_RmaNo_KeyPress(object sender, KeyPressEventArgs e)
         //{

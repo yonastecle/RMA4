@@ -34,25 +34,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel_logout = new System.Windows.Forms.LinkLabel();
             this.groupBox_UpdateDetails = new System.Windows.Forms.GroupBox();
+            this.comboBox_TechName = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.radioB_replace = new System.Windows.Forms.RadioButton();
             this.updateRecordButton = new System.Windows.Forms.Button();
             this.openRecordButton = new System.Windows.Forms.Button();
             this.textBox_update_statusUpdate = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.techChangeButton = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.ConfirmTechChangeButton = new System.Windows.Forms.Button();
+            this.label_TechName = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioB_CAT4 = new System.Windows.Forms.RadioButton();
+            this.radioB_CAT3 = new System.Windows.Forms.RadioButton();
+            this.radioB_CAT2 = new System.Windows.Forms.RadioButton();
+            this.radioB_CAT1 = new System.Windows.Forms.RadioButton();
             this.comboBox_updateStatus = new System.Windows.Forms.ComboBox();
-            this.statusUpdateButton = new System.Windows.Forms.Button();
+            this.SplitRMAButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label_status = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioB_refund = new System.Windows.Forms.RadioButton();
+            this.radioB_repair = new System.Windows.Forms.RadioButton();
             this.textBox_update_rmaNo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,7 +77,7 @@
             this.ViewHistoryButton = new System.Windows.Forms.Button();
             this.ShowDetailsButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.UpdateButton = new System.Windows.Forms.Button();
+            this.UpdateInfoButton = new System.Windows.Forms.Button();
             this.label_currentStatus = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.textBox_comments = new System.Windows.Forms.TextBox();
@@ -153,25 +156,28 @@
             // 
             // groupBox_UpdateDetails
             // 
+            this.groupBox_UpdateDetails.Controls.Add(this.comboBox_TechName);
+            this.groupBox_UpdateDetails.Controls.Add(this.label6);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioB_replace);
             this.groupBox_UpdateDetails.Controls.Add(this.updateRecordButton);
             this.groupBox_UpdateDetails.Controls.Add(this.openRecordButton);
             this.groupBox_UpdateDetails.Controls.Add(this.textBox_update_statusUpdate);
             this.groupBox_UpdateDetails.Controls.Add(this.label11);
-            this.groupBox_UpdateDetails.Controls.Add(this.techChangeButton);
-            this.groupBox_UpdateDetails.Controls.Add(this.label10);
+            this.groupBox_UpdateDetails.Controls.Add(this.ConfirmTechChangeButton);
+            this.groupBox_UpdateDetails.Controls.Add(this.label_TechName);
             this.groupBox_UpdateDetails.Controls.Add(this.label9);
-            this.groupBox_UpdateDetails.Controls.Add(this.radioButton4);
-            this.groupBox_UpdateDetails.Controls.Add(this.radioButton3);
-            this.groupBox_UpdateDetails.Controls.Add(this.radioButton5);
-            this.groupBox_UpdateDetails.Controls.Add(this.radioButton6);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioB_CAT4);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioB_CAT3);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioB_CAT2);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioB_CAT1);
             this.groupBox_UpdateDetails.Controls.Add(this.comboBox_updateStatus);
-            this.groupBox_UpdateDetails.Controls.Add(this.statusUpdateButton);
+            this.groupBox_UpdateDetails.Controls.Add(this.SplitRMAButton);
             this.groupBox_UpdateDetails.Controls.Add(this.label5);
-            this.groupBox_UpdateDetails.Controls.Add(this.label6);
+            this.groupBox_UpdateDetails.Controls.Add(this.label_status);
             this.groupBox_UpdateDetails.Controls.Add(this.label7);
             this.groupBox_UpdateDetails.Controls.Add(this.label8);
-            this.groupBox_UpdateDetails.Controls.Add(this.radioButton2);
-            this.groupBox_UpdateDetails.Controls.Add(this.radioButton1);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioB_refund);
+            this.groupBox_UpdateDetails.Controls.Add(this.radioB_repair);
             this.groupBox_UpdateDetails.Controls.Add(this.textBox_update_rmaNo);
             this.groupBox_UpdateDetails.Controls.Add(this.label4);
             this.groupBox_UpdateDetails.Controls.Add(this.label3);
@@ -182,25 +188,58 @@
             this.groupBox_UpdateDetails.TabStop = false;
             this.groupBox_UpdateDetails.Text = "Update Details(*Only Authorized users)";
             // 
+            // comboBox_TechName
+            // 
+            this.comboBox_TechName.FormattingEnabled = true;
+            this.comboBox_TechName.Location = new System.Drawing.Point(181, 208);
+            this.comboBox_TechName.Name = "comboBox_TechName";
+            this.comboBox_TechName.Size = new System.Drawing.Size(161, 21);
+            this.comboBox_TechName.TabIndex = 64;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(17, 214);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(146, 15);
+            this.label6.TabIndex = 63;
+            this.label6.Text = " Change Technician?:";
+            // 
+            // radioB_replace
+            // 
+            this.radioB_replace.AutoSize = true;
+            this.radioB_replace.Location = new System.Drawing.Point(269, 86);
+            this.radioB_replace.Name = "radioB_replace";
+            this.radioB_replace.Size = new System.Drawing.Size(65, 17);
+            this.radioB_replace.TabIndex = 57;
+            this.radioB_replace.TabStop = true;
+            this.radioB_replace.Text = "Replace";
+            this.radioB_replace.UseVisualStyleBackColor = true;
+            this.radioB_replace.CheckedChanged += new System.EventHandler(this.radioB_replace_CheckedChanged);
+            // 
             // updateRecordButton
             // 
             this.updateRecordButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateRecordButton.Location = new System.Drawing.Point(361, 349);
+            this.updateRecordButton.Location = new System.Drawing.Point(352, 340);
             this.updateRecordButton.Name = "updateRecordButton";
             this.updateRecordButton.Size = new System.Drawing.Size(75, 23);
             this.updateRecordButton.TabIndex = 56;
             this.updateRecordButton.Text = "Update";
             this.updateRecordButton.UseVisualStyleBackColor = true;
+            this.updateRecordButton.Click += new System.EventHandler(this.updateRecordButton_Click);
             // 
             // openRecordButton
             // 
             this.openRecordButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openRecordButton.Location = new System.Drawing.Point(229, 349);
+            this.openRecordButton.Location = new System.Drawing.Point(220, 340);
             this.openRecordButton.Name = "openRecordButton";
             this.openRecordButton.Size = new System.Drawing.Size(75, 23);
             this.openRecordButton.TabIndex = 55;
             this.openRecordButton.Text = "Open";
             this.openRecordButton.UseVisualStyleBackColor = true;
+            this.openRecordButton.Click += new System.EventHandler(this.openRecordButton_Click);
             // 
             // textBox_update_statusUpdate
             // 
@@ -220,26 +259,27 @@
             this.label11.TabIndex = 53;
             this.label11.Text = "Status Updates:";
             // 
-            // techChangeButton
+            // ConfirmTechChangeButton
             // 
-            this.techChangeButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.techChangeButton.Location = new System.Drawing.Point(326, 178);
-            this.techChangeButton.Name = "techChangeButton";
-            this.techChangeButton.Size = new System.Drawing.Size(75, 24);
-            this.techChangeButton.TabIndex = 52;
-            this.techChangeButton.Text = "Change?";
-            this.techChangeButton.UseVisualStyleBackColor = true;
+            this.ConfirmTechChangeButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmTechChangeButton.Location = new System.Drawing.Point(380, 205);
+            this.ConfirmTechChangeButton.Name = "ConfirmTechChangeButton";
+            this.ConfirmTechChangeButton.Size = new System.Drawing.Size(75, 24);
+            this.ConfirmTechChangeButton.TabIndex = 52;
+            this.ConfirmTechChangeButton.Text = "Confirm!";
+            this.ConfirmTechChangeButton.UseVisualStyleBackColor = true;
+            this.ConfirmTechChangeButton.Click += new System.EventHandler(this.ConfirmTechChangeButton_Click);
             // 
-            // label10
+            // label_TechName
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.DarkRed;
-            this.label10.Location = new System.Drawing.Point(189, 182);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 16);
-            this.label10.TabIndex = 51;
-            this.label10.Text = "Tech Name";
+            this.label_TechName.AutoSize = true;
+            this.label_TechName.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_TechName.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_TechName.Location = new System.Drawing.Point(189, 182);
+            this.label_TechName.Name = "label_TechName";
+            this.label_TechName.Size = new System.Drawing.Size(66, 16);
+            this.label_TechName.TabIndex = 51;
+            this.label_TechName.Text = "Tech Name";
             // 
             // label9
             // 
@@ -251,88 +291,93 @@
             this.label9.TabIndex = 50;
             this.label9.Text = "Assigned Technician:";
             // 
-            // radioButton4
+            // radioB_CAT4
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(326, 152);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(113, 17);
-            this.radioButton4.TabIndex = 49;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "CAT4 (10+ pieces)";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioB_CAT4.AutoSize = true;
+            this.radioB_CAT4.Location = new System.Drawing.Point(326, 152);
+            this.radioB_CAT4.Name = "radioB_CAT4";
+            this.radioB_CAT4.Size = new System.Drawing.Size(113, 17);
+            this.radioB_CAT4.TabIndex = 49;
+            this.radioB_CAT4.TabStop = true;
+            this.radioB_CAT4.Text = "CAT4 (10+ pieces)";
+            this.radioB_CAT4.UseVisualStyleBackColor = true;
+            this.radioB_CAT4.CheckedChanged += new System.EventHandler(this.radioB_CAT4_CheckedChanged);
             // 
-            // radioButton3
+            // radioB_CAT3
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(179, 152);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(116, 17);
-            this.radioButton3.TabIndex = 48;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "CAT3 (5-10 pieces)";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioB_CAT3.AutoSize = true;
+            this.radioB_CAT3.Location = new System.Drawing.Point(179, 152);
+            this.radioB_CAT3.Name = "radioB_CAT3";
+            this.radioB_CAT3.Size = new System.Drawing.Size(116, 17);
+            this.radioB_CAT3.TabIndex = 48;
+            this.radioB_CAT3.TabStop = true;
+            this.radioB_CAT3.Text = "CAT3 (5-10 pieces)";
+            this.radioB_CAT3.UseVisualStyleBackColor = true;
+            this.radioB_CAT3.CheckedChanged += new System.EventHandler(this.radioB_CAT3_CheckedChanged);
             // 
-            // radioButton5
+            // radioB_CAT2
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(326, 117);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(110, 17);
-            this.radioButton5.TabIndex = 47;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "CAT2 (3-4 pieces)";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioB_CAT2.AutoSize = true;
+            this.radioB_CAT2.Location = new System.Drawing.Point(326, 117);
+            this.radioB_CAT2.Name = "radioB_CAT2";
+            this.radioB_CAT2.Size = new System.Drawing.Size(110, 17);
+            this.radioB_CAT2.TabIndex = 47;
+            this.radioB_CAT2.TabStop = true;
+            this.radioB_CAT2.Text = "CAT2 (3-4 pieces)";
+            this.radioB_CAT2.UseVisualStyleBackColor = true;
+            this.radioB_CAT2.CheckedChanged += new System.EventHandler(this.radioB_CAT2_CheckedChanged);
             // 
-            // radioButton6
+            // radioB_CAT1
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(179, 117);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(110, 17);
-            this.radioButton6.TabIndex = 46;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "CAT1 (1-2 pieces)";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioB_CAT1.AutoSize = true;
+            this.radioB_CAT1.Location = new System.Drawing.Point(179, 117);
+            this.radioB_CAT1.Name = "radioB_CAT1";
+            this.radioB_CAT1.Size = new System.Drawing.Size(110, 17);
+            this.radioB_CAT1.TabIndex = 46;
+            this.radioB_CAT1.TabStop = true;
+            this.radioB_CAT1.Text = "CAT1 (1-2 pieces)";
+            this.radioB_CAT1.UseVisualStyleBackColor = true;
+            this.radioB_CAT1.CheckedChanged += new System.EventHandler(this.radioB_CAT1_CheckedChanged);
             // 
             // comboBox_updateStatus
             // 
             this.comboBox_updateStatus.FormattingEnabled = true;
-            this.comboBox_updateStatus.Location = new System.Drawing.Point(189, 220);
+            this.comboBox_updateStatus.Location = new System.Drawing.Point(181, 236);
             this.comboBox_updateStatus.Name = "comboBox_updateStatus";
-            this.comboBox_updateStatus.Size = new System.Drawing.Size(183, 21);
+            this.comboBox_updateStatus.Size = new System.Drawing.Size(313, 21);
             this.comboBox_updateStatus.TabIndex = 45;
             // 
-            // statusUpdateButton
+            // SplitRMAButton
             // 
-            this.statusUpdateButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusUpdateButton.Location = new System.Drawing.Point(397, 218);
-            this.statusUpdateButton.Name = "statusUpdateButton";
-            this.statusUpdateButton.Size = new System.Drawing.Size(85, 23);
-            this.statusUpdateButton.TabIndex = 44;
-            this.statusUpdateButton.Text = "Update";
-            this.statusUpdateButton.UseVisualStyleBackColor = true;
+            this.SplitRMAButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SplitRMAButton.Location = new System.Drawing.Point(430, 28);
+            this.SplitRMAButton.Name = "SplitRMAButton";
+            this.SplitRMAButton.Size = new System.Drawing.Size(85, 23);
+            this.SplitRMAButton.TabIndex = 44;
+            this.SplitRMAButton.Text = "Split RMA";
+            this.SplitRMAButton.UseVisualStyleBackColor = true;
+            this.SplitRMAButton.Click += new System.EventHandler(this.SplitRMAButton_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(60, 222);
+            this.label5.Location = new System.Drawing.Point(60, 238);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 15);
             this.label5.TabIndex = 43;
             this.label5.Text = "Update Status:";
             // 
-            // label6
+            // label_status
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DarkRed;
-            this.label6.Location = new System.Drawing.Point(189, 60);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 16);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "Request Status";
+            this.label_status.AutoSize = true;
+            this.label_status.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_status.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_status.Location = new System.Drawing.Point(189, 60);
+            this.label_status.Name = "label_status";
+            this.label_status.Size = new System.Drawing.Size(90, 16);
+            this.label_status.TabIndex = 42;
+            this.label_status.Text = "Request Status";
             // 
             // label7
             // 
@@ -354,27 +399,29 @@
             this.label8.TabIndex = 40;
             this.label8.Text = "Category:";
             // 
-            // radioButton2
+            // radioB_refund
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(326, 86);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 17);
-            this.radioButton2.TabIndex = 39;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Refund";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioB_refund.AutoSize = true;
+            this.radioB_refund.Location = new System.Drawing.Point(351, 86);
+            this.radioB_refund.Name = "radioB_refund";
+            this.radioB_refund.Size = new System.Drawing.Size(60, 17);
+            this.radioB_refund.TabIndex = 39;
+            this.radioB_refund.TabStop = true;
+            this.radioB_refund.Text = "Refund";
+            this.radioB_refund.UseVisualStyleBackColor = true;
+            this.radioB_refund.CheckedChanged += new System.EventHandler(this.radioB_refund_CheckedChanged);
             // 
-            // radioButton1
+            // radioB_repair
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(179, 87);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(101, 17);
-            this.radioButton1.TabIndex = 38;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Repair/Replace";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioB_repair.AutoSize = true;
+            this.radioB_repair.Location = new System.Drawing.Point(181, 86);
+            this.radioB_repair.Name = "radioB_repair";
+            this.radioB_repair.Size = new System.Drawing.Size(56, 17);
+            this.radioB_repair.TabIndex = 38;
+            this.radioB_repair.TabStop = true;
+            this.radioB_repair.Text = "Repair";
+            this.radioB_repair.UseVisualStyleBackColor = true;
+            this.radioB_repair.CheckedChanged += new System.EventHandler(this.radioB_repair_CheckedChanged);
             // 
             // textBox_update_rmaNo
             // 
@@ -382,8 +429,9 @@
             this.textBox_update_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox_update_rmaNo.Multiline = true;
             this.textBox_update_rmaNo.Name = "textBox_update_rmaNo";
-            this.textBox_update_rmaNo.Size = new System.Drawing.Size(313, 23);
+            this.textBox_update_rmaNo.Size = new System.Drawing.Size(242, 23);
             this.textBox_update_rmaNo.TabIndex = 37;
+            this.textBox_update_rmaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_update_rmaNo_KeyPress_1);
             // 
             // label4
             // 
@@ -583,7 +631,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.UpdateButton);
+            this.groupBox3.Controls.Add(this.UpdateInfoButton);
             this.groupBox3.Controls.Add(this.label_currentStatus);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.textBox_comments);
@@ -601,16 +649,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Update Info";
             // 
-            // UpdateButton
+            // UpdateInfoButton
             // 
-            this.UpdateButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateButton.Location = new System.Drawing.Point(233, 446);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(75, 24);
-            this.UpdateButton.TabIndex = 57;
-            this.UpdateButton.Text = "Update";
-            this.UpdateButton.UseVisualStyleBackColor = true;
-            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            this.UpdateInfoButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateInfoButton.Location = new System.Drawing.Point(223, 439);
+            this.UpdateInfoButton.Name = "UpdateInfoButton";
+            this.UpdateInfoButton.Size = new System.Drawing.Size(124, 24);
+            this.UpdateInfoButton.TabIndex = 57;
+            this.UpdateInfoButton.Text = "Update Info";
+            this.UpdateInfoButton.UseVisualStyleBackColor = true;
+            this.UpdateInfoButton.Click += new System.EventHandler(this.UpdateInfoButton_Click);
             // 
             // label_currentStatus
             // 
@@ -770,21 +818,21 @@
         private System.Windows.Forms.Button openRecordButton;
         private System.Windows.Forms.TextBox textBox_update_statusUpdate;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button techChangeButton;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button ConfirmTechChangeButton;
+        private System.Windows.Forms.Label label_TechName;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioB_CAT4;
+        private System.Windows.Forms.RadioButton radioB_CAT3;
+        private System.Windows.Forms.RadioButton radioB_CAT2;
+        private System.Windows.Forms.RadioButton radioB_CAT1;
         private System.Windows.Forms.ComboBox comboBox_updateStatus;
-        private System.Windows.Forms.Button statusUpdateButton;
+        private System.Windows.Forms.Button SplitRMAButton;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label_status;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioB_refund;
+        private System.Windows.Forms.RadioButton radioB_repair;
         private System.Windows.Forms.TextBox textBox_update_rmaNo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -815,9 +863,12 @@
         private System.Windows.Forms.Label label_currentStatus;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.Button UpdateInfoButton;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBox_rmaNo;
         private System.Windows.Forms.Label label_rmaNo;
+        private System.Windows.Forms.RadioButton radioB_replace;
+        private System.Windows.Forms.ComboBox comboBox_TechName;
+        private System.Windows.Forms.Label label6;
     }
 }
