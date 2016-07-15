@@ -29,6 +29,15 @@ namespace RMA_SystemSoftware
         public HelpDesk()
         {
             InitializeComponent();
+            comboBox_updateStatus.Items.Add("Open");//Can be omitted!
+            comboBox_updateStatus.Items.Add("Received");
+            comboBox_updateStatus.Items.Add("Wait");
+            comboBox_updateStatus.Items.Add("Waiting to be assigned");
+            comboBox_updateStatus.Items.Add("Assigned");
+            comboBox_updateStatus.Items.Add("Hold");
+            comboBox_updateStatus.Items.Add("Refund");
+            comboBox_updateStatus.Items.Add("Complete");
+            comboBox_updateStatus.Items.Add("Close");
         }
 
         private void HelpDesk_Load(object sender, EventArgs e)
@@ -209,7 +218,37 @@ namespace RMA_SystemSoftware
 
         private void updateRecordButton_Click(object sender, EventArgs e)
         {
+            try
+            { 
 
+                if (textBox_update_rmaNo.Text != "")
+                {
+                    if ((radioB_refund.Checked == true || radioB_repair.Checked == true || radioB_replace.Checked == true) && (radioB_CAT1.Checked == true || radioB_CAT2.Checked == true || radioB_CAT3.Checked == true || radioB_CAT4.Checked == true))
+                    {
+                        if (con.State == ConnectionState.Open) con.Close();
+                        con.Open();
+                        cmd = new SqlCommand("update RMA set Status='" + comboBox_updateStatus.Text + "',type='" + req_type + "',category='" + cat + "'where rma_no='" + textBox_update_rmaNo.Text + "'", con);
+                        cmd.ExecuteNonQuery();
+                        cmd = new SqlCommand("update Notes set Notes.statusUpdates='" + textBox_update_statusUpdate.Text + "'from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no=' " + textBox_update_rmaNo.Text + "'", con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        MessageBox.Show("Changes Saved!!");
+                        showUpdatedDetails();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose Type of request/Category!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter RMA!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void openRecordButton_Click(object sender, EventArgs e)
@@ -226,37 +265,27 @@ namespace RMA_SystemSoftware
 
         private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if(textBox_update_rmaNo.Text!="")
+              try
                 {
-                    if((radioB_refund.Checked== true||radioB_repair.Checked==true||radioB_replace.Checked==true)&&(radioB_CAT1.Checked==true||radioB_CAT2.Checked==true||radioB_CAT3.Checked==true||radioB_CAT4.Checked==true))
-                    {
-                        con.Open();
-                        cmd = new SqlCommand("update RMA set Status='"+comboBox_updateStatus.Text+"',type='"+req_type+"',category='"+cat+"'where rma_no='"+textBox_update_rmaNo.Text+"'",con);
-                        cmd.ExecuteNonQuery();
-                        cmd = new SqlCommand("update Notes set Notes.statusUpdates='" + textBox_update_statusUpdate.Text + "from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no=' " + textBox_update_rmaNo + "'", con);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                        MessageBox.Show("Changes Saved!!");
-                        showUpdatedDetails();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please choose Type of request/Category!");
-                    }
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("update Notes set description=' " + textBox_descrption.Text + "', statusUpdates='" + textBox_statusUpdates.Text + "', comments='" + textBox_comments.Text + "',resolution='" + textBox_resolution.Text + "' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='" + textBox_rmaNo.Text + "'", con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Database Updated");
+                textBox_rmaNo.Clear();
+                textBox_statusUpdates.Clear();
+                textBox_comments.Clear();
+                textBox_descrption.Clear();
+                textBox_resolution.Clear();
+                label_currentStatus.Text = "";
+                label_rmaNo.Text = "";                    
                 }
-                else
+               catch (Exception ex)
                 {
-                    MessageBox.Show("Please Enter RMA!");
-                }
-            }
-            catch(Exception ex)
-            {
                 MessageBox.Show(ex.Message);
+                }
             }
-
-        }
 
         private void textBox_update_rmaNo_KeyPress_1(object sender, KeyPressEventArgs e)
         {
