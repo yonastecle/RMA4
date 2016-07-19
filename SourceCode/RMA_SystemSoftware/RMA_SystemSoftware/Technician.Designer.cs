@@ -46,7 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.OpenButton = new System.Windows.Forms.Button();
             this.delegateButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton_replace = new System.Windows.Forms.RadioButton();
@@ -214,7 +214,6 @@
             this.textBox_rmaNo.Name = "textBox_rmaNo";
             this.textBox_rmaNo.Size = new System.Drawing.Size(234, 23);
             this.textBox_rmaNo.TabIndex = 31;
-            
             // 
             // label5
             // 
@@ -249,16 +248,16 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Enter RMA#:";
             // 
-            // button5
+            // OpenButton
             // 
-            this.button5.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(207, 141);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 31);
-            this.button5.TabIndex = 40;
-            this.button5.Text = "Open";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.OpenButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpenButton.Location = new System.Drawing.Point(207, 141);
+            this.OpenButton.Name = "OpenButton";
+            this.OpenButton.Size = new System.Drawing.Size(99, 31);
+            this.OpenButton.TabIndex = 40;
+            this.OpenButton.Text = "Open";
+            this.OpenButton.UseVisualStyleBackColor = true;
+            this.OpenButton.Click += new System.EventHandler(this.OpenButton_Click);
             // 
             // delegateButton
             // 
@@ -275,7 +274,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButton_replace);
             this.groupBox1.Controls.Add(this.delegateButton);
-            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.OpenButton);
             this.groupBox1.Controls.Add(this.comboBox_status);
             this.groupBox1.Controls.Add(this.updateButton);
             this.groupBox1.Controls.Add(this.ViewHistoryButton);
@@ -408,7 +407,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button delegateButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGrid_ShowDetails;

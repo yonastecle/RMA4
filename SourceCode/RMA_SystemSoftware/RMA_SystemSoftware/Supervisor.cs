@@ -19,16 +19,11 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         WO_Details details = new WO_Details();
+        Tech_Open techopen = new Tech_Open();
         Split_RMA split = new Split_RMA();
-        Tech_Open open = new Tech_Open();
         string s, ID, req_type;
         int cat;
-        public string u_id;
-        public string passid
-        {
-            get { return u_id; }
-            set { u_id = value; }
-        }
+        public string u_id { get; set; }       
 
 
         public Supervisor()
@@ -215,10 +210,13 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("select FirstName from Employee where UserID='" + u_id + "'", con);
+                cmd = new SqlCommand("select FirstName,userType from Employee where UserID='" + u_id + "'", con);
                 read = cmd.ExecuteReader();
                 while (read.Read())
-                label_helloEmp.Text = read.GetString(read.GetOrdinal("firstName"));
+                {
+                    label_helloEmp.Text = read.GetString(read.GetOrdinal("firstName"));
+                    details.u_type=techopen.u_type = read.GetString(read.GetOrdinal("userType"));
+                }
                 con.Close();
 
                 fill_listbox();
@@ -260,16 +258,7 @@ namespace RMA_SystemSoftware
 
         }
 
-        public void fill_grid()
-        {
-
-            da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,category as 'CAT',ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
-            ds = new DataSet();
-            da.Fill(ds, "All WO Details");
-            details.dataGridView_WODetails.DataSource = ds.Tables[0];
-            this.Close();
-            details.Show();
-        }
+       
         private void ViewAllWOButton_Click(object sender, EventArgs e)
         {
             try
@@ -334,11 +323,19 @@ namespace RMA_SystemSoftware
             report.Show();
         }
 
-        private void RMASerachButton_Click(object sender, EventArgs e)
+        private void RMASearchButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             fill_grid();
-          
+        }
+        public void fill_grid()
+        {
+
+            da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,category as 'CAT',ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
+            ds = new DataSet();
+            da.Fill(ds, "All WO Details");
+            details.dataGridView_WODetails.DataSource = ds.Tables[0];
+            details.Show();
         }
 
         private void listBox_newRequests_SelectedIndexChanged(object sender, EventArgs e)
@@ -414,7 +411,17 @@ namespace RMA_SystemSoftware
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            open.Show();
+            if (textBox_rmaNo.Text != "")
+            {
+                this.Hide();
+                techopen.rma_no = textBox_rmaNo.Text;
+                techopen.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please enter RMA#.");
+            }
+           
         }
 
         private void radioB_repair_CheckedChanged(object sender, EventArgs e)
@@ -616,6 +623,7 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
+
 
         private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
         {

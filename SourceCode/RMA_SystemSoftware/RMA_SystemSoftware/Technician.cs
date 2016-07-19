@@ -19,15 +19,12 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         WO_Details details = new WO_Details();
+        Tech_Open techopen = new Tech_Open();
+        Supervisor sup = new Supervisor();
         string req_type;
 
-        public string u_id;
-        public string passid
-        {
-            get { return u_id; }
-            set { u_id = value; }
-        }
-
+        public string u_id { get; set; }
+      
         public Technician()
         {
             InitializeComponent();
@@ -43,10 +40,14 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("select FirstName from Employee where UserID='" + u_id + "'", con);
+                cmd = new SqlCommand("select FirstName,userType from Employee where UserID='" + u_id + "'", con);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
-                label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
+                {
+                    label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
+                   details.u_type=techopen.u_type=reader.GetString(reader.GetOrdinal("userType"));
+                }
+                
                 con.Close();
                 fill_listbox();
             }
@@ -56,14 +57,21 @@ namespace RMA_SystemSoftware
             }
             
         }
-
-        private void button5_Click(object sender, EventArgs e)
+        private void OpenButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Tech_Open t_open = new Tech_Open();
-            t_open.Show();
+            if(textBox_rmaNo.Text!="")
+            {
+                this.Hide();
+                techopen.rma_no = textBox_rmaNo.Text;
+                techopen.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please enter RMA#.");
+            }
+           
         }
-
+       
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
@@ -262,21 +270,13 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
-            public void fill_grid()
-        {
-
-            da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,category as 'CAT',ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA where Status IN('Assigned','Hold','Complete') OR type='Refund' ", con);
-            ds = new DataSet();
-            da.Fill(ds, "All WO Details");
-            details.dataGridView_WODetails.DataSource = ds.Tables[0];
-            details.Show();
-        }
-
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            fill_grid();
+            this.Hide();
+            
+            sup.fill_grid();
         }
 
-        
+       
     }
 }

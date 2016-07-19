@@ -99,6 +99,7 @@
             this.Controls.Add(this.dataGridView_WODetails);
             this.Name = "WO_Details";
             this.Text = "WO_Details";
+      
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_WODetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

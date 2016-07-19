@@ -18,14 +18,11 @@ namespace RMA_SystemSoftware
         SqlDataReader reader;
         WO_Details details = new WO_Details();
         Split_RMA split = new Split_RMA();
-        Tech_Open open = new Tech_Open();
+        Tech_Open techopen = new Tech_Open();
+        Supervisor sup = new Supervisor();
         string  ID, req_type, cat;
-        public string u_id;
-        public string passid
-        {
-            get { return u_id; }
-            set { u_id = value; }
-        }
+        public string u_id { get; set; }
+       
         public HelpDesk()
         {
             InitializeComponent();
@@ -48,10 +45,14 @@ namespace RMA_SystemSoftware
                 if (con.State == ConnectionState.Open)
                     con.Close();
                 con.Open();
-                cmd = new SqlCommand("select firstName from Employee where UserID ='"+u_id+"'", con);
+                cmd = new SqlCommand("select firstName,userType from Employee where UserID ='"+u_id+"'", con);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
+                {
                     label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
+                   details.u_type= techopen.u_type = reader.GetString(reader.GetOrdinal("userType"));
+                }
+                   
                 reader.Close();
                 cmd = new SqlCommand("select firstName from Employee where usertype IN('Technician','Help Desk')", con);
                 reader = cmd.ExecuteReader();
@@ -254,10 +255,10 @@ namespace RMA_SystemSoftware
 
         private void openRecordButton_Click(object sender, EventArgs e)
         {
-            open.rma_no = textBox_update_rmaNo.Text;
+            techopen.rma_no = textBox_update_rmaNo.Text;
             if (textBox_update_rmaNo.Text != "")
             {
-                open.Show();
+                techopen.Show();
                 
             }
                
@@ -330,6 +331,13 @@ namespace RMA_SystemSoftware
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            sup.fill_grid();
+            
         }
 
         private void SplitRMAButton_Click(object sender, EventArgs e)

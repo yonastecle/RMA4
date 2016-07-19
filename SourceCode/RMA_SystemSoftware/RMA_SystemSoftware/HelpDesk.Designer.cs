@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
+            this.SearchButton = new System.Windows.Forms.Button();
             this.linkLabel_help = new System.Windows.Forms.LinkLabel();
             this.label_helloEmp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -100,14 +100,15 @@
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button4
+            // SearchButton
             // 
-            this.button4.Location = new System.Drawing.Point(830, 23);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 23);
-            this.button4.TabIndex = 37;
-            this.button4.Text = "Search RMA";
-            this.button4.UseVisualStyleBackColor = true;
+            this.SearchButton.Location = new System.Drawing.Point(830, 23);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(108, 23);
+            this.SearchButton.TabIndex = 37;
+            this.SearchButton.Text = "Search RMA";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // linkLabel_help
             // 
@@ -805,7 +806,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox_UpdateDetails);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.linkLabel_help);
             this.Controls.Add(this.label_helloEmp);
             this.Controls.Add(this.label1);
@@ -832,7 +833,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.LinkLabel linkLabel_help;
         private System.Windows.Forms.Label label_helloEmp;
         private System.Windows.Forms.Label label1;

@@ -19,15 +19,12 @@ namespace RMA_SystemSoftware
         SqlDataReader reader;
         SqlDataAdapter da;
         DataSet ds;
+        WO_Details details = new WO_Details();
+        Supervisor sup = new Supervisor();
         string req_type;
-        public string u_id;
+        public string u_id { get; set; }
         string result = null;
-        public string passid
-        {
-            get { return u_id; }
-            set { u_id = value; }
-        }
-
+     
         public Receiving()
         {
             InitializeComponent();
@@ -46,10 +43,15 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("select FirstName from Employee where UserID='"+u_id+"'", con);
+                cmd = new SqlCommand("select FirstName,userType from Employee where UserID='"+u_id+"'", con);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
+                {
                     label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
+                    details.u_type = reader.GetString(reader.GetOrdinal("userType"));
+                        
+                }
+                   
                 con.Close();
                 fill_listbox();
             }
@@ -425,6 +427,13 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            sup.fill_grid();
+            
         }
     }
 }

@@ -56,6 +56,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox_Wait = new System.Windows.Forms.ListBox();
+            this.SearchButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -320,7 +321,7 @@
             // button_refresh
             // 
             this.button_refresh.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_refresh.Location = new System.Drawing.Point(847, 30);
+            this.button_refresh.Location = new System.Drawing.Point(756, 325);
             this.button_refresh.Name = "button_refresh";
             this.button_refresh.Size = new System.Drawing.Size(85, 26);
             this.button_refresh.TabIndex = 27;
@@ -387,12 +388,24 @@
             this.listBox_Wait.TabIndex = 31;
             this.listBox_Wait.SelectedIndexChanged += new System.EventHandler(this.listBox_Wait_SelectedIndexChanged);
             // 
+            // SearchButton
+            // 
+            this.SearchButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchButton.Location = new System.Drawing.Point(851, 29);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(85, 26);
+            this.SearchButton.TabIndex = 33;
+            this.SearchButton.Text = "Search RMA";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
             // Receiving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1118, 639);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBox_Wait);
             this.Controls.Add(this.dataGridView1);
@@ -451,5 +464,6 @@
         private System.Windows.Forms.RadioButton RadioB_replace;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox_Wait;
+        private System.Windows.Forms.Button SearchButton;
     }
 }

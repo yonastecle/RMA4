@@ -12,12 +12,8 @@ namespace RMA_SystemSoftware
 {
     public partial class Tech_Open : Form
     {
-        public string rma_no;
-        public string PassNo
-        {
-            get { return rma_no; }
-            set { rma_no = value; }
-        }
+        public string rma_no { get; set; }
+       public string u_type { get; set; }
         public Tech_Open()
         {
             InitializeComponent();
@@ -26,10 +22,22 @@ namespace RMA_SystemSoftware
         private void GoBackButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Technician Tech = new Technician();
-           // Supervisor sup = new Supervisor();
-            Tech.Show();
-          
+            if(u_type.ToLower().Equals("supervisor"))
+            {
+                Supervisor sup = new Supervisor();
+                sup.Show();
+            }
+           else if(u_type.ToLower().Equals("technician"))
+           {
+                Technician Tech = new Technician();
+                Tech.Show();
+            }
+            else if(u_type.ToLower().Equals("help desk"))
+            {
+                HelpDesk hdsk = new HelpDesk();
+                hdsk.Show();
+            }
+                      
 
         }
 

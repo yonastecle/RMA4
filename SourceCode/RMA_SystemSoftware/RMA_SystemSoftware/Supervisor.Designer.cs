@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.RMASerachButton = new System.Windows.Forms.Button();
+            this.RMASearchButton = new System.Windows.Forms.Button();
             this.HelpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label_helloEmp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -114,15 +114,15 @@
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // RMASerachButton
+            // RMASearchButton
             // 
-            this.RMASerachButton.Location = new System.Drawing.Point(844, 12);
-            this.RMASerachButton.Name = "RMASerachButton";
-            this.RMASerachButton.Size = new System.Drawing.Size(108, 23);
-            this.RMASerachButton.TabIndex = 32;
-            this.RMASerachButton.Text = "Search RMA";
-            this.RMASerachButton.UseVisualStyleBackColor = true;
-            this.RMASerachButton.Click += new System.EventHandler(this.RMASerachButton_Click);
+            this.RMASearchButton.Location = new System.Drawing.Point(844, 12);
+            this.RMASearchButton.Name = "RMASearchButton";
+            this.RMASearchButton.Size = new System.Drawing.Size(108, 23);
+            this.RMASearchButton.TabIndex = 32;
+            this.RMASearchButton.Text = "Search RMA";
+            this.RMASearchButton.UseVisualStyleBackColor = true;
+            this.RMASearchButton.Click += new System.EventHandler(this.RMASearchButton_Click);
             // 
             // HelpLinkLabel
             // 
@@ -411,7 +411,6 @@
             this.comboBox_updateStatus.Name = "comboBox_updateStatus";
             this.comboBox_updateStatus.Size = new System.Drawing.Size(313, 21);
             this.comboBox_updateStatus.TabIndex = 45;
-        
             // 
             // label5
             // 
@@ -921,7 +920,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.RMASerachButton);
+            this.Controls.Add(this.RMASearchButton);
             this.Controls.Add(this.HelpLinkLabel);
             this.Controls.Add(this.label_helloEmp);
             this.Controls.Add(this.label1);
@@ -953,7 +952,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button RMASerachButton;
+        private System.Windows.Forms.Button RMASearchButton;
         private System.Windows.Forms.LinkLabel HelpLinkLabel;
         private System.Windows.Forms.Label label_helloEmp;
         private System.Windows.Forms.Label label1;
