@@ -95,13 +95,6 @@ namespace RMA_SystemSoftware
             }
 
         }
-        //Omit it !!
-        //private void WO_Details_Load(object sender, EventArgs e)
-        //{
-        //    da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,category as 'CAT',ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA ' ", con);
-        //    ds = new DataSet();
-        //    da.Fill(ds, "All WO Details");
-        //    dataGridView_WODetails.DataSource = ds.Tables[0];
-        //}
+        
     }
 }

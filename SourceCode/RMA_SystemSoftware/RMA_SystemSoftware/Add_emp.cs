@@ -54,29 +54,27 @@ namespace RMA_SystemSoftware
             con.Close();
             return "RMA" + uniqueNumber;
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
             Supervisor sup = new Supervisor();
             sup.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void submitButton_Click(object sender, EventArgs e)
         {
             try
             {
                 if (ValidateChildren(ValidationConstraints.Enabled))
                 {
                     con.Open();
-                    command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('"+label_UserID.Text+"','" + textBox1.Text + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox_Fax.Text + "')";
+                    command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('" + label_UserID.Text + "','" + textBox1.Text + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox_Fax.Text + "')";
                     command.ExecuteNonQuery();
                     con.Close();
                     MessageBox.Show(" New Employee added to Records!!");
 
                     buttonNewEmp.Enabled = true;
 
-                    label_UserID.Text="";
+                    label_UserID.Text = "";
                     textBox1.Clear();
                     comboBox1.SelectedIndex = -1;
                     comboBox2.SelectedIndex = -1;
@@ -91,9 +89,9 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(ex.Message);
             }
-            
-           
-          }
+
+
+        }
         private void buttonNewEmp_Click(object sender, EventArgs e)
         {
             generateAutoID();
@@ -139,6 +137,6 @@ namespace RMA_SystemSoftware
             e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
         }
 
-
+      
     }
 }

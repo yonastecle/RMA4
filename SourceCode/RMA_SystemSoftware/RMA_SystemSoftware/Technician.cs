@@ -273,7 +273,6 @@ namespace RMA_SystemSoftware
         private void SearchButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            
             sup.fill_grid();
         }
 
