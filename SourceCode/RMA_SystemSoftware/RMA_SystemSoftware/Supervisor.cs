@@ -21,7 +21,8 @@ namespace RMA_SystemSoftware
         WO_Details details = new WO_Details();
         Split_RMA split = new Split_RMA();
         Tech_Open open = new Tech_Open();
-        string s, ID, req_type,cat;
+        string s, ID, req_type;
+        int cat;
         public string u_id;
         public string passid
         {
@@ -342,6 +343,9 @@ namespace RMA_SystemSoftware
 
         private void listBox_newRequests_SelectedIndexChanged(object sender, EventArgs e)
         {
+            radioB_refund.Checked = false;
+            radioB_repair.Checked = false;
+            radioB_replace.Checked = false;
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -354,19 +358,47 @@ namespace RMA_SystemSoftware
                     label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     ID = read.GetString(read.GetOrdinal("userID"));
-                    //Enable radio Button for request type
-                    //string cat;
-                    //cat = read.GetString(read.GetOrdinal("category"));
-                    //if (cat.Equals("1"))
-                    //    radioButton_CAT1.Checked = true;
-                    //else if (cat.Equals("2"))
-                    //    radioButton_CAT2.Checked = true;
-                    //else if (cat.Equals("3"))
-                    //    radioButton_CAT3.Checked = true;
-                    //else
-                    //    radioButton_CAT4.Checked = true;
+                    req_type = read.GetString(read.GetOrdinal("type"));
+                    cat = read.GetInt16(read.GetOrdinal("category")); 
+                  
                 }
                 con.Close();
+                if (req_type.ToLower().Contains("replace"))
+                {
+                    radioB_replace.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("refund"))
+                {
+                    radioB_refund.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("repair"))
+                {
+                    radioB_repair.Checked = true;
+                }
+                if (cat==1)
+                {
+                    radioButton_CAT1.Checked = true;
+                }
+                else if (cat==2)
+                {
+                    radioButton_CAT2.Checked = true;
+                }
+                else if (cat==3)
+                {
+                    radioButton_CAT3.Checked = true;
+                }
+                else if(cat==4)
+                {
+                    radioButton_CAT4.Checked = true;
+                }
+                else
+                {
+
+                    radioButton_CAT1.Checked = false;
+                    radioButton_CAT2.Checked = false;
+                    radioButton_CAT3.Checked = false;
+                    radioButton_CAT4.Checked = false;
+                }
                 con.Open();
                 cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
                 read = cmd.ExecuteReader();
@@ -402,22 +434,22 @@ namespace RMA_SystemSoftware
 
         private void radioButton_CAT1_CheckedChanged(object sender, EventArgs e)
         {
-            cat = "1";
+            cat = 1;
         }
 
         private void radioButton_CAT2_CheckedChanged(object sender, EventArgs e)
         {
-            cat = "2";
+            cat = 2;
         }
 
         private void radioButton_CAT3_CheckedChanged(object sender, EventArgs e)
         {
-            cat = "3";
+            cat = 3;
         }
 
         private void radioButton_CAT4_CheckedChanged(object sender, EventArgs e)
         {
-            cat = "4";
+            cat = 4;
         }
 
         private void ConfirmTechChangeButton_Click(object sender, EventArgs e)
@@ -440,6 +472,9 @@ namespace RMA_SystemSoftware
 
         private void listBox_requestOnHold_SelectedIndexChanged(object sender, EventArgs e)
         {
+            radioB_refund.Checked = false;
+            radioB_repair.Checked = false;
+            radioB_replace.Checked = false;
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -452,20 +487,47 @@ namespace RMA_SystemSoftware
                     label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     ID = read.GetString(read.GetOrdinal("userID"));
-                    //Enable radio Button for request type
-                    //string cat;
-                    //cat = read.GetString(read.GetOrdinal("category"));
-                    //if (cat.Equals("1"))
-                    //    radioButton_CAT1.Checked = true;
-                    //else if (cat.Equals("2"))
-                    //    radioButton_CAT2.Checked = true;
-                    //else if (cat.Equals("3"))
-                    //    radioButton_CAT3.Checked = true;
-                    //else
-                    //    radioButton_CAT4.Checked = true;
+                    req_type = read.GetString(read.GetOrdinal("type"));
+                    cat = read.GetInt16(read.GetOrdinal("category"));
 
                 }
-                con.Close(); 
+                con.Close();
+                if (req_type.ToLower().Contains("replace"))
+                {
+                    radioB_replace.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("refund"))
+                {
+                    radioB_refund.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("repair"))
+                {
+                    radioB_repair.Checked = true;
+                }
+                if (cat == 1)
+                {
+                    radioButton_CAT1.Checked = true;
+                }
+                else if (cat == 2)
+                {
+                    radioButton_CAT2.Checked = true;
+                }
+                else if (cat == 3)
+                {
+                    radioButton_CAT3.Checked = true;
+                }
+                else if (cat == 4)
+                {
+                    radioButton_CAT4.Checked = true;
+                }
+                else
+                {
+
+                    radioButton_CAT1.Checked = false;
+                    radioButton_CAT2.Checked = false;
+                    radioButton_CAT3.Checked = false;
+                    radioButton_CAT4.Checked = false;
+                }
                 con.Open();
                 cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
                 read = cmd.ExecuteReader();
@@ -479,10 +541,7 @@ namespace RMA_SystemSoftware
             }
         }
 
-       
-
-
-
+      
         //Enable/Disable the View History Button: How???
         //private void textBox_View_RmaNo_KeyPress(object sender, KeyPressEventArgs e)
         //{
@@ -574,20 +633,48 @@ namespace RMA_SystemSoftware
                     comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     ID = read.GetString(read.GetOrdinal("userID"));
 
-                    //Enable radio Button for request type
+                    req_type = read.GetString(read.GetOrdinal("type"));
+                    cat = read.GetInt16(read.GetOrdinal("category"));
 
-                    /*string cat;
-                    cat = read.GetString(read.GetOrdinal("category"));
-                    if (cat.Equals("1"))
-                        radioButton_CAT1.Checked = true;
-                    else if (cat.Equals("2"))
-                        radioButton_CAT2.Checked = true;
-                    else if (cat.Equals("3"))
-                        radioButton_CAT3.Checked = true;
-                    else
-                        radioButton_CAT4.Checked = true;*/
                 }
                 con.Close();
+                if (req_type.ToLower().Contains("replace"))
+                {
+                    radioB_replace.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("refund"))
+                {
+                    radioB_refund.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("repair"))
+                {
+                    radioB_repair.Checked = true;
+                }
+                if (cat == 1)
+                {
+                    radioButton_CAT1.Checked = true;
+                }
+                else if (cat == 2)
+                {
+                    radioButton_CAT2.Checked = true;
+                }
+                else if (cat == 3)
+                {
+                    radioButton_CAT3.Checked = true;
+                }
+                else if (cat == 4)
+                {
+                    radioButton_CAT4.Checked = true;
+                }
+                else
+                {
+
+                    radioButton_CAT1.Checked = false;
+                    radioButton_CAT2.Checked = false;
+                    radioButton_CAT3.Checked = false;
+                    radioButton_CAT4.Checked = false;
+                }
+
                 con.Open();
                 cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
                 read = cmd.ExecuteReader();
@@ -614,9 +701,48 @@ namespace RMA_SystemSoftware
                 label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
                 comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
                 ID = read.GetString(read.GetOrdinal("userID"));
-                //Enable radio Buttons
+                req_type = read.GetString(read.GetOrdinal("type"));
+                cat = read.GetInt16(read.GetOrdinal("category"));
+
             }
             con.Close();
+            if (req_type.ToLower().Contains("replace"))
+            {
+                radioB_replace.Checked = true;
+            }
+            else if (req_type.ToLower().Contains("refund"))
+            {
+                radioB_refund.Checked = true;
+            }
+            else if (req_type.ToLower().Contains("repair"))
+            {
+                radioB_repair.Checked = true;
+            }
+            if (cat == 1)
+            {
+                radioButton_CAT1.Checked = true;
+            }
+            else if (cat == 2)
+            {
+                radioButton_CAT2.Checked = true;
+            }
+            else if (cat == 3)
+            {
+                radioButton_CAT3.Checked = true;
+            }
+            else if (cat == 4)
+            {
+                radioButton_CAT4.Checked = true;
+            }
+            else
+            {
+
+                radioButton_CAT1.Checked = false;
+                radioButton_CAT2.Checked = false;
+                radioButton_CAT3.Checked = false;
+                radioButton_CAT4.Checked = false;
+            }
+      
             con.Open();
             cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
             read = cmd.ExecuteReader();

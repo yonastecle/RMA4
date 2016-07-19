@@ -110,13 +110,26 @@ namespace RMA_SystemSoftware
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_status.Text = reader.GetString(reader.GetOrdinal("Status"));
+                    req_type = reader.GetString(reader.GetOrdinal("type"));
                 }
-                if (label_currentStatus.Text.Equals("Close"))
-                    ViewHistoryButton.Enabled = true;
-                else
-                    ViewHistoryButton.Enabled = false;
+                if(req_type.ToLower().Contains("replace"))
+                {
+                    radioButton_replace.Checked = true;
+                }
+                if(req_type.ToLower().Contains("refund"))
+                {
+                    radioButton_refund.Checked = true;
+                }
+                if(req_type.ToLower().Contains("repair"))
+                {
+                    radioButton_repair.Checked = true;
+                }
+                //if (label_currentStatus.Text.Equals("Close"))
+                //    ViewHistoryButton.Enabled = true;
+                //else
+                //    ViewHistoryButton.Enabled = false;
 
-                //Enable radio button
+               
                 con.Close();
             }
             catch(Exception ex)

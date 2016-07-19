@@ -21,6 +21,7 @@ namespace RMA_SystemSoftware
         DataSet ds;
         string req_type;
         public string u_id;
+        string result = null;
         public string passid
         {
             get { return u_id; }
@@ -65,6 +66,7 @@ namespace RMA_SystemSoftware
             listBox_Open.Items.Clear();
             listBox_Received.Items.Clear();
             listBox_Wait.Items.Clear();
+            textBox_rmaNo.Clear();
             Receiving_Load(this, null);
             fill_grid(); 
 
@@ -124,34 +126,38 @@ namespace RMA_SystemSoftware
 
         private void listBox_Open_SelectedIndexChanged(object sender, EventArgs e)
         {
+            RadioB_refund.Checked = false;
+            RadioB_repair.Checked = false;
+            RadioB_replace.Checked = false;
+
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Open.Text + "'", con);
                 reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
+                  
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    req_type = reader.GetString(reader.GetOrdinal("type")) ; 
-                    
-                 }
-            
-               
-                
-                // Enabling the radio button-Not working
-                RadioB_refund.Checked = false;
-                RadioB_repair.Checked = false;
-                RadioB_replace.Checked = false;
+                    req_type = reader.GetString(reader.GetOrdinal("type"));
 
-                if (req_type.Equals("Replace"))
-                    RadioB_replace.Checked = true;
-                else if (req_type.Equals("Refund"))
-                    RadioB_refund.Checked = true;
-                else if (req_type.Equals("Repair"))
+                }
+            
+                if (req_type.ToLower().Contains("replace"))
+                {
+                   RadioB_replace.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("refund"))
+                {
+                   RadioB_refund.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("repair"))
+                {
                     RadioB_repair.Checked = true;
+                }
 
                 con.Close();
             }
@@ -163,7 +169,9 @@ namespace RMA_SystemSoftware
 
         private void listBox_Received_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            RadioB_refund.Checked = false;
+            RadioB_repair.Checked = false;
+            RadioB_replace.Checked = false;
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -175,20 +183,22 @@ namespace RMA_SystemSoftware
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-
-                    // Enabling the radio button-Not working
-                    RadioB_refund.Checked = false;
-                    RadioB_repair.Checked = false;
-                    RadioB_replace.Checked = false;
-
-
-                    if (req_type.Equals("Replace"))
-                        RadioB_replace.Checked = true;
-                    else if (req_type.Equals("Refund"))
-                        RadioB_refund.Checked = true;
-                    else if (req_type.Equals("Repair"))
-                        RadioB_repair.Checked = true;
+                    req_type = reader.GetString(reader.GetOrdinal("type"));
                 }
+                    if (req_type.ToLower().Contains("replace"))
+                    {
+                        RadioB_replace.Checked = true;
+                    }
+                    else if (req_type.ToLower().Contains("refund"))
+                    {
+                        RadioB_refund.Checked = true;
+                    }
+                    else if (req_type.ToLower().Contains("repair"))
+                    {
+                        RadioB_repair.Checked = true;
+                    }
+                   
+                
                 con.Close();
             }
             catch (Exception ex)
@@ -198,6 +208,9 @@ namespace RMA_SystemSoftware
         }
         private void listBox_Wait_SelectedIndexChanged(object sender, EventArgs e)
         {
+            RadioB_refund.Checked = false;
+            RadioB_repair.Checked = false;
+            RadioB_replace.Checked = false;
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -209,20 +222,21 @@ namespace RMA_SystemSoftware
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-
-                    
-                    // Enabling the radio button-Not working
-                    RadioB_refund.Checked = false;
-                    RadioB_repair.Checked = false;
-                    RadioB_replace.Checked = false;
-
-                    if (req_type.Equals("Replace"))
+                    req_type = reader.GetString(reader.GetOrdinal("type"));
+                }   
+                    if (req_type.ToLower().Contains("replace"))
+                    {
                         RadioB_replace.Checked = true;
-                    else if (req_type.Equals("Refund"))
+                    }
+                    else if (req_type.ToLower().Contains("refund"))
+                    {
                         RadioB_refund.Checked = true;
-                    else if (req_type.Equals("Repair"))
+                    }
+                    else if (req_type.ToLower().Contains("repair"))
+                    {
                         RadioB_repair.Checked = true;
-                }
+                    }
+                
                 con.Close();
             }
             catch (Exception ex)
@@ -278,9 +292,7 @@ namespace RMA_SystemSoftware
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Request Added to Queue for Technician Assignment!! Press Refresh. ");
                 con.Close();
-                
-
-            }
+             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -324,8 +336,19 @@ namespace RMA_SystemSoftware
             textBox_rmaNo.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             label_currentStatus.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             comboBox_Status.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-
-            // add code for Radio Button too
+            req_type = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+            if (req_type.ToLower().Contains("replace"))
+            {
+                RadioB_replace.Checked = true;
+            }
+            else if (req_type.ToLower().Contains("refund"))
+            {
+                RadioB_refund.Checked = true;
+            }
+            else if (req_type.ToLower().Contains("repair"))
+            {
+                RadioB_repair.Checked = true;
+            }
         }
 
         private void button_Show_Click(object sender, EventArgs e)
@@ -333,6 +356,7 @@ namespace RMA_SystemSoftware
             if (textBox_rmaNo.Text != "")
             {
                 con.Open();
+               
                 da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
                 ds = new DataSet();
                 da.Fill(ds, "Single Record");
@@ -342,6 +366,65 @@ namespace RMA_SystemSoftware
             }
             else
                 MessageBox.Show("Please Enter RMA No. ");
+        }
+
+        private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
+        {
+          
+            RadioB_refund.Checked = false;
+            RadioB_repair.Checked = false;
+            RadioB_replace.Checked = false;
+            try
+            {
+
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    con.Open();
+                    cmd = new SqlCommand("select count(rma_no) found from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result = String.Format("{0}", reader["found"]);
+                    }
+                    con.Close();
+
+
+                    if (result.Equals("1"))
+                    {
+                        con.Open();
+                        cmd = new SqlCommand("Select * from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
+                            label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
+                            comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
+                            req_type = reader.GetString(reader.GetOrdinal("type"));
+                        }
+
+                        if (req_type.ToLower().Contains("replace"))
+                        {
+                            RadioB_replace.Checked = true;
+                        }
+                        else if (req_type.ToLower().Contains("refund"))
+                        {
+                            RadioB_refund.Checked = true;
+                        }
+                        else if (req_type.ToLower().Contains("repair"))
+                        {
+                            RadioB_repair.Checked = true;
+                        }
+                        con.Close();
+                    }
+                    else if (result.Equals("0"))
+                        MessageBox.Show("RMA not found. Please enter a valid RMA#.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

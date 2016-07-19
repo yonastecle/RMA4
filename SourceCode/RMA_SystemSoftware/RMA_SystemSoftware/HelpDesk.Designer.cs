@@ -34,9 +34,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel_logout = new System.Windows.Forms.LinkLabel();
             this.groupBox_UpdateDetails = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.radioB_CAT4 = new System.Windows.Forms.RadioButton();
+            this.radioB_CAT3 = new System.Windows.Forms.RadioButton();
+            this.radioB_CAT2 = new System.Windows.Forms.RadioButton();
+            this.radioB_CAT1 = new System.Windows.Forms.RadioButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.radioB_replace = new System.Windows.Forms.RadioButton();
+            this.radioB_refund = new System.Windows.Forms.RadioButton();
+            this.radioB_repair = new System.Windows.Forms.RadioButton();
             this.comboBox_TechName = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.radioB_replace = new System.Windows.Forms.RadioButton();
             this.updateRecordButton = new System.Windows.Forms.Button();
             this.openRecordButton = new System.Windows.Forms.Button();
             this.textBox_update_statusUpdate = new System.Windows.Forms.TextBox();
@@ -44,18 +52,12 @@
             this.ConfirmTechChangeButton = new System.Windows.Forms.Button();
             this.label_TechName = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.radioB_CAT4 = new System.Windows.Forms.RadioButton();
-            this.radioB_CAT3 = new System.Windows.Forms.RadioButton();
-            this.radioB_CAT2 = new System.Windows.Forms.RadioButton();
-            this.radioB_CAT1 = new System.Windows.Forms.RadioButton();
             this.comboBox_updateStatus = new System.Windows.Forms.ComboBox();
             this.SplitRMAButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label_status = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.radioB_refund = new System.Windows.Forms.RadioButton();
-            this.radioB_repair = new System.Windows.Forms.RadioButton();
             this.textBox_update_rmaNo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -90,14 +92,12 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.textBox_rmaNo = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox_UpdateDetails.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button4
@@ -187,6 +187,111 @@
             this.groupBox_UpdateDetails.TabStop = false;
             this.groupBox_UpdateDetails.Text = "Update Details(*Only Authorized users)";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.radioB_CAT4);
+            this.panel3.Controls.Add(this.radioB_CAT3);
+            this.panel3.Controls.Add(this.radioB_CAT2);
+            this.panel3.Controls.Add(this.radioB_CAT1);
+            this.panel3.Location = new System.Drawing.Point(174, 117);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(268, 63);
+            this.panel3.TabIndex = 66;
+            // 
+            // radioB_CAT4
+            // 
+            this.radioB_CAT4.AutoSize = true;
+            this.radioB_CAT4.Location = new System.Drawing.Point(152, 35);
+            this.radioB_CAT4.Name = "radioB_CAT4";
+            this.radioB_CAT4.Size = new System.Drawing.Size(113, 17);
+            this.radioB_CAT4.TabIndex = 49;
+            this.radioB_CAT4.TabStop = true;
+            this.radioB_CAT4.Text = "CAT4 (10+ pieces)";
+            this.radioB_CAT4.UseVisualStyleBackColor = true;
+            this.radioB_CAT4.CheckedChanged += new System.EventHandler(this.radioB_CAT4_CheckedChanged);
+            // 
+            // radioB_CAT3
+            // 
+            this.radioB_CAT3.AutoSize = true;
+            this.radioB_CAT3.Location = new System.Drawing.Point(5, 35);
+            this.radioB_CAT3.Name = "radioB_CAT3";
+            this.radioB_CAT3.Size = new System.Drawing.Size(116, 17);
+            this.radioB_CAT3.TabIndex = 48;
+            this.radioB_CAT3.TabStop = true;
+            this.radioB_CAT3.Text = "CAT3 (5-10 pieces)";
+            this.radioB_CAT3.UseVisualStyleBackColor = true;
+            this.radioB_CAT3.CheckedChanged += new System.EventHandler(this.radioB_CAT3_CheckedChanged);
+            // 
+            // radioB_CAT2
+            // 
+            this.radioB_CAT2.AutoSize = true;
+            this.radioB_CAT2.Location = new System.Drawing.Point(152, 0);
+            this.radioB_CAT2.Name = "radioB_CAT2";
+            this.radioB_CAT2.Size = new System.Drawing.Size(110, 17);
+            this.radioB_CAT2.TabIndex = 47;
+            this.radioB_CAT2.TabStop = true;
+            this.radioB_CAT2.Text = "CAT2 (3-4 pieces)";
+            this.radioB_CAT2.UseVisualStyleBackColor = true;
+            this.radioB_CAT2.CheckedChanged += new System.EventHandler(this.radioB_CAT2_CheckedChanged);
+            // 
+            // radioB_CAT1
+            // 
+            this.radioB_CAT1.AutoSize = true;
+            this.radioB_CAT1.Location = new System.Drawing.Point(5, 0);
+            this.radioB_CAT1.Name = "radioB_CAT1";
+            this.radioB_CAT1.Size = new System.Drawing.Size(110, 17);
+            this.radioB_CAT1.TabIndex = 46;
+            this.radioB_CAT1.TabStop = true;
+            this.radioB_CAT1.Text = "CAT1 (1-2 pieces)";
+            this.radioB_CAT1.UseVisualStyleBackColor = true;
+            this.radioB_CAT1.CheckedChanged += new System.EventHandler(this.radioB_CAT1_CheckedChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.radioB_replace);
+            this.panel2.Controls.Add(this.radioB_refund);
+            this.panel2.Controls.Add(this.radioB_repair);
+            this.panel2.Location = new System.Drawing.Point(179, 81);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(251, 23);
+            this.panel2.TabIndex = 65;
+            // 
+            // radioB_replace
+            // 
+            this.radioB_replace.AutoSize = true;
+            this.radioB_replace.Location = new System.Drawing.Point(90, 5);
+            this.radioB_replace.Name = "radioB_replace";
+            this.radioB_replace.Size = new System.Drawing.Size(65, 17);
+            this.radioB_replace.TabIndex = 57;
+            this.radioB_replace.TabStop = true;
+            this.radioB_replace.Text = "Replace";
+            this.radioB_replace.UseVisualStyleBackColor = true;
+            this.radioB_replace.CheckedChanged += new System.EventHandler(this.radioB_replace_CheckedChanged);
+            // 
+            // radioB_refund
+            // 
+            this.radioB_refund.AutoSize = true;
+            this.radioB_refund.Location = new System.Drawing.Point(172, 5);
+            this.radioB_refund.Name = "radioB_refund";
+            this.radioB_refund.Size = new System.Drawing.Size(60, 17);
+            this.radioB_refund.TabIndex = 39;
+            this.radioB_refund.TabStop = true;
+            this.radioB_refund.Text = "Refund";
+            this.radioB_refund.UseVisualStyleBackColor = true;
+            this.radioB_refund.CheckedChanged += new System.EventHandler(this.radioB_refund_CheckedChanged);
+            // 
+            // radioB_repair
+            // 
+            this.radioB_repair.AutoSize = true;
+            this.radioB_repair.Location = new System.Drawing.Point(2, 5);
+            this.radioB_repair.Name = "radioB_repair";
+            this.radioB_repair.Size = new System.Drawing.Size(56, 17);
+            this.radioB_repair.TabIndex = 38;
+            this.radioB_repair.TabStop = true;
+            this.radioB_repair.Text = "Repair";
+            this.radioB_repair.UseVisualStyleBackColor = true;
+            this.radioB_repair.CheckedChanged += new System.EventHandler(this.radioB_repair_CheckedChanged);
+            // 
             // comboBox_TechName
             // 
             this.comboBox_TechName.FormattingEnabled = true;
@@ -205,18 +310,6 @@
             this.label6.Size = new System.Drawing.Size(146, 15);
             this.label6.TabIndex = 63;
             this.label6.Text = " Change Technician?:";
-            // 
-            // radioB_replace
-            // 
-            this.radioB_replace.AutoSize = true;
-            this.radioB_replace.Location = new System.Drawing.Point(90, 5);
-            this.radioB_replace.Name = "radioB_replace";
-            this.radioB_replace.Size = new System.Drawing.Size(65, 17);
-            this.radioB_replace.TabIndex = 57;
-            this.radioB_replace.TabStop = true;
-            this.radioB_replace.Text = "Replace";
-            this.radioB_replace.UseVisualStyleBackColor = true;
-            this.radioB_replace.CheckedChanged += new System.EventHandler(this.radioB_replace_CheckedChanged);
             // 
             // updateRecordButton
             // 
@@ -290,54 +383,6 @@
             this.label9.TabIndex = 50;
             this.label9.Text = "Assigned Technician:";
             // 
-            // radioB_CAT4
-            // 
-            this.radioB_CAT4.AutoSize = true;
-            this.radioB_CAT4.Location = new System.Drawing.Point(152, 35);
-            this.radioB_CAT4.Name = "radioB_CAT4";
-            this.radioB_CAT4.Size = new System.Drawing.Size(113, 17);
-            this.radioB_CAT4.TabIndex = 49;
-            this.radioB_CAT4.TabStop = true;
-            this.radioB_CAT4.Text = "CAT4 (10+ pieces)";
-            this.radioB_CAT4.UseVisualStyleBackColor = true;
-            this.radioB_CAT4.CheckedChanged += new System.EventHandler(this.radioB_CAT4_CheckedChanged);
-            // 
-            // radioB_CAT3
-            // 
-            this.radioB_CAT3.AutoSize = true;
-            this.radioB_CAT3.Location = new System.Drawing.Point(5, 35);
-            this.radioB_CAT3.Name = "radioB_CAT3";
-            this.radioB_CAT3.Size = new System.Drawing.Size(116, 17);
-            this.radioB_CAT3.TabIndex = 48;
-            this.radioB_CAT3.TabStop = true;
-            this.radioB_CAT3.Text = "CAT3 (5-10 pieces)";
-            this.radioB_CAT3.UseVisualStyleBackColor = true;
-            this.radioB_CAT3.CheckedChanged += new System.EventHandler(this.radioB_CAT3_CheckedChanged);
-            // 
-            // radioB_CAT2
-            // 
-            this.radioB_CAT2.AutoSize = true;
-            this.radioB_CAT2.Location = new System.Drawing.Point(152, 0);
-            this.radioB_CAT2.Name = "radioB_CAT2";
-            this.radioB_CAT2.Size = new System.Drawing.Size(110, 17);
-            this.radioB_CAT2.TabIndex = 47;
-            this.radioB_CAT2.TabStop = true;
-            this.radioB_CAT2.Text = "CAT2 (3-4 pieces)";
-            this.radioB_CAT2.UseVisualStyleBackColor = true;
-            this.radioB_CAT2.CheckedChanged += new System.EventHandler(this.radioB_CAT2_CheckedChanged);
-            // 
-            // radioB_CAT1
-            // 
-            this.radioB_CAT1.AutoSize = true;
-            this.radioB_CAT1.Location = new System.Drawing.Point(5, 0);
-            this.radioB_CAT1.Name = "radioB_CAT1";
-            this.radioB_CAT1.Size = new System.Drawing.Size(110, 17);
-            this.radioB_CAT1.TabIndex = 46;
-            this.radioB_CAT1.TabStop = true;
-            this.radioB_CAT1.Text = "CAT1 (1-2 pieces)";
-            this.radioB_CAT1.UseVisualStyleBackColor = true;
-            this.radioB_CAT1.CheckedChanged += new System.EventHandler(this.radioB_CAT1_CheckedChanged);
-            // 
             // comboBox_updateStatus
             // 
             this.comboBox_updateStatus.FormattingEnabled = true;
@@ -397,30 +442,6 @@
             this.label8.Size = new System.Drawing.Size(71, 15);
             this.label8.TabIndex = 40;
             this.label8.Text = "Category:";
-            // 
-            // radioB_refund
-            // 
-            this.radioB_refund.AutoSize = true;
-            this.radioB_refund.Location = new System.Drawing.Point(172, 5);
-            this.radioB_refund.Name = "radioB_refund";
-            this.radioB_refund.Size = new System.Drawing.Size(60, 17);
-            this.radioB_refund.TabIndex = 39;
-            this.radioB_refund.TabStop = true;
-            this.radioB_refund.Text = "Refund";
-            this.radioB_refund.UseVisualStyleBackColor = true;
-            this.radioB_refund.CheckedChanged += new System.EventHandler(this.radioB_refund_CheckedChanged);
-            // 
-            // radioB_repair
-            // 
-            this.radioB_repair.AutoSize = true;
-            this.radioB_repair.Location = new System.Drawing.Point(2, 5);
-            this.radioB_repair.Name = "radioB_repair";
-            this.radioB_repair.Size = new System.Drawing.Size(56, 17);
-            this.radioB_repair.TabIndex = 38;
-            this.radioB_repair.TabStop = true;
-            this.radioB_repair.Text = "Repair";
-            this.radioB_repair.UseVisualStyleBackColor = true;
-            this.radioB_repair.CheckedChanged += new System.EventHandler(this.radioB_repair_CheckedChanged);
             // 
             // textBox_update_rmaNo
             // 
@@ -771,27 +792,6 @@
             this.textBox_rmaNo.TabIndex = 69;
             this.textBox_rmaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_rmaNo_KeyPress);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.radioB_replace);
-            this.panel2.Controls.Add(this.radioB_refund);
-            this.panel2.Controls.Add(this.radioB_repair);
-            this.panel2.Location = new System.Drawing.Point(179, 81);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(251, 23);
-            this.panel2.TabIndex = 65;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.radioB_CAT4);
-            this.panel3.Controls.Add(this.radioB_CAT3);
-            this.panel3.Controls.Add(this.radioB_CAT2);
-            this.panel3.Controls.Add(this.radioB_CAT1);
-            this.panel3.Location = new System.Drawing.Point(174, 117);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(268, 63);
-            this.panel3.TabIndex = 66;
-            // 
             // HelpDesk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -815,16 +815,16 @@
             this.Load += new System.EventHandler(this.HelpDesk_Load);
             this.groupBox_UpdateDetails.ResumeLayout(false);
             this.groupBox_UpdateDetails.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

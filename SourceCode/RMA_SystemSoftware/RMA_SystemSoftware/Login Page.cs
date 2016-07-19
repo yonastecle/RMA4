@@ -33,28 +33,28 @@ namespace RMA_SystemSoftware
                 {
 
 
-                    if ((dt.Rows[0][0].ToString() == "Supervisor") || (dt.Rows[0][0].ToString() == "supervisor"))
+                    if (dt.Rows[0][0].ToString().ToLower() == "supervisor")
                     {
                         this.Hide();
                         Supervisor sup = new Supervisor();
                         sup.u_id = textBox1.Text;
                         sup.Show();
                     }
-                    else if (dt.Rows[0][0].ToString() == "Technician" || dt.Rows[0][0].ToString() == "technician")
+                    else if (dt.Rows[0][0].ToString().ToLower() == "technician") 
                     {
                         this.Hide();
                         Technician tech = new Technician();
                         tech.u_id = textBox1.Text;
                         tech.Show();
                     }
-                    else if ((dt.Rows[0][0].ToString() == "Help Desk ") || (dt.Rows[0][0].ToString() == "help desk "))
+                    else if (dt.Rows[0][0].ToString().ToLower() == "help desk ")
                     {
                         this.Hide();
                         HelpDesk hdesk = new HelpDesk();
                         hdesk.u_id = textBox1.Text;
                         hdesk.Show();
                     }
-                    else if ((dt.Rows[0][0].ToString() == "Receiving ") || (dt.Rows[0][0].ToString() == "receiving "))
+                    else if (dt.Rows[0][0].ToString().ToLower() == "receiving ")
                     {
                         this.Hide();
                         Receiving recv = new Receiving();
