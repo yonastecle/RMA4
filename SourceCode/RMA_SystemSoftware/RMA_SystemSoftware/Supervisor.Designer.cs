@@ -847,6 +847,7 @@
             this.textBox_EmpName.Name = "textBox_EmpName";
             this.textBox_EmpName.Size = new System.Drawing.Size(174, 20);
             this.textBox_EmpName.TabIndex = 74;
+            this.textBox_EmpName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_EmpName_KeyPress);
             // 
             // textBox_EmpID
             // 
@@ -854,6 +855,7 @@
             this.textBox_EmpID.Name = "textBox_EmpID";
             this.textBox_EmpID.Size = new System.Drawing.Size(174, 20);
             this.textBox_EmpID.TabIndex = 73;
+            this.textBox_EmpID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_EmpID_KeyPress);
             // 
             // SearchButton
             // 

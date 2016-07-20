@@ -628,6 +628,38 @@ namespace RMA_SystemSoftware
             }
         }
 
+        private void textBox_EmpName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                con.Open();
+                cmd = new SqlCommand("Select UserID ID from Employee where firstName='" + textBox_EmpName.Text + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    textBox_EmpID.Text = read["ID"].ToString();
+                }
+               
+                con.Close();
+            }
+              
+        }
+
+        private void textBox_EmpID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                con.Open();
+                cmd = new SqlCommand("Select firstName name from Employee where UserID='" + textBox_EmpID.Text + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    textBox_EmpName.Text = read["name"].ToString();
+                }
+                con.Close();
+            }
+
+        }
 
         private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
