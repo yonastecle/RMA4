@@ -135,6 +135,9 @@ namespace RMA_SystemSoftware
                     else
                     {
                         MessageBox.Show("No Record found!");
+                        textBox_EmpID.Clear();
+                        textBox_EmpName.Clear();
+
                     }
                 }
                 else

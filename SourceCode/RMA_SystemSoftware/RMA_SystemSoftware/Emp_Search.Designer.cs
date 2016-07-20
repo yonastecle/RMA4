@@ -167,7 +167,7 @@
             "NA",
             "Laptop ",
             "Desktop",
-            "Laptop and Desktop"});
+            "Both"});
             this.comboBox_usertag.Location = new System.Drawing.Point(331, 332);
             this.comboBox_usertag.Name = "comboBox_usertag";
             this.comboBox_usertag.Size = new System.Drawing.Size(169, 21);
@@ -192,9 +192,9 @@
             this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(245, 337);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 16);
+            this.label12.Size = new System.Drawing.Size(76, 16);
             this.label12.TabIndex = 40;
-            this.label12.Text = "User Tag:";
+            this.label12.Text = "User Tag: *";
             // 
             // textBox_password
             // 

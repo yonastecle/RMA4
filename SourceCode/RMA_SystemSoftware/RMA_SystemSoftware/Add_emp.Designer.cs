@@ -172,9 +172,9 @@
             this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(294, 297);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 16);
+            this.label12.Size = new System.Drawing.Size(76, 16);
             this.label12.TabIndex = 12;
-            this.label12.Text = "User Tag:";
+            this.label12.Text = "User Tag: *";
             // 
             // comboBox_userType
             // 
@@ -197,7 +197,7 @@
             "NA",
             "Laptop ",
             "Desktop",
-            "Laptop&Desktop"});
+            "Both"});
             this.comboBox_userTag.Location = new System.Drawing.Point(380, 296);
             this.comboBox_userTag.Name = "comboBox_userTag";
             this.comboBox_userTag.Size = new System.Drawing.Size(169, 21);

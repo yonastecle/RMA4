@@ -72,16 +72,30 @@ namespace RMA_SystemSoftware
         {
             try
             {
-                if (con.State == ConnectionState.Open)
+
+
+                if (textBox_password.Text != "" && comboBox_usertype.SelectedIndex != -1 && textBox_fname.Text != "" && comboBox_usertag.SelectedIndex != -1 && (textBox_email.Text.Contains("@cnbcomputers.com")))
                 {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    con.Open();
+                    cmd = new SqlCommand("Update Employee set password='" + textBox_password.Text + "',userType='" + comboBox_usertype.Text + "',userTag='" + comboBox_usertag.Text + "',firstName='" + textBox_fname.Text + "',lastName='" + textBox_lname.Text + "',email='" + textBox_email.Text + "',Ext='" + textBox_ext.Text + "',Fax='" + textBox_Fax.Text + "'where UserID='" + label_userId.Text + "'", con);
+                    cmd.ExecuteNonQuery();
                     con.Close();
+                    MessageBox.Show("Database Updated!", "Success");
                 }
-               
-                con.Open();
-                cmd = new SqlCommand("Update Employee set password='" + textBox_password.Text + "',userType='" + comboBox_usertype.Text + "',userTag='" + comboBox_usertag.Text + "',firstName='" + textBox_fname.Text + "',lastName='" + textBox_lname.Text + "',email='" + textBox_email.Text + "',Ext='" + textBox_ext.Text + "',Fax='" + textBox_Fax.Text + "'where UserID='"+label_userId.Text+"'", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Database Updated!");
+                else
+                {
+                    MessageBox.Show("Review the highlighted sections.\n Enter the appropriate details!", "Error");
+
+                    if (textBox_password.Text == "") label4.ForeColor = Color.Red;
+                    if (comboBox_usertype.SelectedIndex == -1) label5.ForeColor = Color.Red;
+                    if (textBox_fname.Text == "") label6.ForeColor = Color.Red;
+                    if (comboBox_usertag.SelectedIndex == -1) label12.ForeColor = Color.Red;
+                    if (!(textBox_email.Text.Contains("@cnbcomputers.com"))) label8.ForeColor = Color.Red;
+                }
+
+                       
+                                                                                       
             }
             catch(Exception ex)
             {
@@ -89,6 +103,8 @@ namespace RMA_SystemSoftware
             }
 
         }
+
+        
 
         private void Emp_Search_Load(object sender, EventArgs e)
         {
@@ -105,8 +121,8 @@ namespace RMA_SystemSoftware
                         textBox_password.Text = dr.GetString(dr.GetOrdinal("password"));
                         comboBox_usertype.Text = dr.GetString(dr.GetOrdinal("userType"));
                         comboBox_usertag.Text = dr.GetString(dr.GetOrdinal("userTag"));
-                        textBox_fname.Text = Convert.ToString(name);
-                        //textBox_fname.Text = dr.GetString(dr.GetOrdinal("firstName"));
+                       // textBox_fname.Text = Convert.ToString(name);
+                        textBox_fname.Text = dr.GetString(dr.GetOrdinal("firstName"));
                         textBox_lname.Text = dr.GetString(dr.GetOrdinal("lastName"));
                         textBox_email.Text = dr.GetString(dr.GetOrdinal("email"));
                         textBox_Fax.Text = dr.GetString(dr.GetOrdinal("Fax"));
@@ -120,7 +136,7 @@ namespace RMA_SystemSoftware
                     dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
-                        label_userId.Text = id;
+                        label_userId.Text = dr.GetString(dr.GetOrdinal("UserID"));
                         textBox_password.Text = dr.GetString(dr.GetOrdinal("password"));
                         comboBox_usertype.Text = dr.GetString(dr.GetOrdinal("userType"));
                         comboBox_usertag.Text = dr.GetString(dr.GetOrdinal("userTag"));
@@ -138,5 +154,6 @@ namespace RMA_SystemSoftware
 
             }
         }
+       
     }
 }
