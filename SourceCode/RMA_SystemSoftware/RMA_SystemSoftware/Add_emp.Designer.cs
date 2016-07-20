@@ -39,15 +39,15 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_passwrd = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox_Fax = new System.Windows.Forms.TextBox();
+            this.comboBox_userType = new System.Windows.Forms.ComboBox();
+            this.comboBox_userTag = new System.Windows.Forms.ComboBox();
+            this.textBox_fName = new System.Windows.Forms.TextBox();
+            this.textBox_lName = new System.Windows.Forms.TextBox();
+            this.textBox_email = new System.Windows.Forms.TextBox();
+            this.textBox_ext = new System.Windows.Forms.TextBox();
+            this.textBox_fax = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -158,13 +158,13 @@
             this.label10.TabIndex = 9;
             this.label10.Text = "Fax:";
             // 
-            // textBox1
+            // textBox_passwrd
             // 
-            this.textBox1.Location = new System.Drawing.Point(380, 207);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 20);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.textBox_passwrd.Location = new System.Drawing.Point(380, 207);
+            this.textBox_passwrd.Name = "textBox_passwrd";
+            this.textBox_passwrd.Size = new System.Drawing.Size(169, 20);
+            this.textBox_passwrd.TabIndex = 11;
+            this.textBox_passwrd.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_passwrd_Validating);
             // 
             // label12
             // 
@@ -176,71 +176,74 @@
             this.label12.TabIndex = 12;
             this.label12.Text = "User Tag:";
             // 
-            // comboBox1
+            // comboBox_userType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_userType.FormattingEnabled = true;
+            this.comboBox_userType.Items.AddRange(new object[] {
             "Supervisor",
             "Technician",
             "Help Desk",
             "Receiving"});
-            this.comboBox1.Location = new System.Drawing.Point(380, 251);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 21);
-            this.comboBox1.TabIndex = 13;
-            this.comboBox1.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox1_Validating);
+            this.comboBox_userType.Location = new System.Drawing.Point(380, 251);
+            this.comboBox_userType.Name = "comboBox_userType";
+            this.comboBox_userType.Size = new System.Drawing.Size(169, 21);
+            this.comboBox_userType.TabIndex = 13;
+            this.comboBox_userType.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_userType_Validating);
             // 
-            // comboBox2
+            // comboBox_userTag
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBox_userTag.FormattingEnabled = true;
+            this.comboBox_userTag.Items.AddRange(new object[] {
             "NA",
             "Laptop ",
             "Desktop",
             "Laptop&Desktop"});
-            this.comboBox2.Location = new System.Drawing.Point(380, 296);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(169, 21);
-            this.comboBox2.TabIndex = 14;
+            this.comboBox_userTag.Location = new System.Drawing.Point(380, 296);
+            this.comboBox_userTag.Name = "comboBox_userTag";
+            this.comboBox_userTag.Size = new System.Drawing.Size(169, 21);
+            this.comboBox_userTag.TabIndex = 14;
+            this.comboBox_userTag.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_userTag_Validating);
             // 
-            // textBox2
+            // textBox_fName
             // 
-            this.textBox2.Location = new System.Drawing.Point(380, 341);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(169, 20);
-            this.textBox2.TabIndex = 15;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
-            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox2_Validating);
+            this.textBox_fName.Location = new System.Drawing.Point(380, 341);
+            this.textBox_fName.Name = "textBox_fName";
+            this.textBox_fName.Size = new System.Drawing.Size(169, 20);
+            this.textBox_fName.TabIndex = 15;
+            this.textBox_fName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_fName_KeyPress);
+            this.textBox_fName.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_fName_Validating);
             // 
-            // textBox3
+            // textBox_lName
             // 
-            this.textBox3.Location = new System.Drawing.Point(380, 385);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(169, 20);
-            this.textBox3.TabIndex = 16;
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
+            this.textBox_lName.Location = new System.Drawing.Point(380, 385);
+            this.textBox_lName.Name = "textBox_lName";
+            this.textBox_lName.Size = new System.Drawing.Size(169, 20);
+            this.textBox_lName.TabIndex = 16;
+            this.textBox_lName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_lName_KeyPress);
             // 
-            // textBox4
+            // textBox_email
             // 
-            this.textBox4.Location = new System.Drawing.Point(380, 429);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(169, 20);
-            this.textBox4.TabIndex = 17;
+            this.textBox_email.Location = new System.Drawing.Point(380, 429);
+            this.textBox_email.Name = "textBox_email";
+            this.textBox_email.Size = new System.Drawing.Size(169, 20);
+            this.textBox_email.TabIndex = 17;
+            this.textBox_email.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_email_Validating);
             // 
-            // textBox5
+            // textBox_ext
             // 
-            this.textBox5.Location = new System.Drawing.Point(380, 473);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(169, 20);
-            this.textBox5.TabIndex = 18;
-            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
+            this.textBox_ext.Location = new System.Drawing.Point(380, 473);
+            this.textBox_ext.Name = "textBox_ext";
+            this.textBox_ext.Size = new System.Drawing.Size(169, 20);
+            this.textBox_ext.TabIndex = 18;
+            this.textBox_ext.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_ext_KeyPress);
             // 
-            // textBox_Fax
+            // textBox_fax
             // 
-            this.textBox_Fax.Location = new System.Drawing.Point(380, 517);
-            this.textBox_Fax.Name = "textBox_Fax";
-            this.textBox_Fax.Size = new System.Drawing.Size(169, 20);
-            this.textBox_Fax.TabIndex = 19;
+            this.textBox_fax.Location = new System.Drawing.Point(380, 517);
+            this.textBox_fax.Name = "textBox_fax";
+            this.textBox_fax.Size = new System.Drawing.Size(169, 20);
+            this.textBox_fax.TabIndex = 19;
+            this.textBox_fax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_fax_KeyPress);
             // 
             // submitButton
             // 
@@ -310,15 +313,15 @@
             this.Controls.Add(this.err_msg);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.textBox_Fax);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox_fax);
+            this.Controls.Add(this.textBox_ext);
+            this.Controls.Add(this.textBox_email);
+            this.Controls.Add(this.textBox_lName);
+            this.Controls.Add(this.textBox_fName);
+            this.Controls.Add(this.comboBox_userTag);
+            this.Controls.Add(this.comboBox_userType);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_passwrd);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -350,15 +353,15 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_passwrd;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox_Fax;
+        private System.Windows.Forms.ComboBox comboBox_userType;
+        private System.Windows.Forms.ComboBox comboBox_userTag;
+        private System.Windows.Forms.TextBox textBox_fName;
+        private System.Windows.Forms.TextBox textBox_lName;
+        private System.Windows.Forms.TextBox textBox_email;
+        private System.Windows.Forms.TextBox textBox_ext;
+        private System.Windows.Forms.TextBox textBox_fax;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.ErrorProvider errorProvider1;

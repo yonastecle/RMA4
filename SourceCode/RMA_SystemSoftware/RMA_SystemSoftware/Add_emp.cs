@@ -13,6 +13,7 @@ namespace RMA_SystemSoftware
 {
     public partial class Add_emp : Form
     {
+        Supervisor sup = new Supervisor();
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand command = new SqlCommand();
         public Add_emp()
@@ -56,18 +57,20 @@ namespace RMA_SystemSoftware
         }
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Supervisor sup = new Supervisor();
-            sup.Show();
+            
+                this.Close();
+                sup.Show();
+        
+            
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (ValidateChildren(ValidationConstraints.Enabled))
+                if(textBox_passwrd.Text != ""&& comboBox_userType.SelectedIndex!= -1 && textBox_fName.Text !=""&& comboBox_userTag.SelectedIndex!=-1)
                 {
                     con.Open();
-                    command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('" + label_UserID.Text + "','" + textBox1.Text + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox_Fax.Text + "')";
+                    command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('" + label_UserID.Text + "','" + textBox_passwrd.Text + "','" + comboBox_userType.Text + "','" + comboBox_userTag.Text + "','" + textBox_fName.Text + "','" + textBox_lName.Text + "','" + textBox_email.Text + "','" + textBox_ext.Text + "','" + textBox_fax.Text + "')";
                     command.ExecuteNonQuery();
                     con.Close();
                     MessageBox.Show(" New Employee added to Records!!");
@@ -75,14 +78,18 @@ namespace RMA_SystemSoftware
                     buttonNewEmp.Enabled = true;
 
                     label_UserID.Text = "";
-                    textBox1.Clear();
-                    comboBox1.SelectedIndex = -1;
-                    comboBox2.SelectedIndex = -1;
-                    textBox2.Clear();
-                    textBox3.Clear();
-                    textBox4.Clear();
-                    textBox5.Clear();
-                    textBox_Fax.Clear();
+                    textBox_passwrd.Clear();
+                    comboBox_userType.SelectedIndex = -1;
+                    comboBox_userTag.SelectedIndex = -1;
+                    textBox_fName.Clear();
+                    textBox_lName.Clear();
+                    textBox_email.Clear();
+                    textBox_ext.Clear();
+                    textBox_fax.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Fill in the Mandatory Fields", "Error");
                 }
             }
             catch (Exception ex)
@@ -97,46 +104,67 @@ namespace RMA_SystemSoftware
             generateAutoID();
         }
 
-
-
-        //Password
-        private void textBox1_Validating(object sender, CancelEventArgs e)
+        //Validations
+        private void textBox_passwrd_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(textBox1.Text))
-            { e.Cancel = true; errorProvider1.SetError(textBox1, "*Mandatory Field"); }
-            else { e.Cancel = false; errorProvider1.SetError(textBox1, ""); }
+            if (string.IsNullOrEmpty(textBox_passwrd.Text))
+            { /*e.Cancel = true;*/ errorProvider1.SetError(textBox_passwrd, "*Mandatory Field"); }
+            else { /*e.Cancel = false; */errorProvider1.SetError(textBox_passwrd, ""); }
         }
-        //User Type
-        private void comboBox1_Validating(object sender, CancelEventArgs e)
+        private void comboBox_userType_Validating(object sender, CancelEventArgs e)
         {
-            int flag = comboBox1.SelectedIndex;
+            int flag = comboBox_userType.SelectedIndex;
             if (flag == -1)
-            { e.Cancel = true; errorProvider1.SetError(comboBox1, "*Mandatory Field"); }
-            else { e.Cancel = false;errorProvider1.SetError(comboBox1,"");}
+            { /*e.Cancel = true;*/ errorProvider1.SetError(comboBox_userType, "*Mandatory Field"); }
+            else {/* e.Cancel = false;*/errorProvider1.SetError(comboBox_userType, ""); }
         }
-        //First Name
-        private void textBox2_Validating(object sender, CancelEventArgs e)
+        private void textBox_fName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(textBox2.Text))
-            { e.Cancel = true; errorProvider1.SetError(textBox2, "*Mandatory Field"); }
-            else { e.Cancel = false; errorProvider1.SetError(textBox2, ""); }
+            if (string.IsNullOrEmpty(textBox_fName.Text))
+            { /*e.Cancel = true; */errorProvider1.SetError(textBox_fName, "*Mandatory Field"); }
+            else { /*e.Cancel = false;*/ errorProvider1.SetError(textBox_fName, ""); }
         }
-        //Number validation for Extension
-        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox_userTag_Validating(object sender, CancelEventArgs e)
+        {
+            int flag = comboBox_userTag.SelectedIndex;
+            if(flag==-1)
+            {
+                errorProvider1.SetError(comboBox_userTag, "*Mandatory Field");
+            }
+            else
+            {
+                errorProvider1.SetError(comboBox_userTag, "");
+            }
+
+        }
+
+        //character validation 
+        private void textBox_fName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
+        }
+
+        private void textBox_lName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
+        }
+
+        private void textBox_email_Validating(object sender, CancelEventArgs e)
+        {
+            if (!(textBox_email.Text.Contains("@cnbcomputers.com")))
+                errorProvider1.SetError(textBox_email, "* Invalid Format");
+            else
+                errorProvider1.SetError(textBox_email, "");
+        }
+
+        private void textBox_ext_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = char.IsNumber(e.KeyChar) || e.KeyChar == 8 ? false : true;
         }
-        //character validation for firstname and last name
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
-        }
 
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox_fax_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = char.IsLetter(e.KeyChar) || e.KeyChar == 8 ? false : true;
+            e.Handled = char.IsNumber(e.KeyChar) || e.KeyChar == 8 || e.KeyChar == '-' || e.KeyChar == '(' || e.KeyChar == ')' ? false : true;
         }
-
-      
     }
 }

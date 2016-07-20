@@ -20,6 +20,7 @@ namespace RMA_SystemSoftware
         DataSet ds;
         WO_Details details = new WO_Details();
         Tech_Open techopen = new Tech_Open();
+        Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
         string s, ID, req_type;
         int cat;
@@ -107,7 +108,7 @@ namespace RMA_SystemSoftware
 
                     if (read.Read())
                     {
-                        Emp_Search search = new Emp_Search();
+                       
                         if (textBox_EmpID.Text == "")
                         {
                             search.empID = null;
