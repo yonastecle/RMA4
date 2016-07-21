@@ -18,10 +18,11 @@ namespace RMA_SystemSoftware
         SqlDataReader reader;
         SqlDataAdapter da;
         DataSet ds;
+      
         WO_Details details = new WO_Details();
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
-        string req_type;
+        string req_type, result=null;
 
         public string u_id { get; set; }
       
@@ -168,8 +169,8 @@ namespace RMA_SystemSoftware
                 else
                 {
                     mesg_box.RMA = textBox_rmaNo.Text;
-                    mesg_box.setdata();
-                    this.Hide();
+                   // mesg_box.setdata();
+                    //this.Hide();
                     mesg_box.Show();
                 }
                
@@ -177,9 +178,7 @@ namespace RMA_SystemSoftware
             else
             {
                 MessageBox.Show(" Please enter a valid RMA #");
-            }
-            
-                
+            }                          
             
         }
 
@@ -191,19 +190,22 @@ namespace RMA_SystemSoftware
              
                 if (textBox_rmaNo.Text != "")
                 {
-                    if(radioButton_repair.Checked== true|| radioButton_replace.Checked== true||radioButton_refund.Checked== true)
+                    if (radioButton_repair.Checked == true || radioButton_replace.Checked == true || radioButton_refund.Checked == true)
                     {
+
                         con.Open();
+                        Console.WriteLine("Enters Update!!"+ textBox_rmaNo.Text);
                         cmd = new SqlCommand("update RMA set Status='" + comboBox_status.Text + "',type='" + req_type + "'where rma_no='"+textBox_rmaNo.Text+ "'", con);
                         cmd.ExecuteNonQuery();
                         con.Close();
+                        Console.WriteLine("Exits Update!!"+comboBox_status.Text);
                         MessageBox.Show("Changes Updated... Press Refresh !");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please Choose the Type of Request");
-                    }
                 }
+                else
+                {
+                    MessageBox.Show("Please Choose the Type of Request");
+                }
+            }
                 else
                     MessageBox.Show("Please enter RMA#!");
                    
@@ -276,6 +278,71 @@ namespace RMA_SystemSoftware
             sup.fill_grid();
         }
 
-       
+        private void listBox_newRequest_DoubleClick(object sender, EventArgs e)
+        {
+            ProceedWindow prcd = new ProceedWindow();
+            prcd.rma_no = listBox_newRequest.Text;
+            prcd.Show();
+            //Console.WriteLine(listBox_newRequest.Text);
+            //if (MessageBox.Show("Would you like to accept the request?", "Proceed", MessageBoxButtons.YesNo,MessageBoxIcon.p))
+            //MessageBox.Show("hi");
+        }
+
+        private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            radioButton_refund.Checked = false;
+            radioButton_repair.Checked = false;
+            radioButton_replace.Checked = false;
+            try
+            {
+                if (e.KeyCode==Keys.Enter)
+                {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    con.Open();
+                    cmd = new SqlCommand("select count(rma_no) found from RMA  where rma_no='"+textBox_rmaNo.Text+"'", con);
+                    reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        result = String.Format("{0}", reader["found"]);
+                    }
+                    con.Close();
+
+                    if (result.Equals("1"))
+                    {
+                        con.Open();
+                        cmd = new SqlCommand("select * from RMA where rma_no='"+textBox_rmaNo.Text+"'", con);
+                        reader = cmd.ExecuteReader();
+                        while(reader.Read())
+                        {
+                            textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
+                            label_currentStatus.Text = comboBox_status.Text = reader.GetString(reader.GetOrdinal("Status"));
+                            req_type = reader.GetString(reader.GetOrdinal("type")); 
+                        }
+                        if (req_type.ToLower().Contains("replace"))
+                        {
+                            radioButton_replace.Checked = true;
+                        }
+                        else if (req_type.ToLower().Contains("repair"))
+                        {
+                            radioButton_repair.Checked = true;
+                        }
+                        else if (req_type.ToLower().Contains("refund")) ;
+                        {
+                            radioButton_refund.Checked = true;
+                        }
+                        con.Close();
+                    }
+                    else if (result.Equals("0"))
+                        MessageBox.Show("RMA not found.Please enter a valid RMA#.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        
+
     }
 }

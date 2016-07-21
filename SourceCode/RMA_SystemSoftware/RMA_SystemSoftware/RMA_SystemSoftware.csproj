@@ -98,6 +98,12 @@
     <Compile Include="Notes.Designer.cs">
       <DependentUpon>Notes.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProceedWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProceedWindow.Designer.cs">
+      <DependentUpon>ProceedWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Receiving.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     <EmbeddedResource Include="Notes.resx">
       <DependentUpon>Notes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProceedWindow.resx">
+      <DependentUpon>ProceedWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -203,6 +212,7 @@
     <EmbeddedResource Include="WO_Details.resx">
       <DependentUpon>WO_Details.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".Designer.ProceedWindowcs" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>

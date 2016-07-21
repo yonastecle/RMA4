@@ -53,6 +53,7 @@
             this.textBox_delg_reason.Name = "textBox_delg_reason";
             this.textBox_delg_reason.Size = new System.Drawing.Size(282, 109);
             this.textBox_delg_reason.TabIndex = 1;
+           
             // 
             // SubmitButton
             // 
@@ -110,6 +111,7 @@
             this.Controls.Add(this.label1);
             this.Name = "delegateMessageBox";
             this.Text = "Delegate Request";
+            this.Load += new System.EventHandler(this.delegateMessageBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

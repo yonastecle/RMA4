@@ -269,6 +269,7 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
+                this.Close();
                 fill_grid();
                 con.Close();
             }

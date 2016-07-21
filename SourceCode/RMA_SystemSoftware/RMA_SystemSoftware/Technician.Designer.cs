@@ -214,6 +214,7 @@
             this.textBox_rmaNo.Name = "textBox_rmaNo";
             this.textBox_rmaNo.Size = new System.Drawing.Size(234, 23);
             this.textBox_rmaNo.TabIndex = 31;
+            this.textBox_rmaNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_rmaNo_KeyDown);
             // 
             // label5
             // 
@@ -287,9 +288,9 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(69, 68);
+            this.groupBox1.Location = new System.Drawing.Point(92, 59);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(485, 291);
+            this.groupBox1.Size = new System.Drawing.Size(503, 272);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Track/Update RMA";
@@ -309,15 +310,15 @@
             // dataGrid_ShowDetails
             // 
             this.dataGrid_ShowDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_ShowDetails.Location = new System.Drawing.Point(33, 365);
+            this.dataGrid_ShowDetails.Location = new System.Drawing.Point(33, 346);
             this.dataGrid_ShowDetails.Name = "dataGrid_ShowDetails";
-            this.dataGrid_ShowDetails.Size = new System.Drawing.Size(615, 294);
+            this.dataGrid_ShowDetails.Size = new System.Drawing.Size(615, 313);
             this.dataGrid_ShowDetails.TabIndex = 43;
             // 
             // RefreshButton
             // 
             this.RefreshButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RefreshButton.Location = new System.Drawing.Point(910, 314);
+            this.RefreshButton.Location = new System.Drawing.Point(920, 158);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(85, 26);
             this.RefreshButton.TabIndex = 46;
@@ -330,7 +331,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkRed;
-            this.label8.Location = new System.Drawing.Point(654, 68);
+            this.label8.Location = new System.Drawing.Point(658, 74);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 18);
@@ -340,18 +341,19 @@
             // listBox_newRequest
             // 
             this.listBox_newRequest.FormattingEnabled = true;
-            this.listBox_newRequest.Location = new System.Drawing.Point(657, 89);
+            this.listBox_newRequest.Location = new System.Drawing.Point(657, 95);
             this.listBox_newRequest.Name = "listBox_newRequest";
-            this.listBox_newRequest.Size = new System.Drawing.Size(225, 251);
+            this.listBox_newRequest.Size = new System.Drawing.Size(225, 147);
             this.listBox_newRequest.TabIndex = 44;
             this.listBox_newRequest.SelectedIndexChanged += new System.EventHandler(this.listBox_newRequest_SelectedIndexChanged);
+            this.listBox_newRequest.DoubleClick += new System.EventHandler(this.listBox_newRequest_DoubleClick);
             // 
             // dataGrid_Tech_WOQueue
             // 
             this.dataGrid_Tech_WOQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_Tech_WOQueue.Location = new System.Drawing.Point(657, 365);
+            this.dataGrid_Tech_WOQueue.Location = new System.Drawing.Point(657, 276);
             this.dataGrid_Tech_WOQueue.Name = "dataGrid_Tech_WOQueue";
-            this.dataGrid_Tech_WOQueue.Size = new System.Drawing.Size(461, 294);
+            this.dataGrid_Tech_WOQueue.Size = new System.Drawing.Size(461, 383);
             this.dataGrid_Tech_WOQueue.TabIndex = 48;
             // 
             // notifyIcon1

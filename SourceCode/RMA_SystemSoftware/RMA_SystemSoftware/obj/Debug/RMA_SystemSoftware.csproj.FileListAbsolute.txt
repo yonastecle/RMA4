@@ -52,3 +52,4 @@ C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\zh-Ha
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.RMA_Report.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RdlCompile.cache
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RdlCompile.compiled
+C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.ProceedWindow.resources
