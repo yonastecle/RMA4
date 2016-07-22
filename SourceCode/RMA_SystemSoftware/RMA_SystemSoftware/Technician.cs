@@ -51,6 +51,7 @@ namespace RMA_SystemSoftware
                 
                 con.Close();
                 fill_listbox();
+                showTech_WOQueue();
             }
             catch(Exception ex)
             {
@@ -90,7 +91,7 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("Select rma_no from RMA where Status='Assigned'", con);
+                cmd = new SqlCommand("Select rma_no from RMA where Status='waiting to be assigned' and userID='"+u_id+"'", con);
                 reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
@@ -236,6 +237,7 @@ namespace RMA_SystemSoftware
         {
             listBox_newRequest.Items.Clear();
             fill_listbox();
+            showTech_WOQueue();
         }
 
         private void showButton_Click(object sender, EventArgs e)
@@ -283,9 +285,7 @@ namespace RMA_SystemSoftware
             ProceedWindow prcd = new ProceedWindow();
             prcd.rma_no = listBox_newRequest.Text;
             prcd.Show();
-            //Console.WriteLine(listBox_newRequest.Text);
-            //if (MessageBox.Show("Would you like to accept the request?", "Proceed", MessageBoxButtons.YesNo,MessageBoxIcon.p))
-            //MessageBox.Show("hi");
+           
         }
 
         private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
@@ -341,8 +341,22 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
-
-        
-
+        public void showTech_WOQueue()
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                da = new SqlDataAdapter("select rma_no as 'RMA#', date_assigned as 'Date Assigned',type as 'Type',Status, quantity as 'Quantity',invoiceNo as' Invoice No.' from RMA where userID='" + u_id + "'and Status NOT IN('waiting to be assigned','Complete')", con);
+                ds = new DataSet();
+                da.Fill(ds, "Tech WO Queue");
+                dataGrid_Tech_WOQueue.DataSource = ds.Tables["Tech WO Queue"];
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }        
     }
 }
