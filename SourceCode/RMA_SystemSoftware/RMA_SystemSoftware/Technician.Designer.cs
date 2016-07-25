@@ -357,6 +357,7 @@
             this.dataGrid_Tech_WOQueue.Name = "dataGrid_Tech_WOQueue";
             this.dataGrid_Tech_WOQueue.Size = new System.Drawing.Size(561, 319);
             this.dataGrid_Tech_WOQueue.TabIndex = 48;
+            this.dataGrid_Tech_WOQueue.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_Tech_WOQueue_CellContentClick);
             // 
             // notifyIcon1
             // 

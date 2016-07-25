@@ -341,6 +341,33 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void dataGrid_Tech_WOQueue_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex>=0)
+            {
+                DataGridViewRow row = this.dataGrid_Tech_WOQueue.Rows[e.RowIndex];
+
+                textBox_rmaNo.Text = row.Cells[0].Value.ToString();
+                comboBox_status.Text = label_currentStatus.Text = row.Cells[3].Value.ToString();
+                req_type = row.Cells[2].Value.ToString();
+                if (req_type.ToLower().Contains("replace"))
+                {
+                    radioButton_replace.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("refund"))
+                {
+                    radioButton_refund.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("repair"))
+                {
+                    radioButton_repair.Checked = true;
+                }
+
+
+            }
+        }
+
         public void showTech_WOQueue()
         {
             try
