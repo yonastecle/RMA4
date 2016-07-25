@@ -14,6 +14,7 @@ namespace RMA_SystemSoftware
     public partial class WO_Details : Form
     {
         public string u_type { get; set; }
+       // public string return_uid { get; set; }
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataAdapter da;
@@ -37,6 +38,7 @@ namespace RMA_SystemSoftware
                 else if (u_type.ToLower().Equals("technician"))
                 {
                     Technician Tech = new Technician();
+                   // Tech.u_id = return_uid;
                     Tech.Show();
                 }
                 else if (u_type.ToLower().Contains("help desk"))

@@ -452,7 +452,8 @@
             this.textBox_update_rmaNo.Name = "textBox_update_rmaNo";
             this.textBox_update_rmaNo.Size = new System.Drawing.Size(242, 23);
             this.textBox_update_rmaNo.TabIndex = 37;
-            this.textBox_update_rmaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_update_rmaNo_KeyPress_1);
+          
+            this.textBox_update_rmaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_update_rmaNo_KeyPress);
             // 
             // label4
             // 

@@ -47,6 +47,7 @@ namespace RMA_SystemSoftware
                 {
                     label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
                    details.u_type=techopen.u_type=reader.GetString(reader.GetOrdinal("userType"));
+                  //  details.return_uid = u_id;
                 }
                 
                 con.Close();
