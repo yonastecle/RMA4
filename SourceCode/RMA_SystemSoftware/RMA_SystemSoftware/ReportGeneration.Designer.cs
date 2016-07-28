@@ -1,6 +1,6 @@
 ﻿namespace RMA_SystemSoftware
 {
-    partial class RMA_Report
+    partial class ReportGeneration
     {
         /// <summary>
         /// Required designer variable.
@@ -41,13 +41,13 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Name = "Client";
             reportDataSource1.Value = this.RMABindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "RMA_SystemSoftware.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(913, 413);
+            this.reportViewer1.Size = new System.Drawing.Size(1003, 341);
             this.reportViewer1.TabIndex = 0;
             // 
             // DataSet1
@@ -64,15 +64,15 @@
             // 
             this.RMATableAdapter.ClearBeforeFill = true;
             // 
-            // RMA_Report
+            // ReportGeneration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 413);
+            this.ClientSize = new System.Drawing.Size(1003, 341);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "RMA_Report";
-            this.Text = "RMA_Report";
-            this.Load += new System.EventHandler(this.RMA_Report_Load);
+            this.Name = "ReportGeneration";
+            this.Text = "ReportGeneration";
+            this.Load += new System.EventHandler(this.ReportGeneration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RMABindingSource)).EndInit();
             this.ResumeLayout(false);

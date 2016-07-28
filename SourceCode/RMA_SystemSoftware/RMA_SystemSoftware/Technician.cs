@@ -46,8 +46,7 @@ namespace RMA_SystemSoftware
                 while (reader.Read())
                 {
                     label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
-                   details.u_type=techopen.u_type=reader.GetString(reader.GetOrdinal("userType"));
-                  //  details.return_uid = u_id;
+                
                 }
                 
                 con.Close();
@@ -64,9 +63,9 @@ namespace RMA_SystemSoftware
         {
             if(textBox_rmaNo.Text!="")
             {
-                this.Hide();
+                //this.Hide();
                 techopen.rma_no = textBox_rmaNo.Text;
-                techopen.Show();
+                techopen.ShowDialog();
             }
             else
             {
@@ -277,7 +276,7 @@ namespace RMA_SystemSoftware
         }
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             sup.fill_grid();
         }
 

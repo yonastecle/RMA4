@@ -22,21 +22,21 @@ namespace RMA_SystemSoftware
         private void GoBackButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            if(u_type.ToLower().Equals("supervisor"))
-            {
-                Supervisor sup = new Supervisor();
-                sup.Show();
-            }
-           else if(u_type.ToLower().Equals("technician"))
-           {
-                Technician Tech = new Technician();
-                Tech.Show();
-            }
-            else if(u_type.ToLower().Equals("help desk"))
-            {
-                HelpDesk hdsk = new HelpDesk();
-                hdsk.Show();
-            }
+           // if(u_type.ToLower().Equals("supervisor"))
+           // {
+           //     Supervisor sup = new Supervisor();
+           //     sup.Show();
+           // }
+           //else if(u_type.ToLower().Equals("technician"))
+           //{
+           //     Technician Tech = new Technician();
+           //     Tech.Show();
+           // }
+           // else if(u_type.ToLower().Equals("help desk"))
+           // {
+           //     HelpDesk hdsk = new HelpDesk();
+           //     hdsk.Show();
+           // }
                       
 
         }

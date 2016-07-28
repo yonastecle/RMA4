@@ -48,7 +48,7 @@ namespace RMA_SystemSoftware
                 while (reader.Read())
                 {
                     label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
-                    details.u_type = reader.GetString(reader.GetOrdinal("userType"));
+                   
                         
                 }
                    
@@ -431,7 +431,7 @@ namespace RMA_SystemSoftware
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             sup.fill_grid();
             
         }

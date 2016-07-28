@@ -57,11 +57,6 @@
     <Compile Include="Add_emp.Designer.cs">
       <DependentUpon>Add_emp.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="delegateMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,12 +104,6 @@
     </Compile>
     <Compile Include="Receiving.Designer.cs">
       <DependentUpon>Receiving.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RMA Report.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RMA Report.Designer.cs">
-      <DependentUpon>RMA Report.cs</DependentUpon>
     </Compile>
     <Compile Include="Search_RMA.cs">
       <SubType>Form</SubType>
@@ -190,10 +179,6 @@
     <EmbeddedResource Include="Receiving.resx">
       <DependentUpon>Receiving.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report1.rdlc" />
-    <EmbeddedResource Include="RMA Report.resx">
-      <DependentUpon>RMA Report.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Search_RMA.resx">
       <DependentUpon>Search_RMA.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,17 +198,6 @@
       <DependentUpon>WO_Details.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".Designer.ProceedWindowcs" />
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet1.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

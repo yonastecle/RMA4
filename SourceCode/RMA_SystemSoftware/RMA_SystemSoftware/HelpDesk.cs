@@ -51,7 +51,7 @@ namespace RMA_SystemSoftware
                 while (reader.Read())
                 {
                     label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
-                   details.u_type= techopen.u_type = reader.GetString(reader.GetOrdinal("userType"));
+                  
                 }
                    
                 reader.Close();
@@ -112,7 +112,6 @@ namespace RMA_SystemSoftware
                     if (found.Equals("0")) MessageBox.Show("RMA not found. Please enter a valid RMA#.");
                     else
                     {
-                        //label_rmaNo.Text = textBox_rmaNo.Text;
                         con.Open();
                         cmd = new SqlCommand("SELECT * FROM RMA R, Notes N WHERE R.rma_no =N.RMA_no AND r.rma_no='" + textBox_rmaNo.Text + "'", con);
                         reader = cmd.ExecuteReader();
@@ -379,7 +378,7 @@ namespace RMA_SystemSoftware
      
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           // this.Hide();
             sup.fill_grid();
             
         }

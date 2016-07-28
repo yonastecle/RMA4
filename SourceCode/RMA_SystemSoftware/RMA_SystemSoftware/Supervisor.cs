@@ -219,7 +219,7 @@ namespace RMA_SystemSoftware
                 while (read.Read())
                 {
                     label_helloEmp.Text = read.GetString(read.GetOrdinal("firstName"));
-                    details.u_type=techopen.u_type = read.GetString(read.GetOrdinal("userType"));
+                   
                 }
                 con.Close();
 
@@ -323,14 +323,14 @@ namespace RMA_SystemSoftware
 
         private void generateReportButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            RMA_Report report = new RMA_Report();
-            report.Show();
+            //this.Close();
+            //RMA_Report report = new RMA_Report();
+            //report.Show();
         }
 
         private void RMASearchButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             fill_grid();
         }
         public void fill_grid()
@@ -340,7 +340,7 @@ namespace RMA_SystemSoftware
             ds = new DataSet();
             da.Fill(ds, "All WO Details");
             details.dataGridView_WODetails.DataSource = ds.Tables[0];
-            details.Show();
+            details.ShowDialog();
         }
 
         private void listBox_newRequests_SelectedIndexChanged(object sender, EventArgs e)
@@ -418,9 +418,9 @@ namespace RMA_SystemSoftware
         {
             if (textBox_rmaNo.Text != "")
             {
-                this.Hide();
+                //this.Hide();
                 techopen.rma_no = textBox_rmaNo.Text;
-                techopen.Show();
+                techopen.ShowDialog();
             }
             else
             {

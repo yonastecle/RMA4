@@ -1,0 +1,15 @@
+diff a/SourceCode/RMA_SystemSoftware/RMA_SystemSoftware/DataSet1.xsd b/SourceCode/RMA_SystemSoftware/RMA_SystemSoftware/DataSet1.xsd	(rejected hunks)
+@@ -247,7 +247,11 @@
+     </xs:complexType>
+     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+       <xs:selector xpath=".//mstns:RMA" />
+-      <xs:field xpath="mstns:rma_no" />
++      <xs:field xpath="mstns:RMA_x0023_" />
++    </xs:unique>
++    <xs:unique name="Employee_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
++      <xs:selector xpath=".//mstns:Employee" />
++      <xs:field xpath="mstns:UserID" />
+     </xs:unique>
+   </xs:element>
+ </xs:schema>
+\ No newline at end of file

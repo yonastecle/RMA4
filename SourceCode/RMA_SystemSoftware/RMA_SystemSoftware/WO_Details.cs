@@ -13,8 +13,6 @@ namespace RMA_SystemSoftware
 {
     public partial class WO_Details : Form
     {
-        public string u_type { get; set; }
-       // public string return_uid { get; set; }
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataAdapter da;
@@ -27,37 +25,7 @@ namespace RMA_SystemSoftware
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            try
-            {            
-                this.Hide();
-                if (u_type.ToLower().Equals("supervisor"))
-                {
-                    Supervisor sup = new Supervisor();
-                    sup.Show();
-                }
-                else if (u_type.ToLower().Equals("technician"))
-                {
-                    Technician Tech = new Technician();
-                   // Tech.u_id = return_uid;
-                    Tech.Show();
-                }
-                else if (u_type.ToLower().Contains("help desk"))
-                {
-                    HelpDesk hdsk = new HelpDesk();
-                    hdsk.Show();
-                }
-                else if (u_type.ToLower().Equals("receiving"))
-                {
-                    Receiving recv = new Receiving();
-                    recv.Show();
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-           
-
+            this.Hide();     
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
