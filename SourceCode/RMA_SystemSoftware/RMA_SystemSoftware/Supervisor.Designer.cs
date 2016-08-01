@@ -461,6 +461,7 @@
             this.textBox_rmaNo.Name = "textBox_rmaNo";
             this.textBox_rmaNo.Size = new System.Drawing.Size(255, 23);
             this.textBox_rmaNo.TabIndex = 37;
+            this.textBox_rmaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_rmaNo_KeyPress);
             // 
             // label4
             // 

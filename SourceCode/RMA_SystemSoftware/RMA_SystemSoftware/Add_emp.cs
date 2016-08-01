@@ -38,7 +38,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -73,7 +73,7 @@ namespace RMA_SystemSoftware
                     command.CommandText = "Insert into Employee(UserID,password,userType,userTag,firstName,lastName,email,Ext,Fax) values ('" + label_UserID.Text + "','" + textBox_passwrd.Text + "','" + comboBox_userType.Text + "','" + comboBox_userTag.Text + "','" + textBox_fName.Text + "','" + textBox_lName.Text + "','" + textBox_email.Text + "','" + textBox_ext.Text + "','" + textBox_fax.Text + "')";
                     command.ExecuteNonQuery();
                     con.Close();
-                    MessageBox.Show(" New Employee added to Records!!");
+                    System.Windows.Forms.MessageBox.Show(" New Employee added to Records!!");
 
                     buttonNewEmp.Enabled = true;
 
@@ -89,12 +89,12 @@ namespace RMA_SystemSoftware
                 }
                 else
                 {
-                    MessageBox.Show("Fill in the Mandatory Fields", "Error");
+                    System.Windows.Forms.MessageBox.Show("Fill in the Mandatory Fields", "Error");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
 

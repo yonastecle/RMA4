@@ -45,7 +45,7 @@ namespace RMA_SystemSoftware
                         result = String.Format("{0}", reader["found"]);
                     con.Close();
                     if (result.Equals("0"))
-                        MessageBox.Show("RMA not found. Enter a Valid RMA#");
+                        System.Windows.Forms.MessageBox.Show("RMA not found. Enter a Valid RMA#");
                     else
                     {
                         con.Open();
@@ -57,11 +57,11 @@ namespace RMA_SystemSoftware
                     }
                 }
                 else
-                    MessageBox.Show("Please Enter RMA No. ");
+                    System.Windows.Forms.MessageBox.Show("Please Enter RMA No. ");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
         }

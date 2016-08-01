@@ -128,11 +128,12 @@
             this.comboBox_status.Name = "comboBox_status";
             this.comboBox_status.Size = new System.Drawing.Size(207, 21);
             this.comboBox_status.TabIndex = 39;
+            this.comboBox_status.SelectionChangeCommitted += new System.EventHandler(this.comboBox_status_SelectionChangeCommitted);
             // 
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(222, 269);
+            this.updateButton.Location = new System.Drawing.Point(390, 238);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 31);
             this.updateButton.TabIndex = 38;
@@ -312,9 +313,9 @@
             // dataGrid_ShowDetails
             // 
             this.dataGrid_ShowDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_ShowDetails.Location = new System.Drawing.Point(6, 317);
+            this.dataGrid_ShowDetails.Location = new System.Drawing.Point(6, 294);
             this.dataGrid_ShowDetails.Name = "dataGrid_ShowDetails";
-            this.dataGrid_ShowDetails.Size = new System.Drawing.Size(482, 167);
+            this.dataGrid_ShowDetails.Size = new System.Drawing.Size(482, 190);
             this.dataGrid_ShowDetails.TabIndex = 43;
             // 
             // RefreshButton

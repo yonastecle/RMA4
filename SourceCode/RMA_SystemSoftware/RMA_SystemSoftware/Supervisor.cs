@@ -22,7 +22,7 @@ namespace RMA_SystemSoftware
         Tech_Open techopen = new Tech_Open();
         Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
-        string s, ID, req_type;
+        string s, ID, req_type, result = null;
         int cat;
         public string u_id { get; set; }       
 
@@ -61,7 +61,7 @@ namespace RMA_SystemSoftware
                 split.Show();
             }
             else
-                MessageBox.Show("Enter RMA No.");
+              MessageBox.Show("Enter RMA No.");
 
         }
         
@@ -134,7 +134,7 @@ namespace RMA_SystemSoftware
                     }
                     else
                     {
-                        MessageBox.Show("No Record found!");
+                      MessageBox.Show("No Record found!");
                         textBox_EmpID.Clear();
                         textBox_EmpName.Clear();
 
@@ -147,11 +147,10 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+              MessageBox.Show(ex.Message);
             }
             finally
             {
-                //read.Close();
                 con.Close();
 
             }
@@ -252,7 +251,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }
 
@@ -269,13 +268,12 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                this.Close();
                 fill_grid();
                 con.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+              MessageBox.Show(ex.Message);
             }
 
         }
@@ -302,12 +300,12 @@ namespace RMA_SystemSoftware
                         ds = new DataSet();
                         da.Fill(ds, "Single RMA Details");
                         details.dataGridView_WODetails.DataSource = ds.Tables["Single RMA Details"];
-                        this.Close();
-                        details.Show();
+                       
+                        details.ShowDialog();
                         con.Close();
                     }
                     else if(result.Equals("0"))
-                        MessageBox.Show("RMA not found. Please enter a valid RMA#");
+                    MessageBox.Show("RMA not found. Please enter a valid RMA#","Not Found");
 
                 }
                 catch (Exception ex)
@@ -317,7 +315,7 @@ namespace RMA_SystemSoftware
             }
 
             else
-                MessageBox.Show("Please enter RMA# !");
+             MessageBox.Show("Please enter RMA# !");
 
        }
 
@@ -329,8 +327,7 @@ namespace RMA_SystemSoftware
         }
 
         private void RMASearchButton_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
+        {           
             fill_grid();
         }
         public void fill_grid()
@@ -406,6 +403,12 @@ namespace RMA_SystemSoftware
                 read = cmd.ExecuteReader();
                 while (read.Read())
                 label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+                read.Close();
+
+                cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                    textBox_StatusUpdates.Text = read.GetString(read.GetOrdinal("statusUpdates"));
                 con.Close();
             }
             catch(Exception ex)
@@ -417,8 +420,7 @@ namespace RMA_SystemSoftware
         private void openButton_Click(object sender, EventArgs e)
         {
             if (textBox_rmaNo.Text != "")
-            {
-                //this.Hide();
+            {           
                 techopen.rma_no = textBox_rmaNo.Text;
                 techopen.ShowDialog();
             }
@@ -545,7 +547,14 @@ namespace RMA_SystemSoftware
                 read = cmd.ExecuteReader();
                 while (read.Read())
                     label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+                read.Close();
+
+                cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                    textBox_StatusUpdates.Text = read.GetString(read.GetOrdinal("statusUpdates"));
                 con.Close();
+               
             }
             catch (Exception ex)
             {
@@ -614,7 +623,7 @@ namespace RMA_SystemSoftware
                         }
 
                         con.Close();
-                        MessageBox.Show("Changes Saved..Press Refresh! ");
+                         MessageBox.Show("Changes Saved..Press Refresh! ");
                     }
 
                     else
@@ -660,6 +669,102 @@ namespace RMA_SystemSoftware
                 con.Close();
             }
 
+        }
+
+        private void textBox_rmaNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+         
+            try
+            {
+                if(e.KeyChar == (char) Keys.Enter)
+                {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    con.Open();
+                    cmd = new SqlCommand("select count(rma_no) found from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
+                    read = cmd.ExecuteReader();
+                    while(read.Read())
+                    {
+                        result = String.Format("{0}", read["found"]);
+                    }
+                    con.Close();
+
+                    if (result.Equals("1"))
+                    {
+                        con.Open();
+                        cmd = new SqlCommand("select * from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
+                        read = cmd.ExecuteReader();
+                        while (read.Read())
+                        {
+                            textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
+                            comboBox_updateStatus.Text = label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                         
+                            ID = read.GetString(read.GetOrdinal("userID"));
+                            req_type = read.GetString(read.GetOrdinal("type"));
+                            cat = read.GetInt16(read.GetOrdinal("category"));
+
+                        }
+                        con.Close();
+
+                        con.Open();
+                        cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
+                        read = cmd.ExecuteReader();
+                        while (read.Read())
+                            label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+                        read.Close();
+
+                        cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='"+textBox_rmaNo.Text+"'", con);
+                        read = cmd.ExecuteReader();
+                        while (read.Read())
+                            textBox_StatusUpdates.Text = read.GetString(read.GetOrdinal("statusUpdates"));
+                        con.Close();
+
+                        if (req_type.ToLower().Contains("replace"))
+                        {
+                            radioB_replace.Checked = true;
+                        }
+                        else if (req_type.ToLower().Contains("refund"))
+                        {
+                            radioB_refund.Checked = true;
+                        }
+                        else if (req_type.ToLower().Contains("repair"))
+                        {
+                            radioB_repair.Checked = true;
+                        }
+                        if (cat == 1)
+                        {
+                            radioButton_CAT1.Checked = true;
+                        }
+                        else if (cat == 2)
+                        {
+                            radioButton_CAT2.Checked = true;
+                        }
+                        else if (cat == 3)
+                        {
+                            radioButton_CAT3.Checked = true;
+                        }
+                        else if (cat == 4)
+                        {
+                            radioButton_CAT4.Checked = true;
+                        }
+                        else
+                        {
+
+                            radioButton_CAT1.Checked = false;
+                            radioButton_CAT2.Checked = false;
+                            radioButton_CAT3.Checked = false;
+                            radioButton_CAT4.Checked = false;
+                        }
+
+                    }
+                    else if (result.Equals("0"))
+                        MessageBox.Show("RMA not found. Please enter a valid RMA#");
+                 }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
@@ -725,12 +830,18 @@ namespace RMA_SystemSoftware
                 read = cmd.ExecuteReader();
                 while (read.Read())
                     label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+                read.Close();
+
+                cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                    textBox_StatusUpdates.Text = read.GetString(read.GetOrdinal("statusUpdates"));
                 con.Close();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
 
         }

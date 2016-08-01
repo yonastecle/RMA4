@@ -57,7 +57,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
             
         }
@@ -110,7 +110,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
        
@@ -165,7 +165,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -205,7 +205,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+              MessageBox.Show(ex.Message);
             }
         }
         private void listBox_Wait_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,7 +297,7 @@ namespace RMA_SystemSoftware
              }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }
 
@@ -367,7 +367,7 @@ namespace RMA_SystemSoftware
                 con.Close();
             }
             else
-                MessageBox.Show("Please Enter RMA No. ");
+               MessageBox.Show("Please Enter RMA No. ");
         }
 
         private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
@@ -424,15 +424,13 @@ namespace RMA_SystemSoftware
                 }
             }
             catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+            {MessageBox.Show(ex.Message);
             }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            sup.fill_grid();
+           sup.fill_grid();
             
         }
 

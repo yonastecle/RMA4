@@ -39,7 +39,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -58,11 +58,11 @@ namespace RMA_SystemSoftware
             {
                 cmdbdl = new SqlCommandBuilder(da);
                 da.Update(ds, "Details of all Employees");
-                MessageBox.Show("Information Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show("Information Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -80,7 +80,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -105,7 +105,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 

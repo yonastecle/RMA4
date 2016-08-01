@@ -51,7 +51,7 @@ namespace RMA_SystemSoftware
                 cmd = new SqlCommand("Delete Employee where UserID='" + label_userId.Text + "'", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("Employee Record Deleted!");
+                System.Windows.Forms.MessageBox.Show("Employee Record Deleted!");
                 label_userId.Text = null;
                 textBox_password.Clear();
                 comboBox_usertag.SelectedIndex = -1;
@@ -64,7 +64,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -81,11 +81,11 @@ namespace RMA_SystemSoftware
                     cmd = new SqlCommand("Update Employee set password='" + textBox_password.Text + "',userType='" + comboBox_usertype.Text + "',userTag='" + comboBox_usertag.Text + "',firstName='" + textBox_fname.Text + "',lastName='" + textBox_lname.Text + "',email='" + textBox_email.Text + "',Ext='" + textBox_ext.Text + "',Fax='" + textBox_Fax.Text + "'where UserID='" + label_userId.Text + "'", con);
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    MessageBox.Show("Database Updated!", "Success");
+                    System.Windows.Forms.MessageBox.Show("Database Updated!", "Success");
                 }
                 else
                 {
-                    MessageBox.Show("Review the highlighted sections.\n Enter the appropriate details!", "Error");
+                    System.Windows.Forms.MessageBox.Show("Review the highlighted sections.\n Enter the appropriate details!", "Error");
 
                     if (textBox_password.Text == "") label4.ForeColor = Color.Red;
                     if (comboBox_usertype.SelectedIndex == -1) label5.ForeColor = Color.Red;
@@ -99,7 +99,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
         }
@@ -150,7 +150,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
 
             }
         }

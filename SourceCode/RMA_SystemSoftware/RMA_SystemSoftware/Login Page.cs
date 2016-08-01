@@ -65,14 +65,14 @@ namespace RMA_SystemSoftware
                 }
                 else
                 {
-                    MessageBox.Show("Invalid User ID and Password !! Please check your credentials ");
+                    System.Windows.Forms.MessageBox.Show("Invalid User ID and Password !! Please check your credentials ");
                     textBox1.Clear();
                     textBox2.Clear();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 

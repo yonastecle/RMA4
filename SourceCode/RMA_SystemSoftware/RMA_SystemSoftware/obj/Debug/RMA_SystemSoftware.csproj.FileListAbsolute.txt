@@ -35,7 +35,6 @@ C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\RMA_S
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Add_emp.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.EmpInfo.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Emp_Search.resources
-C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.delegateMessageBox.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.WO_Details.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\Microsoft.SqlServer.Types.dll
@@ -50,3 +49,4 @@ C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\ru\Mi
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.ProceedWindow.resources
+C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.DialogBox.resources

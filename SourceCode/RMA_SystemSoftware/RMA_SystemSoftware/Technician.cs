@@ -18,7 +18,7 @@ namespace RMA_SystemSoftware
         SqlDataReader reader;
         SqlDataAdapter da;
         DataSet ds;
-      
+        DialogBox msg_box;
         WO_Details details = new WO_Details();
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
@@ -55,7 +55,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
             
         }
@@ -102,7 +102,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }
 
@@ -134,24 +134,18 @@ namespace RMA_SystemSoftware
                 {
                     radioButton_repair.Checked = true;
                 }
-                //if (label_currentStatus.Text.Equals("Close"))
-                //    ViewHistoryButton.Enabled = true;
-                //else
-                //    ViewHistoryButton.Enabled = false;
-
-               
+                
                 con.Close();
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }
 
         private void delegateButton_Click(object sender, EventArgs e)
         {
-          
-            delegateMessageBox mesg_box = new delegateMessageBox();
+            msg_box = new DialogBox();
             if (textBox_rmaNo.Text != "")
             {
                 string result = null;
@@ -163,22 +157,21 @@ namespace RMA_SystemSoftware
                 
                 while (reader.Read())
                 result = String.Format("{0}", reader["total"]);
-                mesg_box.result = result;
+  
                 
                 if (result.Equals("0"))
-                    MessageBox.Show("RMA record not found");
+                    MessageBox.Show("RMA record not found","Invalid RMA#");
                 else
                 {
-                    mesg_box.RMA = textBox_rmaNo.Text;
-                   // mesg_box.setdata();
-                    //this.Hide();
-                    mesg_box.Show();
+                    msg_box.RMA = textBox_rmaNo.Text;
+                    msg_box.stat_type = "hold";
+                    msg_box.ShowDialog();
                 }
                
             }
             else
             {
-                MessageBox.Show(" Please enter a valid RMA #");
+                MessageBox.Show(" Please enter RMA #","Empty Text Field");
             }                          
             
         }
@@ -195,16 +188,16 @@ namespace RMA_SystemSoftware
                     {
 
                         con.Open();
-                        Console.WriteLine("Enters Update!!"+ textBox_rmaNo.Text);
+                        //Console.WriteLine("Enters Update!!"+ textBox_rmaNo.Text);
                         cmd = new SqlCommand("update RMA set Status='" + comboBox_status.Text + "',type='" + req_type + "'where rma_no='"+textBox_rmaNo.Text+ "'", con);
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        Console.WriteLine("Exits Update!!"+comboBox_status.Text);
-                        MessageBox.Show("Changes Updated... Press Refresh !");
+                        //Console.WriteLine("Exits Update!!"+comboBox_status.Text);
+                      MessageBox.Show("Changes Updated... Press Refresh !");
                 }
                 else
                 {
-                    MessageBox.Show("Please Choose the Type of Request");
+                        MessageBox.Show("Please Choose the Type of Request");
                 }
             }
                 else
@@ -264,14 +257,14 @@ namespace RMA_SystemSoftware
                         con.Close();
                     }
                     else if (result.Equals("0"))
-                        MessageBox.Show("RMA# not found.Please enter a valid RMA#");
+                   MessageBox.Show("RMA# not found.Please enter a valid RMA#");
                 }
                 else
-                    MessageBox.Show("Please enter RMA#!");
+                   MessageBox.Show("Please enter RMA#!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+              MessageBox.Show(ex.Message);
             }
         }
         private void SearchButton_Click(object sender, EventArgs e)
@@ -326,19 +319,19 @@ namespace RMA_SystemSoftware
                         {
                             radioButton_repair.Checked = true;
                         }
-                        else if (req_type.ToLower().Contains("refund")) ;
+                        else if (req_type.ToLower().Contains("refund")) 
                         {
                             radioButton_refund.Checked = true;
                         }
                         con.Close();
                     }
                     else if (result.Equals("0"))
-                        MessageBox.Show("RMA not found.Please enter a valid RMA#.");
+                  MessageBox.Show("RMA not found.Please enter a valid RMA#.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+             MessageBox.Show(ex.Message);
             }
         }
 
@@ -368,6 +361,35 @@ namespace RMA_SystemSoftware
             }
         }
 
+        private void comboBox_status_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            msg_box = new DialogBox();
+
+            if (textBox_rmaNo.Text != "")
+            {
+                msg_box.stat_type = comboBox_status.Text.ToLower();
+                msg_box.RMA = textBox_rmaNo.Text;
+                if (msg_box.stat_type.Contains("hold"))
+                {
+                    //MessageBox.Show("Call the screen for hold, update status");
+                    msg_box.ShowDialog();
+                }
+
+                else if (msg_box.stat_type.Contains("complete"))
+                {
+                    msg_box.ShowDialog();
+                    //  MessageBox.Show("update resolution,add radio button", "Completed");
+                }
+                else
+                {
+                  
+                }
+
+            }
+        }
+
+      
+
         public void showTech_WOQueue()
         {
             try
@@ -382,7 +404,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }        
     }

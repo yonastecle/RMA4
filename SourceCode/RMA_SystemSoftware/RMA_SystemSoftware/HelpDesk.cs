@@ -67,7 +67,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
           
@@ -109,7 +109,7 @@ namespace RMA_SystemSoftware
                     while (reader.Read())
                         found = String.Format("{0}", reader["found"]);
                     con.Close();
-                    if (found.Equals("0")) MessageBox.Show("RMA not found. Please enter a valid RMA#.");
+                    if (found.Equals("0")) System.Windows.Forms.MessageBox.Show("RMA not found. Please enter a valid RMA#.");
                     else
                     {
                         con.Open();
@@ -129,7 +129,7 @@ namespace RMA_SystemSoftware
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
                 }
            
@@ -149,7 +149,7 @@ namespace RMA_SystemSoftware
             con.Open();
             cmd = new SqlCommand("update RMA set userID='" + id + "' where rma_no='" + textBox_update_rmaNo.Text + "'", con);
             cmd.ExecuteNonQuery();
-            MessageBox.Show("Technician Re-Assigned!");
+            System.Windows.Forms.MessageBox.Show("Technician Re-Assigned!");
 
             con.Close();
         }
@@ -173,7 +173,7 @@ namespace RMA_SystemSoftware
                         found = String.Format("{0}", reader["found"]);
                     reader.Close();
                     if (found.Equals("0"))
-                        MessageBox.Show("RMA not found. Please enter a valid RMA#.");
+                        System.Windows.Forms.MessageBox.Show("RMA not found. Please enter a valid RMA#.");
                     else
                     {
                         cmd = new SqlCommand("SELECT * FROM RMA R, Notes N WHERE R.rma_no =N.RMA_no AND r.rma_no='"+ textBox_update_rmaNo.Text + "'", con);
@@ -236,7 +236,7 @@ namespace RMA_SystemSoftware
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -250,7 +250,7 @@ namespace RMA_SystemSoftware
                 cmd = new SqlCommand("update Notes set description=' "+textBox_descrption.Text+"', statusUpdates='"+textBox_statusUpdates.Text+"', comments='"+textBox_comments.Text+"',resolution='"+textBox_resolution.Text+"' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='"+textBox_rmaNo.Text+"'", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("Database Updated");
+                System.Windows.Forms.MessageBox.Show("Database Updated");
                 textBox_rmaNo.Clear();
                 textBox_statusUpdates.Clear();
                 textBox_comments.Clear();
@@ -261,7 +261,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -320,22 +320,22 @@ namespace RMA_SystemSoftware
                         cmd.ExecuteNonQuery();
                       
                         con.Close();
-                        MessageBox.Show("Changes Saved!!");
+                        System.Windows.Forms.MessageBox.Show("Changes Saved!!");
                        // showUpdatedDetails();
                     }
                     else
                     {
-                        MessageBox.Show("Please choose Type of request/Category!");
+                        System.Windows.Forms.MessageBox.Show("Please choose Type of request/Category!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please Enter RMA!");
+                    System.Windows.Forms.MessageBox.Show("Please Enter RMA!");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -348,7 +348,7 @@ namespace RMA_SystemSoftware
                 
             }
                
-            else MessageBox.Show("Please Enter RMA#");
+            else System.Windows.Forms.MessageBox.Show("Please Enter RMA#");
         }
 
         private void UpdateInfoButton_Click(object sender, EventArgs e)
@@ -360,7 +360,7 @@ namespace RMA_SystemSoftware
                 cmd = new SqlCommand("update Notes set description=' " + textBox_descrption.Text + "', statusUpdates='" + textBox_statusUpdates.Text + "', comments='" + textBox_comments.Text + "',resolution='" + textBox_resolution.Text + "' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='" + textBox_rmaNo.Text + "'", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("Database Updated");
+                System.Windows.Forms.MessageBox.Show("Database Updated");
                 textBox_rmaNo.Clear();
                 textBox_statusUpdates.Clear();
                 textBox_comments.Clear();
@@ -371,7 +371,7 @@ namespace RMA_SystemSoftware
                 }
                catch (Exception ex)
                 {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
             }
 
@@ -393,7 +393,7 @@ namespace RMA_SystemSoftware
                split.Show();
             }
             else
-                MessageBox.Show("Enter RMA No.");
+                System.Windows.Forms.MessageBox.Show("Enter RMA No.");
         }
         public void showUpdatedDetails()
         {
