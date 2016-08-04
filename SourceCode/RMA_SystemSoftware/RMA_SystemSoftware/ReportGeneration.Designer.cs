@@ -28,62 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DataSet1 = new RMA_SystemSoftware.DataSet1();
-            this.RMABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.RMATableAdapter = new RMA_SystemSoftware.DataSet1TableAdapters.RMATableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RMABindingSource)).BeginInit();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // crystalReportViewer1
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "Client";
-            reportDataSource1.Value = this.RMABindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "RMA_SystemSoftware.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(1003, 341);
-            this.reportViewer1.TabIndex = 0;
-            // 
-            // DataSet1
-            // 
-            this.DataSet1.DataSetName = "DataSet1";
-            this.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // RMABindingSource
-            // 
-            this.RMABindingSource.DataMember = "RMA";
-            this.RMABindingSource.DataSource = this.DataSet1;
-            // 
-            // RMATableAdapter
-            // 
-            this.RMATableAdapter.ClearBeforeFill = true;
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(731, 434);
+            this.crystalReportViewer1.TabIndex = 0;
             // 
             // ReportGeneration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 341);
-            this.Controls.Add(this.reportViewer1);
+            this.ClientSize = new System.Drawing.Size(731, 434);
+            this.Controls.Add(this.crystalReportViewer1);
             this.Name = "ReportGeneration";
             this.Text = "ReportGeneration";
-            this.Load += new System.EventHandler(this.ReportGeneration_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RMABindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource RMABindingSource;
-        private DataSet1 DataSet1;
-        private DataSet1TableAdapters.RMATableAdapter RMATableAdapter;
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

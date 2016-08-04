@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using RMA_SystemSoftware.DataSet1TableAdapters;
 
 namespace RMA_SystemSoftware
 {
@@ -22,6 +23,7 @@ namespace RMA_SystemSoftware
         Tech_Open techopen = new Tech_Open();
         Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
+        GrabData grab = new GrabData();
         string s, ID, req_type, result = null;
         int cat;
         public string u_id { get; set; }       
@@ -321,9 +323,27 @@ namespace RMA_SystemSoftware
 
         private void generateReportButton_Click(object sender, EventArgs e)
         {
-            //this.Close();
-            //RMA_Report report = new RMA_Report();
-            //report.Show();
+            try
+            {
+                ReportGeneration report = new ReportGeneration();
+                Console.WriteLine(" CrystalReport rep = new CrystalReport()");
+                CrystalReport rep = new CrystalReport();
+                Console.WriteLine(" DataSet1 ds = new DataSet1();");
+                DataSet1 ds = new DataSet1();
+                Console.WriteLine(" DataTable1TableAdapter adp = new DataTable1TableAdapter();");
+                DataTable1TableAdapter adp = new DataTable1TableAdapter();
+                Console.WriteLine(" adp.Fill(ds.DataTable1);");
+                adp.Fill(ds.DataTable1);
+                Console.WriteLine(" rep.SetDataSource(ds);");
+                rep.SetDataSource(ds);
+                rep.SetParameterValue("StatusParam", comboBox_status.Text);
+                Console.WriteLine(" report.crystalReportViewer1.ReportSource = rep;");
+                report.crystalReportViewer1.ReportSource = rep;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void RMASearchButton_Click(object sender, EventArgs e)
@@ -592,16 +612,22 @@ namespace RMA_SystemSoftware
         private void updateButton_Click(object sender, EventArgs e)
         {
             string found = null;
+            string updateStatus = comboBox_updateStatus.Text.ToString();
+            string rmaNum = textBox_rmaNo.Text.ToString();
+
+            Console.WriteLine("Update Status after Update Button Click: " + updateStatus);
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
-              
-                if (textBox_rmaNo.Text != "")
+
+                Console.WriteLine("textBox_rmaNo.Text != " + textBox_rmaNo.Text.ToString() + " Before if");
+                if (textBox_rmaNo.Text.ToString() != "")
                 {
+                    Console.WriteLine("radioB_replace Checked: " + radioB_replace.Checked.ToString() + " ~ radioB_repair Checked: " + radioB_repair.Checked.ToString() );
                     if ((radioB_replace.Checked == true || radioB_repair.Checked == true || radioB_refund.Checked == true) && (radioButton_CAT1.Checked == true || radioButton_CAT2.Checked == true || radioButton_CAT3.Checked == true || radioButton_CAT4.Checked == true))
                     {
                         con.Open();
-                        cmd = new SqlCommand("UPDATE RMA SET Status ='" + comboBox_updateStatus.Text + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + textBox_rmaNo.Text + "'", con);
+                        cmd = new SqlCommand("UPDATE RMA SET Status ='" + updateStatus + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + textBox_rmaNo.Text + "'", con);
                         cmd.ExecuteNonQuery();
                         //Adding RMA to Notes Table, if RMA not found in the Notes Table.(Additionally need to work on adding RMA# to the Notes table as and when a new RMA request comes into the DB)
                         cmd = new SqlCommand("Select count(RMA_no)found from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
@@ -635,6 +661,7 @@ namespace RMA_SystemSoftware
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -695,8 +722,9 @@ namespace RMA_SystemSoftware
                         read = cmd.ExecuteReader();
                         while (read.Read())
                         {
-                            textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
-                            comboBox_updateStatus.Text = label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                            this.textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
+                            this.comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                            this.label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
                          
                             ID = read.GetString(read.GetOrdinal("userID"));
                             req_type = read.GetString(read.GetOrdinal("type"));
@@ -705,13 +733,8 @@ namespace RMA_SystemSoftware
                         }
                         con.Close();
 
+                        label_TechName.Text = grab.getEmployeeName(ID);
                         con.Open();
-                        cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
-                        read = cmd.ExecuteReader();
-                        while (read.Read())
-                            label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
-                        read.Close();
-
                         cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='"+textBox_rmaNo.Text+"'", con);
                         read = cmd.ExecuteReader();
                         while (read.Read())
@@ -769,7 +792,6 @@ namespace RMA_SystemSoftware
 
         private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
