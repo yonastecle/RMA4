@@ -448,11 +448,10 @@
             // 
             this.textBox_update_rmaNo.Location = new System.Drawing.Point(181, 28);
             this.textBox_update_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox_update_rmaNo.Multiline = true;
             this.textBox_update_rmaNo.Name = "textBox_update_rmaNo";
-            this.textBox_update_rmaNo.Size = new System.Drawing.Size(242, 23);
+            this.textBox_update_rmaNo.Size = new System.Drawing.Size(242, 20);
             this.textBox_update_rmaNo.TabIndex = 37;
-          
+            this.textBox_update_rmaNo.TextChanged += new System.EventHandler(this.textBox_update_rmaNo_TextChanged);
             this.textBox_update_rmaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_update_rmaNo_KeyPress);
             // 
             // label4
@@ -609,6 +608,7 @@
             this.button11.TabIndex = 68;
             this.button11.Text = "Generate Report";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 

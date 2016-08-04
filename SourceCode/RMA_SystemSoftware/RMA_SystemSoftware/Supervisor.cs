@@ -136,7 +136,7 @@ namespace RMA_SystemSoftware
                     }
                     else
                     {
-                      MessageBox.Show("No Record found!");
+                      MessageBox.Show("No Employee Record found!","Not Found!!");
                         textBox_EmpID.Clear();
                         textBox_EmpName.Clear();
 
@@ -215,13 +215,7 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("select FirstName,userType from Employee where UserID='" + u_id + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                {
-                    label_helloEmp.Text = read.GetString(read.GetOrdinal("firstName"));
-                   
-                }
+                label_helloEmp.Text = grab.getEmployeeName(u_id);                
                 con.Close();
 
                 fill_listbox();
@@ -262,8 +256,7 @@ namespace RMA_SystemSoftware
 
 
         }
-
-       
+               
         private void ViewAllWOButton_Click(object sender, EventArgs e)
         {
             try
@@ -289,10 +282,7 @@ namespace RMA_SystemSoftware
                 {
                     if (con.State == ConnectionState.Open) con.Close();
                     con.Open();
-                    cmd = new SqlCommand("Select count(rma_no) found from RMA where rma_no = '" + textBox_View_RmaNo.Text + "'", con);
-                    read = cmd.ExecuteReader();
-                    while (read.Read())
-                        result = String.Format("{0}", read["found"]);
+                    result = grab.serachRMA(textBox_View_RmaNo.Text);                  
                     con.Close();
                     if (result.Equals("1"))
                     {
@@ -325,6 +315,7 @@ namespace RMA_SystemSoftware
         {
             try
             {
+                //Doesnt Work, enters break mode!!!!(Console statemnets added to check the break point
                 ReportGeneration report = new ReportGeneration();
                 Console.WriteLine(" CrystalReport rep = new CrystalReport()");
                 CrystalReport rep = new CrystalReport();
@@ -332,18 +323,23 @@ namespace RMA_SystemSoftware
                 DataSet1 ds = new DataSet1();
                 Console.WriteLine(" DataTable1TableAdapter adp = new DataTable1TableAdapter();");
                 DataTable1TableAdapter adp = new DataTable1TableAdapter();
-                Console.WriteLine(" adp.Fill(ds.DataTable1);");
+                
                 adp.Fill(ds.DataTable1);
-                Console.WriteLine(" rep.SetDataSource(ds);");
+                Console.WriteLine(" adp.Fill(ds.DataTable1);");
+               
                 rep.SetDataSource(ds);
+                Console.WriteLine(" rep.SetDataSource(ds);");
+
                 rep.SetParameterValue("StatusParam", comboBox_status.Text);
                 Console.WriteLine(" report.crystalReportViewer1.ReportSource = rep;");
                 report.crystalReportViewer1.ReportSource = rep;
+                report.Show();
             }
             catch(Exception ex)
-            {
+            {                
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void RMASearchButton_Click(object sender, EventArgs e)
@@ -419,12 +415,10 @@ namespace RMA_SystemSoftware
                     radioButton_CAT4.Checked = false;
                 }
                 con.Open();
-                cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
-                read.Close();
+                label_TechName.Text = grab.getEmployeeName(ID);
+                con.Close();
 
+                con.Open();
                 cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
                 read = cmd.ExecuteReader();
                 while (read.Read())
@@ -446,55 +440,17 @@ namespace RMA_SystemSoftware
             }
             else
             {
-                MessageBox.Show("Please enter RMA#.");
+                MessageBox.Show("Please enter RMA#.","Empty Field");
             }
            
-        }
-
-        private void radioB_repair_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = "Repair";
-        }
-
-        private void radioB_replace_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = "Replace";
-        }
-
-        private void radioB_refund_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = "Refund";
-        }
-
-        private void radioButton_CAT1_CheckedChanged(object sender, EventArgs e)
-        {
-            cat = 1;
-        }
-
-        private void radioButton_CAT2_CheckedChanged(object sender, EventArgs e)
-        {
-            cat = 2;
-        }
-
-        private void radioButton_CAT3_CheckedChanged(object sender, EventArgs e)
-        {
-            cat = 3;
-        }
-
-        private void radioButton_CAT4_CheckedChanged(object sender, EventArgs e)
-        {
-            cat = 4;
-        }
+        }       
 
         private void ConfirmTechChangeButton_Click(object sender, EventArgs e)
         {
             string id = null;
             if (con.State == ConnectionState.Open) con.Close();
             con.Open();
-            cmd = new SqlCommand("Select UserID ID from Employee where firstName='" + comboBox_TechName.Text + "'", con);
-            read = cmd.ExecuteReader();
-            while (read.Read())
-                id = read["ID"].ToString();
+            id = grab.getEmployeeID(comboBox_TechName.Text);            
             con.Close();
 
             con.Open();
@@ -563,12 +519,10 @@ namespace RMA_SystemSoftware
                     radioButton_CAT4.Checked = false;
                 }
                 con.Open();
-                cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                    label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
-                read.Close();
+                label_TechName.Text = grab.getEmployeeName(ID);
+                con.Close();
 
+                con.Open();
                 cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
                 read = cmd.ExecuteReader();
                 while (read.Read())
@@ -581,34 +535,6 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
-
-      
-        //Enable/Disable the View History Button: How???
-        //private void textBox_View_RmaNo_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    string stat = null;
-        //    try
-        //    {
-        //        if (con.State == ConnectionState.Open) con.Close();
-        //        con.Open();
-        //        cmd = new SqlCommand("select Status stat from RMA where rma_no='" + textBox_View_RmaNo.Text + "'", con);
-        //        read = cmd.ExecuteReader();
-        //        while (read.Read())
-        //            stat = read.GetString(read.GetOrdinal("Status"));
-        //        con.Close();
-
-        //        if (stat.Equals("Close"))
-        //            ViewHistoryButton.Enabled = true;
-        //        else
-        //            ViewHistoryButton.Enabled = false;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-
         private void updateButton_Click(object sender, EventArgs e)
         {
             string found = null;
@@ -630,10 +556,7 @@ namespace RMA_SystemSoftware
                         cmd = new SqlCommand("UPDATE RMA SET Status ='" + updateStatus + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + textBox_rmaNo.Text + "'", con);
                         cmd.ExecuteNonQuery();
                         //Adding RMA to Notes Table, if RMA not found in the Notes Table.(Additionally need to work on adding RMA# to the Notes table as and when a new RMA request comes into the DB)
-                        cmd = new SqlCommand("Select count(RMA_no)found from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
-                        read = cmd.ExecuteReader();
-                        while (read.Read())
-                        found = String.Format("{0}", read["found"]);
+                        found = grab.serachRMA(textBox_rmaNo.Text);
                         con.Close();
                         con.Open();
                         if (found.Equals("0"))
@@ -656,7 +579,7 @@ namespace RMA_SystemSoftware
                         MessageBox.Show("Please choose Type of request/Category!");
                 }
                 else
-                    MessageBox.Show("Please enter the RMA#!");
+                    MessageBox.Show("Please enter the RMA#!","Empty Field");
             }
             catch (Exception ex)
             {
@@ -670,16 +593,9 @@ namespace RMA_SystemSoftware
             if (e.KeyChar == (char)Keys.Enter)
             {
                 con.Open();
-                cmd = new SqlCommand("Select UserID ID from Employee where firstName='" + textBox_EmpName.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                {
-                    textBox_EmpID.Text = read["ID"].ToString();
-                }
-               
+                textBox_EmpID.Text = grab.getEmployeeID(textBox_EmpName.Text);
                 con.Close();
-            }
-              
+            }              
         }
 
         private void textBox_EmpID_KeyPress(object sender, KeyPressEventArgs e)
@@ -687,17 +603,12 @@ namespace RMA_SystemSoftware
             if (e.KeyChar == (char)Keys.Enter)
             {
                 con.Open();
-                cmd = new SqlCommand("Select firstName name from Employee where UserID='" + textBox_EmpID.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                {
-                    textBox_EmpName.Text = read["name"].ToString();
-                }
+                textBox_EmpName.Text = grab.getEmployeeName(textBox_EmpID.Text);
                 con.Close();
             }
-
         }
 
+       
         private void textBox_rmaNo_KeyPress(object sender, KeyPressEventArgs e)
         {
          
@@ -707,12 +618,7 @@ namespace RMA_SystemSoftware
                 {
                     if (con.State == ConnectionState.Open) con.Close();
                     con.Open();
-                    cmd = new SqlCommand("select count(rma_no) found from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
-                    read = cmd.ExecuteReader();
-                    while(read.Read())
-                    {
-                        result = String.Format("{0}", read["found"]);
-                    }
+                    result = grab.serachRMA(textBox_rmaNo.Text);
                     con.Close();
 
                     if (result.Equals("1"))
@@ -780,9 +686,8 @@ namespace RMA_SystemSoftware
 
                     }
                     else if (result.Equals("0"))
-                        MessageBox.Show("RMA not found. Please enter a valid RMA#");
+                        MessageBox.Show("RMA not found. Please enter a valid RMA#","Not found!");
                  }
-
             }
             catch(Exception ex)
             {
@@ -840,7 +745,6 @@ namespace RMA_SystemSoftware
                 }
                 else
                 {
-
                     radioButton_CAT1.Checked = false;
                     radioButton_CAT2.Checked = false;
                     radioButton_CAT3.Checked = false;
@@ -848,12 +752,10 @@ namespace RMA_SystemSoftware
                 }
 
                 con.Open();
-                cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                    label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
-                read.Close();
+                label_TechName.Text = grab.getEmployeeName(ID);
+                con.Close();
 
+                con.Open();
                 cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
                 read = cmd.ExecuteReader();
                 while (read.Read())
@@ -919,17 +821,46 @@ namespace RMA_SystemSoftware
                 radioButton_CAT2.Checked = false;
                 radioButton_CAT3.Checked = false;
                 radioButton_CAT4.Checked = false;
-            }
-      
+            }      
             con.Open();
-            cmd = new SqlCommand("select firstName from Employee where UserID='" + ID + "'", con);
-            read = cmd.ExecuteReader();
-            while (read.Read())
-                label_TechName.Text = read.GetString(read.GetOrdinal("firstName"));
+            label_TechName.Text = grab.getEmployeeName(ID);
             comboBox_TechName.SelectedIndex = -1;
             con.Close();
         }
-        
+        private void radioB_repair_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "Repair";
+        }
+
+        private void radioB_replace_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "Replace";
+        }
+
+        private void radioB_refund_CheckedChanged(object sender, EventArgs e)
+        {
+            req_type = "Refund";
+        }
+
+        private void radioButton_CAT1_CheckedChanged(object sender, EventArgs e)
+        {
+            cat = 1;
+        }
+
+        private void radioButton_CAT2_CheckedChanged(object sender, EventArgs e)
+        {
+            cat = 2;
+        }
+
+        private void radioButton_CAT3_CheckedChanged(object sender, EventArgs e)
+        {
+            cat = 3;
+        }
+
+        private void radioButton_CAT4_CheckedChanged(object sender, EventArgs e)
+        {
+            cat = 4;
+        }
     }
 }
 

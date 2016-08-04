@@ -19,6 +19,7 @@ namespace RMA_SystemSoftware
         SqlDataReader reader;
         SqlDataAdapter da;
         DataSet ds;
+        GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
         Supervisor sup = new Supervisor();
         string req_type;
@@ -43,21 +44,13 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("select FirstName,userType from Employee where UserID='"+u_id+"'", con);
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
-                   
-                        
-                }
-                   
+                label_helloEmp.Text = grab.getEmployeeName(u_id);                
                 con.Close();
                 fill_listbox();
             }
             catch(Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
             
         }
@@ -110,7 +103,7 @@ namespace RMA_SystemSoftware
             }
             catch(Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+             MessageBox.Show(ex.Message);
             }
         }
        
@@ -165,7 +158,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }
 
@@ -300,9 +293,6 @@ namespace RMA_SystemSoftware
                MessageBox.Show(ex.Message);
             }
         }
-
-               
-    
         public void fill_grid()
         {
             da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
@@ -314,17 +304,14 @@ namespace RMA_SystemSoftware
         private void ViewAllButton_Click(object sender, EventArgs e)
         {
             try
-            {
-                
+            {                
                     if (con.State == ConnectionState.Open)
                     {
                         con.Close();
                     }
                     con.Open();
                     fill_grid();
-                    con.Close();
-
-                
+                    con.Close();                
             }
             catch (Exception ex)
             {
@@ -383,15 +370,8 @@ namespace RMA_SystemSoftware
                 {
                     if (con.State == ConnectionState.Open) con.Close();
                     con.Open();
-                    cmd = new SqlCommand("select count(rma_no) found from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
-                    reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        result = String.Format("{0}", reader["found"]);
-                    }
+                    result = grab.serachRMA(textBox_rmaNo.Text);
                     con.Close();
-
-
                     if (result.Equals("1"))
                     {
                         con.Open();
@@ -420,11 +400,12 @@ namespace RMA_SystemSoftware
                         con.Close();
                     }
                     else if (result.Equals("0"))
-                        MessageBox.Show("RMA not found. Please enter a valid RMA#.");
+                        MessageBox.Show("RMA not found. Please enter a valid RMA#.","Invalid RMA#");
                 }
             }
             catch (Exception ex)
-            {MessageBox.Show(ex.Message);
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -432,8 +413,6 @@ namespace RMA_SystemSoftware
         {
            sup.fill_grid();
             
-        }
-
-       
+        }       
     }
 }

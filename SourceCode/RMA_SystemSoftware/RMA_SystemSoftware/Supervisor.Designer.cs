@@ -220,6 +220,7 @@
             this.comboBox_TechName.Name = "comboBox_TechName";
             this.comboBox_TechName.Size = new System.Drawing.Size(133, 21);
             this.comboBox_TechName.TabIndex = 62;
+          
             // 
             // label6
             // 

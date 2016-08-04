@@ -18,16 +18,43 @@ namespace RMA_SystemSoftware
 
         public string getEmployeeName(string id)
         {
-            string empName = "Tanmeet";
+            string empName = null;
             con.Open();
             cmd = new SqlCommand("select firstName from Employee where UserID='" + id + "'", con);
             read = cmd.ExecuteReader();
             while (read.Read())
                 empName = read.GetString(read.GetOrdinal("firstName"));
-            read.Close();
             con.Close();
             return empName;
         }
+
+        public string getEmployeeID(string name)
+        {
+            string empID = null;
+            con.Open();
+            cmd = new SqlCommand("Select UserID ID from Employee where firstName='" + name + "'", con);
+            read = cmd.ExecuteReader();
+            while (read.Read())
+               empID = read["ID"].ToString();
+            con.Close();
+
+            return empID;        
+        }
+
+        public string serachRMA(string rmaNum)
+        {
+            string result = null;
+            con.Open();
+            cmd = new SqlCommand("select count(rma_no) found from RMA where rma_no='" + rmaNum + "'", con);
+            read = cmd.ExecuteReader();
+            while (read.Read())
+            {
+                result = String.Format("{0}", read["found"]);
+            }
+            con.Close();
+            return result;
+        }
+
         public string updateField(string field, string rmaNum)
         {
             string oldData = null;

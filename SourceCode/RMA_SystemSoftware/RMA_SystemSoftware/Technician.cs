@@ -19,6 +19,7 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         DialogBox msg_box;
+        GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
@@ -41,14 +42,7 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("select FirstName,userType from Employee where UserID='" + u_id + "'", con);
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    label_helloEmp.Text = reader.GetString(reader.GetOrdinal("firstName"));
-                
-                }
-                
+                label_helloEmp.Text = grab.getEmployeeName(u_id);                            
                 con.Close();
                 fill_listbox();
                 showTech_WOQueue();
