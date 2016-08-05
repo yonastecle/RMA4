@@ -124,7 +124,9 @@ namespace RMA_SystemSoftware
             RadioB_refund.Checked = false;
             RadioB_repair.Checked = false;
             RadioB_replace.Checked = false;
-
+            //Console.WriteLine(" FUnction Call");
+            // req_type= grab.autofill(  textBox_rmaNo,  ref label_currentStatus,  ref comboBox_Status,  ref RadioB_repair,  ref RadioB_replace,  ref RadioB_refund);
+            // Console.WriteLine(" Function Call End");
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -133,21 +135,21 @@ namespace RMA_SystemSoftware
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                  
+
                     textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                     label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
                     comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
                     req_type = reader.GetString(reader.GetOrdinal("type"));
 
                 }
-            
+
                 if (req_type.ToLower().Contains("replace"))
                 {
-                   RadioB_replace.Checked = true;
+                    RadioB_replace.Checked = true;
                 }
                 else if (req_type.ToLower().Contains("refund"))
                 {
-                   RadioB_refund.Checked = true;
+                    RadioB_refund.Checked = true;
                 }
                 else if (req_type.ToLower().Contains("repair"))
                 {
@@ -158,7 +160,7 @@ namespace RMA_SystemSoftware
             }
             catch (Exception ex)
             {
-               MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 

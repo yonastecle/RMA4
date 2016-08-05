@@ -220,7 +220,6 @@
             this.comboBox_TechName.Name = "comboBox_TechName";
             this.comboBox_TechName.Size = new System.Drawing.Size(133, 21);
             this.comboBox_TechName.TabIndex = 62;
-          
             // 
             // label6
             // 
@@ -458,10 +457,10 @@
             // 
             this.textBox_rmaNo.Location = new System.Drawing.Point(181, 28);
             this.textBox_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox_rmaNo.Multiline = true;
             this.textBox_rmaNo.Name = "textBox_rmaNo";
-            this.textBox_rmaNo.Size = new System.Drawing.Size(255, 23);
+            this.textBox_rmaNo.Size = new System.Drawing.Size(255, 20);
             this.textBox_rmaNo.TabIndex = 37;
+            this.textBox_rmaNo.TextChanged += new System.EventHandler(this.textBox_rmaNo_TextChanged);
             this.textBox_rmaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_rmaNo_KeyPress);
             // 
             // label4

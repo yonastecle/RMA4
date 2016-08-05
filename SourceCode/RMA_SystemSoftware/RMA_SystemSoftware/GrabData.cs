@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RMA_SystemSoftware
 {
@@ -54,7 +55,54 @@ namespace RMA_SystemSoftware
             con.Close();
             return result;
         }
+        //Autofilling the fields in Receiving Tab on selection of RMA# from the listbox
+        public string autofill(  TextBox txtbox, ref Label lbl, ref  ComboBox cmbBox,  ref RadioButton repair, ref RadioButton replace, ref RadioButton refund)
+        {
+            Console.WriteLine(" Function entered");
+            string type = "";
+            refund.Checked = false;
+            repair.Checked = false;
+            replace.Checked = false;
 
+            if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select * from RMA where rma_no='" +txtbox.Text + "'", con);
+            read = cmd.ExecuteReader();
+            while (read.Read())
+                txtbox.Text = read.GetString(read.GetOrdinal("rma_no"));
+            Console.WriteLine(" hello" + txtbox.Text + "While read");
+
+            //    read = cmd.ExecuteReader();
+            
+                //while (read.Read())
+                //{
+                //    Console.WriteLine(" Enter While Loop");
+                //    txtbox.Text = read.GetString(read.GetOrdinal("rma_no"));
+                //    lbl.Text = read.GetString(read.GetOrdinal("Status"));
+                //    cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
+                //    type = read.GetString(read.GetOrdinal("type"));
+                //    Console.WriteLine("YES IT HAPPENED");
+                //}
+
+            if (type.ToLower().Contains("replace"))
+            {
+                replace.Checked = true;
+            }
+            else if (type.ToLower().Contains("refund"))
+            {
+                refund.Checked = true;
+            }
+            else if (type.ToLower().Contains("repair"))
+            {
+                repair.Checked = true;
+            }
+            con.Close();
+            return type;                      
+        }
+       
+
+
+        //updating fields
         public string updateField(string field, string rmaNum)
         {
             string oldData = null;

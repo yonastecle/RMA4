@@ -371,6 +371,10 @@ namespace RMA_SystemSoftware
             comboBox_TechName.SelectedIndex = -1;
             con.Close();
         }
+        private void textBox_update_rmaNo_TextChanged(object sender, EventArgs e)
+        {
+            rmaNumber = textBox_update_rmaNo.Text;
+        }
         private void radioB_repair_CheckedChanged(object sender, EventArgs e)
         {
             req_type = "Repair";
@@ -401,16 +405,7 @@ namespace RMA_SystemSoftware
             cat = 3;
         }
 
-        private void textBox_update_rmaNo_TextChanged(object sender, EventArgs e)
-        {
-            rmaNumber = textBox_update_rmaNo.Text;
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void radioB_CAT4_CheckedChanged(object sender, EventArgs e)
         {
             cat = 4;

@@ -24,7 +24,7 @@ namespace RMA_SystemSoftware
         Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
         GrabData grab = new GrabData();
-        string s, ID, req_type, result = null;
+        string s, ID, req_type, result = null,rmaNumber ="";
         int cat;
         public string u_id { get; set; }       
 
@@ -64,7 +64,6 @@ namespace RMA_SystemSoftware
             }
             else
               MessageBox.Show("Enter RMA No.");
-
         }
         
         //Logout
@@ -553,21 +552,21 @@ namespace RMA_SystemSoftware
                     if ((radioB_replace.Checked == true || radioB_repair.Checked == true || radioB_refund.Checked == true) && (radioButton_CAT1.Checked == true || radioButton_CAT2.Checked == true || radioButton_CAT3.Checked == true || radioButton_CAT4.Checked == true))
                     {
                         con.Open();
-                        cmd = new SqlCommand("UPDATE RMA SET Status ='" + updateStatus + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + textBox_rmaNo.Text + "'", con);
+                        cmd = new SqlCommand("UPDATE RMA SET Status ='" + updateStatus + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + rmaNumber + "'", con);
                         cmd.ExecuteNonQuery();
                         //Adding RMA to Notes Table, if RMA not found in the Notes Table.(Additionally need to work on adding RMA# to the Notes table as and when a new RMA request comes into the DB)
-                        found = grab.serachRMA(textBox_rmaNo.Text);
+                        found = grab.serachRMA(rmaNumber);
                         con.Close();
                         con.Open();
                         if (found.Equals("0"))
                         {
                           // adding dummy value to Description. LINK IT TO THE CSM DB to fetch the description.
-                           cmd = new SqlCommand("INSERT INTO Notes (RMA_no, description,statusUpdates) Values ('"+textBox_rmaNo.Text+"','Dummy','"+textBox_StatusUpdates.Text+"')", con);
+                           cmd = new SqlCommand("INSERT INTO Notes (RMA_no, description,statusUpdates) Values ('"+rmaNumber+"','Dummy','"+textBox_StatusUpdates.Text+"')", con);
                             cmd.ExecuteNonQuery();
                         }
                         else
                         {
-                            cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates = '" + textBox_StatusUpdates.Text + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + textBox_rmaNo.Text + "'", con);
+                            cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates = '" + textBox_StatusUpdates.Text + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + rmaNumber + "'", con);
                             cmd.ExecuteNonQuery();
                         }
 
@@ -826,6 +825,10 @@ namespace RMA_SystemSoftware
             label_TechName.Text = grab.getEmployeeName(ID);
             comboBox_TechName.SelectedIndex = -1;
             con.Close();
+        }
+        private void textBox_rmaNo_TextChanged(object sender, EventArgs e)
+        {
+            rmaNumber = textBox_rmaNo.Text;
         }
         private void radioB_repair_CheckedChanged(object sender, EventArgs e)
         {

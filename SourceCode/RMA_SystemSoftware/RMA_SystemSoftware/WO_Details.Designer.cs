@@ -48,9 +48,8 @@
             // 
             this.textBox_rmaNo.Location = new System.Drawing.Point(156, 21);
             this.textBox_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox_rmaNo.Multiline = true;
             this.textBox_rmaNo.Name = "textBox_rmaNo";
-            this.textBox_rmaNo.Size = new System.Drawing.Size(255, 23);
+            this.textBox_rmaNo.Size = new System.Drawing.Size(255, 20);
             this.textBox_rmaNo.TabIndex = 39;
             // 
             // label3
@@ -99,7 +98,6 @@
             this.Controls.Add(this.dataGridView_WODetails);
             this.Name = "WO_Details";
             this.Text = "WO_Details";
-      
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_WODetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -147,9 +147,8 @@
             // 
             this.textBox_rmaNo.Location = new System.Drawing.Point(151, 20);
             this.textBox_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox_rmaNo.Multiline = true;
             this.textBox_rmaNo.Name = "textBox_rmaNo";
-            this.textBox_rmaNo.Size = new System.Drawing.Size(207, 23);
+            this.textBox_rmaNo.Size = new System.Drawing.Size(207, 22);
             this.textBox_rmaNo.TabIndex = 11;
             this.textBox_rmaNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_rmaNo_KeyDown);
             // 
@@ -364,7 +363,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1039, 260);
             this.dataGridView1.TabIndex = 30;
-           
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // label7
