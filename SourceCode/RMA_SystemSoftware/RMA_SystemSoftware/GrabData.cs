@@ -55,54 +55,149 @@ namespace RMA_SystemSoftware
             con.Close();
             return result;
         }
-        //Autofilling the fields in Receiving Tab on selection of RMA# from the listbox
-        public string autofill(  TextBox txtbox, ref Label lbl, ref  ComboBox cmbBox,  ref RadioButton repair, ref RadioButton replace, ref RadioButton refund)
-        {
-            Console.WriteLine(" Function entered");
-            string type = "";
-            refund.Checked = false;
-            repair.Checked = false;
-            replace.Checked = false;
-
-            if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("Select * from RMA where rma_no='" +txtbox.Text + "'", con);
-            read = cmd.ExecuteReader();
-            while (read.Read())
-                txtbox.Text = read.GetString(read.GetOrdinal("rma_no"));
-            Console.WriteLine(" hello" + txtbox.Text + "While read");
-
-            //    read = cmd.ExecuteReader();
+        //Receiving: Update and Verify Button
+        public void updateDB(string rmaNum, string stat, ref ComboBox cmbBox, ref string req_type)
+        {      
             
-                //while (read.Read())
-                //{
-                //    Console.WriteLine(" Enter While Loop");
-                //    txtbox.Text = read.GetString(read.GetOrdinal("rma_no"));
-                //    lbl.Text = read.GetString(read.GetOrdinal("Status"));
-                //    cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
-                //    type = read.GetString(read.GetOrdinal("type"));
-                //    Console.WriteLine("YES IT HAPPENED");
-                //}
+                
+            try
+            {
+                con.Open();
+                if (stat.Contains("verify"))
+                {
+                    cmd = new SqlCommand("update RMA set Status = 'Waiting to be assigned' where rma_no='" + rmaNum + "'", con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Request Added to Queue for Technician Assignment!! Press Refresh. ", "Received");
+                }
+                else
+                {
+                    cmd = new SqlCommand("update RMA set Status ='" + cmbBox.Text + "',type ='" + req_type + "'where rma_no='" + rmaNum + "'", con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Changes Saved..Press Refresh! ");
+                }
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //Receiving+Technician:Autofilling the fields on selection of RMA# from the listbox or keypress
+        public string autofill(string rmaNum, ref TextBox txtbox, ref Label lbl, ref  ComboBox cmbBox,  ref RadioButton repair, ref RadioButton replace, ref RadioButton refund)
+        {
+            string type = "";
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
 
-            if (type.ToLower().Contains("replace"))
+                con.Open();
+                cmd = new SqlCommand("Select * from RMA where rma_no='" + rmaNum+ "'", con);
+                read = cmd.ExecuteReader();
+
+                while (read.Read())
+                {                   
+                    txtbox.Text = read.GetString(read.GetOrdinal("rma_no"));
+                    lbl.Text = read.GetString(read.GetOrdinal("Status"));
+                    cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
+                    type = read.GetString(read.GetOrdinal("type"));
+                }
+                con.Close();
+
+                if (type.ToLower().Contains("replace"))
+                {
+                    replace.Checked = true;
+                }
+                else if (type.ToLower().Contains("refund"))
+                {
+                    refund.Checked = true;
+                }
+                else if (type.ToLower().Contains("repair"))
+                {
+                    repair.Checked = true;
+                }
+             }
+            catch (Exception ex)
             {
-                replace.Checked = true;
+                MessageBox.Show(ex.Message);
             }
-            else if (type.ToLower().Contains("refund"))
+            return type;
+        }
+        //Supervisor+Helpdesk:Autofilling the fields on selection of RMA# from the listbox or Keypress
+        public void autofill(string rmaNum, ref TextBox txtboxRmaNum,ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat, ref RadioButton repair,ref RadioButton replace, ref RadioButton refund, ref RadioButton cat1, ref RadioButton cat2, ref RadioButton cat3, ref RadioButton cat4, ref Label lblTech, ref TextBox txtboxStatUpdate)
+        {
+            string ID = "";
+            try
             {
-                refund.Checked = true;
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("select * from RMA where rma_no ='" +rmaNum + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    txtboxRmaNum.Text = read.GetString(read.GetOrdinal("rma_no"));
+                    lblStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
+                    ID = read.GetString(read.GetOrdinal("userID"));
+                    req_type = read.GetString(read.GetOrdinal("type"));
+                    cat = read.GetInt16(read.GetOrdinal("category"));
+
+                }
+                con.Close();
+                if (req_type.ToLower().Contains("replace"))
+                {
+                   replace.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("refund"))
+                {
+                    refund.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("repair"))
+                {
+                    repair.Checked = true;
+                }
+                if (cat == 1)
+                {
+                  cat1.Checked = true;
+                }
+                else if (cat == 2)
+                {
+                    cat2.Checked = true;
+                }
+                else if (cat == 3)
+                {
+                    cat3.Checked = true;
+                }
+                else if (cat == 4)
+                {
+                    cat4.Checked = true;
+                }
+                else
+                {
+
+                    cat1.Checked = false;
+                    cat2.Checked = false;
+                    cat3.Checked = false;
+                    cat4.Checked = false;
+                }               
+                lblTech.Text = getEmployeeName(ID);     
+                       
+                con.Open();
+                cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + rmaNum + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                    txtboxStatUpdate.Text = read.GetString(read.GetOrdinal("statusUpdates"));
+                con.Close();
             }
-            else if (type.ToLower().Contains("repair"))
+            catch (Exception ex)
             {
-                repair.Checked = true;
+                MessageBox.Show(ex.Message);
             }
-            con.Close();
-            return type;                      
+
         }
        
 
 
-        //updating fields
+        //updating fields-Noes
         public string updateField(string field, string rmaNum)
         {
             string oldData = null;

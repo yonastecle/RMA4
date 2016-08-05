@@ -51,9 +51,6 @@ namespace RMA_SystemSoftware
             comboBox_updateStatus.Items.Add("Complete");
             comboBox_updateStatus.Items.Add("Close");
         }
-
-      
-        //Split RMA button
         private void SplitRMAButton_Click(object sender, EventArgs e)
         {
             split.rma_no = textBox_rmaNo.Text;
@@ -65,8 +62,7 @@ namespace RMA_SystemSoftware
             else
               MessageBox.Show("Enter RMA No.");
         }
-        
-        //Logout
+
         private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
@@ -74,20 +70,16 @@ namespace RMA_SystemSoftware
             login.Show();
 
         }
-        //Help
         private void HelpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
         }
-        
-        //Add new emp Button
         private void AddNewEmpButton_Click(object sender, EventArgs e)
         {
             this.Close();
             Add_emp add_emp = new Add_emp();
             add_emp.Show();
         }
-        //View All employee details button
         private void ViewAllbutton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -164,7 +156,14 @@ namespace RMA_SystemSoftware
             listBox_refundRequest.Items.Clear();
             listBox_requestOnHold.Items.Clear();
             fill_listbox();
-            if (textBox_rmaNo.Text != "") showUpdatedDetails();
+            if (textBox_rmaNo.Text != "")
+            {
+                textBox_rmaNo.Clear();
+                radioButton_CAT1.Checked = radioButton_CAT2.Checked = radioButton_CAT3.Checked = radioButton_CAT4.Checked = radioB_repair.Checked = radioB_replace.Checked = radioB_refund.Checked = false;
+                comboBox_updateStatus.SelectedIndex = comboBox_TechName.SelectedIndex = -1;
+                textBox_StatusUpdates.Clear();
+            }
+                
         }
 
     
@@ -252,8 +251,6 @@ namespace RMA_SystemSoftware
 
         private void authorizeButton_Click(object sender, EventArgs e)
         {
-
-
         }
                
         private void ViewAllWOButton_Click(object sender, EventArgs e)
@@ -357,77 +354,16 @@ namespace RMA_SystemSoftware
 
         private void listBox_newRequests_SelectedIndexChanged(object sender, EventArgs e)
         {
-            radioB_refund.Checked = false;
-            radioB_repair.Checked = false;
-            radioB_replace.Checked = false;
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("select * from RMA where rma_no ='" + listBox_newRequests.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                {
-                    textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
-                    label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                    comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                    ID = read.GetString(read.GetOrdinal("userID"));
-                    req_type = read.GetString(read.GetOrdinal("type"));
-                    cat = read.GetInt16(read.GetOrdinal("category")); 
-                  
-                }
-                con.Close();
-                if (req_type.ToLower().Contains("replace"))
-                {
-                    radioB_replace.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("refund"))
-                {
-                    radioB_refund.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("repair"))
-                {
-                    radioB_repair.Checked = true;
-                }
-                if (cat==1)
-                {
-                    radioButton_CAT1.Checked = true;
-                }
-                else if (cat==2)
-                {
-                    radioButton_CAT2.Checked = true;
-                }
-                else if (cat==3)
-                {
-                    radioButton_CAT3.Checked = true;
-                }
-                else if(cat==4)
-                {
-                    radioButton_CAT4.Checked = true;
-                }
-                else
-                {
+            grab.autofill(listBox_newRequests.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);            
+        }
+        private void listBox_requestOnHold_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grab.autofill(listBox_requestOnHold.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);
 
-                    radioButton_CAT1.Checked = false;
-                    radioButton_CAT2.Checked = false;
-                    radioButton_CAT3.Checked = false;
-                    radioButton_CAT4.Checked = false;
-                }
-                con.Open();
-                label_TechName.Text = grab.getEmployeeName(ID);
-                con.Close();
-
-                con.Open();
-                cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                    textBox_StatusUpdates.Text = read.GetString(read.GetOrdinal("statusUpdates"));
-                con.Close();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        }
+        private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grab.autofill(listBox_refundRequest.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);
         }
 
         private void openButton_Click(object sender, EventArgs e)
@@ -440,8 +376,7 @@ namespace RMA_SystemSoftware
             else
             {
                 MessageBox.Show("Please enter RMA#.","Empty Field");
-            }
-           
+            }           
         }       
 
         private void ConfirmTechChangeButton_Click(object sender, EventArgs e)
@@ -458,82 +393,7 @@ namespace RMA_SystemSoftware
             MessageBox.Show("Technician Re-Assigned!");
             con.Close();
          }
-
-        private void listBox_requestOnHold_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            radioB_refund.Checked = false;
-            radioB_repair.Checked = false;
-            radioB_replace.Checked = false;
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("select * from RMA where rma_no ='" + listBox_requestOnHold.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                {
-                    textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
-                    label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                    comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                    ID = read.GetString(read.GetOrdinal("userID"));
-                    req_type = read.GetString(read.GetOrdinal("type"));
-                    cat = read.GetInt16(read.GetOrdinal("category"));
-
-                }
-                con.Close();
-                if (req_type.ToLower().Contains("replace"))
-                {
-                    radioB_replace.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("refund"))
-                {
-                    radioB_refund.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("repair"))
-                {
-                    radioB_repair.Checked = true;
-                }
-                if (cat == 1)
-                {
-                    radioButton_CAT1.Checked = true;
-                }
-                else if (cat == 2)
-                {
-                    radioButton_CAT2.Checked = true;
-                }
-                else if (cat == 3)
-                {
-                    radioButton_CAT3.Checked = true;
-                }
-                else if (cat == 4)
-                {
-                    radioButton_CAT4.Checked = true;
-                }
-                else
-                {
-
-                    radioButton_CAT1.Checked = false;
-                    radioButton_CAT2.Checked = false;
-                    radioButton_CAT3.Checked = false;
-                    radioButton_CAT4.Checked = false;
-                }
-                con.Open();
-                label_TechName.Text = grab.getEmployeeName(ID);
-                con.Close();
-
-                con.Open();
-                cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                    textBox_StatusUpdates.Text = read.GetString(read.GetOrdinal("statusUpdates"));
-                con.Close();
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+      
         private void updateButton_Click(object sender, EventArgs e)
         {
             string found = null;
@@ -622,67 +482,7 @@ namespace RMA_SystemSoftware
 
                     if (result.Equals("1"))
                     {
-                        con.Open();
-                        cmd = new SqlCommand("select * from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
-                        read = cmd.ExecuteReader();
-                        while (read.Read())
-                        {
-                            this.textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
-                            this.comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                            this.label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                         
-                            ID = read.GetString(read.GetOrdinal("userID"));
-                            req_type = read.GetString(read.GetOrdinal("type"));
-                            cat = read.GetInt16(read.GetOrdinal("category"));
-
-                        }
-                        con.Close();
-
-                        label_TechName.Text = grab.getEmployeeName(ID);
-                        con.Open();
-                        cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='"+textBox_rmaNo.Text+"'", con);
-                        read = cmd.ExecuteReader();
-                        while (read.Read())
-                            textBox_StatusUpdates.Text = read.GetString(read.GetOrdinal("statusUpdates"));
-                        con.Close();
-
-                        if (req_type.ToLower().Contains("replace"))
-                        {
-                            radioB_replace.Checked = true;
-                        }
-                        else if (req_type.ToLower().Contains("refund"))
-                        {
-                            radioB_refund.Checked = true;
-                        }
-                        else if (req_type.ToLower().Contains("repair"))
-                        {
-                            radioB_repair.Checked = true;
-                        }
-                        if (cat == 1)
-                        {
-                            radioButton_CAT1.Checked = true;
-                        }
-                        else if (cat == 2)
-                        {
-                            radioButton_CAT2.Checked = true;
-                        }
-                        else if (cat == 3)
-                        {
-                            radioButton_CAT3.Checked = true;
-                        }
-                        else if (cat == 4)
-                        {
-                            radioButton_CAT4.Checked = true;
-                        }
-                        else
-                        {
-
-                            radioButton_CAT1.Checked = false;
-                            radioButton_CAT2.Checked = false;
-                            radioButton_CAT3.Checked = false;
-                            radioButton_CAT4.Checked = false;
-                        }
-
+                        grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);                        
                     }
                     else if (result.Equals("0"))
                         MessageBox.Show("RMA not found. Please enter a valid RMA#","Not found!");
@@ -693,139 +493,7 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("select * from RMA where rma_no ='" + listBox_refundRequest.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                {
-                    textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
-                    label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                    comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                    ID = read.GetString(read.GetOrdinal("userID"));
-
-                    req_type = read.GetString(read.GetOrdinal("type"));
-                    cat = read.GetInt16(read.GetOrdinal("category"));
-
-                }
-                con.Close();
-                if (req_type.ToLower().Contains("replace"))
-                {
-                    radioB_replace.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("refund"))
-                {
-                    radioB_refund.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("repair"))
-                {
-                    radioB_repair.Checked = true;
-                }
-                if (cat == 1)
-                {
-                    radioButton_CAT1.Checked = true;
-                }
-                else if (cat == 2)
-                {
-                    radioButton_CAT2.Checked = true;
-                }
-                else if (cat == 3)
-                {
-                    radioButton_CAT3.Checked = true;
-                }
-                else if (cat == 4)
-                {
-                    radioButton_CAT4.Checked = true;
-                }
-                else
-                {
-                    radioButton_CAT1.Checked = false;
-                    radioButton_CAT2.Checked = false;
-                    radioButton_CAT3.Checked = false;
-                    radioButton_CAT4.Checked = false;
-                }
-
-                con.Open();
-                label_TechName.Text = grab.getEmployeeName(ID);
-                con.Close();
-
-                con.Open();
-                cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + textBox_rmaNo.Text + "'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                    textBox_StatusUpdates.Text = read.GetString(read.GetOrdinal("statusUpdates"));
-                con.Close();
-
-            }
-            catch (Exception ex)
-            {
-               MessageBox.Show(ex.Message);
-            }
-
-        }
-        public void showUpdatedDetails()
-        {
-            if (con.State == ConnectionState.Open) con.Close();
-            con.Open();
-            cmd = new SqlCommand("Select * from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
-            read = cmd.ExecuteReader();
-            while (read.Read())
-            {
-                textBox_rmaNo.Text = read.GetString(read.GetOrdinal("rma_no"));
-                label_currentStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                comboBox_updateStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                ID = read.GetString(read.GetOrdinal("userID"));
-                req_type = read.GetString(read.GetOrdinal("type"));
-                cat = read.GetInt16(read.GetOrdinal("category"));
-
-            }
-            con.Close();
-            if (req_type.ToLower().Contains("replace"))
-            {
-                radioB_replace.Checked = true;
-            }
-            else if (req_type.ToLower().Contains("refund"))
-            {
-                radioB_refund.Checked = true;
-            }
-            else if (req_type.ToLower().Contains("repair"))
-            {
-                radioB_repair.Checked = true;
-            }
-            if (cat == 1)
-            {
-                radioButton_CAT1.Checked = true;
-            }
-            else if (cat == 2)
-            {
-                radioButton_CAT2.Checked = true;
-            }
-            else if (cat == 3)
-            {
-                radioButton_CAT3.Checked = true;
-            }
-            else if (cat == 4)
-            {
-                radioButton_CAT4.Checked = true;
-            }
-            else
-            {
-
-                radioButton_CAT1.Checked = false;
-                radioButton_CAT2.Checked = false;
-                radioButton_CAT3.Checked = false;
-                radioButton_CAT4.Checked = false;
-            }      
-            con.Open();
-            label_TechName.Text = grab.getEmployeeName(ID);
-            comboBox_TechName.SelectedIndex = -1;
-            con.Close();
-        }
+        
         private void textBox_rmaNo_TextChanged(object sender, EventArgs e)
         {
             rmaNumber = textBox_rmaNo.Text;

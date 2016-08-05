@@ -147,6 +147,7 @@
     <Compile Include="ReportGeneration.Designer.cs">
       <DependentUpon>ReportGeneration.cs</DependentUpon>
     </Compile>
+    <Compile Include="RMA.cs" />
     <Compile Include="Search_RMA.cs">
       <SubType>Form</SubType>
     </Compile>

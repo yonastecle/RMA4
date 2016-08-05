@@ -24,7 +24,6 @@ namespace RMA_SystemSoftware
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
         string req_type, result=null;
-
         public string u_id { get; set; }
       
         public Technician()
@@ -102,39 +101,7 @@ namespace RMA_SystemSoftware
 
         private void listBox_newRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("select * from RMA where rma_no='" + listBox_newRequest.Text + "'", con);
-                reader = cmd.ExecuteReader();
-                while (reader.Read()) 
-                {
-                    textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                    label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    comboBox_status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    req_type = reader.GetString(reader.GetOrdinal("type"));
-                }
-                if(req_type.ToLower().Contains("replace"))
-                {
-                    radioButton_replace.Checked = true;
-                }
-                if(req_type.ToLower().Contains("refund"))
-                {
-                    radioButton_refund.Checked = true;
-                }
-                if(req_type.ToLower().Contains("repair"))
-                {
-                    radioButton_repair.Checked = true;
-                }
-                
-                con.Close();
-            }
-            catch(Exception ex)
-            {
-               MessageBox.Show(ex.Message);
-            }
+            req_type = grab.autofill(listBox_newRequest.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_status, ref radioButton_repair, ref radioButton_replace, ref radioButton_refund);
         }
 
         private void delegateButton_Click(object sender, EventArgs e)
@@ -234,13 +201,7 @@ namespace RMA_SystemSoftware
             {
                 if (textBox_rmaNo.Text != "")
                 {
-                    if (con.State == ConnectionState.Open) con.Close();
-                    con.Open();
-                    cmd = new SqlCommand("Select count(rma_no) found from RMA where rma_no ='" + textBox_rmaNo.Text + "'", con);
-                    reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                        result = String.Format("{0}", reader["found"]);
-                    con.Close();
+                    result = grab.serachRMA(textBox_rmaNo.Text);
                     if (result.Equals("1"))
                     {
                         con.Open();
@@ -277,47 +238,14 @@ namespace RMA_SystemSoftware
 
         private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
         {
-            radioButton_refund.Checked = false;
-            radioButton_repair.Checked = false;
-            radioButton_replace.Checked = false;
             try
             {
                 if (e.KeyCode==Keys.Enter)
                 {
-                    if (con.State == ConnectionState.Open) con.Close();
-                    con.Open();
-                    cmd = new SqlCommand("select count(rma_no) found from RMA  where rma_no='"+textBox_rmaNo.Text+"'", con);
-                    reader = cmd.ExecuteReader();
-                    while(reader.Read())
-                    {
-                        result = String.Format("{0}", reader["found"]);
-                    }
-                    con.Close();
-
+                    result = grab.serachRMA(textBox_rmaNo.Text);
                     if (result.Equals("1"))
                     {
-                        con.Open();
-                        cmd = new SqlCommand("select * from RMA where rma_no='"+textBox_rmaNo.Text+"'", con);
-                        reader = cmd.ExecuteReader();
-                        while(reader.Read())
-                        {
-                            textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                            label_currentStatus.Text = comboBox_status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                            req_type = reader.GetString(reader.GetOrdinal("type")); 
-                        }
-                        if (req_type.ToLower().Contains("replace"))
-                        {
-                            radioButton_replace.Checked = true;
-                        }
-                        else if (req_type.ToLower().Contains("repair"))
-                        {
-                            radioButton_repair.Checked = true;
-                        }
-                        else if (req_type.ToLower().Contains("refund")) 
-                        {
-                            radioButton_refund.Checked = true;
-                        }
-                        con.Close();
+                        req_type = grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_status, ref radioButton_repair, ref radioButton_replace, ref radioButton_refund);
                     }
                     else if (result.Equals("0"))
                   MessageBox.Show("RMA not found.Please enter a valid RMA#.");

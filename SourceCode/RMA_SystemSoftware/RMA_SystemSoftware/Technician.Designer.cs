@@ -212,9 +212,8 @@
             // 
             this.textBox_rmaNo.Location = new System.Drawing.Point(146, 28);
             this.textBox_rmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox_rmaNo.Multiline = true;
             this.textBox_rmaNo.Name = "textBox_rmaNo";
-            this.textBox_rmaNo.Size = new System.Drawing.Size(234, 23);
+            this.textBox_rmaNo.Size = new System.Drawing.Size(234, 20);
             this.textBox_rmaNo.TabIndex = 31;
             this.textBox_rmaNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_rmaNo_KeyDown);
             // 

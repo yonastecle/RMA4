@@ -19,6 +19,7 @@ namespace RMA_SystemSoftware
         SqlDataReader reader;
         SqlDataAdapter da;
         DataSet ds;
+        RMA rma = new RMA();
         GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
         Supervisor sup = new Supervisor();
@@ -121,147 +122,30 @@ namespace RMA_SystemSoftware
 
         private void listBox_Open_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RadioB_refund.Checked = false;
-            RadioB_repair.Checked = false;
-            RadioB_replace.Checked = false;
-            //Console.WriteLine(" FUnction Call");
-            // req_type= grab.autofill(  textBox_rmaNo,  ref label_currentStatus,  ref comboBox_Status,  ref RadioB_repair,  ref RadioB_replace,  ref RadioB_refund);
-            // Console.WriteLine(" Function Call End");
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Open.Text + "'", con);
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-
-                    textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                    label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    req_type = reader.GetString(reader.GetOrdinal("type"));
-
-                }
-
-                if (req_type.ToLower().Contains("replace"))
-                {
-                    RadioB_replace.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("refund"))
-                {
-                    RadioB_refund.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("repair"))
-                {
-                    RadioB_repair.Checked = true;
-                }
-
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+           req_type = grab.autofill(listBox_Open.Text,ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
         }
 
         private void listBox_Received_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RadioB_refund.Checked = false;
-            RadioB_repair.Checked = false;
-            RadioB_replace.Checked = false;
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Received.Text + "'", con);
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                    label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    req_type = reader.GetString(reader.GetOrdinal("type"));
-                }
-                    if (req_type.ToLower().Contains("replace"))
-                    {
-                        RadioB_replace.Checked = true;
-                    }
-                    else if (req_type.ToLower().Contains("refund"))
-                    {
-                        RadioB_refund.Checked = true;
-                    }
-                    else if (req_type.ToLower().Contains("repair"))
-                    {
-                        RadioB_repair.Checked = true;
-                    }
-                   
-                
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-              MessageBox.Show(ex.Message);
-            }
+            req_type = grab.autofill(listBox_Received.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
+            
         }
         private void listBox_Wait_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RadioB_refund.Checked = false;
-            RadioB_repair.Checked = false;
-            RadioB_replace.Checked = false;
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("Select * from RMA where rma_no='" + listBox_Wait.Text + "'", con);
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                    label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                    req_type = reader.GetString(reader.GetOrdinal("type"));
-                }   
-                    if (req_type.ToLower().Contains("replace"))
-                    {
-                        RadioB_replace.Checked = true;
-                    }
-                    else if (req_type.ToLower().Contains("refund"))
-                    {
-                        RadioB_refund.Checked = true;
-                    }
-                    else if (req_type.ToLower().Contains("repair"))
-                    {
-                        RadioB_repair.Checked = true;
-                    }
-                
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            req_type = grab.autofill(listBox_Wait.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
+            
         }
 
         private void button_Update_Click(object sender, EventArgs e)
         {
-            try
+            string rmaNum = textBox_rmaNo.Text;
+            if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
             {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
-                {
-                    cmd = new SqlCommand("update RMA set Status ='" + comboBox_Status.Text + "',type ='" + req_type + "'where rma_no='" + textBox_rmaNo.Text + "'", con);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    MessageBox.Show("Changes Saved..Press Refresh! ");
-                }
-                else
-                    MessageBox.Show("Please choose type of request!");
+                grab.updateDB( rmaNum, "update", ref comboBox_Status,ref req_type);
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            else
+                MessageBox.Show("Please choose type of request!");
+
         }
 
         private void RadioB_repair_CheckedChanged(object sender, EventArgs e)
@@ -281,19 +165,9 @@ namespace RMA_SystemSoftware
 
         private void button_verified_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("update RMA set Status = 'Waiting to be assigned' where rma_no='" + textBox_rmaNo.Text + "'", con);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Request Added to Queue for Technician Assignment!! Press Refresh. ");
-                con.Close();
-             }
-            catch (Exception ex)
-            {
-               MessageBox.Show(ex.Message);
-            }
+            string rmaNum = textBox_rmaNo.Text;
+            grab.updateDB(rmaNum, "verify", ref comboBox_Status, ref req_type);
+            
         }
         public void fill_grid()
         {
@@ -360,11 +234,7 @@ namespace RMA_SystemSoftware
         }
 
         private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
-        {
-          
-            RadioB_refund.Checked = false;
-            RadioB_repair.Checked = false;
-            RadioB_replace.Checked = false;
+        {                    
             try
             {
 
@@ -376,30 +246,8 @@ namespace RMA_SystemSoftware
                     con.Close();
                     if (result.Equals("1"))
                     {
-                        con.Open();
-                        cmd = new SqlCommand("Select * from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
-                        reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            textBox_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                            label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                            comboBox_Status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                            req_type = reader.GetString(reader.GetOrdinal("type"));
-                        }
+                        req_type = grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
 
-                        if (req_type.ToLower().Contains("replace"))
-                        {
-                            RadioB_replace.Checked = true;
-                        }
-                        else if (req_type.ToLower().Contains("refund"))
-                        {
-                            RadioB_refund.Checked = true;
-                        }
-                        else if (req_type.ToLower().Contains("repair"))
-                        {
-                            RadioB_repair.Checked = true;
-                        }
-                        con.Close();
                     }
                     else if (result.Equals("0"))
                         MessageBox.Show("RMA not found. Please enter a valid RMA#.","Invalid RMA#");
