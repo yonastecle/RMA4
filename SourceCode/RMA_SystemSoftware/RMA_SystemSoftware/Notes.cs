@@ -41,9 +41,9 @@ namespace RMA_SystemSoftware
               
                 con.Open();
                 //- not executing
-                //cmd = new SqlCommand("UPDATE  Notes  SET' "+type+"'='" + DateTime.Now.ToShortDateString() + "' : '" + txt + System.Environment.NewLine + oldData + "'FROM Notes WHERE RMA_no = '" + rmaNum + "'", con);
-                cmd = new SqlCommand("UPDATE  Notes  SET statusUpdates='" + DateTime.Now.ToShortDateString() + "':'" + txt + System.Environment.NewLine + oldData + "'FROM Notes WHERE RMA_no = '" + rmaNum + "'", con);
-                cmd.ExecuteNonQuery();
+                //cmd = new SqlCommand("UPDATE  Notes  SET' "+type+"'='" + DateTime.Now.ToShortDateString()+"' : '"  + txt + System.Environment.NewLine + oldData + "'FROM Notes WHERE RMA_no = '" + rmaNum + "'", con);
+            
+               cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates ='" + DateTime.Now.ToShortDateString() + " : " +txt+System.Environment.NewLine+ oldData + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + rmaNum + "'", con);                            
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
