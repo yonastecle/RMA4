@@ -82,6 +82,24 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
         }
+        
+        //Supervisor+HelpDesk Update
+        public void updateDB(string rmaNum,ref ComboBox cmbBox, ref string req_type,ref int cat )
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand("UPDATE RMA SET Status ='" + cmbBox.Text + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + rmaNum + "'", con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         //Receiving+Technician:Autofilling the fields on selection of RMA# from the listbox or keypress
         public string autofill(string rmaNum, ref TextBox txtbox, ref Label lbl, ref  ComboBox cmbBox,  ref RadioButton repair, ref RadioButton replace, ref RadioButton refund)
         {
@@ -181,11 +199,15 @@ namespace RMA_SystemSoftware
                 }               
                 lblTech.Text = getEmployeeName(ID);     
                        
-                con.Open();
+                con.Open();              
                 cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + rmaNum + "'", con);
                 read = cmd.ExecuteReader();
+                txtboxStatUpdate.Clear();
                 while (read.Read())
-                    txtboxStatUpdate.Text = read.GetString(read.GetOrdinal("statusUpdates"));
+                {                   
+                    txtboxStatUpdate.Text = read.GetString(read.GetOrdinal("statusUpdates")); 
+                }
+                    
                 con.Close();
             }
             catch (Exception ex)
@@ -193,17 +215,8 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
 
-        }
-       
-
-
-        //updating fields-Noes
-        public string updateField(string field, string rmaNum)
-        {
-            string oldData = null;
-
-            return oldData;
-        }
+        }      
+        
         //public getNotes(string rmaNum)
         //{
         //    string notes;

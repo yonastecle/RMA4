@@ -21,10 +21,11 @@ namespace RMA_SystemSoftware
         DataSet ds;
         WO_Details details = new WO_Details();
         Tech_Open techopen = new Tech_Open();
+        Notes notes = new Notes();
         Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
         GrabData grab = new GrabData();
-        string s, ID, req_type, result = null,rmaNumber ="";
+        string s, ID, req_type, result = null,rmaNumber ="",enteredTxt = "";
         int cat;
         public string u_id { get; set; }       
 
@@ -216,6 +217,7 @@ namespace RMA_SystemSoftware
                 label_helloEmp.Text = grab.getEmployeeName(u_id);                
                 con.Close();
 
+              
                 fill_listbox();
               
                 con.Open();
@@ -396,55 +398,45 @@ namespace RMA_SystemSoftware
       
         private void updateButton_Click(object sender, EventArgs e)
         {
-            string found = null;
-            string updateStatus = comboBox_updateStatus.Text.ToString();
+            string found = null;      
             string rmaNum = textBox_rmaNo.Text.ToString();
-
-            Console.WriteLine("Update Status after Update Button Click: " + updateStatus);
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-
-                Console.WriteLine("textBox_rmaNo.Text != " + textBox_rmaNo.Text.ToString() + " Before if");
+                                                 
                 if (textBox_rmaNo.Text.ToString() != "")
                 {
                     Console.WriteLine("radioB_replace Checked: " + radioB_replace.Checked.ToString() + " ~ radioB_repair Checked: " + radioB_repair.Checked.ToString() );
                     if ((radioB_replace.Checked == true || radioB_repair.Checked == true || radioB_refund.Checked == true) && (radioButton_CAT1.Checked == true || radioButton_CAT2.Checked == true || radioButton_CAT3.Checked == true || radioButton_CAT4.Checked == true))
                     {
-                        con.Open();
-                        cmd = new SqlCommand("UPDATE RMA SET Status ='" + updateStatus + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + rmaNumber + "'", con);
-                        cmd.ExecuteNonQuery();
+                        grab.updateDB(rmaNum, ref comboBox_updateStatus, ref req_type, ref cat);
+
                         //Adding RMA to Notes Table, if RMA not found in the Notes Table.(Additionally need to work on adding RMA# to the Notes table as and when a new RMA request comes into the DB)
+
                         found = grab.serachRMA(rmaNumber);
-                        con.Close();
-                        con.Open();
+                                              
                         if (found.Equals("0"))
-                        {
-                          // adding dummy value to Description. LINK IT TO THE CSM DB to fetch the description.
-                           cmd = new SqlCommand("INSERT INTO Notes (RMA_no, description,statusUpdates) Values ('"+rmaNumber+"','Dummy','"+textBox_StatusUpdates.Text+"')", con);
-                            cmd.ExecuteNonQuery();
-                        }
+                    {
+                        // adding dummy value to Description. LINK IT TO THE CSM DB to fetch the description.
+                        con.Open();
+                        cmd = new SqlCommand("INSERT INTO Notes (RMA_no, description,statusUpdates) Values ('"+rmaNumber+"','Dummy','"+textBox_StatusUpdates.Text+"')", con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
                         else
                         {
-                            cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates = '" + textBox_StatusUpdates.Text + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + rmaNumber + "'", con);
-                            cmd.ExecuteNonQuery();
-                        }
+                            notes.updateField("statusUpdates", enteredTxt, rmaNum);
 
-                        con.Close();
-                         MessageBox.Show("Changes Saved..Press Refresh! ");
-                    }
+                        }
+                    MessageBox.Show("Changes Saved..Press Refresh! ");
+
+
+                }
 
                     else
                         MessageBox.Show("Please choose Type of request/Category!");
                 }
                 else
                     MessageBox.Show("Please enter the RMA#!","Empty Field");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                Console.WriteLine(ex.Message);
-            }
+          
+            
         }
 
         private void textBox_EmpName_KeyPress(object sender, KeyPressEventArgs e)
@@ -512,6 +504,20 @@ namespace RMA_SystemSoftware
         {
             req_type = "Refund";
         }
+
+        private void textBox_StatusUpdates_TextChanged(object sender, EventArgs e)
+        {
+            enteredTxt = textBox_StatusUpdates.Text;
+            Console.WriteLine("added text:" + enteredTxt);
+        }
+
+        private void textBox_StatusUpdates_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            textBox_StatusUpdates.Clear();
+            
+        }
+
+        
 
         private void radioButton_CAT1_CheckedChanged(object sender, EventArgs e)
         {

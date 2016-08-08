@@ -17,11 +17,12 @@ namespace RMA_SystemSoftware
         SqlCommand cmd;
         SqlDataReader reader;
         GrabData grab = new GrabData();
+        Notes notes = new Notes();
         WO_Details details = new WO_Details();
         Split_RMA split = new Split_RMA();
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
-        string ID, req_type;
+        string ID, req_type,enteredtxt="";
         int cat;
         string rmaNumber = "";
         public string u_id { get; set; }
@@ -193,38 +194,13 @@ namespace RMA_SystemSoftware
 
         private void updateRecordButton_Click(object sender, EventArgs e)
         {
+            string rmaNum = textBox_update_rmaNo.Text.ToString();
             if (textBox_update_rmaNo.Text != "")
             {
                 if ((radioB_refund.Checked == true || radioB_repair.Checked == true || radioB_replace.Checked == true) && (radioB_CAT1.Checked == true || radioB_CAT2.Checked == true || radioB_CAT3.Checked == true || radioB_CAT4.Checked == true))
                 {
-                    try
-                    {
-                        // if (con.State == ConnectionState.Open) con.Close();
-                        con.Open();
-                        cmd = new SqlCommand("update RMA set Status='" + comboBox_updateStatus.Text + "',type='" + req_type + "',category='" + cat + "'where rma_no='" + textBox_update_rmaNo.Text + "'", con);
-                        Console.WriteLine(cmd.ToString());
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                        Console.WriteLine("database updated!" + comboBox_updateStatus.Text + "',type='" + req_type + "',category='" + cat + "'where rma_no='" + textBox_update_rmaNo.Text);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-
-                    try
-                    {
-                        con.Open();
-                        cmd = new SqlCommand("update Notes set Notes.statusUpdates='" + textBox_update_statusUpdate.Text + "'from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no=' " + textBox_update_rmaNo.Text + "'", con);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                        MessageBox.Show("Changes Saved!!");
-                        // showUpdatedDetails();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                     grab.updateDB(rmaNum, ref comboBox_updateStatus, ref req_type, ref cat);
+                    notes.updateField("statusUpdates", enteredtxt, rmaNum);                                        
                 }
                 else
                 {
@@ -236,7 +212,6 @@ namespace RMA_SystemSoftware
                 MessageBox.Show("Please Enter RMA!", "Empty Field");
             }
         }
-
 
         private void openRecordButton_Click(object sender, EventArgs e)
         {
@@ -293,29 +268,19 @@ namespace RMA_SystemSoftware
             else
                 MessageBox.Show("Enter RMA No.", " Empty Field");
         }
-        public void showUpdatedDetails()
-        {
-            if (con.State == ConnectionState.Open) con.Close();
-            con.Open();
-            cmd = new SqlCommand("Select * from RMA where rma_no='" + textBox_update_rmaNo.Text + "'", con);
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                textBox_update_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                label_status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                comboBox_updateStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                ID = reader.GetString(reader.GetOrdinal("userID"));
-                //Enable radio Buttons
-            }
-            con.Close();
-            con.Open();
-            label_TechName.Text = grab.getEmployeeName(ID);
-            comboBox_TechName.SelectedIndex = -1;
-            con.Close();
-        }
+       
         private void textBox_update_rmaNo_TextChanged(object sender, EventArgs e)
         {
             rmaNumber = textBox_update_rmaNo.Text;
+        }
+        private void textBox_update_statusUpdate_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            textBox_update_statusUpdate.Clear();
+        }
+
+        private void textBox_update_statusUpdate_TextChanged(object sender, EventArgs e)
+        {
+            enteredtxt = textBox_update_statusUpdate.Text;
         }
         private void radioB_repair_CheckedChanged(object sender, EventArgs e)
         {
@@ -347,7 +312,7 @@ namespace RMA_SystemSoftware
             cat = 3;
         }
 
-       
+        
         private void radioB_CAT4_CheckedChanged(object sender, EventArgs e)
         {
             cat = 4;

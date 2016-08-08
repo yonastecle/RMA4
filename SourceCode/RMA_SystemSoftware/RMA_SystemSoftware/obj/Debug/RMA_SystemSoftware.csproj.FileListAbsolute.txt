@@ -21,7 +21,6 @@ C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_S
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.csprojResolveAssemblyReference.cache
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.HelpDesk.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Form1.resources
-C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Notes.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Properties.Resources.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Receiving.resources
 C:\GIT_ROOT\RMA\SourceCode\RMA_SystemSoftware\RMA_SystemSoftware\obj\Debug\RMA_SystemSoftware.Search_RMA.resources

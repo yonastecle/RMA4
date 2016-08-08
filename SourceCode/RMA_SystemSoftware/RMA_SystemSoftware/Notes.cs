@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +9,49 @@ using System.Windows.Forms;
 
 namespace RMA_SystemSoftware
 {
-    public partial class Notes : Form
+  
+    public class Notes
     {
-        public Notes()
-        {
-            InitializeComponent();
-        }
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+        SqlCommand cmd;
+        SqlDataReader read;
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        public string RMA_no { get; set; }
+        public string description { get; set; }
+        public string statusUpdates { get; set; }
+        public string comments { get; set; }
+        public string resolution { get; set; }
+
+        //updating fields-Notes
+        public void updateField(string type,string txt, string rmaNum)
         {
-            System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                string oldData = null;
+                
+                con.Open();
+                cmd = new SqlCommand(" Select * from Notes where RMA_no='" + rmaNum + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    oldData = read.GetString(read.GetOrdinal(type));
+                }
+                con.Close();
+              
+                con.Open();
+                //- not executing
+                //cmd = new SqlCommand("UPDATE  Notes  SET' "+type+"'='" + DateTime.Now.ToShortDateString() + "' : '" + txt + System.Environment.NewLine + oldData + "'FROM Notes WHERE RMA_no = '" + rmaNum + "'", con);
+                cmd = new SqlCommand("UPDATE  Notes  SET statusUpdates='" + DateTime.Now.ToShortDateString() + "':'" + txt + System.Environment.NewLine + oldData + "'FROM Notes WHERE RMA_no = '" + rmaNum + "'", con);
+                cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
+    
 }

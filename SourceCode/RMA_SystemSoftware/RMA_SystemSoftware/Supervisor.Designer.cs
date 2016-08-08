@@ -372,6 +372,8 @@
             this.textBox_StatusUpdates.Name = "textBox_StatusUpdates";
             this.textBox_StatusUpdates.Size = new System.Drawing.Size(313, 71);
             this.textBox_StatusUpdates.TabIndex = 54;
+            this.textBox_StatusUpdates.TextChanged += new System.EventHandler(this.textBox_StatusUpdates_TextChanged);
+            this.textBox_StatusUpdates.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_StatusUpdates_MouseDoubleClick);
             // 
             // label11
             // 
