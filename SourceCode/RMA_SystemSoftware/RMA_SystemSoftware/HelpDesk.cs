@@ -218,8 +218,7 @@ namespace RMA_SystemSoftware
                         cmd = new SqlCommand("update Notes set Notes.statusUpdates='" + textBox_update_statusUpdate.Text + "'from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no=' " + textBox_update_rmaNo.Text + "'", con);
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        MessageBox.Show("Changes Saved!!");
-                        // showUpdatedDetails();
+                        MessageBox.Show("Changes Saved!!");                   
                     }
                     catch (Exception ex)
                     {
@@ -293,26 +292,7 @@ namespace RMA_SystemSoftware
             else
                 MessageBox.Show("Enter RMA No.", " Empty Field");
         }
-        public void showUpdatedDetails()
-        {
-            if (con.State == ConnectionState.Open) con.Close();
-            con.Open();
-            cmd = new SqlCommand("Select * from RMA where rma_no='" + textBox_update_rmaNo.Text + "'", con);
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                textBox_update_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                label_status.Text = reader.GetString(reader.GetOrdinal("Status"));
-                comboBox_updateStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                ID = reader.GetString(reader.GetOrdinal("userID"));
-                //Enable radio Buttons
-            }
-            con.Close();
-            con.Open();
-            label_TechName.Text = grab.getEmployeeName(ID);
-            comboBox_TechName.SelectedIndex = -1;
-            con.Close();
-        }
+       
         private void textBox_update_rmaNo_TextChanged(object sender, EventArgs e)
         {
             rmaNumber = textBox_update_rmaNo.Text;

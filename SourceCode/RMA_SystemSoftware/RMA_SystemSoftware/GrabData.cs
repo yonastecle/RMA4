@@ -14,8 +14,8 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader read;
-        SqlDataAdapter da;
-        DataSet ds;
+        //SqlDataAdapter da;
+        //DataSet ds;
 
         public string getEmployeeName(string id)
         {
@@ -73,7 +73,7 @@ namespace RMA_SystemSoftware
                 {
                     cmd = new SqlCommand("update RMA set Status ='" + cmbBox.Text + "',type ='" + req_type + "'where rma_no='" + rmaNum + "'", con);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Changes Saved..Press Refresh! ");
+                    MessageBox.Show("Changes Saved..Press Refresh! ", "DB Updated!");
                 }
                 con.Close();
             }
@@ -194,13 +194,24 @@ namespace RMA_SystemSoftware
             }
 
         }
-       
-
-
+        //Change technician
+        public void techChange(string rmaNum, ref ComboBox cmbBox)
+        {
+            string id ="";
+            id = getEmployeeID(cmbBox.Text);      
+            con.Open();
+            cmd = new SqlCommand("update RMA set userID='" + id + "'where rma_no='" + rmaNum + "'", con);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Technician Re-assigned!");
+            con.Close();
+        }                           
         //updating fields-Noes
-        public string updateField(string field, string rmaNum)
+        public string updateField(ref TextBox field, string rmaNum, string type)
         {
             string oldData = null;
+            con.Open();
+            cmd= new SqlCommand("Select * from Notes where RMA_no="+rmaNum)
+
 
             return oldData;
         }

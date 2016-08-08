@@ -114,12 +114,9 @@ namespace RMA_SystemSoftware
                 con.Open();
                 cmd = new SqlCommand("Select count (1) total from Notes where RMA_no = @ID", con);
                 cmd.Parameters.AddWithValue("@ID", textBox_rmaNo.Text);
-                SqlDataReader reader = cmd.ExecuteReader();
-                
+                SqlDataReader reader = cmd.ExecuteReader();                
                 while (reader.Read())
-                result = String.Format("{0}", reader["total"]);
-  
-                
+                result = String.Format("{0}", reader["total"]);                  
                 if (result.Equals("0"))
                     MessageBox.Show("RMA record not found","Invalid RMA#");
                 else
@@ -127,14 +124,12 @@ namespace RMA_SystemSoftware
                     msg_box.RMA = textBox_rmaNo.Text;
                     msg_box.stat_type = "hold";
                     msg_box.ShowDialog();
-                }
-               
+                }               
             }
             else
             {
                 MessageBox.Show(" Please enter RMA #","Empty Text Field");
-            }                          
-            
+            }                                      
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -147,29 +142,20 @@ namespace RMA_SystemSoftware
                 {
                     if (radioButton_repair.Checked == true || radioButton_replace.Checked == true || radioButton_refund.Checked == true)
                     {
-
-                        con.Open();
-                        //Console.WriteLine("Enters Update!!"+ textBox_rmaNo.Text);
-                        cmd = new SqlCommand("update RMA set Status='" + comboBox_status.Text + "',type='" + req_type + "'where rma_no='"+textBox_rmaNo.Text+ "'", con);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                        //Console.WriteLine("Exits Update!!"+comboBox_status.Text);
-                      MessageBox.Show("Changes Updated... Press Refresh !");
-                }
-                else
-                {
+                        grab.updateDB(textBox_rmaNo.Text, "update", ref comboBox_status,ref  req_type);                      
+                    }
+                    else
+                    {
                         MessageBox.Show("Please Choose the Type of Request");
+                    }
                 }
-            }
                 else
-                    MessageBox.Show("Please enter RMA#!");
-                   
+                    MessageBox.Show("Please enter RMA#!"," Empty Field");                   
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void radioButton_repair_CheckedChanged(object sender, EventArgs e)

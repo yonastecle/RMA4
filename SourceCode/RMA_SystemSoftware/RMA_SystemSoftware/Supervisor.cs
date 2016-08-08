@@ -24,7 +24,7 @@ namespace RMA_SystemSoftware
         Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
         GrabData grab = new GrabData();
-        string s, ID, req_type, result = null,rmaNumber ="";
+        string s, req_type, result = null,rmaNumber ="";
         int cat;
         public string u_id { get; set; }       
 
@@ -310,8 +310,7 @@ namespace RMA_SystemSoftware
         private void generateReportButton_Click(object sender, EventArgs e)
         {
             try
-            {
-                //Doesnt Work, enters break mode!!!!(Console statemnets added to check the break point
+            {                
                 ReportGeneration report = new ReportGeneration();
                 Console.WriteLine(" CrystalReport rep = new CrystalReport()");
                 CrystalReport rep = new CrystalReport();
@@ -359,7 +358,6 @@ namespace RMA_SystemSoftware
         private void listBox_requestOnHold_SelectedIndexChanged(object sender, EventArgs e)
         {
             grab.autofill(listBox_requestOnHold.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);
-
         }
         private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -381,17 +379,7 @@ namespace RMA_SystemSoftware
 
         private void ConfirmTechChangeButton_Click(object sender, EventArgs e)
         {
-            string id = null;
-            if (con.State == ConnectionState.Open) con.Close();
-            con.Open();
-            id = grab.getEmployeeID(comboBox_TechName.Text);            
-            con.Close();
-
-            con.Open();
-            cmd = new SqlCommand("update RMA set userID='" + id + "' where rma_no='" + textBox_rmaNo.Text + "'", con);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Technician Re-Assigned!");
-            con.Close();
+            grab.techChange(textBox_rmaNo.Text, ref comboBox_TechName);
          }
       
         private void updateButton_Click(object sender, EventArgs e)
