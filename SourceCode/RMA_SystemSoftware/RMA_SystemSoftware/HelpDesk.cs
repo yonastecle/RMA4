@@ -22,7 +22,7 @@ namespace RMA_SystemSoftware
         Split_RMA split = new Split_RMA();
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
-        string ID, req_type,enteredtxt="";
+        public string ID, req_type,enteredtxt="",desp="",res="",stat="",comm="";
         int cat;
         string rmaNumber = "";
         public string u_id { get; set; }
@@ -125,7 +125,6 @@ namespace RMA_SystemSoftware
                     MessageBox.Show(ex.Message);
                 }
             }
-
         }
 
         private void ConfirmTechChangeButton_Click(object sender, EventArgs e)
@@ -167,30 +166,7 @@ namespace RMA_SystemSoftware
                 }
             }
         }
-
-        private void UpdateButtonInfo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("update Notes set description=' " + textBox_descrption.Text + "', statusUpdates='" + textBox_statusUpdates.Text + "', comments='" + textBox_comments.Text + "',resolution='" + textBox_resolution.Text + "' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='" + rmaNumber.Trim() + "'", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Database Updated");
-                textBox_rmaNo.Clear();
-                textBox_statusUpdates.Clear();
-                textBox_comments.Clear();
-                textBox_descrption.Clear();
-                textBox_resolution.Clear();
-                label_currentStatus.Text = "";
-                label_rmaNo.Text = "";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+      
 
         private void updateRecordButton_Click(object sender, EventArgs e)
         {
@@ -200,7 +176,8 @@ namespace RMA_SystemSoftware
                 if ((radioB_refund.Checked == true || radioB_repair.Checked == true || radioB_replace.Checked == true) && (radioB_CAT1.Checked == true || radioB_CAT2.Checked == true || radioB_CAT3.Checked == true || radioB_CAT4.Checked == true))
                 {
                      grab.updateDB(rmaNum, ref comboBox_updateStatus, ref req_type, ref cat);
-                    notes.updateField("statusUpdates", enteredtxt, rmaNum);                                        
+                    notes.updateField("statusUpdates", enteredtxt, rmaNum);
+                    MessageBox.Show("Changes Saved!!! ","Success");
                 }
                 else
                 {
@@ -227,26 +204,14 @@ namespace RMA_SystemSoftware
 
         private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (con.State == ConnectionState.Open) con.Close();
-                con.Open();
-                cmd = new SqlCommand("update Notes set description=' " + textBox_descrption.Text + "', statusUpdates='" + textBox_statusUpdates.Text + "', comments='" + textBox_comments.Text + "',resolution='" + textBox_resolution.Text + "' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='" + textBox_rmaNo.Text + "'", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Database Updated");
-                textBox_rmaNo.Clear();
+            notes.updateField(textBox_rmaNo.Text, desp, res, stat, comm);                       
                 textBox_statusUpdates.Clear();
                 textBox_comments.Clear();
                 textBox_descrption.Clear();
                 textBox_resolution.Clear();
                 label_currentStatus.Text = "";
                 label_rmaNo.Text = "";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+          
         }
 
 
@@ -296,7 +261,7 @@ namespace RMA_SystemSoftware
         {
             req_type = "Refund";
         }
-
+       
         private void radioB_CAT1_CheckedChanged(object sender, EventArgs e)
         {
             cat = 1;
@@ -306,16 +271,52 @@ namespace RMA_SystemSoftware
         {
             cat = 2;
         }
-
+        
         private void radioB_CAT3_CheckedChanged(object sender, EventArgs e)
         {
             cat = 3;
-        }
+        }      
 
-        
         private void radioB_CAT4_CheckedChanged(object sender, EventArgs e)
         {
             cat = 4;
+        }
+
+        private void textBox_descrption_TextChanged(object sender, EventArgs e)
+        {
+            desp = textBox_descrption.Text;
+        }
+        private void textBox_resolution_TextChanged(object sender, EventArgs e)
+        {
+            res = textBox_resolution.Text;
+        }
+
+        private void textBox_statusUpdates_TextChanged(object sender, EventArgs e)
+        {
+            stat = textBox_statusUpdates.Text;
+        }
+
+        private void textBox_comments_TextChanged(object sender, EventArgs e)
+        {
+            comm = textBox_comments.Text;
+        }
+        private void textBox_descrption_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            textBox_descrption.Clear();
+        }
+        private void textBox_resolution_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            textBox_resolution.Clear();
+        }
+
+        private void textBox_statusUpdates_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            textBox_statusUpdates.Clear();
+        }
+
+        private void textBox_comments_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            textBox_comments.Clear();
         }
     }
 }

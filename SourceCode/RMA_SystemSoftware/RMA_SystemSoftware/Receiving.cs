@@ -20,6 +20,7 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         RMA rma = new RMA();
+        History histry = new History();
         GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
         Supervisor sup = new Supervisor();
@@ -263,6 +264,21 @@ namespace RMA_SystemSoftware
         {
            sup.fill_grid();
             
-        }       
+        }
+
+        private void button_viewHistory_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                histry.rma.rma_no = textBox_rmaNo.Text;                 
+                histry.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+        }
     }
 }

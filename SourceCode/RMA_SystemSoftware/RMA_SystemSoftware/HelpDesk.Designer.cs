@@ -711,6 +711,8 @@
             this.textBox_comments.Name = "textBox_comments";
             this.textBox_comments.Size = new System.Drawing.Size(341, 83);
             this.textBox_comments.TabIndex = 8;
+            this.textBox_comments.TextChanged += new System.EventHandler(this.textBox_comments_TextChanged);
+            this.textBox_comments.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_comments_MouseDoubleClick);
             // 
             // textBox_statusUpdates
             // 
@@ -719,6 +721,8 @@
             this.textBox_statusUpdates.Name = "textBox_statusUpdates";
             this.textBox_statusUpdates.Size = new System.Drawing.Size(341, 80);
             this.textBox_statusUpdates.TabIndex = 7;
+            this.textBox_statusUpdates.TextChanged += new System.EventHandler(this.textBox_statusUpdates_TextChanged);
+            this.textBox_statusUpdates.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_statusUpdates_MouseDoubleClick);
             // 
             // textBox_resolution
             // 
@@ -727,6 +731,8 @@
             this.textBox_resolution.Name = "textBox_resolution";
             this.textBox_resolution.Size = new System.Drawing.Size(341, 84);
             this.textBox_resolution.TabIndex = 6;
+            this.textBox_resolution.TextChanged += new System.EventHandler(this.textBox_resolution_TextChanged);
+            this.textBox_resolution.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_resolution_MouseDoubleClick);
             // 
             // textBox_descrption
             // 
@@ -735,6 +741,8 @@
             this.textBox_descrption.Name = "textBox_descrption";
             this.textBox_descrption.Size = new System.Drawing.Size(341, 85);
             this.textBox_descrption.TabIndex = 5;
+            this.textBox_descrption.TextChanged += new System.EventHandler(this.textBox_descrption_TextChanged);
+            this.textBox_descrption.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_descrption_MouseDoubleClick);
             // 
             // label12
             // 

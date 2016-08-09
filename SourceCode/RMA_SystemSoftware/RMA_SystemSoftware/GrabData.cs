@@ -13,9 +13,7 @@ namespace RMA_SystemSoftware
     {
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
-        SqlDataReader read;
-        SqlDataAdapter da;
-        DataSet ds;
+        SqlDataReader read;      
 
         public string getEmployeeName(string id)
         {

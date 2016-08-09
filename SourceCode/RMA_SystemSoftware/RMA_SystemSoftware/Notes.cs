@@ -40,10 +40,9 @@ namespace RMA_SystemSoftware
                 con.Close();
               
                 con.Open();
-                //- not executing
-                //cmd = new SqlCommand("UPDATE  Notes  SET' "+type+"'='" + DateTime.Now.ToShortDateString()+"' : '"  + txt + System.Environment.NewLine + oldData + "'FROM Notes WHERE RMA_no = '" + rmaNum + "'", con);
-            
-               cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates ='" + DateTime.Now.ToShortDateString() + " : " +txt+System.Environment.NewLine+ oldData + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + rmaNum + "'", con);                            
+                //- not working: If below works , the following function can be omitted!
+                //cmd = new SqlCommand("UPDATE  Notes  SET' "+type+"'='" + DateTime.Now.ToShortDateString()+"': '"  + txt+ "'"+ System.Environment.NewLine +"'"+ oldData + "'FROM Notes WHERE RMA_no = '" + rmaNum + "'", con);
+                cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates ='" + DateTime.Now.ToShortDateString() + " : " +txt+System.Environment.NewLine+ oldData + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + rmaNum + "'", con);                            
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -51,6 +50,95 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        //Updating Notes: Helpdesk Screen+ Tech open
+        public void updateField(string rmaNum,string desp,string res,string stat,string comm)
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+
+                string oldDesp="", oldRes="", oldStat="", oldComm="";
+
+                con.Open();
+                cmd = new SqlCommand("Select * from Notes where RMA_No='" + rmaNum + "'", con);
+                read = cmd.ExecuteReader();
+                while(read.Read())
+                {
+                    oldDesp = read.GetString(read.GetOrdinal("description"));                  
+                    oldRes = read.GetString(read.GetOrdinal("resolution"));
+                    oldStat = read.GetString(read.GetOrdinal("statusUpdates"));
+                    oldComm = read.GetString(read.GetOrdinal("comments"));
+                }
+                con.Close();
+
+                con.Open();
+              cmd = new SqlCommand("update Notes set description=' " + DateTime.Now.ToShortDateString()+" : "+desp+System.Environment.NewLine+ oldDesp + "', statusUpdates='" + DateTime.Now.ToShortDateString() + " : " + stat +  System.Environment.NewLine  + oldStat + "', comments='" +DateTime.Now.ToShortDateString() + " : " + comm + System.Environment.NewLine + oldComm  + "',resolution='" + DateTime.Now.ToShortDateString() + " : " + res + System.Environment.NewLine + oldRes + "' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='" + rmaNum + "'", con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void History(RMA rma, ref TextBox notes, ref Label rmaNum, ref Label status, ref Label type, ref Label invoice, ref Label order, ref Label serial)
+        {           
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(" Select * from RMA where rma_no= '"+rma.rma_no+"'",con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    string abc = "";
+                    rmaNum.Text = read.GetString(read.GetOrdinal("rma_no"));
+                    status.Text = read.GetString(read.GetOrdinal("Status"));                   
+                    type.Text = read.GetString(read.GetOrdinal("type"));
+                    invoice.Text = Convert.ToString(read["invoiceNo"]);
+                    order.Text = Convert.ToString(read["orderNo"]);
+                    serial.Text = Convert.ToString(read["serialNo"]);
+                }
+           
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+           // string Desp = "", Res = "", Stat = "", Comm = "";
+            cmd = new SqlCommand("Select * from Notes where RMA_no='"+ rma.rma_no+"'", con);
+            Console.WriteLine(rma.rma_no + " hi there");
+            //cmd.Parameters.AddWithValue("@rmaNum", rma.rma_no);
+
+            //try
+            //{
+                
+
+            //    if (con.State == ConnectionState.Open) con.Close();
+
+            //    con.Open();
+            //    read = cmd.ExecuteReader();
+            //    while (read.Read())
+            //    {
+            //        Desp = read.GetString(read.GetOrdinal(description));
+            //        Res = read.GetString(read.GetOrdinal(resolution));
+            //        Stat = read.GetString(read.GetOrdinal(statusUpdates));
+            //        Comm = read.GetString(read.GetOrdinal(comments));
+            //        Console.WriteLine("reading data");
+            //    }
+            //    con.Close();
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+           
+
+
         }
     }
     

@@ -7,13 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace RMA_SystemSoftware
 {
     public partial class Tech_Open : Form
     {
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+       // SqlCommand cmd;
+        //SqlDataReader reader;
+        GrabData grab = new GrabData();
+        Notes notes = new Notes();
+        public string ID, req_type, desp = "", res = "", stat = "", comm = "";
         public string rma_no { get; set; }
-       public string u_type { get; set; }
+        public string u_type { get; set; }
         public Tech_Open()
         {
             InitializeComponent();
@@ -21,23 +28,7 @@ namespace RMA_SystemSoftware
            
         private void GoBackButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-           // if(u_type.ToLower().Equals("supervisor"))
-           // {
-           //     Supervisor sup = new Supervisor();
-           //     sup.Show();
-           // }
-           //else if(u_type.ToLower().Equals("technician"))
-           //{
-           //     Technician Tech = new Technician();
-           //     Tech.Show();
-           // }
-           // else if(u_type.ToLower().Equals("help desk"))
-           // {
-           //     HelpDesk hdsk = new HelpDesk();
-           //     hdsk.Show();
-           // }
-                      
+            this.Hide();                            
 
         }
 
@@ -49,6 +40,11 @@ namespace RMA_SystemSoftware
         private void Tech_Open_Load(object sender, EventArgs e)
         {
             label_rmaNo.Text = rma_no;
+        }
+
+        private void buttonUpdateInfo_Click(object sender, EventArgs e)
+        {
+            //call function in Notes
         }
     }
 }

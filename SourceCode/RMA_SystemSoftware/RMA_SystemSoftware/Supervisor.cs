@@ -423,10 +423,8 @@ namespace RMA_SystemSoftware
                         else
                         {
                             notes.updateField("statusUpdates", enteredTxt, rmaNum);
-
-                        }
-                    MessageBox.Show("Changes Saved..Press Refresh! ");
-
+                        MessageBox.Show("Changes Saved..Press Refresh! ");
+                    }                  
 
                 }
 
@@ -507,8 +505,7 @@ namespace RMA_SystemSoftware
 
         private void textBox_StatusUpdates_TextChanged(object sender, EventArgs e)
         {
-            enteredTxt = textBox_StatusUpdates.Text;
-            Console.WriteLine("added text:" + enteredTxt);
+            enteredTxt = textBox_StatusUpdates.Text;        
         }
 
         private void textBox_StatusUpdates_MouseDoubleClick(object sender, MouseEventArgs e)
