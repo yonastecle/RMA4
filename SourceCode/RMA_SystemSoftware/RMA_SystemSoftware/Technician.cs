@@ -57,9 +57,14 @@ namespace RMA_SystemSoftware
         {
             if(textBox_rmaNo.Text!="")
             {
-                //this.Hide();
-                techopen.rma_no = textBox_rmaNo.Text;
-                techopen.ShowDialog();
+                result = grab.serachRMA(textBox_rmaNo.Text);
+                if (result.Equals("1"))
+                {
+                    techopen.rma_no = textBox_rmaNo.Text;
+                    techopen.ShowDialog();
+                }
+                else if (result.Equals("0"))
+                    MessageBox.Show("RMA# not found.Please enter a valid RMA#", "Invalid Entry!!");                           
             }
             else
             {
@@ -197,7 +202,7 @@ namespace RMA_SystemSoftware
 
         private void showButton_Click(object sender, EventArgs e)
         {
-            string result = null;
+            
             try
             {
                 if (textBox_rmaNo.Text != "")
@@ -213,7 +218,7 @@ namespace RMA_SystemSoftware
                         con.Close();
                     }
                     else if (result.Equals("0"))
-                   MessageBox.Show("RMA# not found.Please enter a valid RMA#");
+                   MessageBox.Show("RMA# not found.Please enter a valid RMA#", "Invalid Entry!!");
                 }
                 else
                    MessageBox.Show("Please enter RMA#!");

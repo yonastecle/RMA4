@@ -213,8 +213,85 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
 
-        }      
-        
+        }
+
+        //autofill techOpen
+        public void autofill(string rmaNum,  ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund, ref RadioButton cat1, ref RadioButton cat2, ref RadioButton cat3, ref RadioButton cat4,ref TextBox desp, ref TextBox res, ref TextBox stat, ref TextBox comm)
+        {
+            string ID = "";
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("select * from RMA where rma_no ='" + rmaNum + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    
+                    lblStatus.Text = read.GetString(read.GetOrdinal("Status"));
+                    cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
+                    ID = read.GetString(read.GetOrdinal("userID"));
+                    req_type = read.GetString(read.GetOrdinal("type"));
+                    cat = read.GetInt16(read.GetOrdinal("category"));
+
+                }
+                con.Close();
+                if (req_type.ToLower().Contains("replace"))
+                {
+                    replace.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("refund"))
+                {
+                    refund.Checked = true;
+                }
+                else if (req_type.ToLower().Contains("repair"))
+                {
+                    repair.Checked = true;
+                }
+                if (cat == 1)
+                {
+                    cat1.Checked = true;
+                }
+                else if (cat == 2)
+                {
+                    cat2.Checked = true;
+                }
+                else if (cat == 3)
+                {
+                    cat3.Checked = true;
+                }
+                else if (cat == 4)
+                {
+                    cat4.Checked = true;
+                }
+                else
+                {
+
+                    cat1.Checked = false;
+                    cat2.Checked = false;
+                    cat3.Checked = false;
+                    cat4.Checked = false;
+                }
+                con.Open();
+                cmd = new SqlCommand("SELECT * FROM RMA R, Notes N WHERE R.rma_no =N.RMA_no AND r.rma_no='" + rmaNum + "'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {                                      
+                    desp.Text = read.GetString(read.GetOrdinal("description"));
+                    comm.Text = read.GetString(read.GetOrdinal("comments"));
+                    res.Text = read.GetString(read.GetOrdinal("resolution"));
+                    stat.Text = read.GetString(read.GetOrdinal("statusUpdates"));
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
         //public getNotes(string rmaNum)
         //{
         //    string notes;
