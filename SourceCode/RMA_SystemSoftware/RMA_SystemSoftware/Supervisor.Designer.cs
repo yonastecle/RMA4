@@ -370,6 +370,7 @@
             this.textBox_StatusUpdates.Location = new System.Drawing.Point(181, 263);
             this.textBox_StatusUpdates.Multiline = true;
             this.textBox_StatusUpdates.Name = "textBox_StatusUpdates";
+            this.textBox_StatusUpdates.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_StatusUpdates.Size = new System.Drawing.Size(313, 71);
             this.textBox_StatusUpdates.TabIndex = 54;
             this.textBox_StatusUpdates.TextChanged += new System.EventHandler(this.textBox_StatusUpdates_TextChanged);

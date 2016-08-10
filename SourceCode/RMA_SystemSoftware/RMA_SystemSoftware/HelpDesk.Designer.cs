@@ -339,6 +339,7 @@
             this.textBox_update_statusUpdate.Location = new System.Drawing.Point(181, 263);
             this.textBox_update_statusUpdate.Multiline = true;
             this.textBox_update_statusUpdate.Name = "textBox_update_statusUpdate";
+            this.textBox_update_statusUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_update_statusUpdate.Size = new System.Drawing.Size(313, 71);
             this.textBox_update_statusUpdate.TabIndex = 54;
             this.textBox_update_statusUpdate.TextChanged += new System.EventHandler(this.textBox_update_statusUpdate_TextChanged);
@@ -710,6 +711,7 @@
             this.textBox_comments.Location = new System.Drawing.Point(142, 334);
             this.textBox_comments.Multiline = true;
             this.textBox_comments.Name = "textBox_comments";
+            this.textBox_comments.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_comments.Size = new System.Drawing.Size(341, 83);
             this.textBox_comments.TabIndex = 8;
             this.textBox_comments.TextChanged += new System.EventHandler(this.textBox_comments_TextChanged);
@@ -720,6 +722,7 @@
             this.textBox_statusUpdates.Location = new System.Drawing.Point(142, 248);
             this.textBox_statusUpdates.Multiline = true;
             this.textBox_statusUpdates.Name = "textBox_statusUpdates";
+            this.textBox_statusUpdates.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_statusUpdates.Size = new System.Drawing.Size(341, 80);
             this.textBox_statusUpdates.TabIndex = 7;
             this.textBox_statusUpdates.TextChanged += new System.EventHandler(this.textBox_statusUpdates_TextChanged);
@@ -730,6 +733,7 @@
             this.textBox_resolution.Location = new System.Drawing.Point(142, 158);
             this.textBox_resolution.Multiline = true;
             this.textBox_resolution.Name = "textBox_resolution";
+            this.textBox_resolution.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_resolution.Size = new System.Drawing.Size(341, 84);
             this.textBox_resolution.TabIndex = 6;
             this.textBox_resolution.TextChanged += new System.EventHandler(this.textBox_resolution_TextChanged);
@@ -740,6 +744,7 @@
             this.textBox_descrption.Location = new System.Drawing.Point(142, 67);
             this.textBox_descrption.Multiline = true;
             this.textBox_descrption.Name = "textBox_descrption";
+            this.textBox_descrption.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_descrption.Size = new System.Drawing.Size(341, 85);
             this.textBox_descrption.TabIndex = 5;
             this.textBox_descrption.TextChanged += new System.EventHandler(this.textBox_descrption_TextChanged);

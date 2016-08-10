@@ -201,6 +201,7 @@
             this.textBox_comments.Location = new System.Drawing.Point(130, 348);
             this.textBox_comments.Multiline = true;
             this.textBox_comments.Name = "textBox_comments";
+            this.textBox_comments.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_comments.Size = new System.Drawing.Size(341, 93);
             this.textBox_comments.TabIndex = 8;
             this.textBox_comments.TextChanged += new System.EventHandler(this.textBox_comments_TextChanged);
@@ -211,6 +212,7 @@
             this.textBox_statusUpadate.Location = new System.Drawing.Point(130, 249);
             this.textBox_statusUpadate.Multiline = true;
             this.textBox_statusUpadate.Name = "textBox_statusUpadate";
+            this.textBox_statusUpadate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_statusUpadate.Size = new System.Drawing.Size(341, 93);
             this.textBox_statusUpadate.TabIndex = 7;
             this.textBox_statusUpadate.TextChanged += new System.EventHandler(this.textBox_statusUpadate_TextChanged);
@@ -221,6 +223,7 @@
             this.textBox_res.Location = new System.Drawing.Point(130, 150);
             this.textBox_res.Multiline = true;
             this.textBox_res.Name = "textBox_res";
+            this.textBox_res.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_res.Size = new System.Drawing.Size(341, 93);
             this.textBox_res.TabIndex = 6;
             this.textBox_res.TextChanged += new System.EventHandler(this.textBox_res_TextChanged);
@@ -231,6 +234,7 @@
             this.textBox_desp.Location = new System.Drawing.Point(130, 51);
             this.textBox_desp.Multiline = true;
             this.textBox_desp.Name = "textBox_desp";
+            this.textBox_desp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_desp.Size = new System.Drawing.Size(341, 93);
             this.textBox_desp.TabIndex = 5;
             this.textBox_desp.TextChanged += new System.EventHandler(this.textBox_desp_TextChanged);
@@ -322,6 +326,7 @@
             this.textBox9.Location = new System.Drawing.Point(118, 507);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
+            this.textBox9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox9.Size = new System.Drawing.Size(298, 77);
             this.textBox9.TabIndex = 40;
             // 
@@ -386,6 +391,7 @@
             this.textBox7.Location = new System.Drawing.Point(118, 325);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
+            this.textBox7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox7.Size = new System.Drawing.Size(298, 77);
             this.textBox7.TabIndex = 33;
             // 
@@ -450,6 +456,7 @@
             this.textBox6.Location = new System.Drawing.Point(118, 146);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
+            this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox6.Size = new System.Drawing.Size(298, 77);
             this.textBox6.TabIndex = 26;
             // 
