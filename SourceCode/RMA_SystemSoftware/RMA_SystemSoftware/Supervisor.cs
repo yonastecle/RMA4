@@ -22,6 +22,7 @@ namespace RMA_SystemSoftware
         WO_Details details = new WO_Details();
         Tech_Open techopen = new Tech_Open();
         Notes notes = new Notes();
+        History histry = new History();
         Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
         GrabData grab = new GrabData();
@@ -506,6 +507,31 @@ namespace RMA_SystemSoftware
         private void textBox_StatusUpdates_TextChanged(object sender, EventArgs e)
         {
             enteredTxt = textBox_StatusUpdates.Text;        
+        }
+
+        private void ViewHistoryButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox_View_RmaNo.Text == "")
+                    MessageBox.Show("Please enter RMA#", "Empty Field!!");
+                else
+                {
+                    result = grab.serachRMA(textBox_View_RmaNo.Text);
+                    if (result.Equals("1"))
+                    {
+                        histry.rma.rma_no = textBox_View_RmaNo.Text;
+                        histry.ShowDialog();
+                    }
+                    else if (result.Equals("0"))
+                        MessageBox.Show("RMA not found.Please enter a valid RMA#", "Invalid Entry!!");
+                }
+
+            }            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void textBox_StatusUpdates_MouseDoubleClick(object sender, MouseEventArgs e)

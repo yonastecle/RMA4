@@ -270,11 +270,22 @@ namespace RMA_SystemSoftware
         {
             try
             {
+                if (textBox_rmaNo.Text == "")
+                    MessageBox.Show("Please enter RMA#", "Empty Field!!");
+                else
+                {
+                    result = grab.serachRMA(textBox_rmaNo.Text);
+                    if (result.Equals("1"))
+                    {
+                        histry.rma.rma_no = textBox_rmaNo.Text;
+                        histry.ShowDialog();
+                    }
+                    else if (result.Equals("0"))
+                        MessageBox.Show("RMA not found.Please enter a valid RMA#", "Invalid Entry!!");
+                }
 
-                histry.rma.rma_no = textBox_rmaNo.Text;                 
-                histry.ShowDialog();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

@@ -150,6 +150,7 @@
             this.ViewHistoryButton.TabIndex = 37;
             this.ViewHistoryButton.Text = "View History";
             this.ViewHistoryButton.UseVisualStyleBackColor = true;
+            this.ViewHistoryButton.Click += new System.EventHandler(this.ViewHistoryButton_Click);
             // 
             // showButton
             // 

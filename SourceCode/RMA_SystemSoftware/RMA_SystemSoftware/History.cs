@@ -27,6 +27,13 @@ namespace RMA_SystemSoftware
 
         private void History_Load(object sender, EventArgs e)
         {
+            textBox_Notes.Clear();
+            lbl_invoice.Text = "";
+            lbl_order.Text = "";
+            lbl_rmaNum.Text = "";
+            lbl_serial.Text = "";
+            lbl_status.Text = "";
+            lbl_type.Text = "";
             notes.History(this.rma, ref textBox_Notes, ref lbl_rmaNum, ref lbl_status, ref lbl_type, ref lbl_invoice, ref lbl_order, ref lbl_serial);
         }
     }

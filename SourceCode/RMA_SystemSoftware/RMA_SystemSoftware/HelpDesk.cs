@@ -18,11 +18,13 @@ namespace RMA_SystemSoftware
         SqlDataReader reader;
         GrabData grab = new GrabData();
         Notes notes = new Notes();
+        History histry = new History();
         WO_Details details = new WO_Details();
         Split_RMA split = new Split_RMA();
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
         public string ID, req_type,enteredtxt="",desp="",res="",stat="",comm="";
+        string found = null;
         int cat;
         string rmaNumber = "";
         public string u_id { get; set; }
@@ -86,8 +88,7 @@ namespace RMA_SystemSoftware
         }
 
         private void textBox_rmaNo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            string found = null;
+        {            
             if (e.KeyChar == (char)Keys.Enter)
             {
 
@@ -289,6 +290,31 @@ namespace RMA_SystemSoftware
         private void textBox_resolution_TextChanged(object sender, EventArgs e)
         {
             res = textBox_resolution.Text;
+        }
+
+        private void ViewHistoryButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox_rmaNo.Text == "")
+                    MessageBox.Show("Please enter RMA#", "Empty Field!!");
+                else
+                {
+                    found = grab.serachRMA(textBox_rmaNo.Text);
+                    if (found.Equals("1"))
+                    {
+                        histry.rma.rma_no = textBox_rmaNo.Text;
+                        histry.ShowDialog();
+                    }
+                    else if (found.Equals("0"))
+                        MessageBox.Show("RMA not found.Please enter a valid RMA#", "Invalid Entry!!");
+                }
+
+            }           
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void textBox_statusUpdates_TextChanged(object sender, EventArgs e)
