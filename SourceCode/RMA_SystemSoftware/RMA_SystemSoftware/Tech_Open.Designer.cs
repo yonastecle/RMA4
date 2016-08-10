@@ -168,6 +168,7 @@
             this.button_Update.TabIndex = 18;
             this.button_Update.Text = "Update";
             this.button_Update.UseVisualStyleBackColor = true;
+            this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
             // 
             // comboBox_status
             // 

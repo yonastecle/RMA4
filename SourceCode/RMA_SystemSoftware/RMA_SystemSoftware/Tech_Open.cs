@@ -18,7 +18,7 @@ namespace RMA_SystemSoftware
         //SqlDataReader reader;
         GrabData grab = new GrabData();
         Notes notes = new Notes();
-        public string ID, req_type, desp = "", res = "", stat = "", comm = "";
+        string ID, req_type, desp = "", res = "", stat = "", comm = "";
         int cat;
         public string rma_no { get; set; }
         public string u_type { get; set; }       
@@ -51,13 +51,8 @@ namespace RMA_SystemSoftware
         private void buttonUpdateInfo_Click(object sender, EventArgs e)
         {
             notes.updateField(label_rmaNo.Text, desp, res, stat, comm);
-            comboBox_status.SelectedIndex = -1;
-            textBox_comments.Clear();
-            textBox_desp.Clear();
-            textBox_res.Clear();
-            textBox_statusUpadate.Clear();
-            label_currentStatus.Text = "";
-            label_rmaNo.Text = "";
+            grab.autofill(rma_no, ref label_currentStatus, ref comboBox_status, ref req_type, ref cat, ref radioButton_repair, ref radioButton_replace, ref radioButton_refund, ref radioB_CAT1, ref radioB_CAT2, ref radioB_CAT3, ref radioB_CAT4, ref textBox_desp, ref textBox_res, ref textBox_statusUpadate, ref textBox_comments);
+            
         }
 
         private void textBox_desp_TextChanged(object sender, EventArgs e)
@@ -107,6 +102,11 @@ namespace RMA_SystemSoftware
         private void radioB_CAT2_CheckedChanged(object sender, EventArgs e)
         {
             cat = 2;
+        }
+
+        private void button_Update_Click(object sender, EventArgs e)
+        {
+            grab.updateDB(rma_no, ref comboBox_status, ref req_type, ref cat);
         }
 
         private void radioB_CAT3_CheckedChanged(object sender, EventArgs e)

@@ -23,7 +23,7 @@ namespace RMA_SystemSoftware
         Split_RMA split = new Split_RMA();
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
-        public string ID, req_type,enteredtxt="",desp="",res="",stat="",comm="";
+        string ID, req_type,enteredtxt="",desp="",res="",stat="",comm="";
         string found = null;
         int cat;
         string rmaNumber = "";

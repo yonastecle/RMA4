@@ -75,7 +75,9 @@ namespace RMA_SystemSoftware
 
                 con.Open();
               cmd = new SqlCommand("update Notes set description=' " + DateTime.Now.ToShortDateString()+" : "+desp+System.Environment.NewLine+ oldDesp + "', statusUpdates='" + DateTime.Now.ToShortDateString() + " : " + stat +  System.Environment.NewLine  + oldStat + "', comments='" +DateTime.Now.ToShortDateString() + " : " + comm + System.Environment.NewLine + oldComm  + "',resolution='" + DateTime.Now.ToShortDateString() + " : " + res + System.Environment.NewLine + oldRes + "' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='" + rmaNum + "'", con);
+              
                 cmd.ExecuteNonQuery();
+                Console.WriteLine("update performedddd");
                 con.Close();
             }
             catch(Exception ex)
