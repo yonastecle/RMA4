@@ -79,9 +79,9 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox_clientName = new System.Windows.Forms.ComboBox();
             this.comboBox_status = new System.Windows.Forms.ComboBox();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton_status = new System.Windows.Forms.RadioButton();
+            this.radioButton_clientName = new System.Windows.Forms.RadioButton();
+            this.radioButton_date = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
             this.generateReportButton = new System.Windows.Forms.Button();
             this.ViewHistoryButton = new System.Windows.Forms.Button();
@@ -599,9 +599,9 @@
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.comboBox_clientName);
             this.panel1.Controls.Add(this.comboBox_status);
-            this.panel1.Controls.Add(this.radioButton9);
-            this.panel1.Controls.Add(this.radioButton8);
-            this.panel1.Controls.Add(this.radioButton7);
+            this.panel1.Controls.Add(this.radioButton_status);
+            this.panel1.Controls.Add(this.radioButton_clientName);
+            this.panel1.Controls.Add(this.radioButton_date);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.generateReportButton);
             this.panel1.Location = new System.Drawing.Point(15, 97);
@@ -659,37 +659,40 @@
             this.comboBox_status.Size = new System.Drawing.Size(221, 21);
             this.comboBox_status.TabIndex = 73;
             // 
-            // radioButton9
+            // radioButton_status
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(63, 123);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(55, 17);
-            this.radioButton9.TabIndex = 72;
-            this.radioButton9.Text = "Status";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton_status.AutoSize = true;
+            this.radioButton_status.Location = new System.Drawing.Point(63, 123);
+            this.radioButton_status.Name = "radioButton_status";
+            this.radioButton_status.Size = new System.Drawing.Size(55, 17);
+            this.radioButton_status.TabIndex = 72;
+            this.radioButton_status.Text = "Status";
+            this.radioButton_status.UseVisualStyleBackColor = true;
+            this.radioButton_status.CheckedChanged += new System.EventHandler(this.radioButton_status_CheckedChanged);
             // 
-            // radioButton8
+            // radioButton_clientName
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(63, 88);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(82, 17);
-            this.radioButton8.TabIndex = 71;
-            this.radioButton8.Text = "Client Name";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton_clientName.AutoSize = true;
+            this.radioButton_clientName.Location = new System.Drawing.Point(63, 88);
+            this.radioButton_clientName.Name = "radioButton_clientName";
+            this.radioButton_clientName.Size = new System.Drawing.Size(82, 17);
+            this.radioButton_clientName.TabIndex = 71;
+            this.radioButton_clientName.Text = "Client Name";
+            this.radioButton_clientName.UseVisualStyleBackColor = true;
+            this.radioButton_clientName.CheckedChanged += new System.EventHandler(this.radioButton_clientName_CheckedChanged);
             // 
-            // radioButton7
+            // radioButton_date
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(63, 48);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(48, 17);
-            this.radioButton7.TabIndex = 70;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Date";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton_date.AutoSize = true;
+            this.radioButton_date.Checked = true;
+            this.radioButton_date.Location = new System.Drawing.Point(63, 48);
+            this.radioButton_date.Name = "radioButton_date";
+            this.radioButton_date.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_date.TabIndex = 70;
+            this.radioButton_date.TabStop = true;
+            this.radioButton_date.Text = "Date";
+            this.radioButton_date.UseVisualStyleBackColor = true;
+            this.radioButton_date.CheckedChanged += new System.EventHandler(this.radioButton_date_CheckedChanged);
             // 
             // label14
             // 
@@ -1001,9 +1004,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox comboBox_clientName;
         private System.Windows.Forms.ComboBox comboBox_status;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton radioButton_status;
+        private System.Windows.Forms.RadioButton radioButton_clientName;
+        private System.Windows.Forms.RadioButton radioButton_date;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button generateReportButton;
         private System.Windows.Forms.Button ViewAllWOButton;

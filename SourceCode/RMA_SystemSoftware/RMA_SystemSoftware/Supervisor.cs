@@ -26,7 +26,7 @@ namespace RMA_SystemSoftware
         Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
         GrabData grab = new GrabData();
-        string s, ID, req_type, result = null,rmaNumber ="",enteredTxt = "";
+        string s, req_type, result = null, rmaNumber = "", enteredTxt = "", reportParam="";
         int cat;
         public string u_id { get; set; }       
 
@@ -52,6 +52,13 @@ namespace RMA_SystemSoftware
             comboBox_updateStatus.Items.Add("Refund");
             comboBox_updateStatus.Items.Add("Complete");
             comboBox_updateStatus.Items.Add("Close");
+            radioButton_date.Checked = false;
+            radioButton_status.Checked = false;
+            radioButton_clientName.Checked = false;
+            comboBox_status.SelectedIndex = -1;
+            comboBox_clientName.SelectedIndex = -1;
+            dateTimePicker1.Checked = false;
+            dateTimePicker2.Checked = false;
         }
         private void SplitRMAButton_Click(object sender, EventArgs e)
         {
@@ -311,33 +318,25 @@ namespace RMA_SystemSoftware
        }
 
         private void generateReportButton_Click(object sender, EventArgs e)
-        {
-            try
+        {    
+            if (radioButton_date.Checked== true ||radioButton_status.Checked== true||radioButton_clientName.Checked==true)
             {
-                //Doesnt Work, enters break mode!!!!(Console statemnets added to check the break point
-                ReportGeneration report = new ReportGeneration();
-                Console.WriteLine(" CrystalReport rep = new CrystalReport()");
-                CrystalReport rep = new CrystalReport();
-                Console.WriteLine(" DataSet1 ds = new DataSet1();");
-                DataSet1 ds = new DataSet1();
-                Console.WriteLine(" DataTable1TableAdapter adp = new DataTable1TableAdapter();");
-                DataTable1TableAdapter adp = new DataTable1TableAdapter();
-                
-                adp.Fill(ds.DataTable1);
-                Console.WriteLine(" adp.Fill(ds.DataTable1);");
-               
-                rep.SetDataSource(ds);
-                Console.WriteLine(" rep.SetDataSource(ds);");
-
-                rep.SetParameterValue("StatusParam", comboBox_status.Text);
-                Console.WriteLine(" report.crystalReportViewer1.ReportSource = rep;");
-                report.crystalReportViewer1.ReportSource = rep;
-                report.Show();
+                if (comboBox_clientName.SelectedIndex != -1 || comboBox_status.SelectedIndex != -1||(dateTimePicker1.Checked !=false && dateTimePicker2.Checked != false))
+                {
+                    grab.createReport(comboBox_clientName, comboBox_status,dateTimePicker1,dateTimePicker2, ref reportParam);
+                }
+                else
+                {
+                    MessageBox.Show("Please choose the parameter value for generating the report"," Make a selection");
+                }
+                           
             }
-            catch(Exception ex)
-            {                
-                MessageBox.Show(ex.Message);
+            else
+            {
+                MessageBox.Show("Please choose the parameter for generating the report!", " Make a selection");
             }
+            
+           
 
         }
 
@@ -534,13 +533,26 @@ namespace RMA_SystemSoftware
             }
         }
 
+        private void radioButton_date_CheckedChanged(object sender, EventArgs e)
+        {
+            reportParam = "date";
+        }
+
+        private void radioButton_clientName_CheckedChanged(object sender, EventArgs e)
+        {
+            reportParam = "client";
+        }
+
+        private void radioButton_status_CheckedChanged(object sender, EventArgs e)
+        {
+            reportParam = "status";
+        }
+
         private void textBox_StatusUpdates_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             textBox_StatusUpdates.Clear();
             
-        }
-
-        
+        }       
 
         private void radioButton_CAT1_CheckedChanged(object sender, EventArgs e)
         {

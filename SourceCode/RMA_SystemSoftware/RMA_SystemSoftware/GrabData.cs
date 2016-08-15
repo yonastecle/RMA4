@@ -292,11 +292,66 @@ namespace RMA_SystemSoftware
 
         }
 
-        //public getNotes(string rmaNum)
-        //{
-        //    string notes;
+     //Report Generation
+     public void createReport(ComboBox client, ComboBox status,DateTimePicker startDate, DateTimePicker endDate ,ref string reportParam)
+        {
+            ReportGeneration report = new ReportGeneration();
+            CrystalReport rep = new CrystalReport();
+            DataSet1 ds = new DataSet1();
+            DataSet1TableAdapters.DataTable1TableAdapter adp = new DataSet1TableAdapters.DataTable1TableAdapter();
+            if (reportParam.Contains("date"))
+            {
+                MessageBox.Show("date");
+            }
+            else if (reportParam.Contains("status"))
+            {
+                adp.Fill(ds.DataTable1);
+                rep.SetDataSource(ds);
+                rep.SetParameterValue("StatusParam", status.Text);
+                report.crystalReportViewer1.ReportSource = rep;
+                report.ShowDialog();
+            }
+            else if (reportParam.Contains("client"))
+            {
+                adp.Fill(ds.DataTable1);
+                rep.SetDataSource(ds);
+                rep.SetParameterValue("ClientParam", client.Text);
+                report.crystalReportViewer1.ReportSource = rep;
+                report.ShowDialog();
 
-        //    return notes;
-        //}
+            }
+            //if (reportParam.Contains("date"))
+            //{
+            
+            //    adp.Fill(ds.DataTable1);
+            //    rep.SetDataSource(ds);
+            //    MessageBox.Show("Report based on date selection");
+            //    report.crystalReportViewer1.ReportSource = rep;
+            //    report.ShowDialog();
+            //}
+            //else if(reportParam.Contains("client"))
+            //{
+
+            //    adp.Fill(ds.DataTable1);
+            //    rep.SetDataSource(ds);
+            //    rep.SetParameterValue("ClientParam", client.Text);
+            //    report.crystalReportViewer1.ReportSource = rep;
+            //    report.ShowDialog();
+            //}
+            //else if(reportParam.Contains("status"))
+            //{
+            //    DataSet1TableAdapters.DataTable1TableAdapter adp = new DataSet1TableAdapters.DataTable1TableAdapter();
+            //    adp.Fill(ds.DataTable1);
+            //    rep.SetDataSource(ds);
+            //    rep.SetParameterValue("StatusParam", status.Text);
+            //    report.crystalReportViewer1.ReportSource = rep;
+            //    report.ShowDialog();
+            //}
+
+
+
+
+
+        }
     }
 }
