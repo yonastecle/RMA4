@@ -59,6 +59,8 @@ namespace RMA_SystemSoftware
             comboBox_clientName.SelectedIndex = -1;
             dateTimePicker1.Checked = false;
             dateTimePicker2.Checked = false;
+           
+           
         }
         private void SplitRMAButton_Click(object sender, EventArgs e)
         {
@@ -217,7 +219,8 @@ namespace RMA_SystemSoftware
             }
         }
         private void Supervisor_Load(object sender, EventArgs e)
-        {
+        {           
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -269,7 +272,7 @@ namespace RMA_SystemSoftware
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                fill_grid();
+                grab.fill_grid();
                 con.Close();
             }
             catch (Exception ex)
@@ -318,41 +321,30 @@ namespace RMA_SystemSoftware
        }
 
         private void generateReportButton_Click(object sender, EventArgs e)
-        {    
-            if (radioButton_date.Checked== true ||radioButton_status.Checked== true||radioButton_clientName.Checked==true)
-            {
-                if (comboBox_clientName.SelectedIndex != -1 || comboBox_status.SelectedIndex != -1||(dateTimePicker1.Checked !=false && dateTimePicker2.Checked != false))
-                {
-                    grab.createReport(comboBox_clientName, comboBox_status,dateTimePicker1,dateTimePicker2, ref reportParam);
-                }
-                else
-                {
-                    MessageBox.Show("Please choose the parameter value for generating the report"," Make a selection");
-                }
-                           
-            }
-            else
-            {
-                MessageBox.Show("Please choose the parameter for generating the report!", " Make a selection");
-            }
-            
-           
-
+        {                
+                    Console.WriteLine("generateReportButton_Click comboBox_clientName: " + comboBox_clientName.Text.ToString() + " ~~ comboBox_status: " + comboBox_status.Text.ToString() + " Date1: " + dateTimePicker1.Text.ToString() + " Date2: " + dateTimePicker2.Text.ToString() + " reportParam: " + reportParam);
+                    grab.createReport(ref comboBox_clientName, ref comboBox_status,ref dateTimePicker1,ref dateTimePicker2, ref reportParam);
+                    comboBox_clientName.SelectedIndex = -1;
+                    comboBox_status.SelectedIndex = -1;
+                    dateTimePicker1.Checked = false;
+                    dateTimePicker2.Checked = false;                                     
         }
+
+       
 
         private void RMASearchButton_Click(object sender, EventArgs e)
         {           
-            fill_grid();
+            grab.fill_grid();
         }
-        public void fill_grid()
-        {
+        //public void fill_grid()
+        //{
 
-            da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,category as 'CAT',ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
-            ds = new DataSet();
-            da.Fill(ds, "All WO Details");
-            details.dataGridView_WODetails.DataSource = ds.Tables[0];
-            details.ShowDialog();
-        }
+        //    da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,category as 'CAT',ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
+        //    ds = new DataSet();
+        //    da.Fill(ds, "All WO Details");
+        //    details.dataGridView_WODetails.DataSource = ds.Tables[0];
+        //    details.ShowDialog();
+        //}
 
         private void listBox_newRequests_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -535,17 +527,40 @@ namespace RMA_SystemSoftware
 
         private void radioButton_date_CheckedChanged(object sender, EventArgs e)
         {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
             reportParam = "date";
         }
 
         private void radioButton_clientName_CheckedChanged(object sender, EventArgs e)
         {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
             reportParam = "client";
         }
 
         private void radioButton_status_CheckedChanged(object sender, EventArgs e)
         {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
             reportParam = "status";
+        }
+
+        private void comboBox_clientName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+        }
+
+        private void comboBox_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
         }
 
         private void textBox_StatusUpdates_MouseDoubleClick(object sender, MouseEventArgs e)

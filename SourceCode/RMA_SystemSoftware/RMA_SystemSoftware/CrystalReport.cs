@@ -90,17 +90,9 @@ namespace RMA_SystemSoftware {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_StatusParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_SearchParam {
             get {
                 return this.DataDefinition.ParameterFields[0];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ClientParam {
-            get {
-                return this.DataDefinition.ParameterFields[1];
             }
         }
     }

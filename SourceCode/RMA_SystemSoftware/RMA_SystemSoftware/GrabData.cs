@@ -13,7 +13,10 @@ namespace RMA_SystemSoftware
     {
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
-        SqlDataReader read;      
+        SqlDataReader read;
+        SqlDataAdapter da;
+        DataSet ds;
+        WO_Details details = new WO_Details();
 
         public string getEmployeeName(string id)
         {
@@ -34,10 +37,10 @@ namespace RMA_SystemSoftware
             cmd = new SqlCommand("Select UserID ID from Employee where firstName='" + name + "'", con);
             read = cmd.ExecuteReader();
             while (read.Read())
-               empID = read["ID"].ToString();
+                empID = read["ID"].ToString();
             con.Close();
 
-            return empID;        
+            return empID;
         }
 
         public string serachRMA(string rmaNum)
@@ -55,9 +58,9 @@ namespace RMA_SystemSoftware
         }
         //Receiving: Update and Verify Button
         public void updateDB(string rmaNum, string stat, ref ComboBox cmbBox, ref string req_type)
-        {      
-            
-                
+        {
+
+
             try
             {
                 con.Open();
@@ -75,14 +78,14 @@ namespace RMA_SystemSoftware
                 }
                 con.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
         //Supervisor+HelpDesk Update
-        public void updateDB(string rmaNum,ref ComboBox cmbBox, ref string req_type,ref int cat )
+        public void updateDB(string rmaNum, ref ComboBox cmbBox, ref string req_type, ref int cat)
         {
             try
             {
@@ -91,7 +94,7 @@ namespace RMA_SystemSoftware
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 Console.WriteLine(ex.Message);
@@ -99,7 +102,7 @@ namespace RMA_SystemSoftware
         }
 
         //Receiving+Technician:Autofilling the fields on selection of RMA# from the listbox or keypress
-        public string autofill(string rmaNum, ref TextBox txtbox, ref Label lbl, ref  ComboBox cmbBox,  ref RadioButton repair, ref RadioButton replace, ref RadioButton refund)
+        public string autofill(string rmaNum, ref TextBox txtbox, ref Label lbl, ref ComboBox cmbBox, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund)
         {
             string type = "";
             try
@@ -107,11 +110,11 @@ namespace RMA_SystemSoftware
                 if (con.State == ConnectionState.Open) con.Close();
 
                 con.Open();
-                cmd = new SqlCommand("Select * from RMA where rma_no='" + rmaNum+ "'", con);
+                cmd = new SqlCommand("Select * from RMA where rma_no='" + rmaNum + "'", con);
                 read = cmd.ExecuteReader();
 
                 while (read.Read())
-                {                   
+                {
                     txtbox.Text = read.GetString(read.GetOrdinal("rma_no"));
                     lbl.Text = read.GetString(read.GetOrdinal("Status"));
                     cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
@@ -131,7 +134,7 @@ namespace RMA_SystemSoftware
                 {
                     repair.Checked = true;
                 }
-             }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -139,14 +142,14 @@ namespace RMA_SystemSoftware
             return type;
         }
         //Supervisor+Helpdesk:Autofilling the fields on selection of RMA# from the listbox or Keypress
-        public void autofill(string rmaNum, ref TextBox txtboxRmaNum,ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat, ref RadioButton repair,ref RadioButton replace, ref RadioButton refund, ref RadioButton cat1, ref RadioButton cat2, ref RadioButton cat3, ref RadioButton cat4, ref Label lblTech, ref TextBox txtboxStatUpdate)
+        public void autofill(string rmaNum, ref TextBox txtboxRmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund, ref RadioButton cat1, ref RadioButton cat2, ref RadioButton cat3, ref RadioButton cat4, ref Label lblTech, ref TextBox txtboxStatUpdate)
         {
             string ID = "";
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
-                cmd = new SqlCommand("select * from RMA where rma_no ='" +rmaNum + "'", con);
+                cmd = new SqlCommand("select * from RMA where rma_no ='" + rmaNum + "'", con);
                 read = cmd.ExecuteReader();
                 while (read.Read())
                 {
@@ -161,7 +164,7 @@ namespace RMA_SystemSoftware
                 con.Close();
                 if (req_type.ToLower().Contains("replace"))
                 {
-                   replace.Checked = true;
+                    replace.Checked = true;
                 }
                 else if (req_type.ToLower().Contains("refund"))
                 {
@@ -173,7 +176,7 @@ namespace RMA_SystemSoftware
                 }
                 if (cat == 1)
                 {
-                  cat1.Checked = true;
+                    cat1.Checked = true;
                 }
                 else if (cat == 2)
                 {
@@ -194,18 +197,18 @@ namespace RMA_SystemSoftware
                     cat2.Checked = false;
                     cat3.Checked = false;
                     cat4.Checked = false;
-                }               
-                lblTech.Text = getEmployeeName(ID);     
-                       
-                con.Open();              
+                }
+                lblTech.Text = getEmployeeName(ID);
+
+                con.Open();
                 cmd = new SqlCommand("select statusUpdates from Notes where RMA_no='" + rmaNum + "'", con);
                 read = cmd.ExecuteReader();
                 txtboxStatUpdate.Clear();
                 while (read.Read())
-                {                   
-                    txtboxStatUpdate.Text = read.GetString(read.GetOrdinal("statusUpdates")); 
+                {
+                    txtboxStatUpdate.Text = read.GetString(read.GetOrdinal("statusUpdates"));
                 }
-                    
+
                 con.Close();
             }
             catch (Exception ex)
@@ -216,7 +219,7 @@ namespace RMA_SystemSoftware
         }
 
         //autofill techOpen
-        public void autofill(string rmaNum,  ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund, ref RadioButton cat1, ref RadioButton cat2, ref RadioButton cat3, ref RadioButton cat4,ref TextBox desp, ref TextBox res, ref TextBox stat, ref TextBox comm)
+        public void autofill(string rmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund, ref RadioButton cat1, ref RadioButton cat2, ref RadioButton cat3, ref RadioButton cat4, ref TextBox desp, ref TextBox res, ref TextBox stat, ref TextBox comm)
         {
             string ID = "";
             try
@@ -227,7 +230,7 @@ namespace RMA_SystemSoftware
                 read = cmd.ExecuteReader();
                 while (read.Read())
                 {
-                    
+
                     lblStatus.Text = read.GetString(read.GetOrdinal("Status"));
                     cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
                     ID = read.GetString(read.GetOrdinal("userID"));
@@ -276,7 +279,7 @@ namespace RMA_SystemSoftware
                 cmd = new SqlCommand("SELECT * FROM RMA R, Notes N WHERE R.rma_no =N.RMA_no AND r.rma_no='" + rmaNum + "'", con);
                 read = cmd.ExecuteReader();
                 while (read.Read())
-                {                                      
+                {
                     desp.Text = read.GetString(read.GetOrdinal("description"));
                     comm.Text = read.GetString(read.GetOrdinal("comments"));
                     res.Text = read.GetString(read.GetOrdinal("resolution"));
@@ -292,66 +295,92 @@ namespace RMA_SystemSoftware
 
         }
 
-     //Report Generation
-     public void createReport(ComboBox client, ComboBox status,DateTimePicker startDate, DateTimePicker endDate ,ref string reportParam)
+        //Report Generation
+        public void createReport(ref ComboBox client, ref ComboBox status, ref DateTimePicker startDate, ref DateTimePicker endDate, ref string reportParam)
         {
             ReportGeneration report = new ReportGeneration();
             CrystalReport rep = new CrystalReport();
             DataSet1 ds = new DataSet1();
             DataSet1TableAdapters.DataTable1TableAdapter adp = new DataSet1TableAdapters.DataTable1TableAdapter();
-            if (reportParam.Contains("date"))
+            Console.WriteLine("Report Parameter: " + reportParam.ToString());
+
+            try
             {
-                MessageBox.Show("date");
+                if (reportParam.Contains("date"))
+                {
+                    MessageBox.Show("date");
+                }
+                else if (reportParam.Contains("status"))
+                {
+                    adp.Fill(ds.DataTable1);
+                    rep.SetDataSource(ds);
+                    rep.SetParameterValue("SearchParam", status.Text);
+                    report.crystalReportViewer1.ReportSource = rep;
+                    report.ShowDialog();
+
+                }
+                else if (reportParam.Contains("client"))
+                {
+                    adp.Fill(ds.DataTable1);
+                    rep.SetDataSource(ds);
+                    rep.SetParameterValue("SearchParam", client.Text);
+                    report.crystalReportViewer1.ReportSource = rep;
+                    report.ShowDialog();
+
+                }
             }
-            else if (reportParam.Contains("status"))
+            catch (Exception ex)
             {
-                adp.Fill(ds.DataTable1);
-                rep.SetDataSource(ds);
-                rep.SetParameterValue("StatusParam", status.Text);
-                report.crystalReportViewer1.ReportSource = rep;
-                report.ShowDialog();
+                MessageBox.Show(ex.Message);
             }
-            else if (reportParam.Contains("client"))
+        }
+        //Report Section 
+        public void HideComboBoxes(ref RadioButton RB_date, ref RadioButton RB_client, ref RadioButton RB_status, ref DateTimePicker date1, ref DateTimePicker date2, ref ComboBox CB_client, ref ComboBox CB_status, ref Button genReprt)
+        {
+            if (RB_date.Checked)
             {
-                adp.Fill(ds.DataTable1);
-                rep.SetDataSource(ds);
-                rep.SetParameterValue("ClientParam", client.Text);
-                report.crystalReportViewer1.ReportSource = rep;
-                report.ShowDialog();
-
+                date1.Enabled = true;
+                date2.Enabled = true;
             }
-            //if (reportParam.Contains("date"))
-            //{
-            
-            //    adp.Fill(ds.DataTable1);
-            //    rep.SetDataSource(ds);
-            //    MessageBox.Show("Report based on date selection");
-            //    report.crystalReportViewer1.ReportSource = rep;
-            //    report.ShowDialog();
-            //}
-            //else if(reportParam.Contains("client"))
-            //{
+            else if (!RB_date.Checked)
+            {
+                date1.Enabled = false;
+                date2.Enabled = false;
+            }
 
-            //    adp.Fill(ds.DataTable1);
-            //    rep.SetDataSource(ds);
-            //    rep.SetParameterValue("ClientParam", client.Text);
-            //    report.crystalReportViewer1.ReportSource = rep;
-            //    report.ShowDialog();
-            //}
-            //else if(reportParam.Contains("status"))
-            //{
-            //    DataSet1TableAdapters.DataTable1TableAdapter adp = new DataSet1TableAdapters.DataTable1TableAdapter();
-            //    adp.Fill(ds.DataTable1);
-            //    rep.SetDataSource(ds);
-            //    rep.SetParameterValue("StatusParam", status.Text);
-            //    report.crystalReportViewer1.ReportSource = rep;
-            //    report.ShowDialog();
-            //}
+            if (RB_status.Checked)
+            {
+                CB_status.Enabled = true;
+            }
+            else if (!RB_status.Checked)
+            {
+                CB_status.Enabled = false;
+            }
 
+            if (RB_client.Checked)
+            {
+                CB_client.Enabled = true;
+            }
+            else if (!RB_client.Checked)
+            {
+                CB_client.Enabled = false;
+            }
 
+            if ((CB_client.SelectedIndex != -1 && RB_client.Enabled) || (CB_status.SelectedIndex != -1 && RB_status.Checked) || (RB_date.Checked && date1.Checked) || (RB_date.Checked && date2.Checked))
+            {
+                genReprt.Enabled = true;
+            }
+            else { genReprt.Enabled = false; }
+        }
+        public void fill_grid()
+        {
 
-
-
+            da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,category as 'CAT',ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
+            ds = new DataSet();
+            da.Fill(ds, "All WO Details");
+            details.dataGridView_WODetails.DataSource = ds.Tables[0];
+            details.ShowDialog();
         }
     }
 }
+

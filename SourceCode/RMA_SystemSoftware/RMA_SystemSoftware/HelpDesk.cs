@@ -23,7 +23,7 @@ namespace RMA_SystemSoftware
         Split_RMA split = new Split_RMA();
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
-        string ID, req_type,enteredtxt="",desp="",res="",stat="",comm="";
+        string req_type,enteredtxt="",desp="",res="",stat="",comm="", reportParam = "";
         string found = null;
         int cat;
         string rmaNumber = "";
@@ -32,6 +32,15 @@ namespace RMA_SystemSoftware
         public HelpDesk()
         {
             InitializeComponent();
+            comboBox_status.Items.Add("Open");
+            comboBox_status.Items.Add("Received");
+            comboBox_status.Items.Add("Wait");
+            comboBox_status.Items.Add("Waiting to be assigned");
+            comboBox_status.Items.Add("Assigned");
+            comboBox_status.Items.Add("Hold");
+            comboBox_status.Items.Add("Refund");
+            comboBox_status.Items.Add("Complete");
+            comboBox_status.Items.Add("Close");
             comboBox_updateStatus.Items.Add("Open");//Can be omitted!
             comboBox_updateStatus.Items.Add("Received");
             comboBox_updateStatus.Items.Add("Wait");
@@ -54,12 +63,21 @@ namespace RMA_SystemSoftware
                 con.Close();
 
                 con.Open();
+                cmd = new SqlCommand("Select Company from Client ", con);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboBox_clientName.Items.Add(reader["Company"]);
+                }
+                reader.Close();
+
                 cmd = new SqlCommand("select firstName from Employee where usertype IN('Technician','Help Desk')", con);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     comboBox_TechName.Items.Add(reader["firstName"]);
                 }
+                reader.Close();
                 con.Close();
 
             }
@@ -218,8 +236,7 @@ namespace RMA_SystemSoftware
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            // this.Hide();
-            sup.fill_grid();
+            grab.fill_grid();
         }
 
 
@@ -311,6 +328,69 @@ namespace RMA_SystemSoftware
                 }
 
             }           
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void generateReportButton_Click(object sender, EventArgs e)
+        {
+            grab.createReport(ref comboBox_clientName, ref comboBox_status, ref dateTimePicker1, ref dateTimePicker2, ref reportParam);
+            comboBox_clientName.SelectedIndex = -1;
+            comboBox_status.SelectedIndex = -1;
+            dateTimePicker1.Checked = false;
+            dateTimePicker2.Checked = false;
+        }
+
+        private void radioButton_date_CheckedChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+            reportParam = "date";
+        }
+
+        private void radioButton_clientName_CheckedChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+            reportParam = "client";
+        }
+
+        private void radioButton_status_CheckedChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+            reportParam = "status";
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+        }
+
+        private void comboBox_clientName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+        }
+
+        private void comboBox_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
+        }
+
+        private void ViewAllWOButton_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                grab.fill_grid();
+                con.Close();
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

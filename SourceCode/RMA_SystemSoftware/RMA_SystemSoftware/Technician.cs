@@ -229,9 +229,8 @@ namespace RMA_SystemSoftware
             }
         }
         private void SearchButton_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            sup.fill_grid();
+        {          
+            grab.fill_grid();
         }
 
         private void listBox_newRequest_DoubleClick(object sender, EventArgs e)

@@ -635,6 +635,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(165, 20);
             this.dateTimePicker2.TabIndex = 76;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
@@ -642,22 +643,27 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(165, 20);
             this.dateTimePicker1.TabIndex = 75;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // comboBox_clientName
             // 
+            this.comboBox_clientName.Enabled = false;
             this.comboBox_clientName.FormattingEnabled = true;
             this.comboBox_clientName.Location = new System.Drawing.Point(169, 88);
             this.comboBox_clientName.Name = "comboBox_clientName";
             this.comboBox_clientName.Size = new System.Drawing.Size(221, 21);
             this.comboBox_clientName.TabIndex = 74;
+            this.comboBox_clientName.SelectedIndexChanged += new System.EventHandler(this.comboBox_clientName_SelectedIndexChanged);
             // 
             // comboBox_status
             // 
+            this.comboBox_status.Enabled = false;
             this.comboBox_status.FormattingEnabled = true;
             this.comboBox_status.Location = new System.Drawing.Point(169, 123);
             this.comboBox_status.Name = "comboBox_status";
             this.comboBox_status.Size = new System.Drawing.Size(221, 21);
             this.comboBox_status.TabIndex = 73;
+            this.comboBox_status.SelectedIndexChanged += new System.EventHandler(this.comboBox_status_SelectedIndexChanged);
             // 
             // radioButton_status
             // 
@@ -706,6 +712,7 @@
             // 
             // generateReportButton
             // 
+            this.generateReportButton.Enabled = false;
             this.generateReportButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generateReportButton.Location = new System.Drawing.Point(415, 65);
             this.generateReportButton.Name = "generateReportButton";

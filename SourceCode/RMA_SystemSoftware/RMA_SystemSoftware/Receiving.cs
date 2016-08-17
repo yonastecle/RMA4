@@ -262,7 +262,7 @@ namespace RMA_SystemSoftware
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-           sup.fill_grid();
+           grab.fill_grid();
             
         }
 

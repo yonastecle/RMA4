@@ -69,12 +69,12 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox_clientName = new System.Windows.Forms.ComboBox();
             this.comboBox_status = new System.Windows.Forms.ComboBox();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton_status = new System.Windows.Forms.RadioButton();
+            this.radioButton_clientName = new System.Windows.Forms.RadioButton();
+            this.radioButton_date = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.generateReportButton = new System.Windows.Forms.Button();
+            this.ViewAllWOButton = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.ViewHistoryButton = new System.Windows.Forms.Button();
             this.ShowDetailsButton = new System.Windows.Forms.Button();
@@ -509,12 +509,12 @@
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.comboBox_clientName);
             this.panel1.Controls.Add(this.comboBox_status);
-            this.panel1.Controls.Add(this.radioButton9);
-            this.panel1.Controls.Add(this.radioButton8);
-            this.panel1.Controls.Add(this.radioButton7);
+            this.panel1.Controls.Add(this.radioButton_status);
+            this.panel1.Controls.Add(this.radioButton_clientName);
+            this.panel1.Controls.Add(this.radioButton_date);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button10);
+            this.panel1.Controls.Add(this.generateReportButton);
+            this.panel1.Controls.Add(this.ViewAllWOButton);
             this.panel1.Location = new System.Drawing.Point(9, 50);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(485, 160);
@@ -536,6 +536,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(61, 20);
             this.dateTimePicker2.TabIndex = 76;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
@@ -543,6 +544,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(59, 20);
             this.dateTimePicker1.TabIndex = 75;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // comboBox_clientName
             // 
@@ -551,6 +553,7 @@
             this.comboBox_clientName.Name = "comboBox_clientName";
             this.comboBox_clientName.Size = new System.Drawing.Size(164, 21);
             this.comboBox_clientName.TabIndex = 74;
+            this.comboBox_clientName.SelectedIndexChanged += new System.EventHandler(this.comboBox_clientName_SelectedIndexChanged);
             // 
             // comboBox_status
             // 
@@ -559,38 +562,42 @@
             this.comboBox_status.Name = "comboBox_status";
             this.comboBox_status.Size = new System.Drawing.Size(164, 21);
             this.comboBox_status.TabIndex = 73;
+            this.comboBox_status.SelectedIndexChanged += new System.EventHandler(this.comboBox_status_SelectedIndexChanged);
             // 
-            // radioButton9
+            // radioButton_status
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(63, 123);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(55, 17);
-            this.radioButton9.TabIndex = 72;
-            this.radioButton9.Text = "Status";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton_status.AutoSize = true;
+            this.radioButton_status.Location = new System.Drawing.Point(63, 123);
+            this.radioButton_status.Name = "radioButton_status";
+            this.radioButton_status.Size = new System.Drawing.Size(55, 17);
+            this.radioButton_status.TabIndex = 72;
+            this.radioButton_status.Text = "Status";
+            this.radioButton_status.UseVisualStyleBackColor = true;
+            this.radioButton_status.CheckedChanged += new System.EventHandler(this.radioButton_status_CheckedChanged);
             // 
-            // radioButton8
+            // radioButton_clientName
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(63, 88);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(82, 17);
-            this.radioButton8.TabIndex = 71;
-            this.radioButton8.Text = "Client Name";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton_clientName.AutoSize = true;
+            this.radioButton_clientName.Location = new System.Drawing.Point(63, 88);
+            this.radioButton_clientName.Name = "radioButton_clientName";
+            this.radioButton_clientName.Size = new System.Drawing.Size(82, 17);
+            this.radioButton_clientName.TabIndex = 71;
+            this.radioButton_clientName.Text = "Client Name";
+            this.radioButton_clientName.UseVisualStyleBackColor = true;
+            this.radioButton_clientName.CheckedChanged += new System.EventHandler(this.radioButton_clientName_CheckedChanged);
             // 
-            // radioButton7
+            // radioButton_date
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(63, 53);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(48, 17);
-            this.radioButton7.TabIndex = 70;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Date";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton_date.AutoSize = true;
+            this.radioButton_date.Checked = true;
+            this.radioButton_date.Location = new System.Drawing.Point(63, 53);
+            this.radioButton_date.Name = "radioButton_date";
+            this.radioButton_date.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_date.TabIndex = 70;
+            this.radioButton_date.TabStop = true;
+            this.radioButton_date.Text = "Date";
+            this.radioButton_date.UseVisualStyleBackColor = true;
+            this.radioButton_date.CheckedChanged += new System.EventHandler(this.radioButton_date_CheckedChanged);
             // 
             // label14
             // 
@@ -602,25 +609,27 @@
             this.label14.TabIndex = 69;
             this.label14.Text = "Select One";
             // 
-            // button11
+            // generateReportButton
             // 
-            this.button11.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(387, 111);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(85, 40);
-            this.button11.TabIndex = 68;
-            this.button11.Text = "Generate Report";
-            this.button11.UseVisualStyleBackColor = true;
+            this.generateReportButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generateReportButton.Location = new System.Drawing.Point(387, 111);
+            this.generateReportButton.Name = "generateReportButton";
+            this.generateReportButton.Size = new System.Drawing.Size(85, 40);
+            this.generateReportButton.TabIndex = 68;
+            this.generateReportButton.Text = "Generate Report";
+            this.generateReportButton.UseVisualStyleBackColor = true;
+            this.generateReportButton.Click += new System.EventHandler(this.generateReportButton_Click);
             // 
-            // button10
+            // ViewAllWOButton
             // 
-            this.button10.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(387, 40);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(85, 42);
-            this.button10.TabIndex = 67;
-            this.button10.Text = "View all WOs";
-            this.button10.UseVisualStyleBackColor = true;
+            this.ViewAllWOButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewAllWOButton.Location = new System.Drawing.Point(387, 40);
+            this.ViewAllWOButton.Name = "ViewAllWOButton";
+            this.ViewAllWOButton.Size = new System.Drawing.Size(85, 42);
+            this.ViewAllWOButton.TabIndex = 67;
+            this.ViewAllWOButton.Text = "View all WOs";
+            this.ViewAllWOButton.UseVisualStyleBackColor = true;
+            this.ViewAllWOButton.Click += new System.EventHandler(this.ViewAllWOButton_Click);
             // 
             // label21
             // 
@@ -884,12 +893,12 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox comboBox_clientName;
         private System.Windows.Forms.ComboBox comboBox_status;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton radioButton_status;
+        private System.Windows.Forms.RadioButton radioButton_clientName;
+        private System.Windows.Forms.RadioButton radioButton_date;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button generateReportButton;
+        private System.Windows.Forms.Button ViewAllWOButton;
         private System.Windows.Forms.Button ViewHistoryButton;
         private System.Windows.Forms.Button ShowDetailsButton;
         private System.Windows.Forms.GroupBox groupBox3;
