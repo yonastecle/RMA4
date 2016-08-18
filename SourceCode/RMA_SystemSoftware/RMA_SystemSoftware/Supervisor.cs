@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using RMA_SystemSoftware.DataSet1TableAdapters;
+using RMA_SystemSoftware.RMA_SystemDataSetTableAdapters;
+ 
 
 namespace RMA_SystemSoftware
 {
     public partial class Supervisor : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader read;
         SqlDataAdapter da;
@@ -66,9 +67,8 @@ namespace RMA_SystemSoftware
         {
             split.rma_no = textBox_rmaNo.Text;
             if (textBox_rmaNo.Text != "")
-            {
-                this.Hide();
-                split.Show();
+            {                
+                split.ShowDialog();
             }
             else
               MessageBox.Show("Enter RMA No.");
@@ -87,15 +87,14 @@ namespace RMA_SystemSoftware
         }
         private void AddNewEmpButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+           
             Add_emp add_emp = new Add_emp();
-            add_emp.Show();
+            add_emp.ShowDialog();
         }
         private void ViewAllbutton_Click(object sender, EventArgs e)
-        {
-            this.Close();
+        {            
             EmpInfo info = new EmpInfo();
-            info.Show();
+            info.ShowDialog();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -131,9 +130,8 @@ namespace RMA_SystemSoftware
                             search.empID = textBox_EmpID.Text;
                             search.empName = textBox_EmpName.Text;
                             search.save_param_values();
-                        }
-                        this.Close();
-                        search.Show();
+                        }                        
+                        search.ShowDialog();
 
                     }
                     else

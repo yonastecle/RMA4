@@ -33,5 +33,15 @@ namespace RMA_SystemSoftware.Properties {
                 return ((string)(this["RMA_SystemConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True")]
+        public string RMA_SystemConnectionString1 {
+            get {
+                return ((string)(this["RMA_SystemConnectionString1"]));
+            }
+        }
     }
 }

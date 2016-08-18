@@ -36,9 +36,7 @@ namespace RMA_SystemSoftware
         private void GoBackButton_Click(object sender, EventArgs e)
         {
 
-            this.Hide();
-            Supervisor Sup = new Supervisor();
-            Sup.Show();
+            this.Hide();            
         }
     }
 }

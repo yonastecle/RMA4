@@ -17,7 +17,7 @@ namespace RMA_SystemSoftware
         public string empName { get; set; }
         string id, name;
 
-        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader dr;
                 
@@ -35,8 +35,8 @@ namespace RMA_SystemSoftware
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            Supervisor sup = new Supervisor();
-            sup.Show();
+            //Supervisor sup = new Supervisor();
+            //sup.Show();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

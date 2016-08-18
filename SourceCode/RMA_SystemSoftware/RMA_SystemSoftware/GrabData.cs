@@ -11,7 +11,7 @@ namespace RMA_SystemSoftware
 {
     class GrabData
     {
-        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader read;
         SqlDataAdapter da;
@@ -300,8 +300,9 @@ namespace RMA_SystemSoftware
         {
             ReportGeneration report = new ReportGeneration();
             CrystalReport rep = new CrystalReport();
-            DataSet1 ds = new DataSet1();
-            DataSet1TableAdapters.DataTable1TableAdapter adp = new DataSet1TableAdapters.DataTable1TableAdapter();
+            RMA_SystemDataSet ds = new RMA_SystemDataSet();
+            RMA_SystemDataSetTableAdapters.DataTable1TableAdapter adp = new RMA_SystemDataSetTableAdapters.DataTable1TableAdapter();
+            // DataSet1TableAdapters.DataTable1TableAdapter adp = new DataSet1TableAdapters.DataTable1TableAdapter();
             Console.WriteLine("Report Parameter: " + reportParam.ToString());
 
             try
@@ -312,7 +313,7 @@ namespace RMA_SystemSoftware
                 }
                 else if (reportParam.Contains("status"))
                 {
-                    adp.Fill(ds.DataTable1);
+                    adp.Fill(ds.DataTable1);                     
                     rep.SetDataSource(ds);
                     rep.SetParameterValue("SearchParam", status.Text);
                     report.crystalReportViewer1.ReportSource = rep;

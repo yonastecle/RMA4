@@ -14,7 +14,7 @@ namespace RMA_SystemSoftware
     public partial class Add_emp : Form
     {
         Supervisor sup = new Supervisor();
-        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand command = new SqlCommand();
         public Add_emp()
         {
@@ -59,7 +59,7 @@ namespace RMA_SystemSoftware
         {
             
                 this.Close();
-                sup.Show();
+               // sup.Show();
         
             
         }

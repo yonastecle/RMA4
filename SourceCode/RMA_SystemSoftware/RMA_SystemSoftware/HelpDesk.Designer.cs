@@ -187,6 +187,7 @@
             this.groupBox_UpdateDetails.TabIndex = 38;
             this.groupBox_UpdateDetails.TabStop = false;
             this.groupBox_UpdateDetails.Text = "Update Details(*Only Authorized users)";
+  
             // 
             // panel3
             // 
