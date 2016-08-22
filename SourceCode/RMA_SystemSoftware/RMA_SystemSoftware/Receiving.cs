@@ -14,7 +14,8 @@ namespace RMA_SystemSoftware
 {
     public partial class Receiving : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
+
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
         SqlDataAdapter da;
@@ -24,6 +25,7 @@ namespace RMA_SystemSoftware
         GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
         Supervisor sup = new Supervisor();
+        DialogResult dialog_result;
         string req_type;
         public string u_id { get; set; }
         string result = null;
@@ -49,6 +51,7 @@ namespace RMA_SystemSoftware
                 label_helloEmp.Text = grab.getEmployeeName(u_id);                
                 con.Close();
                 fill_listbox();
+                fill_grid();
             }
             catch(Exception ex)
             {
@@ -142,7 +145,8 @@ namespace RMA_SystemSoftware
             string rmaNum = textBox_rmaNo.Text;
             if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
             {
-                grab.updateDB( rmaNum, "update", ref comboBox_Status,ref req_type);
+               dialog_result= grab.updateDatabase( rmaNum, "update", ref comboBox_Status,ref req_type);
+               
             }
             else
                 MessageBox.Show("Please choose type of request!");
@@ -167,8 +171,17 @@ namespace RMA_SystemSoftware
         private void button_verified_Click(object sender, EventArgs e)
         {
             string rmaNum = textBox_rmaNo.Text;
-            grab.updateDB(rmaNum, "verify", ref comboBox_Status, ref req_type);
-            
+           dialog_result= grab.updateDatabase(rmaNum, "verify", ref comboBox_Status, ref req_type);
+            if (dialog_result == DialogResult.OK)
+            {
+                listBox_Open.Items.Clear();
+                listBox_Received.Items.Clear();
+                listBox_Wait.Items.Clear();
+                textBox_rmaNo.Clear();
+                Receiving_Load(this, null);
+                fill_grid();
+            }
+
         }
         public void fill_grid()
         {

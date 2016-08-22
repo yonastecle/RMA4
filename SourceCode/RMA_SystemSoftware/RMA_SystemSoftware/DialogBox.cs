@@ -13,9 +13,12 @@ namespace RMA_SystemSoftware
 {
     public partial class DialogBox : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
+
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
+        DialogBox msg_box;
         Technician tech = new Technician();
+        Utilities util = new Utilities();
         public string RMA { get; set; }
         public string stat_type { get; set; }
        
@@ -55,6 +58,7 @@ namespace RMA_SystemSoftware
                         cmd.ExecuteNonQuery();
                         cmd = new SqlCommand("update Notes set statusUpdates='" + textBox_reason.Text + "' FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no ='" + RMA + "'", con);
                         cmd.ExecuteNonQuery();
+                        util.SendEmail(RMA, textBox_reason.Text, stat_type);
                         MessageBox.Show(" Request put on hold. Email notification sent to Supervisor!", "RMA on Hold");
                     }
                     else if(stat_type.Contains("complete"))

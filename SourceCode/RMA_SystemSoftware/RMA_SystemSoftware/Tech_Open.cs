@@ -13,7 +13,8 @@ namespace RMA_SystemSoftware
 {
     public partial class Tech_Open : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");     
+
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         GrabData grab = new GrabData();
         Notes notes = new Notes();
         string req_type, desp = "", res = "", stat = "", comm = "";

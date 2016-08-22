@@ -13,7 +13,8 @@ namespace RMA_SystemSoftware
 {
     public partial class EmpInfo : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
+
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlDataAdapter da;
         DataSet ds;
         SqlCommandBuilder cmdbdl;

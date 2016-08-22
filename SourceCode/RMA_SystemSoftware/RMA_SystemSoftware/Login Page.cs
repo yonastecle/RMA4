@@ -25,7 +25,8 @@ namespace RMA_SystemSoftware
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
+
+                SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
                 SqlDataAdapter sda = new SqlDataAdapter("select userType from Employee where UserID='" + textBox1.Text + "' and password='" + textBox2.Text + "'", con);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);

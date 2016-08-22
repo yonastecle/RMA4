@@ -13,7 +13,7 @@ namespace RMA_SystemSoftware
 {
     public partial class HelpDesk : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
         GrabData grab = new GrabData();

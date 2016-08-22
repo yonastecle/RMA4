@@ -13,7 +13,8 @@ namespace RMA_SystemSoftware
 {
     public partial class Technician : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
+
+        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
         SqlDataAdapter da;
@@ -113,6 +114,7 @@ namespace RMA_SystemSoftware
         private void delegateButton_Click(object sender, EventArgs e)
         {
             msg_box = new DialogBox();
+          
             if (textBox_rmaNo.Text != "")
             {
                 string result = null;
@@ -296,21 +298,22 @@ namespace RMA_SystemSoftware
             {
                 msg_box.stat_type = comboBox_status.Text.ToLower();
                 msg_box.RMA = textBox_rmaNo.Text;
-                if (msg_box.stat_type.Contains("hold"))
-                {
-                    //MessageBox.Show("Call the screen for hold, update status");
-                    msg_box.ShowDialog();
-                }
+                msg_box.ShowDialog();
+                //if (msg_box.stat_type.Contains("hold"))
+                //{
+                //    //MessageBox.Show("Call the screen for hold, update status");
+                //    msg_box.ShowDialog();
+                //}
 
-                else if (msg_box.stat_type.Contains("complete"))
-                {
-                    msg_box.ShowDialog();
-                    //  MessageBox.Show("update resolution,add radio button", "Completed");
-                }
-                else
-                {
+                //else if (msg_box.stat_type.Contains("complete"))
+                //{
+                //    msg_box.ShowDialog();
+                //    //  MessageBox.Show("update resolution,add radio button", "Completed");
+                //}
+                //else
+                //{
                   
-                }
+                //}
 
             }
         }
