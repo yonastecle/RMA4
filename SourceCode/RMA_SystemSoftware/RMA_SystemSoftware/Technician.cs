@@ -26,10 +26,11 @@ namespace RMA_SystemSoftware
         Tech_Open techopen = new Tech_Open();
         Supervisor sup = new Supervisor();
         string req_type, result=null;
-        public string u_id { get; set; }
-      
+        public string u_id { get; set; }   
+               
         public Technician()
         {
+            
             InitializeComponent();
             comboBox_status.Items.Add("Hold");
             comboBox_status.Items.Add("Complete");

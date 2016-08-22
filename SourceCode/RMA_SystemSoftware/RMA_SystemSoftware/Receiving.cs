@@ -24,14 +24,19 @@ namespace RMA_SystemSoftware
         History histry = new History();
         GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
-        Supervisor sup = new Supervisor();
-        DialogResult dialog_result;
+        Supervisor sup = new Supervisor();     
         string req_type;
         public string u_id { get; set; }
         string result = null;
-     
+
+        private void timer_AutoRefresh_Tick(object sender, EventArgs e)
+        {
+            button_refresh_Click(this, null);
+        }
+
         public Receiving()
         {
+       
             InitializeComponent();
             comboBox_Status.Items.Add("Received");
             comboBox_Status.Items.Add("Wait");
@@ -39,11 +44,13 @@ namespace RMA_SystemSoftware
             comboBox_Status.Items.Add("Refund");
             comboBox_Status.Items.Add("Waiting to be assigned");//Disable for Receiving staff
             comboBox_Status.Items.Add("Open");//to be removed, Receiving Staff can't change the status to Open
+            timer_AutoRefresh.Start();
 
         }
         
         private void Receiving_Load(object sender, EventArgs e)
         {
+           
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -52,6 +59,7 @@ namespace RMA_SystemSoftware
                 con.Close();
                 fill_listbox();
                 fill_grid();
+
             }
             catch(Exception ex)
             {
@@ -60,7 +68,7 @@ namespace RMA_SystemSoftware
             
         }
         
-        private void button_refresh_Click(object sender, EventArgs e)
+        public void button_refresh_Click(object sender, EventArgs e)
         {
             if (con.State == ConnectionState.Open) con.Close();
             listBox_Open.Items.Clear();
@@ -71,7 +79,7 @@ namespace RMA_SystemSoftware
             fill_grid(); 
 
         }
-
+  
         public void fill_listbox()
         {
             try
@@ -139,19 +147,7 @@ namespace RMA_SystemSoftware
             req_type = grab.autofill(listBox_Wait.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
             
         }
-
-        private void button_Update_Click(object sender, EventArgs e)
-        {
-            string rmaNum = textBox_rmaNo.Text;
-            if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
-            {
-                grab.updateDB( rmaNum, "update", ref comboBox_Status,ref req_type);
-            }
-            else
-                MessageBox.Show("Please choose type of request!");
-
-        }
-
+       
         private void RadioB_repair_CheckedChanged(object sender, EventArgs e)
         {
             req_type = " Repair";
@@ -170,9 +166,23 @@ namespace RMA_SystemSoftware
         private void button_verified_Click(object sender, EventArgs e)
         {
             string rmaNum = textBox_rmaNo.Text;
-            grab.updateDB(rmaNum, "verify", ref comboBox_Status, ref req_type);
+           grab.updateDB(rmaNum, "verify", ref comboBox_Status, ref req_type);
+            button_refresh_Click(this, null);           
             
         }
+        private void button_Update_Click(object sender, EventArgs e)
+        {
+            string rmaNum = textBox_rmaNo.Text;
+            if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
+            {
+                grab.updateDB(rmaNum, "update", ref comboBox_Status, ref req_type);                
+                button_refresh_Click(this, null);
+            }
+            else
+                MessageBox.Show("Please choose type of request!");
+
+        }
+
         public void fill_grid()
         {
             da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
@@ -294,5 +304,7 @@ namespace RMA_SystemSoftware
             }
            
         }
+
+      
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label_helloEmp = new System.Windows.Forms.Label();
@@ -57,6 +58,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.listBox_Wait = new System.Windows.Forms.ListBox();
             this.SearchButton = new System.Windows.Forms.Button();
+            this.timer_AutoRefresh = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -399,6 +401,12 @@
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
+            // timer_AutoRefresh
+            // 
+            this.timer_AutoRefresh.Enabled = true;
+            this.timer_AutoRefresh.Interval = 60000;
+            this.timer_AutoRefresh.Tick += new System.EventHandler(this.timer_AutoRefresh_Tick);
+            // 
             // Receiving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -465,5 +473,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox_Wait;
         private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Timer timer_AutoRefresh;
     }
 }

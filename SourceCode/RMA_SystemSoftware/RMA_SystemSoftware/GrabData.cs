@@ -18,6 +18,7 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         WO_Details details = new WO_Details();
+       // Receiving recv = new Receiving();
 
         public string getEmployeeName(string id)
         {
@@ -60,22 +61,44 @@ namespace RMA_SystemSoftware
         //Receiving: Update and Verify Button
         public void updateDB(string rmaNum, string stat, ref ComboBox cmbBox, ref string req_type)
         {
-
-
+            
+            DialogResult result;
             try
             {
+               
                 con.Open();
                 if (stat.Contains("verify"))
                 {
-                    cmd = new SqlCommand("update RMA set Status = 'Waiting to be assigned' where rma_no='" + rmaNum + "'", con);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Request Added to Queue for Technician Assignment!! Press Refresh. ", "Received");
+                    Console.WriteLine("Hello , Entered!!!");
+                    result = MessageBox.Show("Are you sure the received shippment is appropriate and ready to be Assigned to the Tech team ? ", "Please Confirm", MessageBoxButtons.YesNo);
+                    Console.WriteLine("Yes I am Sure");
+                    if (result == DialogResult.Yes)
+                    {
+                        cmd = new SqlCommand("update RMA set Status = 'Waiting to be assigned' where rma_no='" + rmaNum + "'", con);
+                        cmd.ExecuteNonQuery();
+                        result = MessageBox.Show("Request added to the WO queue for Technician assignment", "Added to Queue", MessageBoxButtons.OK);
+                        if(result== DialogResult.OK)
+                        {
+                            Console.WriteLine(" Hello Please Work");
+                           con.Close();
+                            return;
+                        }
+
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        con.Close();
+                        return;
+                    }                
                 }
                 else
                 {
                     cmd = new SqlCommand("update RMA set Status ='" + cmbBox.Text + "',type ='" + req_type + "'where rma_no='" + rmaNum + "'", con);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Changes Saved..Press Refresh! ");
+                    result = MessageBox.Show("The changes has been saved and recorded in the database! ", " Records Updated", MessageBoxButtons.OK);
+                    con.Close(); 
+                    return;                   
+              
                 }
                 con.Close();
             }
