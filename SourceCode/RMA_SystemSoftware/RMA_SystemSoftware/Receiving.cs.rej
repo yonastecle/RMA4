@@ -1,0 +1,11 @@
+diff a/SourceCode/RMA_SystemSoftware/RMA_SystemSoftware/Receiving.cs b/SourceCode/RMA_SystemSoftware/RMA_SystemSoftware/Receiving.cs	(rejected hunks)
+@@ -145,7 +145,8 @@
+             string rmaNum = textBox_rmaNo.Text;
+             if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
+             {
+-                grab.updateDB( rmaNum, "update", ref comboBox_Status,ref req_type);
++               dialog_result= grab.updateDatabase( rmaNum, "update", ref comboBox_Status,ref req_type);
++               
+             }
+             else
+                 MessageBox.Show("Please choose type of request!");

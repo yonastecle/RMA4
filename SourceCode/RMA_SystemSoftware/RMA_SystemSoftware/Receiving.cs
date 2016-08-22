@@ -145,8 +145,7 @@ namespace RMA_SystemSoftware
             string rmaNum = textBox_rmaNo.Text;
             if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
             {
-               dialog_result= grab.updateDatabase( rmaNum, "update", ref comboBox_Status,ref req_type);
-               
+                grab.updateDB( rmaNum, "update", ref comboBox_Status,ref req_type);
             }
             else
                 MessageBox.Show("Please choose type of request!");
@@ -171,17 +170,8 @@ namespace RMA_SystemSoftware
         private void button_verified_Click(object sender, EventArgs e)
         {
             string rmaNum = textBox_rmaNo.Text;
-           dialog_result= grab.updateDatabase(rmaNum, "verify", ref comboBox_Status, ref req_type);
-            if (dialog_result == DialogResult.OK)
-            {
-                listBox_Open.Items.Clear();
-                listBox_Received.Items.Clear();
-                listBox_Wait.Items.Clear();
-                textBox_rmaNo.Clear();
-                Receiving_Load(this, null);
-                fill_grid();
-            }
-
+            grab.updateDB(rmaNum, "verify", ref comboBox_Status, ref req_type);
+            
         }
         public void fill_grid()
         {

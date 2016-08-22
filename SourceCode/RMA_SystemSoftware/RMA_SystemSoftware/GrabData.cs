@@ -58,43 +58,26 @@ namespace RMA_SystemSoftware
             return result;
         }
         //Receiving: Update and Verify Button
-           public DialogResult updateDatabase(string rmaNum, string stat, ref ComboBox cmbBox, ref string req_type)
+        public void updateDB(string rmaNum, string stat, ref ComboBox cmbBox, ref string req_type)
         {
-            Console.WriteLine("ENtered function call");
-            DialogResult result;
+
+
             try
             {
                 con.Open();
                 if (stat.Contains("verify"))
                 {
-                    Console.WriteLine("Hello , Entered!!!");
-                    result = MessageBox.Show("Are you sure the received shippment is appropriate and ready to be Assigned to the Tech team ? ", "Please Confirm", MessageBoxButtons.YesNo);
-                    Console.WriteLine("Yes I am Sure");
-                    if(result== DialogResult.Yes)
-                    {
-                        cmd = new SqlCommand("update RMA set Status = 'Waiting to be assigned' where rma_no='" + rmaNum + "'", con);
-                        cmd.ExecuteNonQuery();
-                        result = MessageBox.Show("Request added to the WO queue for Technician assignment", "Added to Queue", MessageBoxButtons.OK);
-                        return DialogResult.OK;
-                       
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        return DialogResult.OK;
-                    }
-                    
-                  
+                    cmd = new SqlCommand("update RMA set Status = 'Waiting to be assigned' where rma_no='" + rmaNum + "'", con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Request Added to Queue for Technician Assignment!! Press Refresh. ", "Received");
                 }
                 else
                 {
                     cmd = new SqlCommand("update RMA set Status ='" + cmbBox.Text + "',type ='" + req_type + "'where rma_no='" + rmaNum + "'", con);
                     cmd.ExecuteNonQuery();
-                    result = MessageBox.Show("Changes Saved! ", " Records Updated", MessageBoxButtons.OK);
-                    return result;
+                    MessageBox.Show("Changes Saved..Press Refresh! ");
                 }
                 con.Close();
-
-                return DialogResult.OK;
             }
             catch (Exception ex)
             {
