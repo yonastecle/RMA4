@@ -34,8 +34,7 @@ namespace RMA_SystemSoftware
         }
 
         public Receiving()
-        {
-       
+        {       
             InitializeComponent();
             comboBox_Status.Items.Add("Received");
             comboBox_Status.Items.Add("Wait");
@@ -59,8 +58,7 @@ namespace RMA_SystemSoftware
             catch(Exception ex)
             {
                MessageBox.Show(ex.Message);
-            }
-            
+            }            
         }
         
         public void button_refresh_Click(object sender, EventArgs e)
@@ -78,11 +76,11 @@ namespace RMA_SystemSoftware
             comboBox_Status.SelectedIndex = -1;
             Receiving_Load(this, null);
             fill_grid(); 
-
         }
   
         public void fill_listbox()
         {
+            string rma_no;
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -91,7 +89,7 @@ namespace RMA_SystemSoftware
                 reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    string rma_no = reader.GetString(reader.GetOrdinal("rma_no"));
+                   rma_no = reader.GetString(reader.GetOrdinal("rma_no"));
                     listBox_Open.Items.Add(rma_no);
                 }
                 con.Close();
@@ -100,7 +98,7 @@ namespace RMA_SystemSoftware
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string rma_no = reader.GetString(reader.GetOrdinal("rma_no"));
+                   rma_no = reader.GetString(reader.GetOrdinal("rma_no"));
                     listBox_Received.Items.Add(rma_no);
                 }
                 con.Close();
@@ -109,7 +107,7 @@ namespace RMA_SystemSoftware
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string rma_no = reader.GetString(reader.GetOrdinal("rma_no"));
+                    rma_no = reader.GetString(reader.GetOrdinal("rma_no"));
                     listBox_Wait.Items.Add(rma_no);
                 }
                 con.Close();

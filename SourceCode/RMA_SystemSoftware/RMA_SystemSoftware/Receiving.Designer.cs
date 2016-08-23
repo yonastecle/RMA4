@@ -213,7 +213,7 @@
             // ViewAllButton
             // 
             this.ViewAllButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewAllButton.Location = new System.Drawing.Point(583, 363);
+            this.ViewAllButton.Location = new System.Drawing.Point(593, 355);
             this.ViewAllButton.Name = "ViewAllButton";
             this.ViewAllButton.Size = new System.Drawing.Size(129, 37);
             this.ViewAllButton.TabIndex = 22;
@@ -247,7 +247,7 @@
             this.groupBox1.Size = new System.Drawing.Size(512, 334);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Track/Update RMA";
+            this.groupBox1.Text = "Track & Update RMA";
             // 
             // label2
             // 
@@ -340,7 +340,7 @@
             // 
             this.listBox_Open.FormattingEnabled = true;
             this.listBox_Open.ItemHeight = 15;
-            this.listBox_Open.Location = new System.Drawing.Point(564, 107);
+            this.listBox_Open.Location = new System.Drawing.Point(583, 105);
             this.listBox_Open.Name = "listBox_Open";
             this.listBox_Open.Size = new System.Drawing.Size(148, 244);
             this.listBox_Open.TabIndex = 25;
@@ -350,7 +350,7 @@
             // 
             this.listBox_Received.FormattingEnabled = true;
             this.listBox_Received.ItemHeight = 15;
-            this.listBox_Received.Location = new System.Drawing.Point(734, 107);
+            this.listBox_Received.Location = new System.Drawing.Point(753, 105);
             this.listBox_Received.Name = "listBox_Received";
             this.listBox_Received.Size = new System.Drawing.Size(143, 244);
             this.listBox_Received.TabIndex = 26;
@@ -359,7 +359,7 @@
             // button_refresh
             // 
             this.button_refresh.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_refresh.Location = new System.Drawing.Point(932, 363);
+            this.button_refresh.Location = new System.Drawing.Point(938, 355);
             this.button_refresh.Name = "button_refresh";
             this.button_refresh.Size = new System.Drawing.Size(97, 37);
             this.button_refresh.TabIndex = 27;
@@ -372,7 +372,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkRed;
-            this.label8.Location = new System.Drawing.Point(592, 84);
+            this.label8.Location = new System.Drawing.Point(611, 82);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 18);
@@ -384,7 +384,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.DarkRed;
-            this.label9.Location = new System.Drawing.Point(745, 84);
+            this.label9.Location = new System.Drawing.Point(764, 82);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(121, 18);
@@ -400,7 +400,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(998, 208);
+            this.dataGridView1.Size = new System.Drawing.Size(1012, 224);
             this.dataGridView1.TabIndex = 30;
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
@@ -409,7 +409,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DarkRed;
-            this.label7.Location = new System.Drawing.Point(916, 86);
+            this.label7.Location = new System.Drawing.Point(930, 84);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(113, 18);
@@ -420,7 +420,7 @@
             // 
             this.listBox_Wait.FormattingEnabled = true;
             this.listBox_Wait.ItemHeight = 15;
-            this.listBox_Wait.Location = new System.Drawing.Point(901, 107);
+            this.listBox_Wait.Location = new System.Drawing.Point(915, 105);
             this.listBox_Wait.Name = "listBox_Wait";
             this.listBox_Wait.Size = new System.Drawing.Size(143, 244);
             this.listBox_Wait.TabIndex = 31;
