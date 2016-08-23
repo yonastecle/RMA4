@@ -58,49 +58,18 @@ namespace RMA_SystemSoftware
             con.Close();
             return result;
         }
-        //Receiving: Update and Verify Button
-        public void updateDB(string rmaNum, string stat, ref ComboBox cmbBox, ref string req_type)
-        {
-            
-            DialogResult result;
+        //Receiving: Update Button
+        public void updateDB(string rmaNum,  ref ComboBox cmbBox)
+        {                        
             try
             {
-               
-                con.Open();
-                if (stat.Contains("verify"))
-                {
-                    Console.WriteLine("Hello , Entered!!!");
-                    result = MessageBox.Show("Are you sure the received shippment is appropriate and ready to be Assigned to the Tech team ? ", "Please Confirm", MessageBoxButtons.YesNo);
-                    Console.WriteLine("Yes I am Sure");
-                    if (result == DialogResult.Yes)
-                    {
-                        cmd = new SqlCommand("update RMA set Status = 'Waiting to be assigned' where rma_no='" + rmaNum + "'", con);
-                        cmd.ExecuteNonQuery();
-                        result = MessageBox.Show("Request added to the WO queue for Technician assignment", "Added to Queue", MessageBoxButtons.OK);
-                        if(result== DialogResult.OK)
-                        {
-                            Console.WriteLine(" Hello Please Work");
-                           con.Close();
-                            return;
-                        }
-
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        con.Close();
-                        return;
-                    }                
-                }
-                else
-                {
-                    cmd = new SqlCommand("update RMA set Status ='" + cmbBox.Text + "',type ='" + req_type + "'where rma_no='" + rmaNum + "'", con);
-                    cmd.ExecuteNonQuery();
-                    result = MessageBox.Show("The changes has been saved and recorded in the database! ", " Records Updated", MessageBoxButtons.OK);
-                    con.Close(); 
-                    return;                   
-              
-                }
-                con.Close();
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();              
+                cmd = new SqlCommand("update RMA set Status ='" + cmbBox.Text + "'where rma_no='" + rmaNum + "'", con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("The changes has been saved and recorded in the database! ", " Records Updated", MessageBoxButtons.OK);
+                con.Close(); 
+                return;                                                              
             }
             catch (Exception ex)
             {
@@ -124,8 +93,43 @@ namespace RMA_SystemSoftware
                 Console.WriteLine(ex.Message);
             }
         }
+        //Receiving
+        public void autofill(string rmaNum, ref TextBox number, ref Label customer, ref Label currentStat, ref ComboBox status, ref Label qty, ref Label type, ref DataGridView data)
+        {
+            //  ending:Add auto fill feature for Description and reason, based on the data fetched from CSM     
+            int quantity;
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+            
+                con.Open();
+                cmd = new SqlCommand("Select * from RMA where rma_no='" + rmaNum + "'", con);
+                read = cmd.ExecuteReader();
 
-        //Receiving+Technician:Autofilling the fields on selection of RMA# from the listbox or keypress
+                while (read.Read())
+                {
+                    number.Text = read.GetString(read.GetOrdinal("rma_no"));
+                    customer.Text = read.GetString(read.GetOrdinal("customer"));
+                    currentStat.Text = status.Text= read.GetString(read.GetOrdinal("Status"));
+                    quantity = read.GetInt16(read.GetOrdinal("quantity"));
+                    qty.Text= "X "+ quantity.ToString();                   
+                     type.Text = read.GetString(read.GetOrdinal("type"));                    
+                }
+                con.Close();
+
+                con.Open();
+                da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA where rma_no='" + rmaNum + "'", con);
+                ds = new DataSet();
+                da.Fill(ds, "Single Record");
+                data.DataSource = ds.Tables["Single Record"];
+                con.Close();              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }          
+        }
+        //Technician:Autofilling the fields on selection of RMA# from the listbox or keypress
         public string autofill(string rmaNum, ref TextBox txtbox, ref Label lbl, ref ComboBox cmbBox, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund)
         {
             string type = "";
@@ -399,12 +403,13 @@ namespace RMA_SystemSoftware
         }
         public void fill_grid()
         {
-
+            con.Open();
             da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,category as 'CAT',ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA", con);
             ds = new DataSet();
             da.Fill(ds, "All WO Details");
             details.dataGridView_WODetails.DataSource = ds.Tables[0];
             details.ShowDialog();
+            con.Close();
         }
     }
 }

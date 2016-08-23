@@ -24,8 +24,7 @@ namespace RMA_SystemSoftware
         History histry = new History();
         GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
-        Supervisor sup = new Supervisor();     
-        string req_type;
+        Supervisor sup = new Supervisor();           
         public string u_id { get; set; }
         string result = null;
 
@@ -40,26 +39,22 @@ namespace RMA_SystemSoftware
             InitializeComponent();
             comboBox_Status.Items.Add("Received");
             comboBox_Status.Items.Add("Wait");
+            comboBox_Status.Items.Add("Waiting to be assigned");
             comboBox_Status.Items.Add("Close");
-            comboBox_Status.Items.Add("Refund");
-            comboBox_Status.Items.Add("Waiting to be assigned");//Disable for Receiving staff
+            comboBox_Status.Items.Add("Refund");      // should we tag 'Refund' as status ?   
             comboBox_Status.Items.Add("Open");//to be removed, Receiving Staff can't change the status to Open
             timer_AutoRefresh.Start();
-
         }
         
         private void Receiving_Load(object sender, EventArgs e)
-        {
-           
+        {           
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 label_helloEmp.Text = grab.getEmployeeName(u_id);                
                 con.Close();
-                fill_listbox();
-                fill_grid();
-
+                fill_listbox();             
             }
             catch(Exception ex)
             {
@@ -75,6 +70,12 @@ namespace RMA_SystemSoftware
             listBox_Received.Items.Clear();
             listBox_Wait.Items.Clear();
             textBox_rmaNo.Clear();
+            textBox_reason.Clear();
+            textbox_desp.Clear();
+            label_customerName.Text = " Customer Name";
+            label_currentStatus.Text = "Request Status";
+            label_requestType.Text = " Request Type";
+            comboBox_Status.SelectedIndex = -1;
             Receiving_Load(this, null);
             fill_grid(); 
 
@@ -134,53 +135,25 @@ namespace RMA_SystemSoftware
 
         private void listBox_Open_SelectedIndexChanged(object sender, EventArgs e)
         {
-           req_type = grab.autofill(listBox_Open.Text,ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
+           grab.autofill(listBox_Open.Text,ref textBox_rmaNo, ref  label_customerName,ref label_currentStatus,ref comboBox_Status, ref label_quantity, ref label_requestType, ref dataGridView1);
         }
 
         private void listBox_Received_SelectedIndexChanged(object sender, EventArgs e)
         {
-            req_type = grab.autofill(listBox_Received.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
+           grab.autofill(listBox_Received.Text, ref textBox_rmaNo, ref label_customerName, ref label_currentStatus, ref comboBox_Status, ref label_quantity, ref label_requestType, ref dataGridView1);
             
         }
         private void listBox_Wait_SelectedIndexChanged(object sender, EventArgs e)
         {
-            req_type = grab.autofill(listBox_Wait.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
+           grab.autofill(listBox_Wait.Text, ref textBox_rmaNo, ref label_customerName, ref label_currentStatus, ref comboBox_Status, ref label_quantity, ref label_requestType, ref dataGridView1);
             
-        }
-       
-        private void RadioB_repair_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = " Repair";
-        }
-
-        private void RadioB_replace_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = " Replace";
-        }
-
-        private void RadioB_refund_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = " Refund";
-        }
-
-        private void button_verified_Click(object sender, EventArgs e)
-        {
-            string rmaNum = textBox_rmaNo.Text;
-           grab.updateDB(rmaNum, "verify", ref comboBox_Status, ref req_type);
-            button_refresh_Click(this, null);           
-            
-        }
+        }                    
         private void button_Update_Click(object sender, EventArgs e)
         {
             string rmaNum = textBox_rmaNo.Text;
-            if (RadioB_replace.Checked == true || RadioB_repair.Checked == true || RadioB_refund.Checked == true)
-            {
-                grab.updateDB(rmaNum, "update", ref comboBox_Status, ref req_type);                
-                button_refresh_Click(this, null);
-            }
-            else
-                MessageBox.Show("Please choose type of request!");
-
+           
+                grab.updateDB(rmaNum, ref comboBox_Status);                
+                button_refresh_Click(this, null);           
         }
 
         public void fill_grid()
@@ -213,39 +186,29 @@ namespace RMA_SystemSoftware
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
             textBox_rmaNo.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            label_customerName.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            label_quantity.Text = "X " + dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
             label_currentStatus.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             comboBox_Status.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-            req_type = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-            if (req_type.ToLower().Contains("replace"))
-            {
-                RadioB_replace.Checked = true;
-            }
-            else if (req_type.ToLower().Contains("refund"))
-            {
-                RadioB_refund.Checked = true;
-            }
-            else if (req_type.ToLower().Contains("repair"))
-            {
-                RadioB_repair.Checked = true;
-            }
+            label_requestType.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();                       
         }
 
-        private void button_Show_Click(object sender, EventArgs e)
-        {
-            if (textBox_rmaNo.Text != "")
-            {
-                con.Open();
+        //private void button_Show_Click(object sender, EventArgs e)
+        //{
+        //    if (textBox_rmaNo.Text != "")
+        //    {
+        //        con.Open();
                
-                da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
-                ds = new DataSet();
-                da.Fill(ds, "Single Record");
-                dataGridView1.DataSource = ds.Tables["Single Record"];
+        //        da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
+        //        ds = new DataSet();
+        //        da.Fill(ds, "Single Record");
+        //        dataGridView1.DataSource = ds.Tables["Single Record"];
 
-                con.Close();
-            }
-            else
-               MessageBox.Show("Please Enter RMA No. ");
-        }
+        //        con.Close();
+        //    }
+        //    else
+        //       MessageBox.Show("Please Enter RMA No. ");
+        //}
 
         private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
         {                    
@@ -260,7 +223,7 @@ namespace RMA_SystemSoftware
                     con.Close();
                     if (result.Equals("1"))
                     {
-                        req_type = grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_Status, ref RadioB_repair, ref RadioB_replace, ref RadioB_refund);
+                        grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_customerName, ref label_currentStatus, ref comboBox_Status, ref label_quantity, ref label_requestType, ref dataGridView1);
 
                     }
                     else if (result.Equals("0"))
@@ -271,13 +234,7 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void SearchButton_Click(object sender, EventArgs e)
-        {
-           grab.fill_grid();
-            
-        }
+        }     
 
         private void button_viewHistory_Click(object sender, EventArgs e)
         {
@@ -304,7 +261,6 @@ namespace RMA_SystemSoftware
             }
            
         }
-
-      
+   
     }
 }
