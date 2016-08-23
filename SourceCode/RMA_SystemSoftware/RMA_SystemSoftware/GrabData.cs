@@ -67,7 +67,7 @@ namespace RMA_SystemSoftware
                 con.Open();              
                 cmd = new SqlCommand("update RMA set Status ='" + cmbBox.Text + "'where rma_no='" + rmaNum + "'", con);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("The changes has been saved and recorded in the database! ", " Records Updated", MessageBoxButtons.OK);
+                MessageBox.Show("RMA Status Updated!! ", " Records Updated", MessageBoxButtons.OK);
                 con.Close(); 
                 return;                                                              
             }

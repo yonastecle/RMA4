@@ -24,6 +24,7 @@ namespace RMA_SystemSoftware
         History histry = new History();
         GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
+        Split_RMA split = new Split_RMA();
         Supervisor sup = new Supervisor();           
         public string u_id { get; set; }
         string result = null;
@@ -39,7 +40,7 @@ namespace RMA_SystemSoftware
             comboBox_Status.Items.Add("Received");
             comboBox_Status.Items.Add("Wait");
             comboBox_Status.Items.Add("Waiting to be assigned");
-            comboBox_Status.Items.Add("Close");
+            //comboBox_Status.Items.Add("Close");
             comboBox_Status.Items.Add("Refund");      // should we tag 'Refund' as status ?   
             comboBox_Status.Items.Add("Open");//to be removed, Receiving Staff can't change the status to Open
             timer_AutoRefresh.Start();
@@ -189,24 +190,7 @@ namespace RMA_SystemSoftware
             label_currentStatus.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             comboBox_Status.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             label_requestType.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();                       
-        }
-
-        //private void button_Show_Click(object sender, EventArgs e)
-        //{
-        //    if (textBox_rmaNo.Text != "")
-        //    {
-        //        con.Open();
-               
-        //        da = new SqlDataAdapter("Select rma_no as 'RMA #',customer as 'Client Name',userID as ' Tech Assigned',invoiceNo as 'Invoice No.',Status as 'Current Status',type as' Request Type',quantity,ups as 'UPS#',mar as 'MAR',orderNo,serialNo,date_received as ' Received On',date_assigned as'Assigned On',date_hold as 'Put on Hold since',date_wait as ' Waiting since',date_completed as ' Completed On',date_closed as 'closed on' from RMA where rma_no='" + textBox_rmaNo.Text + "'", con);
-        //        ds = new DataSet();
-        //        da.Fill(ds, "Single Record");
-        //        dataGridView1.DataSource = ds.Tables["Single Record"];
-
-        //        con.Close();
-        //    }
-        //    else
-        //       MessageBox.Show("Please Enter RMA No. ");
-        //}
+        }        
 
         private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
         {                    
@@ -259,6 +243,15 @@ namespace RMA_SystemSoftware
             }
            
         }
-   
+
+        private void button_splitRma_Click(object sender, EventArgs e)
+        {
+            if (textBox_rmaNo.Text != "")
+            {
+                split.ShowDialog();
+            }
+            else
+                MessageBox.Show("Enter RMA No.");
+        }
     }
 }
