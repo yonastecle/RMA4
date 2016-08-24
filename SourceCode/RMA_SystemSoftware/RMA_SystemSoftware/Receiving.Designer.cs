@@ -44,6 +44,8 @@
             this.comboBox_Status = new System.Windows.Forms.ComboBox();
             this.ViewAllButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button_comment = new System.Windows.Forms.Button();
+            this.button_splitRma = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label_quantity = new System.Windows.Forms.Label();
             this.textBox_reason = new System.Windows.Forms.TextBox();
@@ -61,8 +63,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.listBox_Wait = new System.Windows.Forms.ListBox();
             this.timer_AutoRefresh = new System.Windows.Forms.Timer(this.components);
-            this.button_splitRma = new System.Windows.Forms.Button();
-            this.button_comment = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -184,7 +184,7 @@
             // button_viewHistory
             // 
             this.button_viewHistory.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_viewHistory.Location = new System.Drawing.Point(400, 18);
+            this.button_viewHistory.Location = new System.Drawing.Point(400, 280);
             this.button_viewHistory.Name = "button_viewHistory";
             this.button_viewHistory.Size = new System.Drawing.Size(99, 32);
             this.button_viewHistory.TabIndex = 18;
@@ -252,6 +252,27 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Track & Update RMA";
+            // 
+            // button_comment
+            // 
+            this.button_comment.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_comment.Location = new System.Drawing.Point(400, 242);
+            this.button_comment.Name = "button_comment";
+            this.button_comment.Size = new System.Drawing.Size(99, 32);
+            this.button_comment.TabIndex = 34;
+            this.button_comment.Text = "Add Comment";
+            this.button_comment.UseVisualStyleBackColor = true;
+            // 
+            // button_splitRma
+            // 
+            this.button_splitRma.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_splitRma.Location = new System.Drawing.Point(400, 18);
+            this.button_splitRma.Name = "button_splitRma";
+            this.button_splitRma.Size = new System.Drawing.Size(99, 32);
+            this.button_splitRma.TabIndex = 33;
+            this.button_splitRma.Text = "Split RMA";
+            this.button_splitRma.UseVisualStyleBackColor = true;
+            this.button_splitRma.Click += new System.EventHandler(this.button_splitRma_Click);
             // 
             // label2
             // 
@@ -435,27 +456,6 @@
             this.timer_AutoRefresh.Enabled = true;
             this.timer_AutoRefresh.Interval = 60000;
             this.timer_AutoRefresh.Tick += new System.EventHandler(this.timer_AutoRefresh_Tick);
-            // 
-            // button_splitRma
-            // 
-            this.button_splitRma.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_splitRma.Location = new System.Drawing.Point(400, 280);
-            this.button_splitRma.Name = "button_splitRma";
-            this.button_splitRma.Size = new System.Drawing.Size(99, 32);
-            this.button_splitRma.TabIndex = 33;
-            this.button_splitRma.Text = "Split RMA";
-            this.button_splitRma.UseVisualStyleBackColor = true;
-            this.button_splitRma.Click += new System.EventHandler(this.button_splitRma_Click);
-            // 
-            // button_comment
-            // 
-            this.button_comment.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_comment.Location = new System.Drawing.Point(400, 242);
-            this.button_comment.Name = "button_comment";
-            this.button_comment.Size = new System.Drawing.Size(99, 32);
-            this.button_comment.TabIndex = 34;
-            this.button_comment.Text = "Add Comment";
-            this.button_comment.UseVisualStyleBackColor = true;
             // 
             // Receiving
             // 

@@ -79,6 +79,8 @@
             this.radioButton_refund = new System.Windows.Forms.RadioButton();
             this.radioButton_repair = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
+            this.label_helloEmp = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -633,12 +635,37 @@
             this.label4.TabIndex = 43;
             this.label4.Text = "Request Type:";
             // 
+            // label_helloEmp
+            // 
+            this.label_helloEmp.AutoSize = true;
+            this.label_helloEmp.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_helloEmp.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_helloEmp.Location = new System.Drawing.Point(80, 9);
+            this.label_helloEmp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_helloEmp.Name = "label_helloEmp";
+            this.label_helloEmp.Size = new System.Drawing.Size(117, 18);
+            this.label_helloEmp.TabIndex = 48;
+            this.label_helloEmp.Text = "EmployeeName";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(29, 9);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(45, 18);
+            this.label22.TabIndex = 47;
+            this.label22.Text = "Hello";
+            // 
             // Tech_Open
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1173, 784);
+            this.Controls.Add(this.label_helloEmp);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.radioButton_replace);
             this.Controls.Add(this.radioButton_refund);
             this.Controls.Add(this.radioButton_repair);
@@ -723,5 +750,7 @@
         private System.Windows.Forms.RadioButton radioButton_refund;
         private System.Windows.Forms.RadioButton radioButton_repair;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_helloEmp;
+        private System.Windows.Forms.Label label22;
     }
 }

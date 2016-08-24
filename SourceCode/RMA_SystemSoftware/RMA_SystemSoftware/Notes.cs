@@ -16,6 +16,7 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader read;
+        GrabData grab = new GrabData();
 
         public string RMA_no { get; set; }
         public string description { get; set; }
@@ -24,8 +25,8 @@ namespace RMA_SystemSoftware
         public string resolution { get; set; }
 
         //updating fields-Notes
-        public void updateField(string type,string txt, string rmaNum)
-        {
+        public void updateField(string type,string txt, string rmaNum, string techname)
+        {            
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
@@ -43,7 +44,7 @@ namespace RMA_SystemSoftware
                 con.Open();
                 //- not working: If below works , the following function can be omitted!
                 //cmd = new SqlCommand("UPDATE  Notes  SET' "+type+"'='" + DateTime.Now.ToShortDateString()+"': '"  + txt+ "'"+ System.Environment.NewLine +"'"+ oldData + "'FROM Notes WHERE RMA_no = '" + rmaNum + "'", con);
-                cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates ='" + DateTime.Now.ToShortDateString() + " : " +txt+System.Environment.NewLine+ oldData + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + rmaNum + "'", con);                            
+                cmd = new SqlCommand("UPDATE  Notes  SET Notes.statusUpdates ='" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + " : " +techname.ToString() + ": "+txt+System.Environment.NewLine+ oldData + "'FROM RMA R, Notes N WHERE R.rma_no = N.RMA_no AND R.rma_no = '" + rmaNum + "'", con);                            
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -54,13 +55,13 @@ namespace RMA_SystemSoftware
         }
 
         //Updating Notes: Helpdesk Screen+ Tech open
-        public void updateField(string rmaNum,string desp,string res,string stat,string comm)
+        public void updateField(string rmaNum,string desp,string res,string stat, string techname)
         {
             try
             {
                 if (con.State == ConnectionState.Open) con.Close();
 
-                string oldDesp="", oldRes="", oldStat="", oldComm="";
+                string oldDesp="", oldRes="", oldStat="";
 
                 con.Open();
                 cmd = new SqlCommand("Select * from Notes where RMA_No='" + rmaNum + "'", con);
@@ -69,16 +70,13 @@ namespace RMA_SystemSoftware
                 {
                     oldDesp = read.GetString(read.GetOrdinal("description"));                  
                     oldRes = read.GetString(read.GetOrdinal("resolution"));
-                    oldStat = read.GetString(read.GetOrdinal("statusUpdates"));
-                    oldComm = read.GetString(read.GetOrdinal("comments"));
+                    oldStat = read.GetString(read.GetOrdinal("statusUpdates"));              
                 }
                 con.Close();
 
                 con.Open();
-              cmd = new SqlCommand("update Notes set description=' " + DateTime.Now.ToShortDateString()+" : "+desp+System.Environment.NewLine+ oldDesp + "', statusUpdates='" + DateTime.Now.ToShortDateString() + " : " + stat +  System.Environment.NewLine  + oldStat + "', comments='" +DateTime.Now.ToShortDateString() + " : " + comm + System.Environment.NewLine + oldComm  + "',resolution='" + DateTime.Now.ToShortDateString() + " : " + res + System.Environment.NewLine + oldRes + "' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='" + rmaNum + "'", con);
-              
-                cmd.ExecuteNonQuery();
-                Console.WriteLine("update performedddd");
+                cmd = new SqlCommand("update Notes set description=' " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + " : " + techname.ToString() + " : " +desp+System.Environment.NewLine+ oldDesp + "', statusUpdates='" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + " : " + techname.ToString() + " : " + stat + "',resolution='" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + " : " + techname.ToString() + " : " + res + System.Environment.NewLine + oldRes + "' from RMA R, Notes N where R.rma_no=N.RMA_no and R.rma_no='" + rmaNum + "'", con);              
+                cmd.ExecuteNonQuery();               
                 con.Close();
             }
             catch(Exception ex)
@@ -87,9 +85,9 @@ namespace RMA_SystemSoftware
             }
         }
 
-        public void History(RMA rma, ref TextBox notes, ref Label rmaNum, ref Label status, ref Label type, ref Label invoice, ref Label order, ref Label serial)
+        public void History(RMA rma, ref RichTextBox notes, ref Label rmaNum, ref Label status, ref Label type, ref Label techName, ref Label invoice, ref Label order, ref Label serial)
         {
-            string Desp = "", Res = "", Stat = "", Comm = "";     
+            string Desp = "", Res = "", Stat = "",id;     
             try
             {
                 con.Open();
@@ -99,10 +97,12 @@ namespace RMA_SystemSoftware
                 {
                     rmaNum.Text = read.GetString(read.GetOrdinal("rma_no"));
                     status.Text = read.GetString(read.GetOrdinal("Status"));                   
-                    type.Text = read.GetString(read.GetOrdinal("type"));
+                    type.Text = read.GetString(read.GetOrdinal("type"));                   
                     invoice.Text = Convert.ToString(read["invoiceNo"]);
                     order.Text = Convert.ToString(read["orderNo"]);
                     serial.Text = Convert.ToString(read["serialNo"]);
+                    id = read.GetString(read.GetOrdinal("userID"));
+                    techName.Text = grab.getEmployeeName(id);
                 }           
                 con.Close();
 
@@ -114,15 +114,12 @@ namespace RMA_SystemSoftware
                     Desp = read.GetString(read.GetOrdinal("description"));
                     Res = read.GetString(read.GetOrdinal("resolution"));
                     Stat = read.GetString(read.GetOrdinal("statusUpdates"));
-                    Comm = read.GetString(read.GetOrdinal("comments"));                   
                 }
                 con.Close();
                 //notes.Clear();
-                notes.Text = " \b Description"+ System.Environment.NewLine + Desp + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;                    
+                notes.Text = " @{\rtf1\ansi \b Description\b0}"+ System.Environment.NewLine + Desp + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;                    
                 notes.Text += " \b Resolution" + System.Environment.NewLine + Res + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;
-                notes.Text += " \b Status Updates" + System.Environment.NewLine + Stat + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;
-                notes.Text += " \b Comments" + System.Environment.NewLine + Comm + System.Environment.NewLine + "___________________________________________________________________________________________________________";
-               
+                notes.Text += " \b Status Updates" + System.Environment.NewLine + Stat + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;               
             }
             catch (Exception ex)
             {

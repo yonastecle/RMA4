@@ -23,7 +23,7 @@ namespace RMA_SystemSoftware
         History histry = new History();
         GrabData grab = new GrabData();
         WO_Details details = new WO_Details();
-        Tech_Open techopen = new Tech_Open();
+        Tech_Open techopen ;
         Supervisor sup = new Supervisor();
         string req_type, result=null;
         public string u_id { get; set; }   
@@ -57,7 +57,8 @@ namespace RMA_SystemSoftware
         }
         private void OpenButton_Click(object sender, EventArgs e)
         {
-            if(textBox_rmaNo.Text!="")
+            techopen = new Tech_Open(label_helloEmp.Text);
+            if (textBox_rmaNo.Text!="")
             {
                 result = grab.serachRMA(textBox_rmaNo.Text);
                 if (result.Equals("1"))

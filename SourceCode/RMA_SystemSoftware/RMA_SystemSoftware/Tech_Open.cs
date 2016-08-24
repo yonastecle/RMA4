@@ -22,13 +22,15 @@ namespace RMA_SystemSoftware
         public string rma_no { get; set; }
         public string u_type { get; set; }       
 
-        public Tech_Open()
+        public Tech_Open(string EmpName)
         {
             InitializeComponent();
             comboBox_status.Items.Add("Hold");
             comboBox_status.Items.Add("Complete");
             comboBox_status.Items.Add("Refund");
             comboBox_status.Items.Add("Assigned");//Disable it for Technician
+            label_helloEmp.Text = EmpName.ToString();
+            
         }
            
         private void GoBackButton_Click(object sender, EventArgs e)
@@ -49,7 +51,7 @@ namespace RMA_SystemSoftware
 
         private void buttonUpdateInfo_Click(object sender, EventArgs e)
         {
-            notes.updateField(label_rmaNo.Text, desp, res, stat, comm);
+            notes.updateField(label_rmaNo.Text, desp, res, stat,label_helloEmp.Text);
             grab.autofill(rma_no, ref label_currentStatus, ref comboBox_status, ref req_type, ref cat, ref radioButton_repair, ref radioButton_replace, ref radioButton_refund, ref radioB_CAT1, ref radioB_CAT2, ref radioB_CAT3, ref radioB_CAT4, ref textBox_desp, ref textBox_res, ref textBox_statusUpadate, ref textBox_comments);
             
         }

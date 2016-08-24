@@ -21,7 +21,7 @@ namespace RMA_SystemSoftware
         SqlDataAdapter da;
         DataSet ds;
         WO_Details details = new WO_Details();
-        Tech_Open techopen = new Tech_Open();
+        Tech_Open techopen;
         Notes notes = new Notes();
         History histry = new History();
         Emp_Search search = new Emp_Search();
@@ -360,6 +360,7 @@ namespace RMA_SystemSoftware
 
         private void openButton_Click(object sender, EventArgs e)
         {
+            techopen = new Tech_Open(label_helloEmp.Text);
             if (textBox_rmaNo.Text != "")
             {           
                 techopen.rma_no = textBox_rmaNo.Text;
@@ -412,7 +413,7 @@ namespace RMA_SystemSoftware
                     }
                         else
                         {
-                            notes.updateField("statusUpdates", enteredTxt, rmaNum);
+                            notes.updateField("statusUpdates", enteredTxt, rmaNum, label_helloEmp.Text);
                         MessageBox.Show("Changes Saved..Press Refresh! ");
                     }                  
 

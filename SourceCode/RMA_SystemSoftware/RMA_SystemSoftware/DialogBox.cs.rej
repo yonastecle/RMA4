@@ -1,0 +1,10 @@
+diff a/SourceCode/RMA_SystemSoftware/RMA_SystemSoftware/DialogBox.cs b/SourceCode/RMA_SystemSoftware/RMA_SystemSoftware/DialogBox.cs	(rejected hunks)
+@@ -13,7 +13,7 @@
+ {
+     public partial class DialogBox : Form
+     {
+-        SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
++        SqlConnection con = new SqlConnection(@"Data Source=SHANTANUNBK;Initial Catalog=RMA_System;Integrated Security=True");
+         SqlCommand cmd;
+         Technician tech = new Technician();
+         public string RMA { get; set; }

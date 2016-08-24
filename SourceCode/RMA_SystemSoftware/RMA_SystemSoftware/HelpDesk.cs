@@ -16,12 +16,13 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader reader;
+        Tech_Open techopen;
         GrabData grab = new GrabData();
         Notes notes = new Notes();
         History histry = new History();
         WO_Details details = new WO_Details();
         Split_RMA split = new Split_RMA();
-        Tech_Open techopen = new Tech_Open();
+      
         Supervisor sup = new Supervisor();
         string req_type,enteredtxt="",desp="",res="",stat="",comm="", reportParam = "";
         string found = null;
@@ -195,7 +196,7 @@ namespace RMA_SystemSoftware
                 if ((radioB_refund.Checked == true || radioB_repair.Checked == true || radioB_replace.Checked == true) && (radioB_CAT1.Checked == true || radioB_CAT2.Checked == true || radioB_CAT3.Checked == true || radioB_CAT4.Checked == true))
                 {
                      grab.updateDB(rmaNum, ref comboBox_updateStatus, ref req_type, ref cat);
-                    notes.updateField("statusUpdates", enteredtxt, rmaNum);
+                    notes.updateField("statusUpdates", enteredtxt, rmaNum, label_helloEmp.Text);
                     MessageBox.Show("Changes Saved!!! ","Success");
                 }
                 else
@@ -211,6 +212,7 @@ namespace RMA_SystemSoftware
 
         private void openRecordButton_Click(object sender, EventArgs e)
         {
+           techopen = new Tech_Open(label_helloEmp.Text);
             techopen.rma_no = textBox_update_rmaNo.Text;
             if (textBox_update_rmaNo.Text != "")
             {
@@ -223,7 +225,7 @@ namespace RMA_SystemSoftware
 
         private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
-            notes.updateField(textBox_rmaNo.Text, desp, res, stat, comm);                       
+            notes.updateField(textBox_rmaNo.Text, desp, res, stat, label_helloEmp.Text);                       
                 textBox_statusUpdates.Clear();
                 textBox_comments.Clear();
                 textBox_descrption.Clear();
