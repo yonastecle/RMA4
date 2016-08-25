@@ -14,7 +14,7 @@ namespace RMA_SystemSoftware
     public partial class HelpDesk : Form
     {
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
-        SqlCommand cmd;
+        SqlCommand cmd;        
         SqlDataReader reader;
         Tech_Open techopen;
         GrabData grab = new GrabData();
@@ -22,6 +22,7 @@ namespace RMA_SystemSoftware
         History histry = new History();
         WO_Details details = new WO_Details();
         Split_RMA split = new Split_RMA();
+      
       
         Supervisor sup = new Supervisor();
         string req_type,enteredtxt="",desp="",res="",stat="",comm="", reportParam = "";

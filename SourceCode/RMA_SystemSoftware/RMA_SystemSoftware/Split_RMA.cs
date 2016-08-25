@@ -33,10 +33,9 @@ namespace RMA_SystemSoftware
             label_rmaNo.Text = rma_no;
         }
 
-        private void GoBackButton_Click(object sender, EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e)
         {
-
-            this.Hide();            
+            this.Close();
         }
     }
 }
