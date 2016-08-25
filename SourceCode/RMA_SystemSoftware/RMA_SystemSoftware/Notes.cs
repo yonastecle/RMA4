@@ -117,7 +117,7 @@ namespace RMA_SystemSoftware
                 }
                 con.Close();
                 //notes.Clear();
-                notes.Text = " @{\rtf1\ansi \b Description\b0}"+ System.Environment.NewLine + Desp + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;                    
+                notes.Text = " \b Description}"+ System.Environment.NewLine + Desp + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;                    
                 notes.Text += " \b Resolution" + System.Environment.NewLine + Res + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;
                 notes.Text += " \b Status Updates" + System.Environment.NewLine + Stat + System.Environment.NewLine + "___________________________________________________________________________________________________________" + System.Environment.NewLine;               
             }
