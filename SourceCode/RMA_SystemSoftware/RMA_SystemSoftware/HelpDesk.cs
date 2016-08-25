@@ -112,8 +112,7 @@ namespace RMA_SystemSoftware
             if (e.KeyChar == (char)Keys.Enter)
             {
 
-                textBox_statusUpdates.Clear();
-                textBox_comments.Clear();
+                textBox_statusUpdates.Clear();               
                 textBox_descrption.Clear();
                 textBox_resolution.Clear();
 
@@ -133,8 +132,7 @@ namespace RMA_SystemSoftware
                         {
                             label_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                             label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                            textBox_descrption.Text = reader.GetString(reader.GetOrdinal("description"));
-                            textBox_comments.Text = reader.GetString(reader.GetOrdinal("comments"));
+                            textBox_descrption.Text = reader.GetString(reader.GetOrdinal("description"));                           
                             textBox_resolution.Text = reader.GetString(reader.GetOrdinal("resolution"));
                             textBox_statusUpdates.Text = reader.GetString(reader.GetOrdinal("statusUpdates"));
                         }
@@ -227,8 +225,7 @@ namespace RMA_SystemSoftware
         private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
             notes.updateField(textBox_rmaNo.Text, desp, res, stat, label_helloEmp.Text);                       
-                textBox_statusUpdates.Clear();
-                textBox_comments.Clear();
+                textBox_statusUpdates.Clear();               
                 textBox_descrption.Clear();
                 textBox_resolution.Clear();
                 label_currentStatus.Text = "";
@@ -383,6 +380,7 @@ namespace RMA_SystemSoftware
         {
             grab.HideComboBoxes(ref radioButton_date, ref radioButton_clientName, ref radioButton_status, ref dateTimePicker1, ref dateTimePicker2, ref comboBox_clientName, ref comboBox_status, ref generateReportButton);
         }
+          
 
         private void ViewAllWOButton_Click(object sender, EventArgs e)
         {
@@ -400,15 +398,13 @@ namespace RMA_SystemSoftware
             }
         }
 
+     
+
         private void textBox_statusUpdates_TextChanged(object sender, EventArgs e)
         {
             stat = textBox_statusUpdates.Text;
         }
-
-        private void textBox_comments_TextChanged(object sender, EventArgs e)
-        {
-            comm = textBox_comments.Text;
-        }
+       
         private void textBox_descrption_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             textBox_descrption.Clear();
@@ -422,10 +418,6 @@ namespace RMA_SystemSoftware
         {
             textBox_statusUpdates.Clear();
         }
-
-        private void textBox_comments_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            textBox_comments.Clear();
-        }
+        
     }
 }
