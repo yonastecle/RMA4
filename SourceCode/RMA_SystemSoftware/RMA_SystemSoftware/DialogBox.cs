@@ -15,8 +15,7 @@ namespace RMA_SystemSoftware
     {
 
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
-        SqlCommand cmd;
-        DialogBox msg_box;
+        SqlCommand cmd;     
         Technician tech = new Technician();
         Utilities util = new Utilities();
         public string RMA { get; set; }

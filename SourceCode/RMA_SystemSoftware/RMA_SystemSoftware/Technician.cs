@@ -110,7 +110,7 @@ namespace RMA_SystemSoftware
 
         private void listBox_newRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
-            req_type = grab.autofill(listBox_newRequest.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_status, ref radioButton_repair, ref radioButton_replace, ref radioButton_refund);
+            req_type = grab.autofill(listBox_newRequest.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_status);
         }
 
         private void delegateButton_Click(object sender, EventArgs e)
@@ -154,22 +154,14 @@ namespace RMA_SystemSoftware
                 if (con.State == ConnectionState.Open) con.Close();
              
                 if (textBox_rmaNo.Text != "")
-                {
-                    if (radioButton_repair.Checked == true || radioButton_replace.Checked == true || radioButton_refund.Checked == true)
-                    {
-
+                {                   
                         con.Open();
                         //Console.WriteLine("Enters Update!!"+ textBox_rmaNo.Text);
                         cmd = new SqlCommand("update RMA set Status='" + comboBox_status.Text + "',type='" + req_type + "'where rma_no='"+textBox_rmaNo.Text+ "'", con);
                         cmd.ExecuteNonQuery();
                         con.Close();
                         //Console.WriteLine("Exits Update!!"+comboBox_status.Text);
-                      MessageBox.Show("Changes Updated... Press Refresh !");
-                }
-                else
-                {
-                        MessageBox.Show("Please Choose the Type of Request");
-                }
+                      MessageBox.Show("Changes Updated... Press Refresh !");               
             }
                 else
                     MessageBox.Show("Please enter RMA#!");
@@ -254,7 +246,7 @@ namespace RMA_SystemSoftware
                     result = grab.serachRMA(textBox_rmaNo.Text);
                     if (result.Equals("1"))
                     {
-                        req_type = grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_status, ref radioButton_repair, ref radioButton_replace, ref radioButton_refund);
+                        req_type = grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_status);
                     }
                     else if (result.Equals("0"))
                   MessageBox.Show("RMA not found.Please enter a valid RMA#.");
@@ -274,21 +266,7 @@ namespace RMA_SystemSoftware
 
                 textBox_rmaNo.Text = row.Cells[0].Value.ToString();
                 comboBox_status.Text = label_currentStatus.Text = row.Cells[3].Value.ToString();
-                req_type = row.Cells[2].Value.ToString();
-                if (req_type.ToLower().Contains("replace"))
-                {
-                    radioButton_replace.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("refund"))
-                {
-                    radioButton_refund.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("repair"))
-                {
-                    radioButton_repair.Checked = true;
-                }
-
-
+                req_type = row.Cells[2].Value.ToString();               
             }
         }
 
@@ -343,7 +321,7 @@ namespace RMA_SystemSoftware
             {
                 MessageBox.Show(ex.Message);
             }
-        }
+        }       
 
         public void showTech_WOQueue()
         {

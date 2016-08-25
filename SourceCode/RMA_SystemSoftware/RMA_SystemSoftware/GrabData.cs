@@ -130,7 +130,7 @@ namespace RMA_SystemSoftware
             }          
         }
         //Technician:Autofilling the fields on selection of RMA# from the listbox or keypress
-        public string autofill(string rmaNum, ref TextBox txtbox, ref Label lbl, ref ComboBox cmbBox, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund)
+        public string autofill(string rmaNum, ref TextBox txtbox, ref Label lbl, ref ComboBox cmbBox)
         {
             string type = "";
             try
@@ -148,20 +148,7 @@ namespace RMA_SystemSoftware
                     cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
                     type = read.GetString(read.GetOrdinal("type"));
                 }
-                con.Close();
-
-                if (type.ToLower().Contains("replace"))
-                {
-                    replace.Checked = true;
-                }
-                else if (type.ToLower().Contains("refund"))
-                {
-                    refund.Checked = true;
-                }
-                else if (type.ToLower().Contains("repair"))
-                {
-                    repair.Checked = true;
-                }
+                con.Close();               
             }
             catch (Exception ex)
             {
@@ -170,7 +157,7 @@ namespace RMA_SystemSoftware
             return type;
         }
         //Supervisor+Helpdesk:Autofilling the fields on selection of RMA# from the listbox or Keypress
-        public void autofill(string rmaNum, ref TextBox txtboxRmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund, ref RadioButton cat1, ref RadioButton cat2, ref RadioButton cat3, ref RadioButton cat4, ref Label lblTech, ref TextBox txtboxStatUpdate)
+        public void autofill(string rmaNum, ref TextBox txtboxRmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat,  ref Label lblTech, ref TextBox txtboxStatUpdate)
         {
             string ID = "";
             try
@@ -190,42 +177,7 @@ namespace RMA_SystemSoftware
 
                 }
                 con.Close();
-                if (req_type.ToLower().Contains("replace"))
-                {
-                    replace.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("refund"))
-                {
-                    refund.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("repair"))
-                {
-                    repair.Checked = true;
-                }
-                if (cat == 1)
-                {
-                    cat1.Checked = true;
-                }
-                else if (cat == 2)
-                {
-                    cat2.Checked = true;
-                }
-                else if (cat == 3)
-                {
-                    cat3.Checked = true;
-                }
-                else if (cat == 4)
-                {
-                    cat4.Checked = true;
-                }
-                else
-                {
-
-                    cat1.Checked = false;
-                    cat2.Checked = false;
-                    cat3.Checked = false;
-                    cat4.Checked = false;
-                }
+              
                 lblTech.Text = getEmployeeName(ID);
 
                 con.Open();

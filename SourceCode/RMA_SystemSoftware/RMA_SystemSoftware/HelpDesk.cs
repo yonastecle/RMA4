@@ -25,7 +25,7 @@ namespace RMA_SystemSoftware
       
       
         Supervisor sup = new Supervisor();
-        string req_type,enteredtxt="",desp="",res="",stat="",comm="", reportParam = "";
+        string req_type,enteredtxt="",desp="",res="",stat="", reportParam = "";
         string found = null;
         int cat;
         string rmaNumber = "";
@@ -176,7 +176,7 @@ namespace RMA_SystemSoftware
                         MessageBox.Show("RMA not found. Please enter a valid RMA#.");
                     else
                     {
-                        grab.autofill(textBox_update_rmaNo.Text, ref textBox_update_rmaNo, ref label_status, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioB_CAT1, ref radioB_CAT2, ref radioB_CAT3, ref radioB_CAT4, ref label_TechName, ref textBox_update_statusUpdate);                      
+                        grab.autofill(textBox_update_rmaNo.Text, ref textBox_update_rmaNo, ref label_status, ref comboBox_updateStatus, ref req_type, ref cat, ref label_TechName, ref textBox_update_statusUpdate);                      
                     }
                 }
                 catch (Exception ex)

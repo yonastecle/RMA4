@@ -741,10 +741,8 @@
         private System.Windows.Forms.Button updateRecordButton;
         private System.Windows.Forms.Button openRecordButton;
         private System.Windows.Forms.TextBox textBox_update_statusUpdate;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button ConfirmTechChangeButton;
         private System.Windows.Forms.Label label_TechName;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioB_CAT4;
         private System.Windows.Forms.RadioButton radioB_CAT3;
         private System.Windows.Forms.RadioButton radioB_CAT2;
@@ -754,7 +752,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label_status;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+
         private System.Windows.Forms.RadioButton radioB_refund;
         private System.Windows.Forms.RadioButton radioB_repair;
         private System.Windows.Forms.TextBox textBox_update_rmaNo;
@@ -785,15 +783,12 @@
         private System.Windows.Forms.Label label_currentStatus;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button UpdateInfoButton;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBox_rmaNo;
         private System.Windows.Forms.Label label_rmaNo;
         private System.Windows.Forms.RadioButton radioB_replace;
         private System.Windows.Forms.ComboBox comboBox_TechName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label2;

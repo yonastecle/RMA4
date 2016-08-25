@@ -167,8 +167,7 @@ namespace RMA_SystemSoftware
             fill_listbox();
             if (textBox_rmaNo.Text != "")
             {
-                textBox_rmaNo.Clear();
-                radioButton_CAT1.Checked = radioButton_CAT2.Checked = radioButton_CAT3.Checked = radioButton_CAT4.Checked = radioB_repair.Checked = radioB_replace.Checked = radioB_refund.Checked = false;
+                textBox_rmaNo.Clear();                
                 comboBox_updateStatus.SelectedIndex = comboBox_TechName.SelectedIndex = -1;
                 textBox_StatusUpdates.Clear();
             }
@@ -229,14 +228,7 @@ namespace RMA_SystemSoftware
               
                 fill_listbox();
               
-                con.Open();
-                cmd = new SqlCommand("Select firstName from Employee where userType = 'Help Desk'", con);
-                read = cmd.ExecuteReader();
-                while (read.Read())
-                {
-                    combobox_AuthorizeUser.Items.Add(read["firstName"]);
-                }
-                read.Close();
+                con.Open();              
                 cmd = new SqlCommand("Select Company from Client ", con);
                 read = cmd.ExecuteReader();
                 while(read.Read())
@@ -346,16 +338,16 @@ namespace RMA_SystemSoftware
 
         private void listBox_newRequests_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grab.autofill(listBox_newRequests.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);            
+            grab.autofill(listBox_newRequests.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat,  ref label_TechName, ref textBox_StatusUpdates);            
         }
         private void listBox_requestOnHold_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grab.autofill(listBox_requestOnHold.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);
+            grab.autofill(listBox_requestOnHold.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat,  ref label_TechName, ref textBox_StatusUpdates);
 
         }
         private void listBox_refundRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grab.autofill(listBox_refundRequest.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);
+            grab.autofill(listBox_refundRequest.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat,  ref label_TechName, ref textBox_StatusUpdates);
         }
 
         private void openButton_Click(object sender, EventArgs e)
@@ -393,10 +385,7 @@ namespace RMA_SystemSoftware
             string rmaNum = textBox_rmaNo.Text.ToString();
                                                  
                 if (textBox_rmaNo.Text.ToString() != "")
-                {
-                    Console.WriteLine("radioB_replace Checked: " + radioB_replace.Checked.ToString() + " ~ radioB_repair Checked: " + radioB_repair.Checked.ToString() );
-                    if ((radioB_replace.Checked == true || radioB_repair.Checked == true || radioB_refund.Checked == true) && (radioButton_CAT1.Checked == true || radioButton_CAT2.Checked == true || radioButton_CAT3.Checked == true || radioButton_CAT4.Checked == true))
-                    {
+                {                   
                         grab.updateDB(rmaNum, ref comboBox_updateStatus, ref req_type, ref cat);
 
                         //Adding RMA to Notes Table, if RMA not found in the Notes Table.(Additionally need to work on adding RMA# to the Notes table as and when a new RMA request comes into the DB)
@@ -415,12 +404,7 @@ namespace RMA_SystemSoftware
                         {
                             notes.updateField("statusUpdates", enteredTxt, rmaNum, label_helloEmp.Text);
                         MessageBox.Show("Changes Saved..Press Refresh! ");
-                    }                  
-
-                }
-
-                    else
-                        MessageBox.Show("Please choose Type of request/Category!");
+                    }                              
                 }
                 else
                     MessageBox.Show("Please enter the RMA#!","Empty Field");
@@ -463,7 +447,7 @@ namespace RMA_SystemSoftware
 
                     if (result.Equals("1"))
                     {
-                        grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref radioB_repair, ref radioB_replace, ref radioB_refund, ref radioButton_CAT1, ref radioButton_CAT2, ref radioButton_CAT3, ref radioButton_CAT4, ref label_TechName, ref textBox_StatusUpdates);                        
+                        grab.autofill(textBox_rmaNo.Text, ref textBox_rmaNo, ref label_currentStatus, ref comboBox_updateStatus, ref req_type, ref cat, ref label_TechName, ref textBox_StatusUpdates);                        
                     }
                     else if (result.Equals("0"))
                         MessageBox.Show("RMA not found. Please enter a valid RMA#","Not found!");
