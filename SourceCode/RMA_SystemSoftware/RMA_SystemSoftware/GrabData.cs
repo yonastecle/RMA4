@@ -58,6 +58,66 @@ namespace RMA_SystemSoftware
             con.Close();
             return result;
         }
+        //Supervisor:Fill Listboxes
+        public void fill_listbox(ref ListBox open,ref ListBox hold, ref ListBox refund, ref ListBox waitingToBeAssigned,ref ListBox assigned)
+        {
+            try
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where Status= 'Open'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    string rma_no = read.GetString(read.GetOrdinal("rma_no"));
+                   open.Items.Add(rma_no);
+                   
+                }
+                con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where Status= 'Hold'", con);
+                read = cmd.ExecuteReader();              
+                while (read.Read())
+                {
+                  
+                    string rma_no = read.GetString(read.GetOrdinal("rma_no"));
+                    hold.Items.Add(rma_no);                   
+                }
+                con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where type= 'Refund'", con);
+                read = cmd.ExecuteReader(); 
+                while (read.Read())
+                {
+                    string rma_no = read.GetString(read.GetOrdinal("rma_no"));
+                    refund.Items.Add(rma_no);                   
+                }
+                con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where Status= 'Waiting to be assigned'", con);
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    string rma_no = read.GetString(read.GetOrdinal("rma_no"));
+                    waitingToBeAssigned.Items.Add(rma_no);                  
+                }
+                con.Close();
+                con.Open();
+                cmd = new SqlCommand("Select rma_no from RMA where Status= 'Assigned'", con);
+                read = cmd.ExecuteReader(); 
+                while (read.Read())
+                {
+                    string rma_no = read.GetString(read.GetOrdinal("rma_no"));
+                    assigned.Items.Add(rma_no);                   
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         //Receiving: Update Button
         public void updateDB(string rmaNum,  ref ComboBox cmbBox)
         {                        
@@ -78,12 +138,20 @@ namespace RMA_SystemSoftware
         }
 
         //Supervisor+HelpDesk Update
-        public void updateDB(string rmaNum, ref ComboBox cmbBox, ref string req_type, ref int cat)
+        public void updateDB(string rmaNum, ref ComboBox type, ref ComboBox CAT, ref ComboBox status)
         {
+            int cat=0;
+            Console.WriteLine("1." + CAT.SelectedIndex.ToString());/*1 + "2." + CAT.SelectedIndex = 2 + "3." + CAT.SelectedIndex = 3 + "4." + CAT.SelectedIndex = 4 + "5." + CAT.SelectedIndex = 5);*/
+            if (CAT.SelectedIndex == 1) cat = 1;
+            else if (CAT.SelectedIndex == 2) cat = 2;
+            else if (CAT.SelectedIndex == 3) cat = 3;
+            else if (CAT.SelectedIndex == 4) cat = 4;
+            else if (CAT.SelectedIndex == 5) cat = 5;
+
             try
             {
                 con.Open();
-                cmd = new SqlCommand("UPDATE RMA SET Status ='" + cmbBox.Text + "', type ='" + req_type + "', category='" + cat + "'WHERE rma_no='" + rmaNum + "'", con);
+                cmd = new SqlCommand("UPDATE RMA SET Status ='" + status.Text + "', type ='" + type.Text + "', category='" + cat + "'WHERE rma_no='" + rmaNum + "'", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -157,8 +225,9 @@ namespace RMA_SystemSoftware
             return type;
         }
         //Supervisor+Helpdesk:Autofilling the fields on selection of RMA# from the listbox or Keypress
-        public void autofill(string rmaNum, ref TextBox txtboxRmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat,  ref Label lblTech, ref TextBox txtboxStatUpdate)
+        public void autofill(string rmaNum, ref TextBox txtboxRmaNum, ref Label lblStatus, ref ComboBox status,  ref ComboBox type, ref ComboBox CAT,  ref Label lblTech, ref TextBox txtboxStatUpdate)
         {
+            int cat;
             string ID = "";
             try
             {
@@ -170,10 +239,19 @@ namespace RMA_SystemSoftware
                 {
                     txtboxRmaNum.Text = read.GetString(read.GetOrdinal("rma_no"));
                     lblStatus.Text = read.GetString(read.GetOrdinal("Status"));
-                    cmbBox.Text = read.GetString(read.GetOrdinal("Status"));
+                    status.Text = read.GetString(read.GetOrdinal("Status"));
                     ID = read.GetString(read.GetOrdinal("userID"));
-                    req_type = read.GetString(read.GetOrdinal("type"));
+                    type.Text = read.GetString(read.GetOrdinal("type"));
                     cat = read.GetInt16(read.GetOrdinal("category"));
+                    if (cat == 1)
+                        CAT.Text = "CAT1 (1-2 pieces)";
+                    else if (cat == 2)
+                        CAT.Text = "CAT2(3-4 pieces)";
+                    else if (cat == 3)
+                        CAT.Text = "CAT3(5-10 pieces)";
+                    else if (cat == 4)
+                        CAT.Text = "CAT4(10+ pieces)";
+                    else CAT.Text = "CAT5(Others)";
 
                 }
                 con.Close();
@@ -199,7 +277,7 @@ namespace RMA_SystemSoftware
         }
 
         //autofill techOpen
-        public void autofill(string rmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat, ref RadioButton repair, ref RadioButton replace, ref RadioButton refund, ref RadioButton cat1, ref RadioButton cat2, ref RadioButton cat3, ref RadioButton cat4, ref TextBox desp, ref TextBox res, ref TextBox stat, ref TextBox comm)
+        public void autofill(string rmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat,  ref TextBox desp, ref TextBox res, ref TextBox stat, ref TextBox comm)
         {
             string ID = "";
             try
@@ -219,42 +297,7 @@ namespace RMA_SystemSoftware
 
                 }
                 con.Close();
-                if (req_type.ToLower().Contains("replace"))
-                {
-                    replace.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("refund"))
-                {
-                    refund.Checked = true;
-                }
-                else if (req_type.ToLower().Contains("repair"))
-                {
-                    repair.Checked = true;
-                }
-                if (cat == 1)
-                {
-                    cat1.Checked = true;
-                }
-                else if (cat == 2)
-                {
-                    cat2.Checked = true;
-                }
-                else if (cat == 3)
-                {
-                    cat3.Checked = true;
-                }
-                else if (cat == 4)
-                {
-                    cat4.Checked = true;
-                }
-                else
-                {
-
-                    cat1.Checked = false;
-                    cat2.Checked = false;
-                    cat3.Checked = false;
-                    cat4.Checked = false;
-                }
+                
                 con.Open();
                 cmd = new SqlCommand("SELECT * FROM RMA R, Notes N WHERE R.rma_no =N.RMA_no AND r.rma_no='" + rmaNum + "'", con);
                 read = cmd.ExecuteReader();

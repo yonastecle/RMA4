@@ -35,9 +35,9 @@
             this.linkLabel_logout = new System.Windows.Forms.LinkLabel();
             this.groupBox_UpdateDetails = new System.Windows.Forms.GroupBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_type = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_cat = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox_TechName = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -152,9 +152,9 @@
             // groupBox_UpdateDetails
             // 
             this.groupBox_UpdateDetails.Controls.Add(this.comboBox3);
-            this.groupBox_UpdateDetails.Controls.Add(this.comboBox2);
+            this.groupBox_UpdateDetails.Controls.Add(this.comboBox_type);
             this.groupBox_UpdateDetails.Controls.Add(this.label7);
-            this.groupBox_UpdateDetails.Controls.Add(this.comboBox1);
+            this.groupBox_UpdateDetails.Controls.Add(this.comboBox_cat);
             this.groupBox_UpdateDetails.Controls.Add(this.label4);
             this.groupBox_UpdateDetails.Controls.Add(this.comboBox_TechName);
             this.groupBox_UpdateDetails.Controls.Add(this.label6);
@@ -187,13 +187,13 @@
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 69;
             // 
-            // comboBox2
+            // comboBox_type
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(165, 132);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 21);
-            this.comboBox2.TabIndex = 68;
+            this.comboBox_type.FormattingEnabled = true;
+            this.comboBox_type.Location = new System.Drawing.Point(165, 132);
+            this.comboBox_type.Name = "comboBox_type";
+            this.comboBox_type.Size = new System.Drawing.Size(187, 21);
+            this.comboBox_type.TabIndex = 68;
             // 
             // label7
             // 
@@ -205,13 +205,13 @@
             this.label7.TabIndex = 67;
             this.label7.Text = "Request Type:";
             // 
-            // comboBox1
+            // comboBox_cat
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(165, 159);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(187, 21);
-            this.comboBox1.TabIndex = 66;
+            this.comboBox_cat.FormattingEnabled = true;
+            this.comboBox_cat.Location = new System.Drawing.Point(165, 159);
+            this.comboBox_cat.Name = "comboBox_cat";
+            this.comboBox_cat.Size = new System.Drawing.Size(187, 21);
+            this.comboBox_cat.TabIndex = 66;
             // 
             // label4
             // 
@@ -494,7 +494,7 @@
             this.ShowDetailsButton.Name = "ShowDetailsButton";
             this.ShowDetailsButton.Size = new System.Drawing.Size(91, 25);
             this.ShowDetailsButton.TabIndex = 65;
-            this.ShowDetailsButton.Text = "Show Deatils";
+            this.ShowDetailsButton.Text = "Show Details";
             this.ShowDetailsButton.UseVisualStyleBackColor = true;
             // 
             // groupBox3
@@ -743,18 +743,14 @@
         private System.Windows.Forms.TextBox textBox_update_statusUpdate;
         private System.Windows.Forms.Button ConfirmTechChangeButton;
         private System.Windows.Forms.Label label_TechName;
-        private System.Windows.Forms.RadioButton radioB_CAT4;
-        private System.Windows.Forms.RadioButton radioB_CAT3;
-        private System.Windows.Forms.RadioButton radioB_CAT2;
-        private System.Windows.Forms.RadioButton radioB_CAT1;
+       
         private System.Windows.Forms.ComboBox comboBox_updateStatus;
         private System.Windows.Forms.Button SplitRMAButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label_status;
         private System.Windows.Forms.Label label7;
 
-        private System.Windows.Forms.RadioButton radioB_refund;
-        private System.Windows.Forms.RadioButton radioB_repair;
+       
         private System.Windows.Forms.TextBox textBox_update_rmaNo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -786,15 +782,15 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBox_rmaNo;
         private System.Windows.Forms.Label label_rmaNo;
-        private System.Windows.Forms.RadioButton radioB_replace;
+   
         private System.Windows.Forms.ComboBox comboBox_TechName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_cat;
+        private System.Windows.Forms.ComboBox comboBox_type;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Panel panel4;
     }

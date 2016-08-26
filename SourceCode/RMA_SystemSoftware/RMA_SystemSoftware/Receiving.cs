@@ -190,10 +190,10 @@ namespace RMA_SystemSoftware
             label_currentStatus.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             comboBox_Status.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             label_requestType.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();                       
-        }        
+        }
 
         private void textBox_rmaNo_KeyDown(object sender, KeyEventArgs e)
-        {                    
+        {
             try
             {
 
@@ -209,14 +209,14 @@ namespace RMA_SystemSoftware
 
                     }
                     else if (result.Equals("0"))
-                        MessageBox.Show("RMA not found. Please enter a valid RMA#.","Invalid RMA#");
+                        MessageBox.Show("RMA not found. Please enter a valid RMA#.", "Invalid RMA#");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }     
+        }
 
         private void button_viewHistory_Click(object sender, EventArgs e)
         {

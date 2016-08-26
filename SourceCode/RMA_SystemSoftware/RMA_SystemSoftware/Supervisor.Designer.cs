@@ -34,14 +34,14 @@
             this.label_helloEmp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.refreshButton = new System.Windows.Forms.Button();
-            this.listBox_requestOnHold = new System.Windows.Forms.ListBox();
-            this.listBox_newRequests = new System.Windows.Forms.ListBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.ViewHistoryButton = new System.Windows.Forms.Button();
+            this.ShowDeatilsButton = new System.Windows.Forms.Button();
+            this.textBox_View_RmaNo = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ViewAllWOButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -53,10 +53,8 @@
             this.radioButton_clientName = new System.Windows.Forms.RadioButton();
             this.radioButton_date = new System.Windows.Forms.RadioButton();
             this.generateReportButton = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.listBox_refundRequest = new System.Windows.Forms.ListBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button_checkTechs = new System.Windows.Forms.Button();
             this.textBox_EmpName = new System.Windows.Forms.TextBox();
             this.textBox_EmpID = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
@@ -64,10 +62,9 @@
             this.ViewAllbutton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.button_checkTechs = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_type = new System.Windows.Forms.ComboBox();
+            this.comboBox_cat = new System.Windows.Forms.ComboBox();
             this.ConfirmTechChangeButton = new System.Windows.Forms.Button();
             this.comboBox_TechName = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -86,27 +83,30 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.ViewHistoryButton = new System.Windows.Forms.Button();
-            this.ShowDeatilsButton = new System.Windows.Forms.Button();
-            this.textBox_View_RmaNo = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.ViewAllWOButton = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.listBox_requestsAssigned = new System.Windows.Forms.ListBox();
+            this.listBox_waitingToBeAssigned = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.listBox_refundRequest = new System.Windows.Forms.ListBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.listBox_requestOnHold = new System.Windows.Forms.ListBox();
+            this.listBox_newRequests = new System.Windows.Forms.ListBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // RMASearchButton
             // 
-            this.RMASearchButton.Location = new System.Drawing.Point(844, 12);
+            this.RMASearchButton.Location = new System.Drawing.Point(963, 21);
             this.RMASearchButton.Name = "RMASearchButton";
             this.RMASearchButton.Size = new System.Drawing.Size(108, 23);
             this.RMASearchButton.TabIndex = 32;
@@ -118,7 +118,7 @@
             // 
             this.HelpLinkLabel.AutoSize = true;
             this.HelpLinkLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpLinkLabel.Location = new System.Drawing.Point(973, 15);
+            this.HelpLinkLabel.Location = new System.Drawing.Point(1092, 24);
             this.HelpLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.HelpLinkLabel.Name = "HelpLinkLabel";
             this.HelpLinkLabel.Size = new System.Drawing.Size(45, 17);
@@ -154,7 +154,7 @@
             // 
             this.LogoutLinkLabel.AutoSize = true;
             this.LogoutLinkLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoutLinkLabel.Location = new System.Drawing.Point(1026, 14);
+            this.LogoutLinkLabel.Location = new System.Drawing.Point(1145, 23);
             this.LogoutLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LogoutLinkLabel.Name = "LogoutLinkLabel";
             this.LogoutLinkLabel.Size = new System.Drawing.Size(57, 17);
@@ -163,84 +163,86 @@
             this.LogoutLinkLabel.Text = "Logout!";
             this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.DarkRed;
-            this.label12.Location = new System.Drawing.Point(147, 12);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(117, 20);
-            this.label12.TabIndex = 61;
-            this.label12.Text = "Requests on Hold";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.DarkRed;
-            this.label13.Location = new System.Drawing.Point(21, 12);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 20);
-            this.label13.TabIndex = 60;
-            this.label13.Text = "New Requests";
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.Location = new System.Drawing.Point(194, 253);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(131, 50);
-            this.refreshButton.TabIndex = 59;
-            this.refreshButton.Text = "Refresh";
-            this.refreshButton.UseVisualStyleBackColor = true;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
-            // 
-            // listBox_requestOnHold
-            // 
-            this.listBox_requestOnHold.FormattingEnabled = true;
-            this.listBox_requestOnHold.Location = new System.Drawing.Point(140, 35);
-            this.listBox_requestOnHold.Name = "listBox_requestOnHold";
-            this.listBox_requestOnHold.Size = new System.Drawing.Size(132, 212);
-            this.listBox_requestOnHold.TabIndex = 58;
-            this.listBox_requestOnHold.SelectedIndexChanged += new System.EventHandler(this.listBox_requestOnHold_SelectedIndexChanged);
-            // 
-            // listBox_newRequests
-            // 
-            this.listBox_newRequests.FormattingEnabled = true;
-            this.listBox_newRequests.Location = new System.Drawing.Point(2, 35);
-            this.listBox_newRequests.Name = "listBox_newRequests";
-            this.listBox_newRequests.Size = new System.Drawing.Size(132, 212);
-            this.listBox_newRequests.TabIndex = 57;
-            this.listBox_newRequests.SelectedIndexChanged += new System.EventHandler(this.listBox_newRequests_SelectedIndexChanged);
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(347, 253);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(160, 50);
-            this.button7.TabIndex = 62;
-            this.button7.Text = "View WOs in Queue";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.panel1);
-            this.groupBox2.Location = new System.Drawing.Point(541, 377);
+            this.groupBox2.Location = new System.Drawing.Point(531, 59);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(672, 261);
+            this.groupBox2.Size = new System.Drawing.Size(545, 257);
             this.groupBox2.TabIndex = 65;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View Details";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.ViewHistoryButton);
+            this.panel3.Controls.Add(this.ShowDeatilsButton);
+            this.panel3.Controls.Add(this.textBox_View_RmaNo);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.ViewAllWOButton);
+            this.panel3.Location = new System.Drawing.Point(6, 27);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(514, 78);
+            this.panel3.TabIndex = 70;
+            // 
+            // ViewHistoryButton
+            // 
+            this.ViewHistoryButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewHistoryButton.Location = new System.Drawing.Point(234, 38);
+            this.ViewHistoryButton.Name = "ViewHistoryButton";
+            this.ViewHistoryButton.Size = new System.Drawing.Size(96, 34);
+            this.ViewHistoryButton.TabIndex = 71;
+            this.ViewHistoryButton.Text = "View History";
+            this.ViewHistoryButton.UseVisualStyleBackColor = true;
+            this.ViewHistoryButton.Click += new System.EventHandler(this.ViewHistoryButton_Click);
+            // 
+            // ShowDeatilsButton
+            // 
+            this.ShowDeatilsButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowDeatilsButton.Location = new System.Drawing.Point(120, 38);
+            this.ShowDeatilsButton.Name = "ShowDeatilsButton";
+            this.ShowDeatilsButton.Size = new System.Drawing.Size(96, 34);
+            this.ShowDeatilsButton.TabIndex = 70;
+            this.ShowDeatilsButton.Text = "Show Details";
+            this.ShowDeatilsButton.UseVisualStyleBackColor = true;
+            this.ShowDeatilsButton.Click += new System.EventHandler(this.ShowDeatilsButton_Click);
+            // 
+            // textBox_View_RmaNo
+            // 
+            this.textBox_View_RmaNo.Location = new System.Drawing.Point(95, 9);
+            this.textBox_View_RmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox_View_RmaNo.Multiline = true;
+            this.textBox_View_RmaNo.Name = "textBox_View_RmaNo";
+            this.textBox_View_RmaNo.Size = new System.Drawing.Size(255, 23);
+            this.textBox_View_RmaNo.TabIndex = 69;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(1, 16);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(86, 15);
+            this.label16.TabIndex = 68;
+            this.label16.Text = "Enter RMA#:";
+            // 
+            // ViewAllWOButton
+            // 
+            this.ViewAllWOButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewAllWOButton.Location = new System.Drawing.Point(357, 7);
+            this.ViewAllWOButton.Name = "ViewAllWOButton";
+            this.ViewAllWOButton.Size = new System.Drawing.Size(131, 33);
+            this.ViewAllWOButton.TabIndex = 72;
+            this.ViewAllWOButton.Text = "View all Work Orders";
+            this.ViewAllWOButton.UseVisualStyleBackColor = true;
+            this.ViewAllWOButton.Click += new System.EventHandler(this.ViewAllWOButton_Click);
             // 
             // panel1
             // 
@@ -254,7 +256,7 @@
             this.panel1.Controls.Add(this.radioButton_clientName);
             this.panel1.Controls.Add(this.radioButton_date);
             this.panel1.Controls.Add(this.generateReportButton);
-            this.panel1.Location = new System.Drawing.Point(73, 117);
+            this.panel1.Location = new System.Drawing.Point(10, 114);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(514, 138);
             this.panel1.TabIndex = 69;
@@ -362,46 +364,6 @@
             this.generateReportButton.UseVisualStyleBackColor = true;
             this.generateReportButton.Click += new System.EventHandler(this.generateReportButton_Click);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.DarkRed;
-            this.label17.Location = new System.Drawing.Point(290, 12);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(113, 20);
-            this.label17.TabIndex = 67;
-            this.label17.Text = "Refund Requests";
-            // 
-            // listBox_refundRequest
-            // 
-            this.listBox_refundRequest.FormattingEnabled = true;
-            this.listBox_refundRequest.Location = new System.Drawing.Point(278, 35);
-            this.listBox_refundRequest.Name = "listBox_refundRequest";
-            this.listBox_refundRequest.Size = new System.Drawing.Size(131, 212);
-            this.listBox_refundRequest.TabIndex = 66;
-            this.listBox_refundRequest.SelectedIndexChanged += new System.EventHandler(this.listBox_refundRequest_SelectedIndexChanged);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.listBox2);
-            this.panel2.Controls.Add(this.listBox1);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.listBox_refundRequest);
-            this.panel2.Controls.Add(this.button7);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.refreshButton);
-            this.panel2.Controls.Add(this.listBox_requestOnHold);
-            this.panel2.Controls.Add(this.listBox_newRequests);
-            this.panel2.Location = new System.Drawing.Point(530, 55);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(691, 316);
-            this.panel2.TabIndex = 68;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button_checkTechs);
@@ -412,12 +374,23 @@
             this.groupBox3.Controls.Add(this.ViewAllbutton);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Location = new System.Drawing.Point(27, 468);
+            this.groupBox3.Location = new System.Drawing.Point(27, 431);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(498, 170);
             this.groupBox3.TabIndex = 69;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Manage Staff";
+            // 
+            // button_checkTechs
+            // 
+            this.button_checkTechs.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_checkTechs.Location = new System.Drawing.Point(281, 105);
+            this.button_checkTechs.Name = "button_checkTechs";
+            this.button_checkTechs.Size = new System.Drawing.Size(91, 28);
+            this.button_checkTechs.TabIndex = 82;
+            this.button_checkTechs.Text = "Check Techs";
+            this.button_checkTechs.UseVisualStyleBackColor = true;
+            this.button_checkTechs.Click += new System.EventHandler(this.button_checkTechs_Click);
             // 
             // textBox_EmpName
             // 
@@ -425,6 +398,7 @@
             this.textBox_EmpName.Name = "textBox_EmpName";
             this.textBox_EmpName.Size = new System.Drawing.Size(226, 20);
             this.textBox_EmpName.TabIndex = 81;
+            this.textBox_EmpName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_EmpName_KeyPress);
             // 
             // textBox_EmpID
             // 
@@ -432,6 +406,7 @@
             this.textBox_EmpID.Name = "textBox_EmpID";
             this.textBox_EmpID.Size = new System.Drawing.Size(226, 20);
             this.textBox_EmpID.TabIndex = 80;
+            this.textBox_EmpID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_EmpID_KeyPress);
             // 
             // SearchButton
             // 
@@ -442,6 +417,7 @@
             this.SearchButton.TabIndex = 79;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // AddNewEmpButton
             // 
@@ -452,6 +428,7 @@
             this.AddNewEmpButton.TabIndex = 78;
             this.AddNewEmpButton.Text = "Add New";
             this.AddNewEmpButton.UseVisualStyleBackColor = true;
+            this.AddNewEmpButton.Click += new System.EventHandler(this.AddNewEmpButton_Click);
             // 
             // ViewAllbutton
             // 
@@ -462,6 +439,7 @@
             this.ViewAllbutton.TabIndex = 77;
             this.ViewAllbutton.Text = "View All ";
             this.ViewAllbutton.UseVisualStyleBackColor = true;
+            this.ViewAllbutton.Click += new System.EventHandler(this.ViewAllbutton_Click);
             // 
             // label19
             // 
@@ -485,16 +463,6 @@
             this.label18.TabIndex = 75;
             this.label18.Text = "Employee ID:";
             // 
-            // button_checkTechs
-            // 
-            this.button_checkTechs.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_checkTechs.Location = new System.Drawing.Point(281, 105);
-            this.button_checkTechs.Name = "button_checkTechs";
-            this.button_checkTechs.Size = new System.Drawing.Size(91, 28);
-            this.button_checkTechs.TabIndex = 82;
-            this.button_checkTechs.Text = "Check Techs";
-            this.button_checkTechs.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -505,21 +473,21 @@
             this.label2.TabIndex = 89;
             this.label2.Text = "Updates:";
             // 
-            // comboBox2
+            // comboBox_type
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(161, 71);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(223, 21);
-            this.comboBox2.TabIndex = 88;
+            this.comboBox_type.FormattingEnabled = true;
+            this.comboBox_type.Location = new System.Drawing.Point(161, 71);
+            this.comboBox_type.Name = "comboBox_type";
+            this.comboBox_type.Size = new System.Drawing.Size(223, 21);
+            this.comboBox_type.TabIndex = 88;
             // 
-            // comboBox1
+            // comboBox_cat
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(161, 96);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(223, 21);
-            this.comboBox1.TabIndex = 87;
+            this.comboBox_cat.FormattingEnabled = true;
+            this.comboBox_cat.Location = new System.Drawing.Point(161, 96);
+            this.comboBox_cat.Name = "comboBox_cat";
+            this.comboBox_cat.Size = new System.Drawing.Size(223, 21);
+            this.comboBox_cat.TabIndex = 87;
             // 
             // ConfirmTechChangeButton
             // 
@@ -530,6 +498,7 @@
             this.ConfirmTechChangeButton.TabIndex = 86;
             this.ConfirmTechChangeButton.Text = "Confirm!";
             this.ConfirmTechChangeButton.UseVisualStyleBackColor = true;
+            this.ConfirmTechChangeButton.Click += new System.EventHandler(this.ConfirmTechChangeButton_Click);
             // 
             // comboBox_TechName
             // 
@@ -559,6 +528,7 @@
             this.SplitRMAButton.TabIndex = 83;
             this.SplitRMAButton.Text = "Split RMA";
             this.SplitRMAButton.UseVisualStyleBackColor = true;
+            this.SplitRMAButton.Click += new System.EventHandler(this.SplitRMAButton_Click);
             // 
             // updateButton
             // 
@@ -569,6 +539,7 @@
             this.updateButton.TabIndex = 82;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // openButton
             // 
@@ -579,6 +550,7 @@
             this.openButton.TabIndex = 81;
             this.openButton.Text = "Open";
             this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
             // textBox_StatusUpdates
             // 
@@ -588,6 +560,7 @@
             this.textBox_StatusUpdates.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_StatusUpdates.Size = new System.Drawing.Size(313, 71);
             this.textBox_StatusUpdates.TabIndex = 80;
+            this.textBox_StatusUpdates.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_StatusUpdates_MouseDoubleClick);
             // 
             // label_TechName
             // 
@@ -666,6 +639,7 @@
             this.textBox_rmaNo.Name = "textBox_rmaNo";
             this.textBox_rmaNo.Size = new System.Drawing.Size(223, 20);
             this.textBox_rmaNo.TabIndex = 72;
+            this.textBox_rmaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_rmaNo_KeyPress);
             // 
             // label4
             // 
@@ -693,8 +667,8 @@
             // 
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.SplitRMAButton);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.comboBox_type);
+            this.groupBox1.Controls.Add(this.comboBox_cat);
             this.groupBox1.Controls.Add(this.ConfirmTechChangeButton);
             this.groupBox1.Controls.Add(this.comboBox_TechName);
             this.groupBox1.Controls.Add(this.label6);
@@ -711,144 +685,189 @@
             this.groupBox1.Controls.Add(this.textBox_rmaNo);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(27, 105);
+            this.groupBox1.Location = new System.Drawing.Point(27, 59);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(498, 357);
             this.groupBox1.TabIndex = 90;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Track/Update RMAs";
             // 
-            // listBox1
+            // label11
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(414, 35);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(132, 212);
-            this.listBox1.TabIndex = 68;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(552, 35);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(131, 212);
-            this.listBox2.TabIndex = 69;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.DarkRed;
+            this.label11.Location = new System.Drawing.Point(322, 21);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 20);
+            this.label11.TabIndex = 101;
+            this.label11.Text = "Assigned";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.DarkRed;
-            this.label10.Location = new System.Drawing.Point(415, 12);
+            this.label10.Location = new System.Drawing.Point(153, 21);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(131, 20);
-            this.label10.TabIndex = 70;
+            this.label10.TabIndex = 100;
             this.label10.Text = "Waiting Assignment";
             // 
-            // label11
+            // listBox_requestsAssigned
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.DarkRed;
-            this.label11.Location = new System.Drawing.Point(584, 12);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 20);
-            this.label11.TabIndex = 71;
-            this.label11.Text = "Assigned";
+            this.listBox_requestsAssigned.FormattingEnabled = true;
+            this.listBox_requestsAssigned.Location = new System.Drawing.Point(290, 44);
+            this.listBox_requestsAssigned.Name = "listBox_requestsAssigned";
+            this.listBox_requestsAssigned.Size = new System.Drawing.Size(131, 212);
+            this.listBox_requestsAssigned.TabIndex = 99;
+            this.listBox_requestsAssigned.SelectedIndexChanged += new System.EventHandler(this.listBox_requestsAssigned_SelectedIndexChanged);
             // 
-            // panel3
+            // listBox_waitingToBeAssigned
             // 
-            this.panel3.Controls.Add(this.ViewHistoryButton);
-            this.panel3.Controls.Add(this.ShowDeatilsButton);
-            this.panel3.Controls.Add(this.textBox_View_RmaNo);
-            this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.ViewAllWOButton);
-            this.panel3.Location = new System.Drawing.Point(73, 18);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(514, 78);
-            this.panel3.TabIndex = 70;
+            this.listBox_waitingToBeAssigned.FormattingEnabled = true;
+            this.listBox_waitingToBeAssigned.Location = new System.Drawing.Point(152, 44);
+            this.listBox_waitingToBeAssigned.Name = "listBox_waitingToBeAssigned";
+            this.listBox_waitingToBeAssigned.Size = new System.Drawing.Size(132, 212);
+            this.listBox_waitingToBeAssigned.TabIndex = 98;
+            this.listBox_waitingToBeAssigned.SelectedIndexChanged += new System.EventHandler(this.listBox_waitingToBeAssigned_SelectedIndexChanged);
             // 
-            // ViewHistoryButton
+            // label17
             // 
-            this.ViewHistoryButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewHistoryButton.Location = new System.Drawing.Point(234, 38);
-            this.ViewHistoryButton.Name = "ViewHistoryButton";
-            this.ViewHistoryButton.Size = new System.Drawing.Size(96, 34);
-            this.ViewHistoryButton.TabIndex = 71;
-            this.ViewHistoryButton.Text = "View History";
-            this.ViewHistoryButton.UseVisualStyleBackColor = true;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.DarkRed;
+            this.label17.Location = new System.Drawing.Point(577, 21);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(113, 20);
+            this.label17.TabIndex = 97;
+            this.label17.Text = "Refund Requests";
             // 
-            // ShowDeatilsButton
+            // listBox_refundRequest
             // 
-            this.ShowDeatilsButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShowDeatilsButton.Location = new System.Drawing.Point(120, 38);
-            this.ShowDeatilsButton.Name = "ShowDeatilsButton";
-            this.ShowDeatilsButton.Size = new System.Drawing.Size(96, 34);
-            this.ShowDeatilsButton.TabIndex = 70;
-            this.ShowDeatilsButton.Text = "Show Deatils";
-            this.ShowDeatilsButton.UseVisualStyleBackColor = true;
+            this.listBox_refundRequest.FormattingEnabled = true;
+            this.listBox_refundRequest.Location = new System.Drawing.Point(565, 44);
+            this.listBox_refundRequest.Name = "listBox_refundRequest";
+            this.listBox_refundRequest.Size = new System.Drawing.Size(131, 212);
+            this.listBox_refundRequest.TabIndex = 96;
+            this.listBox_refundRequest.SelectedIndexChanged += new System.EventHandler(this.listBox_refundRequest_SelectedIndexChanged);
             // 
-            // textBox_View_RmaNo
+            // button7
             // 
-            this.textBox_View_RmaNo.Location = new System.Drawing.Point(95, 9);
-            this.textBox_View_RmaNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox_View_RmaNo.Multiline = true;
-            this.textBox_View_RmaNo.Name = "textBox_View_RmaNo";
-            this.textBox_View_RmaNo.Size = new System.Drawing.Size(255, 23);
-            this.textBox_View_RmaNo.TabIndex = 69;
+            this.button7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(1080, 186);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(133, 51);
+            this.button7.TabIndex = 95;
+            this.button7.Text = "View WOs in Queue";
+            this.button7.UseVisualStyleBackColor = true;
             // 
-            // label16
+            // label12
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1, 16);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(86, 15);
-            this.label16.TabIndex = 68;
-            this.label16.Text = "Enter RMA#:";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DarkRed;
+            this.label12.Location = new System.Drawing.Point(434, 21);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(117, 20);
+            this.label12.TabIndex = 94;
+            this.label12.Text = "Requests on Hold";
             // 
-            // ViewAllWOButton
+            // label13
             // 
-            this.ViewAllWOButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewAllWOButton.Location = new System.Drawing.Point(357, 7);
-            this.ViewAllWOButton.Name = "ViewAllWOButton";
-            this.ViewAllWOButton.Size = new System.Drawing.Size(131, 33);
-            this.ViewAllWOButton.TabIndex = 72;
-            this.ViewAllWOButton.Text = "View all WOs";
-            this.ViewAllWOButton.UseVisualStyleBackColor = true;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.DarkRed;
+            this.label13.Location = new System.Drawing.Point(33, 21);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(94, 20);
+            this.label13.TabIndex = 93;
+            this.label13.Text = "New Requests";
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Location = new System.Drawing.Point(1082, 133);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(131, 47);
+            this.refreshButton.TabIndex = 92;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
+            // listBox_requestOnHold
+            // 
+            this.listBox_requestOnHold.FormattingEnabled = true;
+            this.listBox_requestOnHold.Location = new System.Drawing.Point(427, 44);
+            this.listBox_requestOnHold.Name = "listBox_requestOnHold";
+            this.listBox_requestOnHold.Size = new System.Drawing.Size(132, 212);
+            this.listBox_requestOnHold.TabIndex = 91;
+            this.listBox_requestOnHold.SelectedIndexChanged += new System.EventHandler(this.listBox_requestOnHold_SelectedIndexChanged);
+            // 
+            // listBox_newRequests
+            // 
+            this.listBox_newRequests.FormattingEnabled = true;
+            this.listBox_newRequests.Location = new System.Drawing.Point(14, 44);
+            this.listBox_newRequests.Name = "listBox_newRequests";
+            this.listBox_newRequests.Size = new System.Drawing.Size(132, 212);
+            this.listBox_newRequests.TabIndex = 90;
+            this.listBox_newRequests.SelectedIndexChanged += new System.EventHandler(this.listBox_newRequests_SelectedIndexChanged);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.listBox_requestsAssigned);
+            this.groupBox4.Controls.Add(this.listBox_waitingToBeAssigned);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.listBox_refundRequest);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.listBox_newRequests);
+            this.groupBox4.Controls.Add(this.listBox_requestOnHold);
+            this.groupBox4.Location = new System.Drawing.Point(531, 321);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(702, 280);
+            this.groupBox4.TabIndex = 102;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Active WOs";
             // 
             // Supervisor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
-            this.ClientSize = new System.Drawing.Size(1223, 680);
+            this.ClientSize = new System.Drawing.Size(1244, 617);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.RMASearchButton);
             this.Controls.Add(this.HelpLinkLabel);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.label_helloEmp);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LogoutLinkLabel);
             this.Name = "Supervisor";
             this.Text = "Supervisor";
             this.Load += new System.EventHandler(this.Supervisor_Load);
             this.groupBox2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -861,13 +880,7 @@
         private System.Windows.Forms.Label label_helloEmp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel LogoutLinkLabel;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button refreshButton;
-        private System.Windows.Forms.ListBox listBox_requestOnHold;
-        private System.Windows.Forms.ListBox listBox_newRequests;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label15;
@@ -879,9 +892,6 @@
         private System.Windows.Forms.RadioButton radioButton_clientName;
         private System.Windows.Forms.RadioButton radioButton_date;
         private System.Windows.Forms.Button generateReportButton;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ListBox listBox_refundRequest;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button button_checkTechs;
@@ -892,11 +902,9 @@
         private System.Windows.Forms.Button ViewAllbutton;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_type;
+        private System.Windows.Forms.ComboBox comboBox_cat;
         private System.Windows.Forms.Button ConfirmTechChangeButton;
         private System.Windows.Forms.ComboBox comboBox_TechName;
         private System.Windows.Forms.Label label6;
@@ -915,13 +923,24 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button ViewHistoryButton;
         private System.Windows.Forms.Button ShowDeatilsButton;
         private System.Windows.Forms.TextBox textBox_View_RmaNo;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button ViewAllWOButton;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ListBox listBox_requestsAssigned;
+        private System.Windows.Forms.ListBox listBox_waitingToBeAssigned;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ListBox listBox_refundRequest;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.ListBox listBox_requestOnHold;
+        private System.Windows.Forms.ListBox listBox_newRequests;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

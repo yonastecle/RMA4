@@ -176,7 +176,7 @@ namespace RMA_SystemSoftware
                         MessageBox.Show("RMA not found. Please enter a valid RMA#.");
                     else
                     {
-                        grab.autofill(textBox_update_rmaNo.Text, ref textBox_update_rmaNo, ref label_status, ref comboBox_updateStatus, ref req_type, ref cat, ref label_TechName, ref textBox_update_statusUpdate);                      
+                        grab.autofill(textBox_update_rmaNo.Text, ref textBox_update_rmaNo, ref label_status, ref comboBox_updateStatus, ref comboBox_type, ref comboBox_cat, ref label_TechName, ref textBox_update_statusUpdate);                      
                     }
                 }
                 catch (Exception ex)
@@ -192,16 +192,10 @@ namespace RMA_SystemSoftware
             string rmaNum = textBox_update_rmaNo.Text.ToString();
             if (textBox_update_rmaNo.Text != "")
             {
-                if ((radioB_refund.Checked == true || radioB_repair.Checked == true || radioB_replace.Checked == true) && (radioB_CAT1.Checked == true || radioB_CAT2.Checked == true || radioB_CAT3.Checked == true || radioB_CAT4.Checked == true))
-                {
-                     grab.updateDB(rmaNum, ref comboBox_updateStatus, ref req_type, ref cat);
+                     grab.updateDB(rmaNum, ref comboBox_type, ref comboBox_cat, ref comboBox_updateStatus);
                     notes.updateField("statusUpdates", enteredtxt, rmaNum, label_helloEmp.Text);
                     MessageBox.Show("Changes Saved!!! ","Success");
-                }
-                else
-                {
-                    MessageBox.Show("Please choose Type of request/Category!");
-                }
+               
             }
             else
             {
