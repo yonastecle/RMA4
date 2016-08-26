@@ -277,7 +277,7 @@ namespace RMA_SystemSoftware
         }
 
         //autofill techOpen
-        public void autofill(string rmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat,  ref TextBox desp, ref TextBox res, ref TextBox stat, ref TextBox comm)
+        public void autofill(string rmaNum, ref Label lblStatus, ref ComboBox cmbBox, ref string req_type, ref int cat,  ref TextBox desp, ref TextBox res, ref TextBox stat)
         {
             string ID = "";
             try
@@ -304,7 +304,6 @@ namespace RMA_SystemSoftware
                 while (read.Read())
                 {
                     desp.Text = read.GetString(read.GetOrdinal("description"));
-                    comm.Text = read.GetString(read.GetOrdinal("comments"));
                     res.Text = read.GetString(read.GetOrdinal("resolution"));
                     stat.Text = read.GetString(read.GetOrdinal("statusUpdates"));
                 }

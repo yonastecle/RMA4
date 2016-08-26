@@ -27,10 +27,8 @@ namespace RMA_SystemSoftware
         Emp_Search search = new Emp_Search();
         Split_RMA split = new Split_RMA();
         GrabData grab = new GrabData();
-        string s, req_type, result = null, rmaNumber = "", enteredTxt = "", reportParam="";
-        int cat;
+        string s, result = null, rmaNumber = "", enteredTxt = "", reportParam="";
         public string u_id { get; set; }       
-
 
         public Supervisor()
         {

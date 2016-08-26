@@ -38,11 +38,9 @@
             this.button_Update = new System.Windows.Forms.Button();
             this.comboBox_status = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox_comments = new System.Windows.Forms.TextBox();
             this.textBox_statusUpadate = new System.Windows.Forms.TextBox();
             this.textBox_res = new System.Windows.Forms.TextBox();
             this.textBox_desp = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -175,11 +173,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox_comments);
             this.groupBox1.Controls.Add(this.textBox_statusUpadate);
             this.groupBox1.Controls.Add(this.textBox_res);
             this.groupBox1.Controls.Add(this.textBox_desp);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label6);
@@ -191,24 +187,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Notes";
             // 
-            // textBox_comments
-            // 
-            this.textBox_comments.Location = new System.Drawing.Point(130, 348);
-            this.textBox_comments.Multiline = true;
-            this.textBox_comments.Name = "textBox_comments";
-            this.textBox_comments.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_comments.Size = new System.Drawing.Size(341, 93);
-            this.textBox_comments.TabIndex = 8;
-            this.textBox_comments.TextChanged += new System.EventHandler(this.textBox_comments_TextChanged);
-            this.textBox_comments.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_comments_MouseDoubleClick);
-            // 
             // textBox_statusUpadate
             // 
             this.textBox_statusUpadate.Location = new System.Drawing.Point(130, 249);
             this.textBox_statusUpadate.Multiline = true;
             this.textBox_statusUpadate.Name = "textBox_statusUpadate";
             this.textBox_statusUpadate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_statusUpadate.Size = new System.Drawing.Size(341, 93);
+            this.textBox_statusUpadate.Size = new System.Drawing.Size(341, 183);
             this.textBox_statusUpadate.TabIndex = 7;
             this.textBox_statusUpadate.TextChanged += new System.EventHandler(this.textBox_statusUpadate_TextChanged);
             this.textBox_statusUpadate.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_statusUpadate_MouseDoubleClick);
@@ -234,16 +219,6 @@
             this.textBox_desp.TabIndex = 5;
             this.textBox_desp.TextChanged += new System.EventHandler(this.textBox_desp_TextChanged);
             this.textBox_desp.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_desp_MouseDoubleClick);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(24, 388);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 16);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Comments:";
             // 
             // label9
             // 
@@ -619,11 +594,9 @@
         private System.Windows.Forms.Button button_Update;
         private System.Windows.Forms.ComboBox comboBox_status;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox_comments;
         private System.Windows.Forms.TextBox textBox_statusUpadate;
         private System.Windows.Forms.TextBox textBox_res;
         private System.Windows.Forms.TextBox textBox_desp;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;

@@ -17,7 +17,7 @@ namespace RMA_SystemSoftware
         SqlConnection con = new SqlConnection(@"Data Source=NimeshPatel-RMA\SQLEXPRESS;Initial Catalog=RMA_System;Integrated Security=True");
         GrabData grab = new GrabData();
         Notes notes = new Notes();
-        string req_type, desp = "", res = "", stat = "", comm = "";
+        string req_type, desp = "", res = "", stat = "";
         int cat;
         public string rma_no { get; set; }
         public string u_type { get; set; }       
@@ -46,13 +46,13 @@ namespace RMA_SystemSoftware
         private void Tech_Open_Load(object sender, EventArgs e)
         {
             label_rmaNo.Text = rma_no;
-            grab.autofill(rma_no,ref label_currentStatus, ref comboBox_status, ref req_type, ref cat,ref textBox_desp, ref textBox_res, ref textBox_statusUpadate, ref textBox_comments);
+            grab.autofill(rma_no,ref label_currentStatus, ref comboBox_status, ref req_type, ref cat,ref textBox_desp, ref textBox_res, ref textBox_statusUpadate);
         }
 
         private void buttonUpdateInfo_Click(object sender, EventArgs e)
         {
             notes.updateField(label_rmaNo.Text, desp, res, stat,label_helloEmp.Text);
-            grab.autofill(rma_no, ref label_currentStatus, ref comboBox_status, ref req_type, ref cat,  ref textBox_desp, ref textBox_res, ref textBox_statusUpadate, ref textBox_comments);
+            grab.autofill(rma_no, ref label_currentStatus, ref comboBox_status, ref req_type, ref cat,  ref textBox_desp, ref textBox_res, ref textBox_statusUpadate);
             
         }
 
@@ -71,11 +71,6 @@ namespace RMA_SystemSoftware
             stat = textBox_statusUpadate.Text;
         }
 
-        private void textBox_comments_TextChanged(object sender, EventArgs e)
-        {
-            comm = textBox_comments.Text;
-        }
-
         private void textBox_desp_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             textBox_desp.Clear();
@@ -90,12 +85,7 @@ namespace RMA_SystemSoftware
         {
             textBox_statusUpadate.Clear();               
         }
-
-        private void textBox_comments_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            textBox_comments.Clear();
-        }
-       
+        
         private void button_Update_Click(object sender, EventArgs e)
         {
             //update arguments

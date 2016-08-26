@@ -67,10 +67,10 @@
             this.ShowDetailsButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label_rmaNo = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label_type = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_techName = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label_currentStatus = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -500,10 +500,10 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label_rmaNo);
-            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.label_type);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label_techName);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label_currentStatus);
             this.groupBox3.Controls.Add(this.label20);
@@ -531,16 +531,16 @@
             this.label_rmaNo.TabIndex = 71;
             this.label_rmaNo.Text = "RMA#";
             // 
-            // label12
+            // label_type
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.DarkRed;
-            this.label12.Location = new System.Drawing.Point(284, 51);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(50, 16);
-            this.label12.TabIndex = 61;
-            this.label12.Text = "Replace";
+            this.label_type.AutoSize = true;
+            this.label_type.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_type.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_type.Location = new System.Drawing.Point(284, 51);
+            this.label_type.Name = "label_type";
+            this.label_type.Size = new System.Drawing.Size(50, 16);
+            this.label_type.TabIndex = 61;
+            this.label_type.Text = "Replace";
             // 
             // label21
             // 
@@ -563,16 +563,16 @@
             this.label16.TabIndex = 60;
             this.label16.Text = "Assigned Technician:";
             // 
-            // label2
+            // label_techName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(284, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 16);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "Anothy Stark";
+            this.label_techName.AutoSize = true;
+            this.label_techName.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_techName.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_techName.Location = new System.Drawing.Point(284, 85);
+            this.label_techName.Name = "label_techName";
+            this.label_techName.Size = new System.Drawing.Size(77, 16);
+            this.label_techName.TabIndex = 59;
+            this.label_techName.Text = "Anothy Stark";
             // 
             // label10
             // 
@@ -742,7 +742,7 @@
         private System.Windows.Forms.Button openRecordButton;
         private System.Windows.Forms.TextBox textBox_update_statusUpdate;
         private System.Windows.Forms.Button ConfirmTechChangeButton;
-        private System.Windows.Forms.Label label_TechName;
+       
        
         private System.Windows.Forms.ComboBox comboBox_updateStatus;
         private System.Windows.Forms.Button SplitRMAButton;
@@ -785,9 +785,9 @@
    
         private System.Windows.Forms.ComboBox comboBox_TechName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label_type;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_techName;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox_cat;
         private System.Windows.Forms.ComboBox comboBox_type;

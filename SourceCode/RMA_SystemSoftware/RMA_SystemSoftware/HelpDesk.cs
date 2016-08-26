@@ -21,14 +21,10 @@ namespace RMA_SystemSoftware
         Notes notes = new Notes();
         History histry = new History();
         WO_Details details = new WO_Details();
-        Split_RMA split = new Split_RMA();
-      
-      
+        Split_RMA split = new Split_RMA();            
         Supervisor sup = new Supervisor();
-        string req_type,enteredtxt="",desp="",res="",stat="", reportParam = "";
-        string found = null;
-        int cat;
-        string rmaNumber = "";
+
+        string enteredtxt="",desp="",res="",stat="", reportParam = "", found = null, rmaNumber = "";        
         public string u_id { get; set; }
 
         public HelpDesk()
@@ -43,6 +39,14 @@ namespace RMA_SystemSoftware
             comboBox_status.Items.Add("Refund");
             comboBox_status.Items.Add("Complete");
             comboBox_status.Items.Add("Close");
+            comboBox_type.Items.Add("Repair");
+            comboBox_type.Items.Add("Replace");
+            comboBox_type.Items.Add("Refund");
+            comboBox_cat.Items.Add("CAT1 (1-2 pieces");
+            comboBox_cat.Items.Add("CAT2(3-4 pieces) ");
+            comboBox_cat.Items.Add("CAT3(5-10 pieces) ");
+            comboBox_cat.Items.Add("CAT4(10+ pieces) ");
+            comboBox_cat.Items.Add("CAT5(Others)");
             comboBox_updateStatus.Items.Add("Open");//Can be omitted!
             comboBox_updateStatus.Items.Add("Received");
             comboBox_updateStatus.Items.Add("Wait");
@@ -57,8 +61,7 @@ namespace RMA_SystemSoftware
         private void HelpDesk_Load(object sender, EventArgs e)
         {
             try
-            {
-                groupBox_UpdateDetails.Enabled = false;
+            {              
                 if (con.State == ConnectionState.Open) con.Close();
                 con.Open();
                 label_helloEmp.Text = grab.getEmployeeName(u_id);
@@ -81,34 +84,16 @@ namespace RMA_SystemSoftware
                 }
                 reader.Close();
                 con.Close();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-        }
-        public void AuthorizedUser()
-        {
-            //groupBox_UpdateDetails.Enabled = true;
-        }
-
-        private void linkLabel_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.Hide();
-            Form1 login = new Form1();
-            login.Show();
-        }
-
-        private void linkLabel_help_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
-        }
-
+        }        
+     
         private void textBox_rmaNo_KeyPress(object sender, KeyPressEventArgs e)
-        {            
+        {
+            string id;         
             if (e.KeyChar == (char)Keys.Enter)
             {
 
@@ -122,7 +107,9 @@ namespace RMA_SystemSoftware
                     con.Open();
                     found = grab.serachRMA(textBox_rmaNo.Text);
                     con.Close();
-                    if (found.Equals("0")) MessageBox.Show("RMA not found. Please enter a valid RMA#.");
+
+                    if (found.Equals("0"))
+                        MessageBox.Show("RMA not found. Please enter a valid RMA#.");
                     else
                     {
                         con.Open();
@@ -132,6 +119,9 @@ namespace RMA_SystemSoftware
                         {
                             label_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
                             label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
+                            label_type.Text = reader.GetString(reader.GetOrdinal("type"));
+                            id = reader.GetString(reader.GetOrdinal("userID"));
+                            label_techName.Text = grab.getEmployeeName(id);
                             textBox_descrption.Text = reader.GetString(reader.GetOrdinal("description"));                           
                             textBox_resolution.Text = reader.GetString(reader.GetOrdinal("resolution"));
                             textBox_statusUpdates.Text = reader.GetString(reader.GetOrdinal("statusUpdates"));
@@ -155,7 +145,7 @@ namespace RMA_SystemSoftware
             con.Close();
 
             con.Open();
-            cmd = new SqlCommand("update RMA set userID='" + id + "' where rma_no='" + textBox_update_rmaNo.Text + "'", con);
+            cmd = new SqlCommand("update RMA set userID='" + id +"' where rma_no='" + textBox_update_rmaNo.Text + "'", con);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Technician Re-Assigned!");
             con.Close();
@@ -176,7 +166,7 @@ namespace RMA_SystemSoftware
                         MessageBox.Show("RMA not found. Please enter a valid RMA#.");
                     else
                     {
-                        grab.autofill(textBox_update_rmaNo.Text, ref textBox_update_rmaNo, ref label_status, ref comboBox_updateStatus, ref comboBox_type, ref comboBox_cat, ref label_TechName, ref textBox_update_statusUpdate);                      
+                        grab.autofill(textBox_update_rmaNo.Text, ref textBox_update_rmaNo, ref label_status, ref comboBox_updateStatus, ref comboBox_type, ref comboBox_cat, ref label_techName, ref textBox_update_statusUpdate);                      
                     }
                 }
                 catch (Exception ex)
@@ -258,41 +248,7 @@ namespace RMA_SystemSoftware
         private void textBox_update_statusUpdate_TextChanged(object sender, EventArgs e)
         {
             enteredtxt = textBox_update_statusUpdate.Text;
-        }
-        private void radioB_repair_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = "Repair";
-        }
-
-        private void radioB_replace_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = "Replace";
-        }
-
-        private void radioB_refund_CheckedChanged(object sender, EventArgs e)
-        {
-            req_type = "Refund";
-        }
-       
-        private void radioB_CAT1_CheckedChanged(object sender, EventArgs e)
-        {
-            cat = 1;
-        }
-
-        private void radioB_CAT2_CheckedChanged(object sender, EventArgs e)
-        {
-            cat = 2;
-        }
-        
-        private void radioB_CAT3_CheckedChanged(object sender, EventArgs e)
-        {
-            cat = 3;
-        }      
-
-        private void radioB_CAT4_CheckedChanged(object sender, EventArgs e)
-        {
-            cat = 4;
-        }
+        }               
 
         private void textBox_descrption_TextChanged(object sender, EventArgs e)
         {
@@ -412,6 +368,17 @@ namespace RMA_SystemSoftware
         {
             textBox_statusUpdates.Clear();
         }
-        
+        private void linkLabel_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            Form1 login = new Form1();
+            login.Show();
+        }
+
+        private void linkLabel_help_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"G:\RMA Software_project\Test_user guide.pdf");
+        }
+
     }
 }
