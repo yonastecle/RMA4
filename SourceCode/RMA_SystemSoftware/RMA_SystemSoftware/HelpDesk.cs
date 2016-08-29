@@ -24,7 +24,7 @@ namespace RMA_SystemSoftware
         Split_RMA split = new Split_RMA();            
         Supervisor sup = new Supervisor();
 
-        string enteredtxt="",desp="",res="",stat="", reportParam = "", found = null, rmaNumber = "";        
+        string enteredtxt="",desp="",res="",stat="", reportParam = "", found = null;        
         public string u_id { get; set; }
 
         public HelpDesk()
@@ -93,153 +93,66 @@ namespace RMA_SystemSoftware
      
         private void textBox_rmaNo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string id;         
+
             if (e.KeyChar == (char)Keys.Enter)
             {
-
-                textBox_statusUpdates.Clear();               
+                textBox_statusUpdates.Clear();
                 textBox_descrption.Clear();
-                textBox_resolution.Clear();
-
-                try
-                {
-                    if (con.State == ConnectionState.Open) con.Close();
-                    con.Open();
-                    found = grab.serachRMA(textBox_rmaNo.Text);
-                    con.Close();
-
-                    if (found.Equals("0"))
-                        MessageBox.Show("RMA not found. Please enter a valid RMA#.");
-                    else
-                    {
-                        con.Open();
-                        cmd = new SqlCommand("SELECT * FROM RMA R, Notes N WHERE R.rma_no =N.RMA_no AND r.rma_no='" + textBox_rmaNo.Text + "'", con);
-                        reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            label_rmaNo.Text = reader.GetString(reader.GetOrdinal("rma_no"));
-                            label_currentStatus.Text = reader.GetString(reader.GetOrdinal("Status"));
-                            label_type.Text = reader.GetString(reader.GetOrdinal("type"));
-                            id = reader.GetString(reader.GetOrdinal("userID"));
-                            label_techName.Text = grab.getEmployeeName(id);
-                            textBox_descrption.Text = reader.GetString(reader.GetOrdinal("description"));                           
-                            textBox_resolution.Text = reader.GetString(reader.GetOrdinal("resolution"));
-                            textBox_statusUpdates.Text = reader.GetString(reader.GetOrdinal("statusUpdates"));
-                        }
-                        con.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                textBox_resolution.Clear();               
+                grab.autofill(ref textBox_rmaNo,ref label_rmaNo,ref label_type, ref label_currentStatus, ref label_techName, ref comboBox_TechName, ref comboBox_updateStatus, ref comboBox_type, ref comboBox_cat, ref textBox_descrption, ref textBox_resolution, ref textBox_statusUpdates);
             }
-        }
-
+               
+         }
+          
         private void ConfirmTechChangeButton_Click(object sender, EventArgs e)
         {
             string id = null;
             if (con.State == ConnectionState.Open) con.Close();
-            con.Open();
+           
             id = grab.getEmployeeID(comboBox_TechName.Text);
-            con.Close();
-
-            con.Open();
-            cmd = new SqlCommand("update RMA set userID='" + id +"' where rma_no='" + textBox_update_rmaNo.Text + "'", con);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Technician Re-Assigned!");
-            con.Close();
+            grab.changeTech(id, label_rmaNo.Text);
+           
         }
 
-        private void textBox_update_rmaNo_KeyPress(object sender, KeyPressEventArgs e)
+        private void button_update_Click(object sender, EventArgs e)
         {
-            string found = null;
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                try
-                {
-                    if (con.State == ConnectionState.Open) con.Close();
-                    con.Open();
-                    found = grab.serachRMA(textBox_update_rmaNo.Text);
-                    con.Close();
-                    if (found.Equals("0"))
-                        MessageBox.Show("RMA not found. Please enter a valid RMA#.");
-                    else
-                    {
-                        grab.autofill(textBox_update_rmaNo.Text, ref textBox_update_rmaNo, ref label_status, ref comboBox_updateStatus, ref comboBox_type, ref comboBox_cat, ref label_techName, ref textBox_update_statusUpdate);                      
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-      
-
-        private void updateRecordButton_Click(object sender, EventArgs e)
-        {
-            string rmaNum = textBox_update_rmaNo.Text.ToString();
-            if (textBox_update_rmaNo.Text != "")
-            {
-                     grab.updateDB(rmaNum, ref comboBox_type, ref comboBox_cat, ref comboBox_updateStatus);
-                    notes.updateField("statusUpdates", enteredtxt, rmaNum, label_helloEmp.Text);
-                    MessageBox.Show("Changes Saved!!! ","Success");
-               
-            }
-            else
-            {
-                MessageBox.Show("Please Enter RMA!", "Empty Field");
-            }
-        }
+            //string rmaNum = label_rmaNo.Text.ToString();
+           
+                grab.updateDB(label_rmaNo.Text, ref comboBox_type, ref comboBox_cat, ref comboBox_updateStatus);            
+        }       
 
         private void openRecordButton_Click(object sender, EventArgs e)
         {
            techopen = new Tech_Open(label_helloEmp.Text);
-            techopen.rma_no = textBox_update_rmaNo.Text;
-            if (textBox_update_rmaNo.Text != "")
+            techopen.rma_no = label_rmaNo.Text;
+            if (label_rmaNo.Text != "")
             {
                 techopen.Show();
 
             }
 
             else MessageBox.Show("Please Enter RMA#", "Empty Field");
-        }
-
-        private void UpdateInfoButton_Click(object sender, EventArgs e)
-        {
-            notes.updateField(textBox_rmaNo.Text, desp, res, stat, label_helloEmp.Text);                       
-                textBox_statusUpdates.Clear();               
-                textBox_descrption.Clear();
-                textBox_resolution.Clear();
-                label_currentStatus.Text = "";
-                label_rmaNo.Text = "";
-          
-        }
-
+        }        
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
             grab.fill_grid();
         }
-
-
-
         private void SplitRMAButton_Click(object sender, EventArgs e)
         {
-            split.rma_no = textBox_update_rmaNo.Text;
-            if (textBox_update_rmaNo.Text != "")
+            split.rma_no = label_rmaNo.Text;
+            if (label_rmaNo.Text != "")
             {
                 split.Show();
             }
             else
                 MessageBox.Show("Enter RMA No.", " Empty Field");
         }
-       
-        private void textBox_update_rmaNo_TextChanged(object sender, EventArgs e)
+        private void ShowDetailsButton_Click(object sender, EventArgs e)
         {
-            rmaNumber = textBox_update_rmaNo.Text;
+
         }
+
         private void textBox_update_statusUpdate_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             textBox_update_statusUpdate.Clear();
@@ -348,13 +261,13 @@ namespace RMA_SystemSoftware
             }
         }
 
-     
+      
 
         private void textBox_statusUpdates_TextChanged(object sender, EventArgs e)
         {
             stat = textBox_statusUpdates.Text;
-        }
-       
+        }        
+
         private void textBox_descrption_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             textBox_descrption.Clear();

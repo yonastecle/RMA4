@@ -23,12 +23,14 @@ namespace RMA_SystemSoftware
         public string getEmployeeName(string id)
         {
             string empName = null;
+            if (con.State == ConnectionState.Open) con.Close();
             con.Open();
             cmd = new SqlCommand("select firstName from Employee where UserID='" + id + "'", con);
             read = cmd.ExecuteReader();
             while (read.Read())
                 empName = read.GetString(read.GetOrdinal("firstName"));
             con.Close();
+            Console.WriteLine("Connection closes!");
             return empName;
         }
 
@@ -48,6 +50,7 @@ namespace RMA_SystemSoftware
         public string serachRMA(string rmaNum)
         {
             string result = null;
+            if (con.State == ConnectionState.Open) con.Close();
             con.Open();
             cmd = new SqlCommand("select count(rma_no) found from RMA where rma_no='" + rmaNum + "'", con);
             read = cmd.ExecuteReader();
@@ -55,8 +58,9 @@ namespace RMA_SystemSoftware
             {
                 result = String.Format("{0}", read["found"]);
             }
-            con.Close();
+            con.Close();         
             return result;
+           
         }
         //Supervisor:Fill Listboxes
         public void fill_listbox(ref ListBox open,ref ListBox hold, ref ListBox refund, ref ListBox waitingToBeAssigned,ref ListBox assigned)
@@ -140,19 +144,19 @@ namespace RMA_SystemSoftware
         //Supervisor+HelpDesk Update
         public void updateDB(string rmaNum, ref ComboBox type, ref ComboBox CAT, ref ComboBox status)
         {
-            int cat=0;
-            Console.WriteLine("1." + CAT.SelectedIndex.ToString());/*1 + "2." + CAT.SelectedIndex = 2 + "3." + CAT.SelectedIndex = 3 + "4." + CAT.SelectedIndex = 4 + "5." + CAT.SelectedIndex = 5);*/
-            if (CAT.SelectedIndex == 1) cat = 1;
-            else if (CAT.SelectedIndex == 2) cat = 2;
-            else if (CAT.SelectedIndex == 3) cat = 3;
-            else if (CAT.SelectedIndex == 4) cat = 4;
-            else if (CAT.SelectedIndex == 5) cat = 5;
+            int cat=0;           
+            if (CAT.SelectedIndex == 0) cat = 1;
+            else if (CAT.SelectedIndex == 1) cat = 2;
+            else if (CAT.SelectedIndex == 2) cat = 3;
+            else if (CAT.SelectedIndex == 3) cat = 4;
+            else if (CAT.SelectedIndex == 4) cat = 5;
 
             try
             {
                 con.Open();
                 cmd = new SqlCommand("UPDATE RMA SET Status ='" + status.Text + "', type ='" + type.Text + "', category='" + cat + "'WHERE rma_no='" + rmaNum + "'", con);
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("Changes Saved!!", "DB Updated!");
                 con.Close();
             }
             catch (Exception ex)
@@ -224,7 +228,60 @@ namespace RMA_SystemSoftware
             }
             return type;
         }
-        //Supervisor+Helpdesk:Autofilling the fields on selection of RMA# from the listbox or Keypress
+        //HelpDesk AutoFill 
+        public void autofill(ref TextBox txt_rmaNum,ref Label lbl_rmaNum, ref Label lbl_type, ref Label lbl_status, ref Label lbl_techName, ref ComboBox cb_techName, ref ComboBox cb_status, ref ComboBox cb_type, ref ComboBox cb_cat, ref TextBox descrp, ref TextBox resltn, ref TextBox updts)
+        {
+            int cat;
+            string id, found = null;
+            try
+            {                                          
+                found = serachRMA(txt_rmaNum.Text);                        
+                if (found.Equals("0"))
+                    MessageBox.Show("RMA not found. Please enter a valid RMA#.");
+                else
+                {
+                    Console.WriteLine(" Enters the queries");
+                    if (con.State == ConnectionState.Open) con.Close();
+                    con.Open();                   
+                    cmd = new SqlCommand("SELECT * FROM RMA R, Notes N WHERE R.rma_no =N.RMA_no AND r.rma_no='" + txt_rmaNum.Text + "'", con);
+                    read = cmd.ExecuteReader();
+                    while (read.Read())
+                    {
+                        Console.WriteLine("Starts Executing");
+                        txt_rmaNum.Text=lbl_rmaNum.Text  = read.GetString(read.GetOrdinal("rma_no"));
+                        cat = read.GetInt16(read.GetOrdinal("category"));
+
+                        if (cat == 1)
+                            cb_cat.Text = "CAT1 (1-2 pieces)";
+                        else if (cat == 2)
+                            cb_cat.Text = "CAT2(3-4 pieces)";
+                        else if (cat == 3)
+                            cb_cat.Text = "CAT3(5-10 pieces)";
+                        else if (cat == 4)
+                            cb_cat.Text = "CAT4(10+ pieces)";
+                        else cb_cat.Text = "CAT5(Others)";
+
+                        descrp.Text = read.GetString(read.GetOrdinal("description"));
+                        resltn.Text = read.GetString(read.GetOrdinal("resolution"));
+                        updts.Text = read.GetString(read.GetOrdinal("statusUpdates"));
+                        lbl_status.Text=cb_status.Text = read.GetString(read.GetOrdinal("Status"));
+                        lbl_type.Text= cb_type.Text = read.GetString(read.GetOrdinal("type"));      
+                       
+                        id = read.GetString(read.GetOrdinal("userID"));
+                       cb_techName.Text= lbl_techName.Text = getEmployeeName(id);
+                     
+                    }
+                    Console.WriteLine(" Queries executed");
+                  con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }        
+
+        //Supervisor:Autofilling the fields on selection of RMA# from the listbox or Keypress
         public void autofill(string rmaNum, ref TextBox txtboxRmaNum, ref Label lblStatus, ref ComboBox status,  ref ComboBox type, ref ComboBox CAT,  ref Label lblTech, ref TextBox txtboxStatUpdate)
         {
             int cat;
@@ -252,7 +309,6 @@ namespace RMA_SystemSoftware
                     else if (cat == 4)
                         CAT.Text = "CAT4(10+ pieces)";
                     else CAT.Text = "CAT5(Others)";
-
                 }
                 con.Close();
               
@@ -274,6 +330,15 @@ namespace RMA_SystemSoftware
                 MessageBox.Show(ex.Message);
             }
 
+        }
+        //Supervisor+ HelpDesk:Change Technician
+        public void changeTech(string id, string rmaNum)
+        {
+            con.Open();
+            cmd = new SqlCommand("update RMA set userID='" + id + "' where rma_no='" + rmaNum + "'", con);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Technician Re-Assigned!");
+            con.Close();
         }
 
         //autofill techOpen

@@ -272,45 +272,24 @@ namespace RMA_SystemSoftware
         {
             string id = null;
             if (con.State == ConnectionState.Open) con.Close();
-            con.Open();
+          
             id = grab.getEmployeeID(comboBox_TechName.Text);
-            con.Close();
-
-            con.Open();
-            cmd = new SqlCommand("update RMA set userID='" + id + "' where rma_no='" + textBox_rmaNo.Text + "'", con);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Technician Re-Assigned!");
-            con.Close();
+            grab.changeTech(id, textBox_rmaNo.Text);
+            
         }
         private void updateButton_Click(object sender, EventArgs e)
         {
             
-            string rmaNum = textBox_rmaNo.Text.ToString();
+           // string rmaNum = textBox_rmaNo.Text.ToString();
 
             if (textBox_rmaNo.Text.ToString() != "")
             {
-                grab.updateDB(rmaNum,ref comboBox_type,ref comboBox_cat, ref comboBox_updateStatus);
-
-                //Adding RMA to Notes Table, if RMA not found in the Notes Table.(Additionally need to work on adding RMA# to the Notes table as and when a new RMA request comes into the DB)
-                //string found = null;
-                //found = grab.serachRMA(rmaNumber);
-
-                //if (found.Equals("0"))
-                //{
-                //    // adding dummy value to Description. LINK IT TO THE CSM DB to fetch the description.
-                //    con.Open();
-                //    cmd = new SqlCommand("INSERT INTO Notes (RMA_no, description,statusUpdates) Values ('" + rmaNumber + "','Dummy','" + textBox_StatusUpdates.Text + "')", con);
-                //    cmd.ExecuteNonQuery();
-                //    con.Close();
-                //}
-                //else
-                //{
-                //    notes.updateField("statusUpdates", enteredTxt, rmaNum, label_helloEmp.Text);
-                //    MessageBox.Show("Changes Saved..Press Refresh! ");
-                //}
+                grab.updateDB(textBox_rmaNo.Text, ref comboBox_type,ref comboBox_cat, ref comboBox_updateStatus);
+                
             }
             else
                 MessageBox.Show("Please enter the RMA#!", "Empty Field");
+            refreshButton_Click(this, null);
         }
 
         private void textBox_rmaNo_KeyPress(object sender, KeyPressEventArgs e)
